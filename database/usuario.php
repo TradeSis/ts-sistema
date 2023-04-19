@@ -93,8 +93,8 @@ if (isset($_GET['operacao'])) {
 
 
 
-
+/*
 	include "../usuario/usuario_ok.php";
-
-	//header('Location: ../usuario/usuario.php');
+*/
+	header('Location: ../usuario/usuario.php');
 }

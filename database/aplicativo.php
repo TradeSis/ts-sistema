@@ -30,7 +30,7 @@ if (isset($_GET['operacao'])) {
 
 		$img = $_FILES['imgAplicativo'];
 		
-		$pasta = "../img/imgAplicativo/";
+		$pasta = "/img/brand/";
 		$imgAplicativo = $img['name'];
 		$novoNomeImg = uniqid(); //gerar nome aleatorio para ser guardado na pasta 
 		$extensao = strtolower(pathinfo($imgAplicativo,PATHINFO_EXTENSION)); //extensao do arquivo
@@ -38,14 +38,15 @@ if (isset($_GET['operacao'])) {
 		if($extensao != "" && $extensao != "jpg" && $extensao != "png")
         die("Tipo de aquivo não aceito");
 
-		$pathImg = $pasta . $novoNomeImg . "." . $extensao;
-		move_uploaded_file($img["tmp_name"],$pathImg);
+		$pathImgFisico = defineROOT() . $pasta . $novoNomeImg . "." . $extensao;
+		$pathImgURL = "/ts" . $pasta . $novoNomeImg . "." . $extensao;
+		move_uploaded_file($img["tmp_name"],$pathImgFisico);
 
 
 		$apiEntrada = array(
 			'nomeAplicativo' => $_POST['nomeAplicativo'],
 			'imgAplicativo' => $imgAplicativo,
-			'pathImg'=> $pathImg,
+			'pathImg'=> $pathImgURL,
 			
 		);
 		/*  echo json_encode($_POST);
