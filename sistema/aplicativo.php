@@ -28,6 +28,7 @@ $aplicativos = buscaAplicativos();
                 <thead>
                     <tr>
                         <th>Aplicativo</th>
+                        <th>Caminho</th>
                         <th>Imagem</th>
                         <th>Ação</th>
 
@@ -39,6 +40,7 @@ $aplicativos = buscaAplicativos();
                 ?>
                     <tr>
                         <td><?php echo $aplicativo['nomeAplicativo'] ?></td>
+                        <td><?php echo $aplicativo['appLink'] ?></td>
                         <!-- <td><?php echo $aplicativo['imgAplicativo'] ?></td> -->
 
                         <td><img height="50" width="100" src="<?php echo $aplicativo['pathImg'];?>" alt=""></td> 
