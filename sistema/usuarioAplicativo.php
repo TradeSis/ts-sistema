@@ -38,7 +38,7 @@ $usuarioaplicativos = buscaUsuarioAplicativo();
                 foreach ($usuarioaplicativos as $usuarioaplicativo) {
                 ?>
                     <tr>
-                        <td><?php echo $usuarioaplicativo['idUsuario'] ?></td>
+                        <td><?php echo $usuarioaplicativo['nomeUsuario'] ?></td>
                         <td><?php echo $usuarioaplicativo['aplicativo'] ?></td>
                         <td><?php echo $usuarioaplicativo['nivelMenu'] ?></td>
 
