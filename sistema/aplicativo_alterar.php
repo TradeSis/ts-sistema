@@ -25,11 +25,21 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
 
     <form action="../database/aplicativo.php?operacao=alterar" method="post" enctype="multipart/form-data">
 
-        <div class="col-md-12 form-group">
-
-            <label class='control-label' for='inputNormal'></label>
-            <input type="text" name="nomeAplicativo" class="form-control" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
-            <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?> "style="display:none">
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome do Aplicativo</label>
+                    <input type="text" name="nomeAplicativo" class="form-control" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
+                    <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?> "style="display:none">
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-group">
+                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Caminho</label>
+                    <input type="text" name="appLink" class="form-control" value="<?php echo $aplicativo['appLink'] ?>">
+                </div>
+            </div>
+        </div>
 
             <label class="labelForm mt-4">Imagem</label>
             <label class="picture" for="imgAplicativo" tabIndex="0">
@@ -38,7 +48,6 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
 
             <input type="file" name="imgAplicativo" id="imgAplicativo" value="<?php echo $aplicativo['imgAplicativo'] ?>">
 
-        </div>
         <div style="text-align:right; margin-top: 30px">
 
             <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>

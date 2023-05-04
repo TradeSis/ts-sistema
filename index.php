@@ -7,8 +7,7 @@
 include_once 'head.php';
 include_once 'database/montaMenu.php';
 
-$menus = buscaMontaMenu(2);
-//echo json_encode($menus);
+$menus = buscaMontaMenu('Sistema',$_SESSION['idUsuario']);
 ?>
 
 <body>
@@ -23,8 +22,6 @@ $menus = buscaMontaMenu(2);
 
         <a href="/ts/painel" class="logo"><img src="../img/brand/white.png" width="150"></a>
 
-        <?php
-        if ($_SESSION['idCliente'] == NULL) { ?>
             <div class=" col-md navbar navbar-expand navbar1">
                 <ul class="navbar-nav mx-auto ml-4" id="novoMenu2">
                     <li>
@@ -35,18 +32,7 @@ $menus = buscaMontaMenu(2);
                 </ul>
 
             </div>
-        <?php }
-        if ($_SESSION['idCliente']  >= 1) { ?>
-            <ul class="navbar-nav mx-auto ml-4" id="novoMenu2">
-
-                <li>
-                    <a src="demandas/" href="#" class="nav-link" role="button">
-                        <span class="fs-5 text">Demandas</span>
-                    </a>
-                </li>
-
-            </ul>
-        <?php } ?>
+        
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ">
 
@@ -82,6 +68,10 @@ $menus = buscaMontaMenu(2);
                         <i class="bi bi-person-circle"></i>&#32;
                         Perfil
                     </a>
+                    <a class="dropdown-item" href="/ts/painel/">
+                        <i class="bi bi-display"></i>&#32;
+                        Painel
+                    </a>
 
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -95,8 +85,6 @@ $menus = buscaMontaMenu(2);
 
     </nav>
 
-    <?php
-    if ($_SESSION['idCliente'] == NULL) { ?>
         <nav id="menuLateral" class="menuLateral">
             <div class="titulo"><span></span></div>
             <ul id="novoMenu2">
@@ -125,25 +113,6 @@ $menus = buscaMontaMenu(2);
             </ul>
         </nav>
 
-    <?php }
-    if ($_SESSION['idCliente'] >= 1) { ?>
-        <nav id="menuLateral" class="menuLateral">
-            <div class="titulo"><span></span></div>
-            <ul id="novoMenu2">
-                <li><a href="#" src="demandas/">Demandas</a></li>
-
-                <li><a href="#" class="secao2">Outros<span class="material-symbols-outlined seta2">arrow_right</span></a>
-                    <ul class="itensSecao2">
-                        <li><a href="#" src="http://10.2.0.44/bsweb/erp/etiqueta/normalv2.html">Etiquetas</a>
-                        <li><a href="#" src="cadastros/relatorios.php">Relatórios</a>
-                        <li><a href="#" src="cadastros/seguros_parametros.php">Seguros</a>
-                    </ul>
-                </li>
-
-            </ul>
-        </nav>
-
-    <?php } ?>
 
     <nav id="menusecundario" class="menusecundario">
         <div class="titulo"><span>Cadastros</span></div>

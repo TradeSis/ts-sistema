@@ -3,21 +3,16 @@
 
 include_once('../conexao.php');
 
-function buscaAplicativos($idAplicativo=null)
+function buscaAplicativos($idAplicativo=null, $nivelMenu = null)
 {
 
-	$app = array();
-	//echo json_encode($aplicativo);
-	//return;	
-	$apiEntrada = array(
-		'idAplicativo' => $idAplicativo,
-	);
-	
-	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
-	return; */	
-	$app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'GET');
-	//echo json_encode($app);
-	return $app;
+    $app = array();
+    $apiEntrada = array(
+        'idAplicativo' => $idAplicativo,
+        'nivelMenu' => $nivelMenu,
+    );
+    $app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'GET');
+    return $app;
 }
 
 
@@ -45,6 +40,8 @@ if (isset($_GET['operacao'])) {
 
 		$apiEntrada = array(
 			'nomeAplicativo' => $_POST['nomeAplicativo'],
+			'appLink' => $_POST['appLink'],
+			'nivelMenu' => $_POST['nivelMenu'],
 			'imgAplicativo' => $imgAplicativo,
 			'pathImg'=> $pathImgURL,
 			
@@ -75,6 +72,8 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idAplicativo' => $_POST['idAplicativo'],
 			'nomeAplicativo' => $_POST['nomeAplicativo'],
+			'appLink' => $_POST['appLink'],
+			'nivelMenu' => $_POST['nivelMenu'],
 			'imgAplicativo' => $_POST['imgAplicativo'],
 			'pathImg'=> $pathImg,
 		);
