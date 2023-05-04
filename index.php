@@ -7,7 +7,7 @@
 include_once 'head.php';
 include_once 'database/montaMenu.php';
 
-$menus = buscaMontaMenu('Sistema',$_SESSION['idUsuario']);
+$menus = buscaMontaMenu('Sistemas',$_SESSION['idUsuario']);
 ?>
 
 <body>
