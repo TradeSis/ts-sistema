@@ -9,10 +9,7 @@ include_once('../database/aplicativo.php');
 $usuarios = buscaUsuarios();
 $aplicativos = buscaAplicativos();
 
-$vusuario = $_GET['idUsuario'];
-$vaplicativo = $_GET['aplicativo'];
-
-$usuarioaplicativo = buscaUsuarioAplicativo($vusuario,$vaplicativo);
+$usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicativo']);
 ?>
 
 <body class="bg-transparent">
@@ -20,7 +17,7 @@ $usuarioaplicativo = buscaUsuarioAplicativo($vusuario,$vaplicativo);
 <div class="container" style="margin-top:10px">
 
 <div class="col-sm mt-4" style="text-align:right">
-    <a href="usuarioaplicativo.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+    <a href="usuario.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
 </div>
 <div class="col-sm">
     <spam class="col titulo">Alterar Usuario/Aplicativo</spam>
@@ -34,12 +31,12 @@ $usuarioaplicativo = buscaUsuarioAplicativo($vusuario,$vaplicativo);
             <div class="col-sm">
                 <div class="form-group">
                     <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
-                    <select class="select form-control" style="padding-right: 50px;" name="idUsuario">
+                    <select class="select form-control" style="padding-right: 50px;" name="idUsuario" disabled>
                     <?php
                     foreach ($usuarios as $usuario) {
                     ?>
                     <option <?php
-                    if ($usuario['idUsuario'] == $vusuario) {
+                    if ($usuario['idUsuario'] == $_GET['idUsuario']) {
                         echo "selected";
                     }
                     ?> value="<?php echo $usuario['idUsuario'] ?>"><?php echo $usuario['nomeUsuario']  ?></option>
@@ -50,15 +47,15 @@ $usuarioaplicativo = buscaUsuarioAplicativo($vusuario,$vaplicativo);
             <div class="col-sm">
                 <div class="form-group">
                     <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
-                    <select class="select form-control" style="padding-right: 50px;" name="aplicativo">
+                    <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
                     <?php
                     foreach ($aplicativos as $aplicativo) {
                     ?>
                     <option <?php
-                    if ($aplicativo['nomeAplicativo'] == $vaplicativo) {
+                    if ($aplicativo['nomeAplicativo'] == $_GET['idAplicativo']) {
                         echo "selected";
                     }
-                    ?> value="<?php echo $aplicativo['nomeAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
+                    ?> value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
                     <?php  } ?>
                     </select>
                 </div>

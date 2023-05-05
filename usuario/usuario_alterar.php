@@ -5,8 +5,13 @@
 
 include_once('../head.php');
 include_once('../database/usuario.php');
+include_once('../database/aplicativo.php');
+include_once('../database/usuarioaplicativo.php');
 
-$usuario = buscaUsuarios($_GET['idUsuario']);
+$idUsuario = $_GET['idUsuario'];
+$aplicativos = buscaAplicativos();
+$usuario = buscaUsuarios($idUsuario);
+$usuarioaplicativos = buscaUsuarioAplicativo($idUsuario);
 
 ?>
 
@@ -15,7 +20,7 @@ $usuario = buscaUsuarios($_GET['idUsuario']);
     <div class="container" style="margin-top:10px">
 
         <div class="col-sm mt-4" style="text-align:right">
-            <a href="usuario.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
         </div>
         <div class="col-sm">
             <spam class="col titulo">Alterar Usuário</spam>
@@ -23,18 +28,21 @@ $usuario = buscaUsuarios($_GET['idUsuario']);
 
         <div class="container" style="margin-top: 30px">
             <form action="../database/usuario.php?operacao=alterar" method="post">
-                <div class="form-group" style="margin-top:10px">
-                    <label class="labelForm">Nome</label>
-                    <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>">
-                    <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" style="display: none">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="labelForm">Nome</label>
+                            <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>">
+                            <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" style="display: none">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="labelForm">E-mail</label>
+                            <input type="text" class="form-control" name="email" value="<?php echo $usuario['email'] ?>">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group" style="margin-top:10px">
-                    <label class="labelForm">E-mail</label>
-                    <input type="text" class="form-control" name="email" value="<?php echo $usuario['email'] ?>">
-                </div>
-
-
-
 
                 <div class="container" id="conteudo">
                     <div class="row">
@@ -64,8 +72,47 @@ $usuario = buscaUsuarios($_GET['idUsuario']);
                 </div>
             </form>
             <button data-classe="classe1" id="btn1" class="btn btn-sm btn-danger mb-3">Alterar Senha</button>
-        </div>
 
+            
+            <div class="card shadow mt-2">   
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Usuário</th>
+                            <th class="text-center">Aplicativo</th>
+                            <th class="text-center">Nível</th>
+                            <th class="text-center">Ação</th>
+                        </tr>
+                    </thead>
+                    <?php if (count($usuarioaplicativos) == 4) {;?>
+                            <tr>
+                            <td class="text-center"><?php echo $usuarioaplicativos['nomeUsuario'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativos['idAplicativo'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativos['nivelMenu'] ?></td>
+                            <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="usuarioaplicativo_alterar.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="usuarioaplicativo_excluir.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Excluir</a>
+                            </td>
+                        </tr>
+                        <?php } else {
+                            foreach ($usuarioaplicativos as $usuarioaplicativo) { ?>
+                        <tr>
+                            <td class="text-center"><?php echo $usuarioaplicativo['nomeUsuario'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativo['idAplicativo'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativo['nivelMenu'] ?></td>
+                            <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="usuarioaplicativo_alterar.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="usuarioaplicativo_excluir.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Excluir</a>
+                            </td>
+                        </tr>
+                    <?php }} ?>
+
+                </table>
+                <div class="py-3 px-3" style="text-align:right">
+                    <a href="usuarioaplicativo_inserir.php?idUsuario=<?php echo $idUsuario ?>" role="button" class="btn btn-primary">Adicionar</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     

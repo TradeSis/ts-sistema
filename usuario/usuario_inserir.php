@@ -4,8 +4,10 @@
 // helio 26012023 16:16
 include_once('../head.php');
 include_once '../database/clientes.php';
+include_once('../database/aplicativo.php');
 
 $clientes = buscaClientes();
+$aplicativos = buscaAplicativos();
 
 ?>
 
@@ -52,9 +54,9 @@ $clientes = buscaClientes();
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group-select">
-                                <label class="labelForm">Empresa / Cliente</label>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Empresa / Cliente</label>
                                 <select class="select form-control" style="padding-right: 50px;" name="idCliente">
                                 <option value=null></option>
                                     <?php
@@ -62,6 +64,28 @@ $clientes = buscaClientes();
                                     ?>
                                         <option value="<?php echo $idcliente ?>"><?php echo $cliente['nomeCliente'] ?></option>
                                     <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
+                                <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
+                                <?php
+                                foreach ($aplicativos as $aplicativo) {
+                                ?>
+                                <option value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
+                                <?php  } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nivel</label>
+                                <select class="select form-control" style="padding-right: 50px;" name="nivelMenu">
+                                    <option value="1">Nível 1</option>
+                                    <option value="2">Nível 2</option>
+                                    <option value="3">Nível 3</option>
                                 </select>
                             </div>
                         </div>

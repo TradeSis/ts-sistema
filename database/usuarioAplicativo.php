@@ -3,13 +3,13 @@
 
 include_once('../conexao.php');
 
-function buscaUsuarioAplicativo($idUsuario=null, $aplicativo=null)
+function buscaUsuarioAplicativo($idUsuario=null, $idAplicativo=null)
 {
 
     $usuarioaplicativo = array();
     $apiEntrada = array(
         'idUsuario' => $idUsuario,
-        'aplicativo' => $aplicativo
+        'idAplicativo' => $idAplicativo
     );
     $usuarioaplicativo = chamaAPI(null, '/api/services/usuarioaplicativo', json_encode($apiEntrada), 'GET');
     return $usuarioaplicativo;
@@ -24,7 +24,7 @@ if (isset($_GET['operacao'])) {
 
 		$apiEntrada = array(
 			'idUsuario' => $_POST['idUsuario'],
-			'aplicativo' => $_POST['aplicativo'],
+			'idAplicativo' => $_POST['idAplicativo'],
 			'nivelMenu' => $_POST['nivelMenu']
 			
 		);
@@ -37,7 +37,7 @@ if (isset($_GET['operacao'])) {
 
 		$apiEntrada = array(
 			'idUsuario' => $_POST['idUsuario'],
-			'aplicativo' => $_POST['aplicativo'],
+			'idAplicativo' => $_POST['idAplicativo'],
 			'nivelMenu' => $_POST['nivelMenu']
 		);
 
@@ -48,7 +48,7 @@ if (isset($_GET['operacao'])) {
 	if ($operacao == "excluir") {
 		$apiEntrada = array(
 			'idUsuario' => $_POST['idUsuario'],		
-			'aplicativo' => $_POST['aplicativo']		
+			'idAplicativo' => $_POST['idAplicativo']		
 		);
 
 		$usuarioaplicativo = chamaAPI(null, '/api/services/usuarioaplicativo', json_encode($apiEntrada), 'DELETE');
