@@ -7,8 +7,7 @@ include_once('../database/usuario.php');
 include_once('../database/aplicativo.php');
 
 $usuario = buscaUsuarios($_GET['idUsuario']);
-$aplicativos = buscaAplicativos();
-
+$aplicativo = buscaAplicativos($_GET['idAplicativo']);
 $usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicativo']);
 ?>
 
@@ -39,17 +38,8 @@ $usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicati
             <div class="col-sm">
                 <div class="form-group">
                     <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
-                    <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
-                    <?php
-                    foreach ($aplicativos as $aplicativo) {
-                    ?>
-                    <option <?php
-                    if ($aplicativo['nomeAplicativo'] == $_GET['idAplicativo']) {
-                        echo "selected";
-                    }
-                    ?> value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
-                    <?php  } ?>
-                    </select>
+                    <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>" readonly>
+                    <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>" hidden>
                 </div>
             </div>
             <div class="col-sm">

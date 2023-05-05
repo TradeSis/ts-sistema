@@ -3,13 +3,12 @@
 
 include_once('../conexao.php');
 
-function buscaAplicativos($idAplicativo=null, $nivelMenu = null)
+function buscaAplicativos($idAplicativo=null)
 {
 
     $app = array();
     $apiEntrada = array(
         'idAplicativo' => $idAplicativo,
-        'nivelMenu' => $nivelMenu,
     );
     $app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
