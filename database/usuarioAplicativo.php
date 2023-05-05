@@ -56,5 +56,5 @@ if (isset($_GET['operacao'])) {
 	}
 
 	
-	header('Location: ../sistema/usuarioaplicativo.php');
+	header('Location: ../usuario/usuario.php');
 }

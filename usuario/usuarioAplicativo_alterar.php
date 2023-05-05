@@ -6,7 +6,7 @@ include_once('../database/usuarioaplicativo.php');
 include_once('../database/usuario.php');
 include_once('../database/aplicativo.php');
 
-$usuarios = buscaUsuarios();
+$usuario = buscaUsuarios($_GET['idUsuario']);
 $aplicativos = buscaAplicativos();
 
 $usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicativo']);
@@ -17,7 +17,7 @@ $usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicati
 <div class="container" style="margin-top:10px">
 
 <div class="col-sm mt-4" style="text-align:right">
-    <a href="usuario.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+    <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
 </div>
 <div class="col-sm">
     <spam class="col titulo">Alterar Usuario/Aplicativo</spam>
@@ -31,16 +31,8 @@ $usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicati
             <div class="col-sm">
                 <div class="form-group">
                     <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
-                    <select class="select form-control" style="padding-right: 50px;" name="idUsuario" disabled>
-                    <?php
-                    foreach ($usuarios as $usuario) {
-                    ?>
-                    <option <?php
-                    if ($usuario['idUsuario'] == $_GET['idUsuario']) {
-                        echo "selected";
-                    }
-                    ?> value="<?php echo $usuario['idUsuario'] ?>"><?php echo $usuario['nomeUsuario']  ?></option>
-                    <?php  } ?>
+                    <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>" readonly>
+                    <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" hidden>
                     </select>
                 </div>
             </div>
