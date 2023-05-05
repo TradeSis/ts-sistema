@@ -84,10 +84,10 @@ $usuarioaplicativos = buscaUsuarioAplicativo($idUsuario);
                             <th class="text-center">Ação</th>
                         </tr>
                     </thead>
-                    <?php if (count($usuarioaplicativos) == 4) {;?>
+                    <?php if (count($usuarioaplicativos) == 5) {;?>
                             <tr>
                             <td class="text-center"><?php echo $usuarioaplicativos['nomeUsuario'] ?></td>
-                            <td class="text-center"><?php echo $usuarioaplicativos['idAplicativo'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativos['nomeAplicativo'] ?></td>
                             <td class="text-center"><?php echo $usuarioaplicativos['nivelMenu'] ?></td>
                             <td class="text-center">
                             <a class="btn btn-primary btn-sm" href="usuarioaplicativo_alterar.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Editar</a>
@@ -98,7 +98,7 @@ $usuarioaplicativos = buscaUsuarioAplicativo($idUsuario);
                             foreach ($usuarioaplicativos as $usuarioaplicativo) { ?>
                         <tr>
                             <td class="text-center"><?php echo $usuarioaplicativo['nomeUsuario'] ?></td>
-                            <td class="text-center"><?php echo $usuarioaplicativo['idAplicativo'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativo['nomeAplicativo'] ?></td>
                             <td class="text-center"><?php echo $usuarioaplicativo['nivelMenu'] ?></td>
                             <td class="text-center">
                             <a class="btn btn-primary btn-sm" href="usuarioaplicativo_alterar.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Editar</a>

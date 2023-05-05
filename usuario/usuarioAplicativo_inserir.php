@@ -5,7 +5,7 @@ include_once('../head.php');
 include_once('../database/usuario.php');
 include_once('../database/aplicativo.php');
 
-$usuarios = buscaUsuarios();
+$usuario = buscaUsuarios($_GET['idUsuario']);
 $aplicativos = buscaAplicativos();
 
 ?>
@@ -29,23 +29,14 @@ $aplicativos = buscaAplicativos();
                     <div class="col-sm">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
-                            <select class="select form-control" style="padding-right: 50px;" name="idUsuario" disabled>
-                            <?php
-                            foreach ($usuarios as $usuario) {
-                            ?>
-                            <option <?php
-                            if ($usuario['idUsuario'] == $_GET['idUsuario']) {
-                                echo "selected";
-                            }
-                            ?> value="<?php echo $usuario['idUsuario'] ?>"><?php echo $usuario['nomeUsuario']  ?></option>
-                            <?php  } ?>
-                            </select>
+                            <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>" readonly>
+                            <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" hidden>
                         </div>
                     </div>
                     <div class="col-sm">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
-                            <select class="select form-control" style="padding-right: 50px;" name="aplicativo">
+                            <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
                             <?php
                             foreach ($aplicativos as $aplicativo) {
                             ?>

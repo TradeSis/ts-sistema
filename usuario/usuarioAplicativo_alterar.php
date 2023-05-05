@@ -32,7 +32,6 @@ $usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicati
                     <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
                     <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>" readonly>
                     <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" hidden>
-                    </select>
                 </div>
             </div>
             <div class="col-sm">
