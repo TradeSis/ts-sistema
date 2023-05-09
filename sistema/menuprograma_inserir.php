@@ -32,7 +32,7 @@ $aplicativos = buscaAplicativos();
                     <input type="text" name="progrNome" class="form-control" autocomplete="off">
                 </div>
 
-                <div class="col-md-3 form-group-select" style="margin-top: 30px;">
+                <div class="col-md-3 form-group-select" style="margin-top: 37px;">
                     <label class="labelForm">Menu</label>
                     <select class="select form-control" name="IDMenu">
                         <?php
@@ -43,7 +43,7 @@ $aplicativos = buscaAplicativos();
                     </select>
                 </div>
 
-                <div class="col-md-3 form-group-select" style="margin-top: 30px;"">
+                <div class="col-md-3 form-group-select" style="margin-top: 37px;">
                 <label class="labelForm">Aplicativo</label>
                     <select class="select form-control" name="idAplicativo">
                         <?php
@@ -59,9 +59,18 @@ $aplicativos = buscaAplicativos();
 
                     <label class="labelForm">link</label>
                     <input type="text" name="progrLink" class="form-control" autocomplete="off">
-                    <div class="col-md-2" style="margin-left:-10px">
-                        <label class="labelForm mt-3">Nivel Menu</label>
-                        <input type="number" name="nivelMenu" class="form-control" autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-2" style="margin-left:-10px">
+                            <label class="labelForm mt-3">Nivel Menu</label>
+                            <input type="number" name="nivelMenu" class="form-control" autocomplete="off">
+                        </div>
+                        <div class="col-md-2" style="margin-left:-10px;margin-top: 17px;">
+                            <label class="labelForm mt-3">Menu Atalho</label>
+                            <select class="select form-control" name="menuAtalho">
+                                <option value="0">Não</option>
+                                <option value="1">Sim</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div style="text-align:right; margin-top:30px">

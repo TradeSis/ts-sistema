@@ -32,6 +32,7 @@ if (isset($_GET['operacao'])) {
             'idAplicativo' => $_POST['idAplicativo'],
             'progrLink' => $_POST['progrLink'],
             'nivelMenu' => $_POST['nivelMenu'],		
+            'menuAtalho' => $_POST['menuAtalho']		
 		);
 
 		$menuProgr = chamaAPI(null, '/api/services/menuprograma', json_encode($apiEntrada), 'PUT');
@@ -46,6 +47,7 @@ if (isset($_GET['operacao'])) {
             'idAplicativo' => $_POST['idAplicativo'],
             'progrLink' => $_POST['progrLink'],
             'nivelMenu' => $_POST['nivelMenu'],
+            'menuAtalho' => $_POST['menuAtalho']
 			
 		);
 
