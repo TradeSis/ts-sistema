@@ -29,6 +29,7 @@ if (isset($_GET['operacao'])) {
 			'nomeMenu' => $_POST['nomeMenu'],
             'idAplicativo' => $_POST['idAplicativo'],
             'nivelMenu' => $_POST['nivelMenu'],
+            'menuHeader' => $_POST['menuHeader']
 		);
 		$menu = chamaAPI(null, '/api/services/menu', json_encode($apiEntrada), 'PUT');
 	}
@@ -40,6 +41,7 @@ if (isset($_GET['operacao'])) {
 			'nomeMenu' => $_POST['nomeMenu'],
             'idAplicativo' => $_POST['idAplicativo'],
             'nivelMenu' => $_POST['nivelMenu'],
+            'menuHeader' => $_POST['menuHeader']
 		);
 
 		$menu = chamaAPI(null, '/api/services/menu', json_encode($apiEntrada), 'POST');

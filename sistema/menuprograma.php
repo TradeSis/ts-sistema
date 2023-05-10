@@ -35,6 +35,7 @@ $aplicativos= buscaAplicativos();
                         <th>Aplicativo</th>
                         <th>Link</th>
                         <th>Nivel Menu</th>
+                        <th>Atalho</th>
                         <th>Ação</th>
 
                     </tr>
@@ -49,6 +50,7 @@ $aplicativos= buscaAplicativos();
                         <td><?php echo $menuProgr['nomeAplicativo'] ?></td>
                         <td><?php echo $menuProgr['progrLink'] ?></td>
                         <td><?php echo $menuProgr['nivelMenu'] ?></td>
+                        <td><?php echo ($menuProgr['menuAtalho'] == 1) ? "Sim" : "Não"; ?></td>
                         <td>
                             <a class="btn btn-primary btn-sm" href="menuprograma_alterar.php?idMenuPrograma=<?php echo $menuProgr['idMenuPrograma'] ?>" role="button">Editar</a>
                             <a class="btn btn-danger btn-sm" href="menuprograma_excluir.php?idMenuPrograma=<?php echo $menuProgr['idMenuPrograma'] ?>" role="button">Excluir</a>

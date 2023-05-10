@@ -16,7 +16,6 @@ function buscaMenuProgramas($idMenuPrograma=null)
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */	
 	$menuProgr = chamaAPI(null, '/api/services/menuprograma', json_encode($apiEntrada), 'GET');
-	//echo json_encode($menuProgr);
 	return $menuProgr;
 }
 
@@ -63,6 +62,7 @@ if (isset($_GET['operacao'])) {
 		$menuProgr = chamaAPI(null, '/api/services/menuprograma', json_encode($apiEntrada), 'DELETE');
 		
 	}
+
 
 	
 	header('Location: ../sistema/menuprograma.php');

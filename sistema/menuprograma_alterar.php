@@ -67,7 +67,7 @@ $menuProgr = buscaMenuProgramas($_GET['idMenuPrograma']);
                     <div class="row">
                         <div class="col-md-2" style="margin-left:-10px">
                             <label class="labelForm mt-3">Nivel Menu</label>
-                            <input type="number" name="nivelMenu" class="form-control" autocomplete="off">
+                            <input type="number" name="nivelMenu" class="form-control" value="<?php echo $menuProgr['nivelMenu'] ?>" autocomplete="off">
                         </div>
                         <div class="col-md-2" style="margin-left:-10px;margin-top: 17px;">
                             <label class="labelForm mt-3">Menu Atalho</label>

@@ -30,6 +30,7 @@ $aplicativos = buscaAplicativos();
                         <th>Menu</th>
                         <th>Aplicativo</th>
                         <th>Nivel Menu</th>
+                        <th>Header</th>
                         <th>Ação</th>
 
                     </tr>
@@ -42,6 +43,7 @@ $aplicativos = buscaAplicativos();
                         <td><?php echo $menu['nomeMenu'] ?></td>
                         <td><?php echo $menu['nomeAplicativo'] ?></td>
                         <td><?php echo $menu['nivelMenu'] ?></td>
+                        <td><?php echo ($menu['menuHeader'] == 1) ? "Sim" : "Não"; ?></td>
                         <td>
                             <a class="btn btn-primary btn-sm" href="menu_alterar.php?IDMenu=<?php echo $menu['IDMenu'] ?>" role="button">Editar</a>
                             <a class="btn btn-danger btn-sm" href="menu_excluir.php?IDMenu=<?php echo $menu['IDMenu'] ?>" role="button">Excluir</a>

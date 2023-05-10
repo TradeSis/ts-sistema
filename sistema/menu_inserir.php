@@ -31,6 +31,13 @@ $aplicativos = buscaAplicativos();
             </div>
 
             <div class="row mt-3">
+                <div class="col-md-2 form-group-select">
+                    <label class="labelForm">Menu Header</label>
+                    <select class="select form-control" name="menuHeader">
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
+                    </select>
+                </div>
                 <div class="col-md-3 form-group-select">
                     
                         <label class="labelForm">Aplicativo</label>
@@ -43,7 +50,7 @@ $aplicativos = buscaAplicativos();
                         </select>
                     </div>
 
-                    <div class="col-md-2 form-group" style="margin-top: -10px"> 
+                    <div class="col-md-2 form-group" style="margin-top: -17px"> 
                         <label class="labelForm">Nível Menu</label>
                         <input type="number" name="nivelMenu" class="form-control" autocomplete="off">
                     </div>
