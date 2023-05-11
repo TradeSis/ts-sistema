@@ -84,7 +84,7 @@ $usuarioaplicativos = buscaUsuarioAplicativo($idUsuario);
                             <th class="text-center">Ação</th>
                         </tr>
                     </thead>
-                    <?php if (count($usuarioaplicativos) == 5) {;?>
+                    <?php if (isset($usuarioaplicativos['idUsuario'])) {;?>
                             <tr>
                             <td class="text-center"><?php echo $usuarioaplicativos['nomeUsuario'] ?></td>
                             <td class="text-center"><?php echo $usuarioaplicativos['nomeAplicativo'] ?></td>
