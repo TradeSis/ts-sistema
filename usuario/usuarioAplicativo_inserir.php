@@ -52,6 +52,8 @@ $aplicativos = buscaAplicativos();
                                 <option value="1">Nível 1</option>
                                 <option value="2">Nível 2</option>
                                 <option value="3">Nível 3</option>
+                                <option value="4">Nível 4</option>
+                                <option value="5">Nível 5</option>
                             </select>
                         </div>
                     </div>

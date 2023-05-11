@@ -8,11 +8,9 @@ include_once 'head.php';
 include_once 'database/montaMenu.php';
 
 $montamenu = buscaMontaMenu('Sistema',$_SESSION['idUsuario']);
-if (count($montamenu['menu']) > 0) {
 $menus = $montamenu['menu'];
 $menusAtalho = $montamenu['menuAtalho'];
 $menuHeader = $montamenu['menuHeader'][0];
-};
 ?>
 
 <body>
@@ -27,46 +25,44 @@ $menuHeader = $montamenu['menuHeader'][0];
 
         <a href="/ts/painel" class="logo"><img src="../img/brand/white.png" width="150"></a>
 
-            <div class=" col-md navbar navbar-expand navbar1">
-                <ul class="navbar-nav mx-auto ml-4" id="novoMenu2">
-                    <?php
-                    if ($_SESSION['idCliente'] == null && count($montamenu['menu']) == 0) { ?>
-                        <li>
-                            <a src="usuario/usuario.php" href="#" class="nav-link" role="button">
-                                <span class="fs-5 text">Usuários</span>
-                            </a>
-                        </li>
-                    <?php } else {
-                     foreach ($menusAtalho as $menuAtalho) {
+        <div class=" col-md navbar navbar-expand navbar1">
+            <ul class="navbar-nav mx-auto ml-4" id="novoMenu2">
+                <?php
+                foreach ($menusAtalho as $menuAtalho) {
                     ?>
-                        <li>
-                            <a src="<?php echo $menuAtalho['progrLink'] ?>" href="#" class="nav-link" role="button">
-                                <span class="fs-5 text"><?php echo $menuAtalho['progrNome'] ?></span>
-                            </a>
-                        </li>
-                    <?php }   //*********menuHeader único por aplicativo ?>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link  btnCadastros" role="button">
-                                <span class="fs-5 text"><?php echo $menuHeader['nomeMenu'] ?></span>
-                            </a>
-                        </li>
-                        <?php } ?>
-                </ul>
+                    <li>
+                        <a src="<?php echo $menuAtalho['progrLink'] ?>" href="#" class="nav-link" role="button">
+                            <span class="fs-5 text">
+                                <?php echo $menuAtalho['progrNome'] ?>
+                            </span>
+                        </a>
+                    </li>
+                <?php } //*********menuHeader único por aplicativo ?>
+                <li class="nav-item">
+                    <a href="#" class="nav-link  btnCadastros" role="button">
+                        <span class="fs-5 text">
+                            <?php echo $menuHeader['nomeMenu'] ?>
+                        </span>
+                    </a>
+                </li>
+            </ul>
 
-            </div>
-        
+        </div>
+
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ">
 
             <!-- Email -->
             <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class="bi bi-envelope-exclamation-fill"></i>
 
                     <span class="badge badge-danger badge-counter"></span>
                 </a>
 
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                    aria-labelledby="messagesDropdown">
                     <h6 class="dropdown-header">
                         Emails Recebidos
                     </h6>
@@ -79,14 +75,18 @@ $menuHeader = $montamenu['menuHeader'][0];
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <!-- <img class="img-profile rounded-circle" src="../imgs/undraw_profile.svg"> -->
                     <!--  <i class="bi bi-person-circle"></i>&#32; -->
-                    <span class="fs-1 text"><?php echo $logado ?></span>
+                    <span class="fs-1 text">
+                        <?php echo $logado ?>
+                    </span>
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="usuario/usuario_alterar.php?idUsuario=<?php echo $_SESSION['idUsuario'] ?>">
+                    <a class="dropdown-item"
+                        href="usuario/usuario_alterar.php?idUsuario=<?php echo $_SESSION['idUsuario'] ?>">
                         <i class="bi bi-person-circle"></i>&#32;
                         Perfil
                     </a>
@@ -107,46 +107,44 @@ $menuHeader = $montamenu['menuHeader'][0];
 
     </nav>
     <nav id="menuLateral" class="menuLateral">
-        <?php if (count($montamenu['menu']) > 0) { ?>
-            <div class="titulo"><span></span></div>
-            <ul id="novoMenu2">
-                <?php
-                $contador = 1;
-                foreach ($menus as $menu) {
+        <div class="titulo"><span></span></div>
+        <ul id="novoMenu2">
+            <?php
+            $contador = 1;
+            foreach ($menus as $menu) {
                 ?>
-                    <li><a href="#" class="secao<?php echo $contador ?>"><?php echo $menu['nomeMenu'] ?><span class="material-symbols-outlined seta<?php echo $contador ?>">arrow_right</span></a>
-                        <ul class="itensSecao<?php echo $contador ?>">
-                            <?php
-                            foreach ($menu['menuPrograma'] as $menuPrograma) {
+                <li><a href="#" class="secao<?php echo $contador ?>"><?php echo $menu['nomeMenu'] ?><span
+                            class="material-symbols-outlined seta<?php echo $contador ?>">arrow_right</span></a>
+                    <ul class="itensSecao<?php echo $contador ?>">
+                        <?php
+                        foreach ($menu['menuPrograma'] as $menuPrograma) {
                             ?>
-                                <li><a href="#" src="<?php echo $menuPrograma['progrLink'] ?>"><?php echo $menuPrograma['progrNome'] ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
+                            <li><a href="#" src="<?php echo $menuPrograma['progrLink'] ?>"><?php echo $menuPrograma['progrNome'] ?></a></li>
+                        <?php } ?>
+                    </ul>
+                </li>
                 <?php
-                    $contador = $contador + 1;
-                    // echo $contador;
-                } ?>
-            </ul>
-        <?php } ?>
+                $contador = $contador + 1;
+                // echo $contador;
+            } ?>
+        </ul>
     </nav>
 
     <nav id="menusecundario" class="menusecundario">
-        <?php if (count($montamenu['menu']) > 0) { ?>
-        <div class="titulo"><span><?php echo $menuHeader['nomeMenu'] ?></span></div>
+        <div class="titulo"><span>
+                <?php echo $menuHeader['nomeMenu'] ?>
+            </span></div>
         <li>
             <ul class="itenscadastro" id="novoMenu2">
                 <?php
                 foreach ($menuHeader['headerPrograma'] as $headerPrograma) {
-                    
-                ?>
+                    ?>
                     <li><a href="#" src="<?php echo $headerPrograma['progrLink'] ?>"><?php echo $headerPrograma['progrNome'] ?></a></li>
                 <?php } ?>
             </ul>
         </li>
-        <?php } ?>
     </nav>
-    
+
 
     <!-- Modal sair -->
     <div class="modal fade" id="logoutModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -172,10 +170,10 @@ $menuHeader = $montamenu['menuHeader'][0];
     </div>
     <script type="text/javascript" src="menu.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             // SELECT MENU
-            $("#novoMenu a").click(function() {
+            $("#novoMenu a").click(function () {
 
                 var value = $(this).text();
                 value = $(this).attr('id');
@@ -185,7 +183,7 @@ $menuHeader = $montamenu['menuHeader'][0];
                 $("#myIframe").attr('src', value);
             })
             // SELECT MENU
-            $("#novoMenu2 a").click(function() {
+            $("#novoMenu2 a").click(function () {
 
                 var value = $(this).text();
                 value = $(this).attr('src');
@@ -204,7 +202,7 @@ $menuHeader = $montamenu['menuHeader'][0];
             })
 
             // SELECT MENU
-            $("#menuCadastros a").click(function() {
+            $("#menuCadastros a").click(function () {
 
                 var value = $(this).text();
                 value = $(this).attr('id');
