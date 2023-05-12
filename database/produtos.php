@@ -1,7 +1,6 @@
 <?php
 
 include_once ('../conexao.php');
-/* include_once ('../conexao.php'); */
 function buscaProdutos()
 {
 	
@@ -73,7 +72,6 @@ if (isset($_GET['operacao'])) {
 		$destaque = $_POST['destaque'];
 		
 
-        //$imgCard1
         if($fotoProduto !== null) {
             preg_match("/\.(png|jpg|jpeg){1}$/i", $fotoProduto["name"],$ext);
         
@@ -113,7 +111,7 @@ if (isset($_GET['operacao'])) {
 	
     $atualizar = mysqli_query($conexao,$sql);
     
-	header('Location: ../produtos.php');
+	header('Location: ../cadastros/produtos.php');
 	
 }
 

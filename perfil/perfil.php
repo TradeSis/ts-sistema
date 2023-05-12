@@ -11,7 +11,7 @@ $perfis = buscaPerfil();
 ?>
 
 <body class="bg-transparent">
-    <div class="container-fluid text-center" style="margin-top:30px"> 
+    <div class="container text-center" style="margin-top:30px"> 
         
             <div class="row mt-4">
                 <div class="col-sm-8">
@@ -28,22 +28,8 @@ $perfis = buscaPerfil();
             <table class="table">
                 <thead>
                     <tr>
-                        <th>nome</th>
                         <th>foto</th>
-                        <th>endereco</th>
-                        <th>numero</th>
-                        <th>bairro</th>
-                        <th>cep</th>
-                        <th>cidade</th>
-                        <th>estado</th>
-                        <th>email</th>
-                        <th>telefone</th>
-                        <th>Whatsapp</th>
-                        <th>logo</th>
-                        <th>twitter</th>
-                        <th>facebook</th>
-                        <th>instagram</th>
-
+                        <th>nome</th>
 
                         <th>Ação</th>
 
@@ -54,24 +40,9 @@ $perfis = buscaPerfil();
                 foreach ($perfis as $perfil) {
                 ?>
                     <tr>
-                        <td><?php echo $perfil['nome'] ?></td>
                         <td><img class="img-profile rounded-circle" src="admin/imgPerfil/<?php echo $perfil["foto"] ?>" height="40px" width="40"></td>
-                        <td><?php echo $perfil['endereco'] ?></td>
-                        <td><?php echo $perfil['numero'] ?></td>
-                        <td><?php echo $perfil['bairro'] ?></td>
-                        <td><?php echo $perfil['cep'] ?></td>
-                        <td><?php echo $perfil['cidade'] ?></td>
-                        <td><?php echo $perfil['estado'] ?></td>
-                        <td><?php echo $perfil['email'] ?></td>
-                        <td><?php echo $perfil['telefone'] ?></td>
-                        <td><?php echo $perfil['whatsapp'] ?></td>
-                        <!-- <td><?php echo $perfil['logo'] ?></td> -->
-                        <td><img src="admin/imgPerfil/<?php echo $perfil['logo'] ?>" height="40px" width="60px"></td>
-                        <td><?php echo $perfil['twitter'] ?></td>
-                        <td><?php echo $perfil['facebook'] ?></td>
-                        <td><?php echo $perfil['instagram'] ?></td>
+                        <td><?php echo $perfil['nome'] ?></td>
 
-                        
                         <td>
                             <a class="btn btn-primary btn-sm" href="perfil_editar.php?idPerfil=<?php echo $perfil['idPerfil'] ?>" role="button">Editar</a>
                             <!-- <a class="btn btn-danger btn-sm" href="perfil_excluir.php?idPerfil=<?php echo $perfil['idPerfil'] ?>" role="button">Excluir</a> -->

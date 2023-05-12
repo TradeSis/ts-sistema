@@ -2,8 +2,8 @@
 <?php
 //Lucas 04042023 criado
 
-include_once('head.php');
-include_once('database/perfil.php');
+include_once('../head.php');
+include_once('../database/perfil.php');
 
 $perfil = buscaPerfil($_GET['idPerfil']);
 ?>
@@ -26,7 +26,7 @@ $perfil = buscaPerfil($_GET['idPerfil']);
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="database/perfil.php?operacao=editar" method="post" enctype="multipart/form-data">
+                <form action="../database/perfil.php?operacao=editar" method="post" enctype="multipart/form-data">
 
                     <div class="form-group" style="margin-top:10px">
                     
