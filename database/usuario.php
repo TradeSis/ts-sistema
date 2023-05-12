@@ -11,35 +11,23 @@ include_once('../conexao.php');
 function buscaUsuarios($idUsuario=null)
 {
 
-	$usuario = array();
-	 //echo json_encode($idUsuario);
-	//return;	
+	$usuario = array();	
 	$apiEntrada = array(
 		'idUsuario' => $idUsuario,
-	);
-	 
-
-	
-	//echo "-ENTRADA->".json_encode($apiEntrada)."\n";
-	//return;	
+	);	
 	$usuario = chamaAPI(null, '/api/services/usuario', json_encode($apiEntrada), 'GET');
-	// echo json_encode($usuario);
 	return $usuario;
 }
 
 function buscaAtendente($idUsuario=null)
 {
-
 	$atendente = array();
 	$apiEntrada = array(
 		'idUsuario' => $idUsuario,
 	);
-	
 	$atendente = chamaAPI(null, '/api/services/atendente', json_encode($apiEntrada), 'GET');
 	return $atendente;
 }
-
-
 
 if (isset($_GET['operacao'])) {
 
@@ -47,21 +35,13 @@ if (isset($_GET['operacao'])) {
 
 	if ($operacao == "inserir") {
 		$apiEntrada = array(
-			/* 'idCliente' => $_POST['idCliente'],
 			'nomeUsuario' => $_POST['nomeUsuario'],
 			'email' => $_POST['email'],
-			'password' => $_POST['password']
- */
-			'nomeUsuario' => $_POST['nomeUsuario'],
-			//'idCliente' => $_POST['idCliente'],
-			'email' => $_POST['email'],
-			'password' => md5 ($_POST['password'])
+			'password' => md5 ($_POST['password']),
+			'idAplicativo' => $_POST['idAplicativo'],
+			'nivelMenu' => $_POST['nivelMenu']
 			
 		);
-		/*  echo json_encode($_POST);
-		echo "\n";
-		echo json_encode($apiEntrada);
-		return;  */
 		$usuario = chamaAPI(null, '/api/services/usuario', json_encode($apiEntrada), 'PUT');
 		
 	}
@@ -70,10 +50,11 @@ if (isset($_GET['operacao'])) {
 		
 		$apiEntrada = array(
 			'idUsuario' => $_POST['idUsuario'],
-			//'idCliente' => $_POST['idCliente'],
 			'nomeUsuario' => $_POST['nomeUsuario'],
 			'email' => $_POST['email'],
-			'password' => md5 ($_POST['password'])
+			'password' => md5 ($_POST['password']),
+			'idAplicativo' => $_POST['idAplicativo'],
+			'nivelMenu' => $_POST['nivelMenu']
 		);
 		//echo json_encode($_POST);
 		//echo "\n";

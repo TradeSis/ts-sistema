@@ -6,13 +6,9 @@ include_once('../database/usuarioaplicativo.php');
 include_once('../database/usuario.php');
 include_once('../database/aplicativo.php');
 
-$usuarios = buscaUsuarios();
-$aplicativos = buscaAplicativos();
-
-$vusuario = $_GET['idUsuario'];
-$vaplicativo = $_GET['aplicativo'];
-
-$usuarioaplicativo = buscaUsuarioAplicativo($vusuario,$vaplicativo);
+$usuario = buscaUsuarios($_GET['idUsuario']);
+$aplicativo = buscaAplicativos($_GET['idAplicativo']);
+$usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicativo']);
 ?>
 
 <body class="bg-transparent">
@@ -20,7 +16,7 @@ $usuarioaplicativo = buscaUsuarioAplicativo($vusuario,$vaplicativo);
 <div class="container" style="margin-top:10px">
 
 <div class="col-sm mt-4" style="text-align:right">
-    <a href="usuarioaplicativo.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+    <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
 </div>
 <div class="col-sm">
     <spam class="col titulo">Alterar Usuario/Aplicativo</spam>
@@ -34,33 +30,15 @@ $usuarioaplicativo = buscaUsuarioAplicativo($vusuario,$vaplicativo);
             <div class="col-sm">
                 <div class="form-group">
                     <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
-                    <select class="select form-control" style="padding-right: 50px;" name="idUsuario">
-                    <?php
-                    foreach ($usuarios as $usuario) {
-                    ?>
-                    <option <?php
-                    if ($usuario['idUsuario'] == $vusuario) {
-                        echo "selected";
-                    }
-                    ?> value="<?php echo $usuario['idUsuario'] ?>"><?php echo $usuario['nomeUsuario']  ?></option>
-                    <?php  } ?>
-                    </select>
+                    <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>" readonly>
+                    <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" hidden>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="form-group">
                     <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
-                    <select class="select form-control" style="padding-right: 50px;" name="aplicativo">
-                    <?php
-                    foreach ($aplicativos as $aplicativo) {
-                    ?>
-                    <option <?php
-                    if ($aplicativo['nomeAplicativo'] == $vaplicativo) {
-                        echo "selected";
-                    }
-                    ?> value="<?php echo $aplicativo['nomeAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
-                    <?php  } ?>
-                    </select>
+                    <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>" readonly>
+                    <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>" hidden>
                 </div>
             </div>
             <div class="col-sm">
@@ -71,6 +49,8 @@ $usuarioaplicativo = buscaUsuarioAplicativo($vusuario,$vaplicativo);
                         <option value="1">Nível 1</option>
                         <option value="2">Nível 2</option>
                         <option value="3">Nível 3</option>
+                        <option value="4">Nível 4</option>
+                        <option value="5">Nível 5</option>
                     </select>
                 </div>
             </div>

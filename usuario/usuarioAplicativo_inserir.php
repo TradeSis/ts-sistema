@@ -5,7 +5,7 @@ include_once('../head.php');
 include_once('../database/usuario.php');
 include_once('../database/aplicativo.php');
 
-$usuarios = buscaUsuarios();
+$usuario = buscaUsuarios($_GET['idUsuario']);
 $aplicativos = buscaAplicativos();
 
 ?>
@@ -15,7 +15,7 @@ $aplicativos = buscaAplicativos();
     <div class="container" style="margin-top:10px">
 
         <div class="col-sm mt-4" style="text-align:right">
-            <a href="usuarioaplicativo.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
         </div>
         <div class="col-sm">
             <spam class="col titulo">Inserir Usuario/Aplicativo</spam>
@@ -29,23 +29,18 @@ $aplicativos = buscaAplicativos();
                     <div class="col-sm">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
-                            <select class="select form-control" style="padding-right: 50px;" name="idUsuario">
-                            <?php
-                            foreach ($usuarios as $usuario) {
-                            ?>
-                            <option value="<?php echo $usuario['idUsuario'] ?>"><?php echo $usuario['nomeUsuario']  ?></option>
-                            <?php  } ?>
-                            </select>
+                            <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>" readonly>
+                            <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" hidden>
                         </div>
                     </div>
                     <div class="col-sm">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
-                            <select class="select form-control" style="padding-right: 50px;" name="aplicativo">
+                            <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
                             <?php
                             foreach ($aplicativos as $aplicativo) {
                             ?>
-                            <option value="<?php echo $aplicativo['nomeAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
+                            <option value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
                             <?php  } ?>
                             </select>
                         </div>
@@ -57,6 +52,8 @@ $aplicativos = buscaAplicativos();
                                 <option value="1">Nível 1</option>
                                 <option value="2">Nível 2</option>
                                 <option value="3">Nível 3</option>
+                                <option value="4">Nível 4</option>
+                                <option value="5">Nível 5</option>
                             </select>
                         </div>
                     </div>
