@@ -6,7 +6,7 @@
 include_once('../head.php');
 include_once('../database/usuario.php');
 include_once('../database/aplicativo.php');
-include_once('../database/usuarioaplicativo.php');
+include_once('../database/usuarioAplicativo.php');
 
 $idUsuario = $_GET['idUsuario'];
 $aplicativos = buscaAplicativos();

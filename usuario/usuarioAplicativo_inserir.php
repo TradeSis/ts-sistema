@@ -23,7 +23,7 @@ $aplicativos = buscaAplicativos();
 
         <div class="container" style="margin-top: 30px">
 
-            <form action="../database/usuarioaplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
+            <form action="../database/usuarioAplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-sm">
