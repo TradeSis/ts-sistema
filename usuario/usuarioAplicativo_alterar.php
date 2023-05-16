@@ -2,7 +2,7 @@
 //Lucas 04042023 criado
 
 include_once('../head.php');
-include_once('../database/usuarioaplicativo.php');
+include_once('../database/usuarioAplicativo.php');
 include_once('../database/usuario.php');
 include_once('../database/aplicativo.php');
 
@@ -24,7 +24,7 @@ $usuarioaplicativo = buscaUsuarioAplicativo($_GET['idUsuario'],$_GET['idAplicati
 
 <div class="container" style="margin-top: 30px">
 
-    <form action="../database/usuarioaplicativo.php?operacao=alterar" method="post" enctype="multipart/form-data">
+    <form action="../database/usuarioAplicativo.php?operacao=alterar" method="post" enctype="multipart/form-data">
 
         <div class="row">
             <div class="col-sm">
