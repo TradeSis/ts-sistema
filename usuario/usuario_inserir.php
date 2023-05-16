@@ -56,11 +56,12 @@ $clientes = buscaClientes();
                             <div class="form-group-select">
                                 <label class="labelForm">Empresa / Cliente</label>
                                 <select class="select form-control" style="padding-right: 50px;" name="idCliente">
-                                <option value=null></option>
+                                    <option value=""></option>
                                     <?php
                                     foreach ($clientes as $cliente) {
+                                        $idCliente = $cliente['nomeCliente'] === "TradeSis" ? "null" : $cliente['idCliente'];
                                     ?>
-                                        <option value="<?php echo $idcliente ?>"><?php echo $cliente['nomeCliente'] ?></option>
+                                        <option value="<?php echo $idCliente ?>"><?php echo $cliente['nomeCliente'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

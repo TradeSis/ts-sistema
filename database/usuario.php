@@ -37,13 +37,13 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'nomeUsuario' => $_POST['nomeUsuario'],
 			'email' => $_POST['email'],
-			'password' => md5 ($_POST['password']),
-			'idAplicativo' => $_POST['idAplicativo'],
-			'nivelMenu' => $_POST['nivelMenu']
+			'idCliente' => $_POST['idCliente'],
+			'password' => md5 ($_POST['password'])
 			
 		);
 		$usuario = chamaAPI(null, '/api/services/usuario', json_encode($apiEntrada), 'PUT');
-		
+
+		header('Location: ../usuario/usuario.php');
 	}
 
 	if ($operacao == "alterar") {
@@ -52,16 +52,12 @@ if (isset($_GET['operacao'])) {
 			'idUsuario' => $_POST['idUsuario'],
 			'nomeUsuario' => $_POST['nomeUsuario'],
 			'email' => $_POST['email'],
-			'password' => md5 ($_POST['password']),
-			'idAplicativo' => $_POST['idAplicativo'],
-			'nivelMenu' => $_POST['nivelMenu']
+			'password' => md5 ($_POST['password'])
 		);
-		//echo json_encode($_POST);
-		//echo "\n";
-		//echo json_encode($apiEntrada);
-		//return;
 		
 		$usuario = chamaAPI(null, '/api/services/usuario', json_encode($apiEntrada), 'POST');
+
+		header('Location: ../usuario/usuario.php');
 	}
 
 
@@ -70,12 +66,10 @@ if (isset($_GET['operacao'])) {
 			'idUsuario' => $_POST['idUsuario']
 		);
 		$usuario = chamaAPI(null, '/api/services/usuario', json_encode($apiEntrada), 'DELETE');
+
+		header('Location: ../usuario/usuario.php');
 	}
 
 
 
-/*
-	include "../usuario/usuario_ok.php";
-*/
-	header('Location: ../usuario/usuario.php');
 }
