@@ -1,7 +1,5 @@
 
 <?php
-//Lucas 04042023 criado
-
 include_once('../head.php');
 ?>
 
@@ -23,7 +21,7 @@ include_once('../head.php');
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="database/produtos.php?operacao=inserir" method="post" enctype="multipart/form-data">
+                <form action="../database/produtos.php?operacao=inserir" method="post" enctype="multipart/form-data">
              
    
 

@@ -43,7 +43,7 @@ $secoes = buscaSecao();
                         <td><?php echo $secao['arquivoFonte'] ?></td>
                         
                         <td>
-                            <a class="btn btn-primary btn-sm" href="secao_editar.php?idSecao=<?php echo $secao['idSecao'] ?>" role="button">Editar</a>
+                            <a class="btn btn-primary btn-sm" href="secao_alterar.php?idSecao=<?php echo $secao['idSecao'] ?>" role="button">Editar</a>
                             <a class="btn btn-danger btn-sm" href="secao_excluir.php?idSecao=<?php echo $secao['idSecao'] ?>" role="button">Excluir</a>
                         </td>
                     </tr>

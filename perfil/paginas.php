@@ -49,7 +49,7 @@ $paginas = buscaPaginas();
                         <td><?php echo $pagina['arquivoFonte'] ?></td>
                         
                         <td>
-                            <a class="btn btn-primary btn-sm" href="paginas_editar.php?idPagina=<?php echo $pagina['idPagina'] ?>" role="button">Editar</a>
+                            <a class="btn btn-primary btn-sm" href="paginas_alterar.php?idPagina=<?php echo $pagina['idPagina'] ?>" role="button">Editar</a>
                             <a class="btn btn-danger btn-sm" href="paginas_excluir.php?idPagina=<?php echo $pagina['idPagina'] ?>" role="button">Excluir</a>
                         </td>
                     </tr>

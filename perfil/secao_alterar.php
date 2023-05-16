@@ -26,7 +26,7 @@ $secao = buscaSecao($_GET['idSecao']);
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="database/secao.php?operacao=editar" method="post">
+                <form action="../database/secao.php?operacao=alterar" method="post">
                     <div class="row">
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">

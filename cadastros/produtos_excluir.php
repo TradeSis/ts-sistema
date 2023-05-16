@@ -1,7 +1,5 @@
 
 <?php
-//Lucas 04042023 criado
-
 include_once('../head.php');
 include_once('../database/produtos.php');
 
@@ -28,7 +26,7 @@ $produto = buscaTodosProdutos($_GET['idProduto']);
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="database/produtos.php?operacao=excluir" method="post" enctype="multipart/form-data">
+                <form action="../database/produtos.php?operacao=excluir" method="post" enctype="multipart/form-data">
              
    
 

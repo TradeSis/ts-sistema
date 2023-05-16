@@ -33,7 +33,7 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="../database/secaoPagina.php?operacao=editar" method="post">
+                <form action="../database/secaoPagina.php?operacao=alterar" method="post">
 
                     <div class="row">
 

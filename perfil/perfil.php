@@ -44,7 +44,7 @@ $perfis = buscaPerfil();
                         <td><?php echo $perfil['nome'] ?></td>
 
                         <td>
-                            <a class="btn btn-primary btn-sm" href="perfil_editar.php?idPerfil=<?php echo $perfil['idPerfil'] ?>" role="button">Editar</a>
+                            <a class="btn btn-primary btn-sm" href="perfil_alterar.php?idPerfil=<?php echo $perfil['idPerfil'] ?>" role="button">Editar</a>
                             <!-- <a class="btn btn-danger btn-sm" href="perfil_excluir.php?idPerfil=<?php echo $perfil['idPerfil'] ?>" role="button">Excluir</a> -->
                         </td>
                     </tr>

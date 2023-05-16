@@ -2,7 +2,7 @@
 <?php
 
 include_once('../head.php');
-include_once('../database/secaoMarcas.php');
+include_once('../database/marcas.php');
 
 $marca = buscaMarcas($_GET['idMarca']);
 ?>

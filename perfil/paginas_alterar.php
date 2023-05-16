@@ -26,7 +26,7 @@ $pagina = buscaPaginas($_GET['idPagina']);
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="../database/paginas.php?operacao=editar" method="post" >
+                <form action="../database/paginas.php?operacao=alterar" method="post" >
 
                     <div class="row">
                         <div class="col-sm-3" style="margin-top: 10px">
