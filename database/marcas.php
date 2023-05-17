@@ -44,7 +44,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../perfil/marcas.php');	
+	header('Location: ../cadastros/marcas.php');	
 	
 }
 
