@@ -90,8 +90,8 @@ $usuarioaplicativos = buscaUsuarioAplicativo($idUsuario);
                             <td class="text-center"><?php echo $usuarioaplicativos['nomeAplicativo'] ?></td>
                             <td class="text-center"><?php echo $usuarioaplicativos['nivelMenu'] ?></td>
                             <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="usuarioaplicativo_alterar.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="usuarioaplicativo_excluir.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-primary btn-sm" href="usuarioAplicativo_alterar.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="usuarioAplicativo_excluir.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Excluir</a>
                             </td>
                         </tr>
                         <?php } else {
@@ -101,15 +101,15 @@ $usuarioaplicativos = buscaUsuarioAplicativo($idUsuario);
                             <td class="text-center"><?php echo $usuarioaplicativo['nomeAplicativo'] ?></td>
                             <td class="text-center"><?php echo $usuarioaplicativo['nivelMenu'] ?></td>
                             <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="usuarioaplicativo_alterar.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="usuarioaplicativo_excluir.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-primary btn-sm" href="usuarioAplicativo_alterar.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="usuarioAplicativo_excluir.php?idUsuario=<?php echo $idUsuario ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Excluir</a>
                             </td>
                         </tr>
                     <?php }} ?>
 
                 </table>
                 <div class="py-3 px-3" style="text-align:right">
-                    <a href="usuarioaplicativo_inserir.php?idUsuario=<?php echo $idUsuario ?>" role="button" class="btn btn-primary">Adicionar</a>
+                    <a href="usuarioAplicativo_inserir.php?idUsuario=<?php echo $idUsuario ?>" role="button" class="btn btn-primary">Adicionar</a>
                 </div>
             </div>
         </div>
