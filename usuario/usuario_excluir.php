@@ -4,8 +4,8 @@
 include_once('../head.php');
 include_once('../database/usuario.php');
 
-
-$usuarios = buscaUsuarios($_GET['$idUsuario']);
+$idUsuario = $_GET['idUsuario'];
+$usuario = buscaUsuarios($idUsuario);
 
 ?>
 
@@ -25,8 +25,8 @@ $usuarios = buscaUsuarios($_GET['$idUsuario']);
 
                 <div class="col-md-12 form-group">
                     <label class='control-label' for='inputNormal'></label>
-                    <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuarios['nomeUsuario'] ?>">
-                    <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuarios['idUsuario'] ?>" style="display: none">
+                    <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>">
+                    <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" style="display: none">
                 </div>
                 <div style="text-align:right">
                     <button type="submit" id="botao" class="btn btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>
