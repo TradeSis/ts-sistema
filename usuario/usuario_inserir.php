@@ -58,7 +58,7 @@ $clientes = buscaClientes();
                                 <input type="text" name="cpfCnpj" class="form-control" required autocomplete="off" >
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Telefone</label>
                                 <input type="text" name="telefone" class="form-control" required autocomplete="off" >
