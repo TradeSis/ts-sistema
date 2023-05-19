@@ -37,6 +37,8 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'nomeUsuario' => $_POST['nomeUsuario'],
 			'email' => $_POST['email'],
+			'cpfCnpj' => $_POST['cpfCnpj'],
+			'telefone' => $_POST['telefone'],
 			'idCliente' => $_POST['idCliente'],
 			'password' => md5 ($_POST['password'])
 			
@@ -52,6 +54,8 @@ if (isset($_GET['operacao'])) {
 			'idUsuario' => $_POST['idUsuario'],
 			'nomeUsuario' => $_POST['nomeUsuario'],
 			'email' => $_POST['email'],
+			'cpfCnpj' => $_POST['cpfCnpj'],
+			'telefone' => $_POST['telefone'],
 			'password' => md5 ($_POST['password'])
 		);
 		
