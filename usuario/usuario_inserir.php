@@ -53,9 +53,21 @@ $clientes = buscaClientes();
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Cpf/Cnpj</label>
+                                <input type="text" name="cpfCnpj" class="form-control" required autocomplete="off" >
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Telefone</label>
+                                <input type="text" name="telefone" class="form-control" required autocomplete="off" >
+                            </div>
+                        </div>
+                        <div class="col-sm">
                             <div class="form-group-select">
                                 <label class="labelForm">Empresa / Cliente</label>
-                                <select class="select form-control" style="padding-right: 50px;" name="idCliente">
+                                <select class="select form-control" style="padding-right: 100px;" name="idCliente">
                                     <option value=""></option>
                                     <?php
                                     foreach ($clientes as $cliente) {

@@ -43,6 +43,20 @@ $usuarioaplicativos = buscaUsuarioAplicativo($idUsuario);
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="labelForm">Cpf/Cnpj</label>
+                            <input type="text" class="form-control" name="cpfCnpj" value="<?php echo $usuario['cpfCnpj'] ?>">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="labelForm">Telefone</label>
+                            <input type="text" class="form-control" name="telefone" value="<?php echo $usuario['telefone'] ?>">
+                        </div>
+                    </div>
+                </div>
 
                 <div class="container" id="conteudo">
                     <div class="row">
