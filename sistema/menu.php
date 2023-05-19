@@ -3,10 +3,10 @@
 
 include_once('../head.php');
 include_once ('../database/menu.php');
-include_once ('../database/aplicativo.php');
+
 
 $menus = buscaMenu();
-$aplicativos = buscaAplicativos();
+
 //echo json_encode($menus);
 ?>
 

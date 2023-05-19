@@ -1,5 +1,6 @@
 <?php
-include_once ('../conexao.php');
+include_once __DIR__."/../../config.php";
+include_once (ROOT.'/sistema/conexao.php');
 function buscaPagina($slug)
 {
 	

@@ -1,5 +1,6 @@
 <?php
-include_once('../conexao.php');
+include_once __DIR__."/../../config.php";
+include_once (ROOT.'/sistema/conexao.php');
 
 function buscaPerfil($idPerfil=null)
 {
@@ -13,8 +14,8 @@ function buscaPerfil($idPerfil=null)
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
 	$perfil = chamaAPI(null, '/api/sistema/perfil', json_encode($apiEntrada), 'GET');
-	//echo json_encode($perfil);
-	return $perfil;
+		
+	return $perfil[0];
 }
 
 
