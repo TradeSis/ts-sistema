@@ -1,13 +1,14 @@
 <?php
 
-include "../conexao.php";
+include_once (ROOT.'/sistema/conexao.php');
+
 function buscaTema()
 {
 	
 	$tema = array();
 	$conexao = conectaMysql();
 
-	$sql = "SELECT * FROM temas WHERE ativo = true LIMIT 1";
+	$sql = "SELECT * FROM temas WHERE ativo = 1 LIMIT 1";
 		
 
     $rows = 0;
