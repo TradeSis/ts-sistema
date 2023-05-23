@@ -6,13 +6,9 @@ include_once('../database/paginas.php');
 
 $secoes = buscaSecao();
 $paginas = buscaPaginas();
-
-
 $idSecaoPagina = $_GET['idSecaoPagina'];
-/* echo json_encode($_GET['idSecaoPagina']);
-return; */
 $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
-/* echo json_encode($secoesPagina); */
+
 ?>
 
 
@@ -27,7 +23,7 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
                         <h3 class="col">Seções da Paginas</h3>
                     </div>
                     <div class="col-sm" style="text-align:right">
-                        <a href="secoesPaginas.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
+                        <a href="paginas.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
                     </div>
                 </div>
             </div>
@@ -37,18 +33,13 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
 
                     <div class="row">
 
-                        <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="col-sm-3" style="margin-top: -5px">
                             <div class="select-form-group">
 
+                             
                                 <label class="labelForm">Pagina</label>
-                                <select class="select form-control" name="idPagina">
-                                <option value="<?php echo $secoesPagina['idPagina'] ?>"><?php echo $secoesPagina['tituloPagina']  ?></option>
-                                    <?php
-                                    foreach ($paginas as $pagina) {
-                                    ?>
-                                        <option value="<?php echo $pagina['idPagina'] ?>"><?php echo $pagina['tituloPagina']  ?></option>
-                                    <?php  } ?>
-                                </select>
+                                <input type="text" name="slug" class="form-control" value="<?php echo $secoesPagina['tituloPagina'] ?>" disabled>
+                                <input type="text" class="form-control" name="idPagina" value="<?php echo $secoesPagina['idPagina'] ?>" style="display: none">
 
                             </div>
                         </div>

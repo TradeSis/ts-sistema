@@ -26,6 +26,7 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'tituloSecao' => $_POST['tituloSecao'],
 			'arquivoFonte' => $_POST['arquivoFonte'],
+			'tipoSecao' => $_POST['tipoSecao'],
 			
 		);
 		$secao = chamaAPI(null, '/api/sistema/secoes', json_encode($apiEntrada), 'PUT');
@@ -37,6 +38,7 @@ if (isset($_GET['operacao'])) {
             'idSecao' => $_POST['idSecao'],
 			'tituloSecao' => $_POST['tituloSecao'],
 			'arquivoFonte' => $_POST['arquivoFonte'],
+			'tipoSecao' => $_POST['tipoSecao'],
 		);
 
 		$secao = chamaAPI(null, '/api/sistema/secoes', json_encode($apiEntrada), 'POST');

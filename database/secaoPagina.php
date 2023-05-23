@@ -22,10 +22,24 @@ function buscaSecaoPaginas($idSecaoPagina=null)
 	$secoesPagina = array();
 	
 	$apiEntrada = array(
-		'idSecaoPagina' => $idSecaoPagina,
+		'idSecaoPagina' => $idSecaoPagina
 	);
 	
 	$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'GET');
+	
+	return $secoesPagina;
+}
+
+function buscaIdPaginas($idPagina=null)
+{
+	
+	$secoesPagina = array();
+	
+	$apiEntrada = array(
+		'idPagina' => $idPagina,
+	);
+	
+	$secoesPagina = chamaAPI(null, '/api/sistema/secoesIdPagina', json_encode($apiEntrada), 'GET');
 	
 	return $secoesPagina;
 }
@@ -71,7 +85,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../perfil/secoesPaginas.php');	
+	header('Location: ../perfil/paginas.php');	
 	
 }
 

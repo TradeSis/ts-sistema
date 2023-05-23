@@ -4,7 +4,8 @@ include_once('../database/secao.php');
 include_once('../database/paginas.php');
 
 $secoes = buscaSecao();
-$paginas = buscaPaginas();
+$paginas = buscaPaginas($_GET["idPagina"]);
+
 
 ?>
 
@@ -20,7 +21,7 @@ $paginas = buscaPaginas();
                         <h3 class="col">Seções das Paginas</h3>
                     </div>
                     <div class="col-sm" style="text-align:right">
-                        <a href="secoesPaginas.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
+                        <a href="paginas.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
                     </div>
                 </div>
             </div>
@@ -32,18 +33,11 @@ $paginas = buscaPaginas();
 
                     <div class="row">
 
-                        <div class="col-sm-3" style="margin-top: 10px">
-                            <div class="select-form-group">
-
+                        <div class="col-sm-3" style="margin-top: -5px">
+                            <div class="select-form-group">                               
                                 <label class="labelForm">Pagina</label>
-                                <select class="select form-control" name="idPagina">
-                                    <?php
-                                    foreach ($paginas as $pagina) {
-                                    ?>
-                                        <option value="<?php echo $pagina['idPagina'] ?>"><?php echo $pagina['tituloPagina']  ?></option>
-                                    <?php  } ?>
-                                </select>
-
+                                <input type="text" class="form-control" name="tituloPagina" value="<?php echo $paginas['tituloPagina'] ?>" readonly>
+                                <input type="text" class="form-control" name="idPagina" value="<?php echo $paginas['idPagina'] ?>" hidden>
                             </div>
                         </div>
 
@@ -64,8 +58,6 @@ $paginas = buscaPaginas();
 
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="select-form-group">
-                               
-
                                     <label class="labelForm">Ordem</label>
                                     <select class="select form-control" name="ordem">
                                         <option value="1">1</option>
@@ -74,9 +66,7 @@ $paginas = buscaPaginas();
                                         <option value="4">4</option>
                                         <option value="5">5</option>
                                         <option value="6">6</option>
-                                    </select>
-
-                                
+                                    </select>                            
                             </div>
                         </div>
                     </div>

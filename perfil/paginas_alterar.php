@@ -3,26 +3,33 @@
 
 include_once('../head.php');
 include_once('../database/paginas.php');
+include_once('../database/secaoPagina.php');
+include_once('../database/secao.php');
 
-$pagina = buscaPaginas($_GET['idPagina']);
-/* echo json_encode($pagina); */
+$idPagina = $_GET['idPagina'];
+$secoes = buscaSecao();
+$pagina = buscaPaginas($idPagina);
+$secoesPaginas = buscaIdPaginas($idPagina);
+
+
 ?>
 
 
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
-        <div class="card shadow">
-            <div class="card-header border-1">
-                <div class="row">
-                    <div class="col-sm">
-                        <h3 class="col">Paginas</h3>
+    <div class="container" style="margin-top:20px">
+       
+            <div class="row mt-4">
+                
+                    <div class="col-sm-8">
+                        <h4 class="tituloTabela">Paginas</h4>
                     </div>
-                    <div class="col-sm" style="text-align:right">
+
+                    <div class="col-sm-4" style="text-align:right">
                         <a href="paginas.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
                     </div>
-                </div>
+                
             </div>
             <div class="container" style="margin-top: 10px">
 
@@ -31,28 +38,28 @@ $pagina = buscaPaginas($_GET['idPagina']);
                     <div class="row">
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -40px;">Slug</label>
+                                <label class="labelForm">Slug</label>
                                 <input type="text" name="slug" class="form-control" value="<?php echo $pagina ['slug'] ?>" disabled>
                                 <input type="text" class="form-control" name="idPagina" value="<?php echo $pagina ['idPagina'] ?>" style="display: none">
                             </div>
                         </div>
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -40px;">Titulo</label>
+                                <label class="labelForm">Titulo</label>
                                 <input type="text" name="tituloPagina" class="form-control" value="<?php echo $pagina ['tituloPagina'] ?>" >
                             </div>
                         </div>
                         
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -40px;">Arquivo Fonte</label>
+                                <label class="labelForm">Arquivo Fonte</label>
                                 <input type="text" name="arquivoFonte" class="form-control" value="<?php echo $pagina ['arquivoFonte'] ?>" >
                             </div>
                         </div>
 
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -40px;">Arquivo Single</label>
+                                <label class="labelForm">Arquivo Single</label>
                                 <input type="text" name="arquivoSingle" class="form-control" value="<?php echo $pagina ['arquivoSingle'] ?>" >
                             </div>
                         </div>
@@ -61,20 +68,67 @@ $pagina = buscaPaginas($_GET['idPagina']);
                     <div class="row">
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -40px;">Conteúdo</label>
-                                <textarea name="conteudoHTML" id="" cols="120" rows="5"><?php echo $pagina ['conteudoHTML'] ?></textarea>
+                                <label class="labelForm">Conteúdo</label>
+                                <textarea name="conteudoHTML" id="" cols="130" rows="5"><?php echo $pagina ['conteudoHTML'] ?></textarea>
                             </div>
                         </div>
                     </div>
 
-
-                    <div class="card-footer bg-transparent" style="text-align:right">
-
+                    <div style="text-align:right; margin-right:-10px">
                         <button type="submit" class="btn btn-sm btn-success">Salvar</button>
                     </div>
+                    <div class="card-footer bg-transparent" style=" margin-top: 40px">
+                    </div>
                 </form>
+
+                <div class="card shadow mt-2">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>Pagina</th>
+                                <th>Secão</th>
+                                <th>Ordem</th>  
+                                <th>Ação</th>
+
+                            </tr>
+                        </thead>
+                        <?php if (isset($secoesPaginas['idPagina'])) { ?>
+                            <tr>
+                                <td><?php echo $secoesPaginas['tituloPagina'] ?></td>
+                                <td><?php echo $secoesPaginas['tituloSecao'] ?></td>
+                                <td><?php echo $secoesPaginas['ordem'] ?></td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="secoesPaginas_alterar.php?idSecaoPagina=<?php echo $secoesPaginas['idSecaoPagina'] ?>" role="button">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="secoesPaginas_excluir.php?idSecaoPagina=<?php echo $secoesPaginas['idSecaoPagina'] ?>" role="button">Excluir</a>
+                                </td>
+                            </tr>
+                        <?php } else {
+
+                        foreach ($secoesPaginas as $secoesPagina) { ?>
+                         
+                            <tr>
+
+                                <td><?php echo $secoesPagina['tituloPagina'] ?></td>
+                                <td><?php echo $secoesPagina['tituloSecao'] ?></td>
+                                <td><?php echo $secoesPagina['ordem'] ?></td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="secoesPaginas_alterar.php?idSecaoPagina=<?php echo $secoesPagina['idSecaoPagina'] ?>" role="button">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="secoesPaginas_excluir.php?idSecaoPagina=<?php echo $secoesPagina['idSecaoPagina'] ?>" role="button">Excluir</a>
+                                </td>
+                            </tr>
+                        <?php } }?>
+
+                    </table>
+                    <div class="py-3 px-3" style="text-align:right">
+                        <a href="secoesPaginas_inserir.php?idPagina=<?php echo $idPagina ?>" role="button" class="btn btn-primary">Adicionar</a>
+                    </div>
+                </div>
+                    
+               
+
+
             </div>
-        </div>
+        
     </div>
 
 
