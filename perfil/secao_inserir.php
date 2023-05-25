@@ -44,6 +44,9 @@ include_once('../head.php');
                                 <option value="card">card</option>
                                 <option value="form">form</option>
                                 <option value="banner">banner</option>
+                                <option value="sobreNos">sobre Nós</option>
+                                <option value="principal">Principal</option>
+                                <option value="divisaoPagina">divisão de Pagina</option>
                             </select>
 
                         </div>

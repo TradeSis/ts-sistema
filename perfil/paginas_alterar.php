@@ -96,7 +96,7 @@ $secoesPaginas = buscaSecaoPagina($idPagina);
                             <td><?php echo $secoesPagina['ordem'] ?></td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="secoesPaginas_alterar.php?idSecaoPagina=<?php echo $secoesPagina['idSecaoPagina'] ?>" role="button">Editar</a>
-                                <a class="btn btn-danger btn-sm" href="secoesPaginas_excluir.php?idSecaoPagina=<?php echo $secoesPagina['idSecaoPagina'] ?>" role="button">Excluir</a>
+                                <a class="btn btn-warning btn-sm" href="secoesPaginas_excluir.php?idSecaoPagina=<?php echo $secoesPagina['idSecaoPagina'] ?>" role="button">Remover</a>
                             </td>
                         </tr>
                     <?php } ?>
