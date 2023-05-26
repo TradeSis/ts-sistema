@@ -15,7 +15,7 @@ $secaoPagina = buscaSecaoPaginas($_GET['idSecaoPagina']);
             <div class="card-header border-1">
                 <div class="row">
                     <div class="col-sm">
-                        <h3 class="col">Excluir seção da pagina</h3>
+                        <h3 class="col">Remover seção da pagina</h3>
                     </div>
                     <div class="col-sm" style="text-align:right">
                         <a href="paginas.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
@@ -40,7 +40,7 @@ $secaoPagina = buscaSecaoPaginas($_GET['idSecaoPagina']);
 
                     <div class="card-footer bg-transparent" style="text-align:right">
 
-                        <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                        <button type="submit" class="btn btn-sm btn-warning">Remover</button>
                     </div>
                 </form>
             </div>
