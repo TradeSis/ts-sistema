@@ -16,13 +16,14 @@ function buscaSlug($slug)
 	return $post;
 }
 
-function buscaPosts($idPost=null)
+function buscaPosts($idPost=null, $titulo=null)
 {
 	
 	$post = array();
 	
 	$apiEntrada = array(
 		'idPost' => $idPost,
+		'titulo' => $titulo
 	);
 	
 	$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'GET');
@@ -30,9 +31,23 @@ function buscaPosts($idPost=null)
 	return $post;
 }
 
-if (isset($_GET['operacao'])) {
 
-	$operacao = $_GET['operacao'];
+function buscaPostsRecentes()
+{
+	
+	$post = array();
+	
+	$apiEntrada = array(
+	
+	);
+	
+	$post = chamaAPI(null, '/api/sistema/posts_recentes', json_encode($apiEntrada), 'GET');
+	
+	return $post;
+	
+}
+
+if (isset($_GET['operacao'])) {
 
     if ($operacao=="inserir") {
 		$apiEntrada = array(
