@@ -1,13 +1,12 @@
-
 <?php
 include_once('../head.php');
 ?>
 
 <style>
-        .ck-editor__editable_inline {
-            min-height: 400px;
-        }
-    </style>
+    .ck-editor__editable_inline {
+        min-height: 400px;
+    }
+</style>
 
 <body class="bg-transparent">
 
@@ -26,35 +25,44 @@ include_once('../head.php');
             <div class="container" style="margin-top: 10px">
 
                 <form action="../database/posts.php?operacao=inserir" method="post" enctype="multipart/form-data">
-             
-   
-                <div class="row">
+
+
+                    <div class="row">
                         <div class="col-sm-3" style="margin-top: 10px">
-
                             <div class="col-sm-6" style="margin-top: -20px">
-                            <label>Imagem</label>
-                            <label class="picture" for="foto" tabIndex="0">
-                                <span class="picture__image"></span>
-                            </label>
-
-                            <input type="file" name="imgDestaque" id="foto">
+                                <label>Imagem</label>
+                                <label class="picture" for="foto" tabIndex="0">
+                                    <span class="picture__image"></span>
+                                </label>
+                                <input type="file" name="imgDestaque" id="foto">
                             </div>
-
                         </div>
-                        
                     </div>
 
                     <div class="row">
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Slug</label>
-                                <input type="titulo" name="slug" class="form-control" required autocomplete="off" >
+                                <input type="titulo" name="slug" class="form-control" required autocomplete="off">
                             </div>
                         </div>
-                        <div class="col-sm-9" style="margin-top: 10px">
+                        <div class="col-sm-6" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Titulo</label>
-                                <input type="titulo" name="titulo" class="form-control" required autocomplete="off" >
+                                <input type="titulo" name="titulo" class="form-control" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-sm-3" style="margin-top: 10px">
+                            <div class="select-form-group">
+
+                                <label class="labelForm">Categoria</label>
+                                <select class="select form-control" name="categoria">
+                                    <option value="tecnologia">tecnologia</option>
+                                    <option value="informacao">informação</option>
+                                    <option value="novidade">novidade</option>
+                                    
+                                </select>
+
                             </div>
                         </div>
                     </div>
@@ -63,30 +71,30 @@ include_once('../head.php');
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Autor</label>
-                                <input type="text" name="autor" class="form-control" required autocomplete="off" >
+                                <input type="text" name="autor" class="form-control" required autocomplete="off">
                             </div>
                         </div>
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Data</label>
-                                <input type="date" name="data" class="form-control" required autocomplete="off" >
+                                <input type="date" name="data" class="form-control" required autocomplete="off">
                             </div>
                         </div>
-                    
+
                         <div class="col-sm-3" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Comentarios</label>
-                                <input type="text" name="comentarios" class="form-control"  autocomplete="off" >
+                                <input type="text" name="comentarios" class="form-control" autocomplete="off">
                             </div>
                         </div>
                     </div>
 
-                    
+
                     <div class="row">
                         <div class="col-sm-12" style="margin-top: 10px">
                             <div class="form-group">
                                 <label>Introdução</label>
-                                <textarea name="textoIntro" cols="130" rows="5" required ></textarea>
+                                <textarea name="textoIntro" cols="130" rows="5" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -113,7 +121,7 @@ include_once('../head.php');
 
     <script src="vendor/ckeditor/ckeditor.js"></script>
     <script>
-    ClassicEditor
+        ClassicEditor
             .create(document.querySelector('#txtConteudo'), {
 
                 toolbar: {
@@ -182,39 +190,39 @@ include_once('../head.php');
                 console.error(error);
             });
 
-//Carregar a imagem na tela
-const inputFile = document.querySelector("#foto");
-const pictureImage = document.querySelector(".picture__image");
-const pictureImageTxt = "Carregar imagem";
-pictureImage.innerHTML = pictureImageTxt;
-
-inputFile.addEventListener("change", function(e) {
-    const inputTarget = e.target;
-    const file = inputTarget.files[0];
-
-    if (file) {
-        const reader = new FileReader();
-
-        reader.addEventListener("load", function(e) {
-            const readerTarget = e.target;
-
-            const img = document.createElement("img");
-            img.src = readerTarget.result;
-            img.classList.add("picture__img");
-
-            pictureImage.innerHTML = "";
-            pictureImage.appendChild(img);
-        });
-
-        reader.readAsDataURL(file);
-    } else {
+        //Carregar a imagem na tela
+        const inputFile = document.querySelector("#foto");
+        const pictureImage = document.querySelector(".picture__image");
+        const pictureImageTxt = "Carregar imagem";
         pictureImage.innerHTML = pictureImageTxt;
-    }
-});
-</script>
+
+        inputFile.addEventListener("change", function(e) {
+            const inputTarget = e.target;
+            const file = inputTarget.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener("load", function(e) {
+                    const readerTarget = e.target;
+
+                    const img = document.createElement("img");
+                    img.src = readerTarget.result;
+                    img.classList.add("picture__img");
+
+                    pictureImage.innerHTML = "";
+                    pictureImage.appendChild(img);
+                });
+
+                reader.readAsDataURL(file);
+            } else {
+                pictureImage.innerHTML = pictureImageTxt;
+            }
+        });
+    </script>
 
 
-   
+
 </body>
 
 </html>

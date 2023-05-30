@@ -16,14 +16,15 @@ function buscaSlug($slug)
 	return $post;
 }
 
-function buscaPosts($idPost=null, $titulo=null)
+function buscaPosts($idPost=null, $titulo=null, $categoria=null)
 {
 	
 	$post = array();
 	
 	$apiEntrada = array(
 		'idPost' => $idPost,
-		'titulo' => $titulo
+		'titulo' => $titulo,
+		'categoria' => $categoria
 	);
 	
 	$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'GET');
