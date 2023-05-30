@@ -35,13 +35,27 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
 
     if ($operacao=="inserir") {
+		$parametros = array(
+			'titulo' => $_POST['titulo'],
+			'subTitulo' => $_POST['subTitulo'],
+			'descricao' => $_POST['descricao'],
+			'pastaImg' => $_POST['pastaImg'],
+			'nomeImg' => $_POST['nomeImg'],
+			'textoBotao' => $_POST['textoBotao'],
+			'corBotao' => $_POST['corBotao'],
+		);
+		json_encode($parametros);
 		$apiEntrada = array(
 
             'idPagina' => $_POST['idPagina'],
 		    'idSecao' => $_POST['idSecao'],
 		    'ordem' => $_POST['ordem'],
+			'parametros' => json_encode($parametros),
 			
 		);
+
+		/* echo json_encode($apiEntrada);
+		return; */
 		$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'PUT');
 		
 	}
@@ -53,6 +67,7 @@ if (isset($_GET['operacao'])) {
             'idPagina' => $_POST['idPagina'],
 		    'idSecao' => $_POST['idSecao'],
 		    'ordem' => $_POST['ordem'],
+			'parametros' => $_POST['parametros']
 			
 		);
        /*  echo json_encode($apiEntrada);

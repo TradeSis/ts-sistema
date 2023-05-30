@@ -13,17 +13,17 @@ $paginas = buscaPaginas($_GET["idPagina"]);
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
-        <div class="card shadow">
-            <div class="card-header border-1">
-                <div class="row">
-                    <div class="col-sm">
+    <div class="container" style="margin-top:30px">
+        
+            <div class="row mt-4">
+               
+                    <div class="col-sm-8">
                         <h3 class="col">Seções das Paginas</h3>
                     </div>
-                    <div class="col-sm" style="text-align:right">
+                    <div class="col-sm-4" style="text-align:right">
                         <a href="paginas.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
                     </div>
-                </div>
+               
             </div>
             <div class="container" style="margin-top: 10px">
 
@@ -32,7 +32,6 @@ $paginas = buscaPaginas($_GET["idPagina"]);
 
 
                     <div class="row">
-
                         <div class="col-sm-3" style="margin-top: -5px">
                             <div class="select-form-group">                               
                                 <label class="labelForm">Pagina</label>
@@ -86,15 +85,78 @@ $paginas = buscaPaginas($_GET["idPagina"]);
                         </div>
                     </div>
 
-
-
-                    <div class="card-footer bg-transparent" style="text-align:right">
-
-                        <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
+                   <!--  <div class="row">
+                        <div class="col-sm-12" style="margin-top: 10px">
+                            <div class="form-group">
+                                <label>Parametros</label>
+                                <textarea name="parametros" cols="130" rows="7"></textarea>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="card-footer bg-transparent" style="text-align:right"></div>
+                    <label>Atributos da Página</label>
+                    <div class="row">
+                    <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">titulo</label>
+                            <input type="text" name="titulo" class="form-control" required autocomplete="off">
+                        </div>
                     </div>
+                    <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">subTitulo</label>
+                            <input type="text" name="subTitulo" class="form-control" required autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">descricao</label>
+                            <input type="text" name="descricao" class="form-control" autocomplete="off">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">pasta Imagem</label>
+                            <input type="text" name="pastaImg" class="form-control" required autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">nome Imagem</label>
+                            <input type="text" name="nomeImg" class="form-control" required autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">textoBotao</label>
+                            <input type="text" name="textoBotao" class="form-control" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label style="margin-top: -20px;">corBotao</label>
+                            
+                            <input type="color" name="corBotao">
+                        </div>
+                    </div>
+
+                </div>
+
+      
+                    <div style="text-align:right; margin-right:-20px; margin-top: 30px">
+                    <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
+                </div>
                 </form>
             </div>
-        </div>
+        
     </div>
 
 </body>

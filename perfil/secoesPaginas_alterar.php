@@ -8,6 +8,9 @@ $secoes = buscaSecao();
 $paginas = buscaPaginas();
 $idSecaoPagina = $_GET['idSecaoPagina'];
 $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
+/* echo json_encode($secoesPagina);
+echo json_decode($secoesPagina['parametros'], true); */
+
 ?>
 
 <body class="bg-transparent">
@@ -80,11 +83,33 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
                             </select>
                             <input type="text" class="form-control" name="idSecaoPagina" value="<?php echo $secoesPagina['idSecaoPagina'] ?>" style="display: none">
 
-
-
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                        <div class="col-sm-12" style="margin-top: 10px">
+                            <div class="form-group">
+                                <label>Parametros</label>
+                                <textarea name="parametros" cols="130" rows="7"><?php echo $secoesPagina['parametros'] ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+             <!--        <div class="row">
+                        <div class="col-sm-12" style="margin-top: 10px">
+                            <div class="form-group">
+                                <label>titulo1</label>
+                                <input type="text" name="titulo1" value="<?php echo $parametros['titulo1'] ?>">
+                             
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: 10px">
+                            <div class="form-group">
+                                <label>descricao1</label>
+                                <input type="text" name="descricao1" value="<?php echo $parametros['descricao1']?>">
+                            </div>
+                        </div>
+                    </div> -->
 
                 <div style="text-align:right; margin-right:-20px">
                     <button type="submit" class="btn btn-sm btn-success">Salvar</button>
