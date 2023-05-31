@@ -10,7 +10,7 @@ function buscaAplicativos($idAplicativo=null)
     $apiEntrada = array(
         'idAplicativo' => $idAplicativo,
     );
-    $app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'GET');
+    $app = chamaAPI(null, '/services/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
 }
 
@@ -49,7 +49,7 @@ if (isset($_GET['operacao'])) {
 		echo "\n";
 		echo json_encode($apiEntrada);
 		return;  */
-		$app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'PUT');
+		$app = chamaAPI(null, '/services/aplicativo', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -77,7 +77,7 @@ if (isset($_GET['operacao'])) {
 			'pathImg'=> $pathImg,
 		);
 
-		$app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'POST');
+		$app = chamaAPI(null, '/services/aplicativo', json_encode($apiEntrada), 'POST');
 		
 	}
 
@@ -86,7 +86,7 @@ if (isset($_GET['operacao'])) {
 			'idAplicativo' => $_POST['idAplicativo']		
 		);
 
-		$app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'DELETE');
+		$app = chamaAPI(null, '/services/aplicativo', json_encode($apiEntrada), 'DELETE');
 		
 	}
 

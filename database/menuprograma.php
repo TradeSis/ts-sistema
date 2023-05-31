@@ -15,7 +15,7 @@ function buscaMenuProgramas($idMenuPrograma=null)
 	
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */	
-	$menuProgr = chamaAPI(null, '/api/services/menuprograma', json_encode($apiEntrada), 'GET');
+	$menuProgr = chamaAPI(null, '/services/menuprograma', json_encode($apiEntrada), 'GET');
 	return $menuProgr;
 }
 
@@ -34,7 +34,7 @@ if (isset($_GET['operacao'])) {
             'menuAtalho' => $_POST['menuAtalho']		
 		);
 
-		$menuProgr = chamaAPI(null, '/api/services/menuprograma', json_encode($apiEntrada), 'PUT');
+		$menuProgr = chamaAPI(null, '/services/menuprograma', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -50,7 +50,7 @@ if (isset($_GET['operacao'])) {
 			
 		);
 
-		$menuProgr = chamaAPI(null, '/api/services/menuprograma', json_encode($apiEntrada), 'POST');
+		$menuProgr = chamaAPI(null, '/services/menuprograma', json_encode($apiEntrada), 'POST');
 		
 	}
 
@@ -59,7 +59,7 @@ if (isset($_GET['operacao'])) {
 			'idMenuPrograma' => $_POST['idMenuPrograma']		
 		);
 
-		$menuProgr = chamaAPI(null, '/api/services/menuprograma', json_encode($apiEntrada), 'DELETE');
+		$menuProgr = chamaAPI(null, '/services/menuprograma', json_encode($apiEntrada), 'DELETE');
 		
 	}
 

@@ -55,7 +55,7 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idCliente' => $_POST['idCliente']
 		);
-		$clientes = chamaAPI(null, '/api/services/clientes', json_encode($apiEntrada), 'DELETE');
+		$clientes = chamaAPI(null, '/services/clientes', json_encode($apiEntrada), 'DELETE');
 	}
 
 
