@@ -8,8 +8,8 @@ $secoes = buscaSecao();
 $paginas = buscaPaginas();
 $idSecaoPagina = $_GET['idSecaoPagina'];
 $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
-echo json_encode($secoes);
-/* echo json_decode($secoesPagina['parametros'], true); */
+/* echo json_encode($secoesPagina);
+echo json_decode($secoesPagina['parametros'], true); */
 
 ?>
 
@@ -88,8 +88,6 @@ echo json_encode($secoes);
                 </div>
 
                 <div class="row">
-                    
-                    
                         <div class="col-sm-12" style="margin-top: 10px">
                             <div class="form-group">
                                 <label>Parametros</label>
@@ -97,6 +95,21 @@ echo json_encode($secoes);
                             </div>
                         </div>
                     </div>
+             <!--        <div class="row">
+                        <div class="col-sm-12" style="margin-top: 10px">
+                            <div class="form-group">
+                                <label>titulo1</label>
+                                <input type="text" name="titulo1" value="<?php echo $parametros['titulo1'] ?>">
+                             
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: 10px">
+                            <div class="form-group">
+                                <label>descricao1</label>
+                                <input type="text" name="descricao1" value="<?php echo $parametros['descricao1']?>">
+                            </div>
+                        </div>
+                    </div> -->
 
                 <div style="text-align:right; margin-right:-20px">
                     <button type="submit" class="btn btn-sm btn-success">Salvar</button>
