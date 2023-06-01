@@ -66,7 +66,7 @@ include_once '../database/ncm.php';
     </div>
 
     <script>
-        buscar($("#Descricao").val(), $("#Codigo").val());
+        /* buscar($("#Descricao").val(), $("#Codigo").val()); */
 
         function limpar() {
             buscar(null, null);
@@ -133,7 +133,13 @@ include_once '../database/ncm.php';
         }
 
         $("#buscar").click(function() {
+            if ($("#Descricao").val() == "" && $("#Codigo").val() == "") {
+                alert("Preencher o campo de Descrição ou Codigo!")
+            }
+           else{
             buscar($("#Descricao").val(), $("#Codigo").val());
+            
+           }
         })
 
         document.addEventListener("keypress", function(e) {

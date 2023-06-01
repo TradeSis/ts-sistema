@@ -1,9 +1,9 @@
 <?php
 
 include_once '../head.php';
-include_once '../database/ncm_nivel.php';
+include_once '../database/ncm.php';
 
-$ncms = buscaNcmNivel();
+$ncms = buscaNCM();
 /* echo json_encode($ncms); */
 ?>
 
