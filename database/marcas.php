@@ -12,7 +12,7 @@ function buscaMarcas($idMarca=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$marca = chamaAPI(null, 'sistema/marcas', json_encode($apiEntrada), 'GET');
+	$marca = chamaAPI(null, '/api/sistema/marcas', json_encode($apiEntrada), 'GET');
 	//echo json_encode($marca);
 	return $marca;
 }
@@ -28,7 +28,7 @@ if (isset($_GET['operacao'])) {
 			'imgMarca' => $_FILES['imgMarca'],
 			
 		);
-		$marca = chamaAPI(null, 'sistema/marcas', json_encode($apiEntrada), 'PUT');
+		$marca = chamaAPI(null, '/api/sistema/marcas', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -40,7 +40,7 @@ if (isset($_GET['operacao'])) {
 		);
 		/* echo json_encode($apiEntrada);
 		return; */
-		$marca = chamaAPI(null, 'sistema/marcas', json_encode($apiEntrada), 'DELETE');
+		$marca = chamaAPI(null, '/api/sistema/marcas', json_encode($apiEntrada), 'DELETE');
 	}
 
 

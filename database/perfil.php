@@ -13,7 +13,7 @@ function buscaPerfil($idPerfil=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$perfil = chamaAPI(null, 'sistema/perfil', json_encode($apiEntrada), 'GET');
+	$perfil = chamaAPI(null, '/api/sistema/perfil', json_encode($apiEntrada), 'GET');
 		
 	return $perfil[0];
 }
@@ -45,7 +45,7 @@ if (isset($_GET['operacao'])) {
 		);
         /* echo json_encode($apiEntrada);
         return; */
-		$perfil = chamaAPI(null, 'sistema/perfil', json_encode($apiEntrada), 'POST');
+		$perfil = chamaAPI(null, '/api/sistema/perfil', json_encode($apiEntrada), 'POST');
 		
 	}
 
