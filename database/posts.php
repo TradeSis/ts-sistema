@@ -11,7 +11,7 @@ function buscaSlug($slug)
 	$apiEntrada = array(
 		'slug' => $slug,
 	);
-	$post = chamaAPI(null, '/sistema/posts_slug', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/api/sistema/posts_slug', json_encode($apiEntrada), 'GET');
 	//echo json_encode($post);
 	return $post;
 }
@@ -27,7 +27,7 @@ function buscaPosts($idPost=null, $titulo=null, $categoria=null)
 		'categoria' => $categoria
 	);
 	
-	$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'GET');
 	
 	return $post;
 }
@@ -42,7 +42,7 @@ function buscaPostsRecentes()
 	
 	);
 	
-	$post = chamaAPI(null, '/sistema/posts_recentes', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/api/sistema/posts_recentes', json_encode($apiEntrada), 'GET');
 	
 	return $post;
 	
@@ -63,7 +63,7 @@ if (isset($_GET['operacao'])) {
 		    'txtConteudo' => $_POST['txtConteudo'],
 			
 		);
-		$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'PUT');
+		$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -74,7 +74,7 @@ if (isset($_GET['operacao'])) {
 		);
 		/* echo json_encode($apiEntrada);
 		return; */
-		$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'DELETE');
+		$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'DELETE');
 	}
 
 

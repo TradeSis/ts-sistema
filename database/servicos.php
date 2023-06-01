@@ -12,7 +12,7 @@ function buscaServicosCards()
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$servicos = chamaAPI(null, '/sistema/servicos_card', json_encode($apiEntrada), 'GET');
+	$servicos = chamaAPI(null, '/api/sistema/servicos_card', json_encode($apiEntrada), 'GET');
 	//echo json_encode($servicos);
 	return $servicos;
 }
@@ -27,7 +27,7 @@ function buscaServicos($idServico=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$servicos = chamaAPI(null, '/sistema/servicos', json_encode($apiEntrada), 'GET');
+	$servicos = chamaAPI(null, '/api/sistema/servicos', json_encode($apiEntrada), 'GET');
 	//echo json_encode($servicos);
 	return $servicos;
 }

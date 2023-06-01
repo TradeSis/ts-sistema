@@ -11,7 +11,7 @@ function buscaSecaoPagina($idPagina)
 	$apiEntrada = array(
 		'idPagina' => $idPagina,
 	);
-	$secoesPagina = chamaAPI(null, '/sistema/secoesPagina_individual', json_encode($apiEntrada), 'GET');
+	$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina_individual', json_encode($apiEntrada), 'GET');
 	return $secoesPagina;
 }
 
@@ -25,7 +25,7 @@ function buscaSecaoPaginas($idSecaoPagina=null, $idPagina=null)
 		'idPagina' => $idPagina
 	);
 	
-	$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'GET');
+	$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'GET');
 	return $secoesPagina;
 }
 
@@ -42,7 +42,7 @@ if (isset($_GET['operacao'])) {
 		    'ordem' => $_POST['ordem'],
 			
 		);
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'PUT');
+		$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -57,7 +57,7 @@ if (isset($_GET['operacao'])) {
 		);
        /*  echo json_encode($apiEntrada);
 		return; */
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+		$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 		
 	}
 	
@@ -67,7 +67,7 @@ if (isset($_GET['operacao'])) {
 		);
 		/* echo json_encode($apiEntrada);
 		return; */
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'DELETE');
+		$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'DELETE');
 	}
 
 
