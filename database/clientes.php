@@ -42,11 +42,7 @@ if (isset($_GET['operacao'])) {
 			'idCliente' => $_POST['idCliente'],
 			'nomeCliente' => $_POST['nomeCliente']
 		);
-<<<<<<< HEAD
 		$clientes = chamaAPI(null, '/services/clientes', json_encode($apiEntrada), 'POST');
-=======
-		$clientes = chamaAPI(null, '/api/servives/clientes', json_encode($apiEntrada), 'POST');
->>>>>>> parent of ec9d6f9 (fix /api/)
 	}
 	
 	if ($operacao=="excluir") {
