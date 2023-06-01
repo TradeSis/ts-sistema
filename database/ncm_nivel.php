@@ -10,17 +10,16 @@ function buscaNcmNivel($Descricao=null, $Codigo=null)
 	
 	$apiEntrada = array(
 		'Descricao' => $Descricao,
-		'Codigo' => $Codigo
+		'Codigo' => '02'
         
 	);
 	
-    /* echo json_encode($apiEntrada);
-    return; */
+    /* echo json_encode($apiEntrada); */
+    /* return; */
 	$ncm = chamaAPI(null, '/api/sistema/ncm_nivel', json_encode($apiEntrada), 'GET');
 	
 	return $ncm;
 }
-
 
 if (isset($_GET['operacao'])) {
 
@@ -46,17 +45,15 @@ if (isset($_GET['operacao'])) {
 		);
 		
 	
-		//echo json_encode(($apiEntrada));
-		/* return; */
+		/* echo json_encode(($apiEntrada));
+		return; */
 		$ncm = chamaAPI(null, '/api/sistema/ncm_nivel', json_encode($apiEntrada), 'GET');
 
 		echo json_encode($ncm);
 		return $ncm;
 
-		header('Location: ../ncm/ncm.php');
+		header('Location: ../ncm/ncm_nivel.php');
 	}
-	
-
 
 }
 

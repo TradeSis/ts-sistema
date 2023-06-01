@@ -1,196 +1,102 @@
 <?php
 
 include_once '../head.php';
-include_once '../database/ncm.php';
+include_once '../database/ncm_nivel.php';
 
-/* $ncm = buscaNcmNivel(null, null);
-echo json_encode($ncm);
-return; */
-
+$ncms = buscaNcmNivel();
+/* echo json_encode($ncms); */
 ?>
 
 
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <body class="bg-transparent">
 
 
-    <div class="container-flex text-center pt-2 mt-3" style="width: 90vw;">
-    <div class="row">
-    <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
+    <div class="container-flex text-center pt-2 mt-3 justify-content-center" >
 
-        <div class="row" style="margin-left: 10vw">
-            <div class="col-sm-3 ml-2">
+        <div class="row justify-content-center">
+          <div class="col-sm-3">
+              <form  action="../database/ncm_nivel.php?operacao=filtrar" id="form" method="post">
+                
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="Descricao" name="Descricao" placeholder="Descricao">
+                    </div>
 
-            </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo">
+                    </div>
 
-            <div class="col-sm-4 ml-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="Descricao" placeholder="Descricao">
-                </div>
+                    <div class="col-sm">
 
-                <div class="input-group">
-                    <input type="text" class="form-control" id="Codigo" placeholder="Codigo">
-                </div>
+                        <button class="btn btn-primary w-50 mt-3" id="buscar" type="submit">Pesquisar</button>
 
-                <div class="col-sm">
-
-                    <button class="btn btn-primary w-50 mt-3" id="buscar" type="button">Pesquisar</button>
-
-                </div>
-            </div>
-
+                    </div>
+                
+              </form>
+          </div>
         </div>
-
-        <div class="" style="margin-left: 10vw; text-align:left">
+        <div class="mt-4">
             <label class="tituloTabela pl-4">NCM</label>
         </div>
+        <section id="principal" class="h-75 container-sm mx-auto bg-light " style="max-width: 800px;">
 
-        <div class="card mt-2" style="margin-left: 10vw; text-align:left">
-            <div class="table table-sm table-hover table-striped table-wrapper-scroll-y my-custom-scrollbar diviFrame">
-                <table class="table" id="myIframe">
-                    <thead class="thead-light">
 
-                        <tr>
-                            <th>Código</th>
-                            <th>Descrição</th>
-                            <!-- <th>Data Inicio</th>
-                          <th>Data Fim</th> -->
-                            <th>Tipo Ato</th>
-                            <th>Numero Ato</th>
-                            <th>Ano Ato</th>
-                            <th>Superior</th>
-                            <th>nivel</th>
-                        </tr>
-                    </thead>
-                    <tbody id='dados' class="fonteCorpo">
+                <div class="accordion" id="accordionExample">
 
-                    </tbody>
-                </table>
-            </div>
+                  <?php foreach ($ncms as $ncm) { ?>
+                    <div class="accordion-item my-4">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 
-        </div>
+                          <span class="px-3 text-info"><?php echo $ncm['Descricao'] ?></span> nivel: <?php echo $ncm['nivel'] ?>
+
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body"><!-- 1 -->
+
+                          <div class="my-2"><?php echo $ncm['nivel'] ?></div>
+
+
+
+                        </div> <!-- 1 -->
+                      </div>
+
+                    </div>
+
+                  <?php } ?>
+
+                </div>
+
+        </section>
+
     </div>
-
     <script>
-        buscar($("#Descricao").val(), $("#Codigo").val());
+    $(document).ready(function() {
+            $("#form").submit(function() {
+                var formData = new FormData(this);
 
-        function limpar() {
-            buscar(null, null);
-            window.location.reload();
-        }
+                $.ajax({
+                    url: "../database/ncm_nivel.php?operacao=filtrar",
+                    type: 'POST',
+                    data: formData,
+                    success: refreshPage(),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    
+                });
 
-        function buscar(Descricao, Codigo) {
-            //alert(Descricao);
-            //alert(Codigo);
-
-
-            $.ajax({
-                type: 'POST',
-                dataType: 'html',
-                url: '../database/ncm_nivel.php?operacao=filtrar',
-                beforeSend: function() {
-                    $("#dados").html("Carregando...");
-                },
-                data: {
-                    Descricao: Descricao,
-                    Codigo: Codigo
-                },
-
-
-                success: function(msg) {
-                    //alert("segundo alert: " + msg);
-                    var json = JSON.parse(msg);
-                    //alert("terceiro alert: " + JSON.stringify(json));
-                    /* alert(JSON.stringify(msg)); */
-                    /* $("#dados").html(msg); */
-
-                    var linha = "";
-                    // Loop over each object
-                    for (var $i = 0; $i < json.length; $i++) {
-                        var object = json[$i];
-
-
-                        // alert("quarto alert: " + JSON.stringify(object))
-                        /*  alert(object); */
-                        linha = linha + "<tr>";
-                        linha = linha + "<td>" + object.Codigo + "</td>";
-                        linha = linha + "<td>" + object.Descricao + "</td>";
-                        /* linha = linha + "<td>" + object.Data_Inicio + "</td>";
-                        linha = linha + "<td>" + object.Data_Fim + "</td>"; */
-                        linha = linha + "<td>" + object.Tipo_Ato + "</td>";
-                        linha = linha + "<td>" + object.Numero_Ato + "</td>";
-                        linha = linha + "<td>" + object.Ano_Ato + "</td>";
-                        linha = linha + "<td>" + object.superior + "</td>";
-                        linha = linha + "<td>" + object.nivel + "</td>";
-                        linha = linha + "</tr>";
-                    }
-
-                    //alert(linha);
-                    $("#dados").html(linha);
-
-                },
-                error: function(e) {
-                    alert('Erro: ' + JSON.stringify(e));
-
-                    return null;
-                }
             });
 
-        }
-
-        $("#buscar").click(function() {
-            buscar($("#Descricao").val(), $("#Codigo").val());
-        })
-
-        document.addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
-                buscar($("#Descricao").val(), $("#Codigo").val());
+            function refreshPage() {
+            
+                window.location.reload();
             }
         });
-
-        $('.btnAbre').click(function() {
-            $('.menuFiltros').toggleClass('mostra');
-            $('.diviFrame').toggleClass('mostra');
-        });
-    </script>
+        </script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 
 </html>
