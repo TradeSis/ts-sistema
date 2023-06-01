@@ -8,7 +8,7 @@ $secoes = buscaSecao();
 $paginas = buscaPaginas();
 $idSecaoPagina = $_GET['idSecaoPagina'];
 $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
-echo json_encode($secoes);
+/* echo json_encode($secoes); */
 /* echo json_decode($secoesPagina['parametros'], true); */
 
 ?>

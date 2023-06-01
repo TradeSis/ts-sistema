@@ -98,7 +98,7 @@ $paginas = buscaPaginas($_GET["idPagina"]);
 
       
                     <div style="text-align:right; margin-right:-20px; margin-top: 30px">
-                    <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
+                    <button type="submit" class="btn btn-sm btn-success">Adicionar</button>
                 </div>
                 </form>
             </div>

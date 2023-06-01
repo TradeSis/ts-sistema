@@ -49,13 +49,32 @@ function buscaPostsRecentes()
 }
 
 if (isset($_GET['operacao'])) {
+	$operacao = $_GET['operacao'];
 
     if ($operacao=="inserir") {
+
+		$imgDestaque = $_FILES['imgDestaque'];
+
+		if($imgDestaque !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $imgDestaque["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/imgPosts/";
+				$novoNomeFoto = $_POST['slug']. "_" .$imgDestaque["name"];
+				
+				move_uploaded_file($imgDestaque['tmp_name'], $pasta.$novoNomeFoto);
+		
+			}else{
+				$novoNomeFoto = "Sem_imagem";
+			}
+	
+		}
+		
 		$apiEntrada = array(
 
             'slug' => $_POST['slug'],
 		    'titulo' => $_POST['titulo'],
-		    'imgDestaque' => $_FILES['imgDestaque'],
+		    'imgDestaque' => $novoNomeFoto,
 		    'autor' => $_POST['autor'],
 		    'data' => $_POST['data'],
 		    'comentarios' => $_POST['comentarios'],
