@@ -175,8 +175,8 @@ include_once '../database/ncm.php';
 
         function buscartable(json) {
             var $table = $('#table')
-            $table.bootstrapTable('removeAll');
-            $table.bootstrapTable('refresh');
+        
+            $table.bootstrapTable('load', json)
             
             $table.bootstrapTable({
                 data: json,
