@@ -17,6 +17,22 @@ function buscaSecao($idSecao=null)
 	return $secao;
 }
 
+function buscaTipoSecao($tipoSecao=null)
+{
+	
+	$secao = array();
+	//echo json_encode($secao);
+	//return;
+	$apiEntrada = array(
+		'tipoSecao' => $tipoSecao,
+	);
+	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
+	return; */
+	$secao = chamaAPI(null, '/api/sistema/secoes_tipoSecao', json_encode($apiEntrada), 'GET');
+	//echo json_encode($secao);
+	return $secao;
+}
+
 
 if (isset($_GET['operacao'])) {
 

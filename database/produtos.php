@@ -34,6 +34,7 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
 
     if ($operacao=="inserir") {
+
 		$fotoProduto = $_FILES['fotoProduto'];
 
 		if($fotoProduto !== null) {
@@ -64,11 +65,21 @@ if (isset($_GET['operacao'])) {
 
 	
 	if ($operacao=="excluir") {
+
 		$apiEntrada = array(
 			'idProduto' => $_POST['idProduto'],
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
+
+		if(!empty($_POST['fotoProduto'])){
+			$pasta = ROOT . "/img/imgProdutos/";
+			$imagem = $pasta . $_POST['fotoProduto'];
+
+			if(file_exists($imagem)){
+				unlink($imagem);
+			}
+
+		}
+
 		$produto = chamaAPI(null, '/api/sistema/produtos', json_encode($apiEntrada), 'DELETE');
 	}
 
