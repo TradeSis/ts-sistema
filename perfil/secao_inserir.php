@@ -47,6 +47,7 @@ include_once('../head.php');
                                 <option value="sobreNos">sobre Nós</option>
                                 <option value="principal">Principal</option>
                                 <option value="divisaoPagina">divisão de Pagina</option>
+                                <option value="lista">Lista</option>
                             </select>
 
                         </div>

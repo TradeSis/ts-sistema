@@ -42,8 +42,7 @@ $produtos = buscaTodosProdutos();
                 foreach ($produtos as $produto) {
                 ?>
                     <tr>
-                    
-                        <td><img src="admin/imgProdutos/<?php echo $produto['fotoProduto'] ?>" width="60px" height="60px" alt=""></td>
+                        <td><img src="<?php echo URLROOT ?>/img/imgProdutos/<?php echo $produto['fotoProduto'] ?>" width="60px" height="60px" alt=""></td>
                         <td><?php echo $produto['nomeProduto'] ?></td>
                         <td><?php echo $produto['valorProduto'] ?></td>
                         <td><?php echo $produto['destaque'] ?></td>

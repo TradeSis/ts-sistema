@@ -34,10 +34,27 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
 
     if ($operacao=="inserir") {
+		$fotoProduto = $_FILES['fotoProduto'];
+
+		if($fotoProduto !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $fotoProduto["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/imgProdutos/";
+				$novoNomeFoto = $_POST['nomeProduto']. "_" .$fotoProduto["name"];
+				
+				move_uploaded_file($fotoProduto['tmp_name'], $pasta.$novoNomeFoto);
+		
+			}else{
+				$novoNomeFoto = "Sem_imagem";
+			}
+	
+		}
+
 		$apiEntrada = array(
 			'nomeProduto' => $_POST['nomeProduto'],
 			'valorProduto' => $_POST['valorProduto'],
-            'fotoProduto' => $_FILES['fotoProduto'],
+            'fotoProduto' => $novoNomeFoto,
             'destaque' => $_POST['destaque'],
 			
 		);
