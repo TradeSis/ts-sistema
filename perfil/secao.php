@@ -54,10 +54,10 @@ $secoes = buscaSecao();
                     <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=form" style="color: #000;">Form</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=divisaoPagina" style="color: #000;">Divisor</a>
+                    <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=divisorPagina" style="color: #000;">Divisor</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=sobreNos" style="color: #000;">sobre Nos</a>
+                    <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=quemSomos" style="color: #000;">Quem Somos</a>
                 </li>
             </ul>
 
@@ -66,38 +66,7 @@ $secoes = buscaSecao();
             <div class="diviFrame" style="overflow:hidden; height:850px" >
                 <iframe class="iFrame container-fluid " id="myIframe" src="secao_todos.php" height="850px"></iframe>
             </div>
-<!--=== Conteudo ===-->
 
-<!--         <div class="card shadow mt-2">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Tipo Seção</th>
-                        <th>Titulo</th>
-                        <th>Arquivo Fonte</th>
-
-                        <th>Ação</th>
-
-                    </tr>
-                </thead>
-
-                <?php
-                foreach ($secoes as $secao) {
-                ?>
-                    <tr>
-                        <td><?php echo $secao['tipoSecao'] ?></td>
-                        <td><?php echo $secao['tituloSecao'] ?></td>
-                        <td><?php echo $secao['arquivoFonte'] ?></td>
-                        
-                        <td>
-                            <a class="btn btn-primary btn-sm" href="secao_alterar.php?idSecao=<?php echo $secao['idSecao'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="secao_excluir.php?idSecao=<?php echo $secao['idSecao'] ?>" role="button">Excluir</a>
-                        </td>
-                    </tr>
-                <?php } ?>
-
-            </table>
-        </div> -->
     </div>
 
 
@@ -122,25 +91,6 @@ $secoes = buscaSecao();
 
 	});
 
-
-/* 
-    let count = 1;
-    document.getElementById("tab1").checked = true;
-    document.getElementsByClassName
-
-    $('.nav-link').click(function(){ 
-        count++;
-    if(count>5){
-        count = 1;
-    }
-    alert(count);
-    $("tab1"+count).toggleClass('active');
-    }); */
-/* 
-    $('.nav-link').click(function(){ 
-    $('#1').removeClass('active');
-    $('#2').toggleClass('active');
-    }); */
 
 </script>
 </body>

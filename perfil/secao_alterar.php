@@ -2,9 +2,7 @@
 
 include_once('../head.php');
 include_once('../database/secao.php');
-
 $secao = buscaSecao($_GET['idSecao']);
-/* echo json_encode($secao); */
 ?>
 
 
@@ -46,15 +44,15 @@ $secao = buscaSecao($_GET['idSecao']);
                             <label class="labelForm">Tipo</label>
                             <select class="select form-control" name="tipoSecao">
                                 <option value="<?php echo $secao['tipoSecao'] ?>"><?php echo $secao['tipoSecao'] ?></option>
-                                <option value="header">header</option>
-                                <option value="footer">footer</option>
-                                <option value="html">html</option>
-                                <option value="card">card</option>
-                                <option value="form">form</option>
-                                <option value="banner">banner</option>
-                                <option value="sobreNos">sobre Nós</option>
+                                <option value="header">Header</option>
+                                <option value="footer">Footer</option>
+                                <option value="html">Html</option>
+                                <option value="card">Card</option>
+                                <option value="form">Form</option>
+                                <option value="banner">Banner</option>
+                                <option value="quemSomos">Quem Somos</option>
                                 <option value="principal">Principal</option>
-                                <option value="divisaoPagina">divisão de Pagina</option>
+                                <option value="divisorPagina">Divisor de Pagina</option>
                                 <option value="lista">Lista</option>
                             </select>
 
