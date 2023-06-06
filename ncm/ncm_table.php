@@ -4,14 +4,12 @@ include_once '../head.php';
 include_once '../database/ncm.php';
 
 ?>
-
 <link href="https://cdn.jsdelivr.net/npm/jquery-treegrid@0.3.0/css/jquery.treegrid.css" rel="stylesheet">
 <link href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-treegrid@0.3.0/js/jquery.treegrid.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
-<script
-    src="https://unpkg.com/bootstrap-table@1.21.4/dist/extensions/treegrid/bootstrap-table-treegrid.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.21.4/dist/extensions/treegrid/bootstrap-table-treegrid.min.js"></script>
 
 <body class="bg-transparent">
 
@@ -60,13 +58,9 @@ include_once '../database/ncm.php';
                         <tr>
                             <th>Código</th>
                             <th>Descrição</th>
-                            <!-- <th>Data Inicio</th>
-                          <th>Data Fim</th> -->
-                            <th>Tipo Ato</th>
-                            <th>Numero Ato</th>
-                            <th>Ano Ato</th>
                             <th>Superior</th>
                             <th>nivel</th>
+                            <th>ultimo nivel</th>
                         </tr>
                     </thead>
                     <tbody id='dados' class="fonteCorpo">
@@ -80,7 +74,6 @@ include_once '../database/ncm.php';
     </div>
 
     <script>
-        /* buscar($("#Descricao").val(), $("#Codigo").val()); */
 
         function limpar() {
             buscar(null, null);
@@ -88,8 +81,6 @@ include_once '../database/ncm.php';
         }
 
         function buscar(Descricao, Codigo) {
-            //alert(Descricao);
-            //alert(Codigo);
 
 
             $.ajax({
@@ -106,32 +97,21 @@ include_once '../database/ncm.php';
 
 
                 success: function (msg) {
-                    //alert("segundo alert: " + msg);
                     var json = JSON.parse(msg);
                     buscartable(json);
 
-                    //alert("terceiro alert: " + JSON.stringify(json));
-                    /* alert(JSON.stringify(msg)); */
-                    /* $("#dados").html(msg); */
 
                     var linha = "";
-                    // Loop over each object
                     for (var $i = 0; $i < json.length; $i++) {
                         var object = json[$i];
 
 
-                        // alert("quarto alert: " + JSON.stringify(object))
-                        /*  alert(object); */
                         linha = linha + "<tr>";
                         linha = linha + "<td>" + object.Codigo + "</td>";
                         linha = linha + "<td>" + object.Descricao + "</td>";
-                        /* linha = linha + "<td>" + object.Data_Inicio + "</td>";
-                        linha = linha + "<td>" + object.Data_Fim + "</td>"; */
-                        linha = linha + "<td>" + object.Tipo_Ato + "</td>";
-                        linha = linha + "<td>" + object.Numero_Ato + "</td>";
-                        linha = linha + "<td>" + object.Ano_Ato + "</td>";
                         linha = linha + "<td>" + object.superior + "</td>";
                         linha = linha + "<td>" + object.nivel + "</td>";
+                        linha = linha + "<td>" + object.ultimonivel + "</td>";
                         linha = linha + "</tr>";
                     }
 
@@ -189,7 +169,8 @@ include_once '../database/ncm.php';
                     },
                     {
                         field: 'Codigo',
-                        title: 'Codigo'
+                        title: 'Codigo',
+                        width: '180px'
                     },
                     {
                         field: 'Descricao',
@@ -225,25 +206,9 @@ include_once '../database/ncm.php';
             })
         }
 
-        function typeFormatter(value, row, index) {
-            if (value === 'menu') {
-                return '菜单'
-            }
-            if (value === 'button') {
-                return '按钮'
-            }
-            if (value === 'api') {
-                return '接口'
-            }
-            return '-'
-        }
+        
 
-        function statusFormatter(value, row, index) {
-            if (value === 1) {
-                return '<span class="label label-success">正常</span>'
-            }
-            return '<span class="label label-default">锁定</span>'
-        }
+        
     </script>
 
 </body>
