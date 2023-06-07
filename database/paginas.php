@@ -44,8 +44,8 @@ if (isset($_GET['operacao'])) {
 			'conteudoHTML' => $_POST['conteudoHTML'],
 			'arquivoFonte' => $_POST['arquivoFonte'],
 			'arquivoSingle' => $_POST['arquivoSingle'],
+			'idTema' => $_POST['idTema'],
 		);
-
 		$pagina = chamaAPI(null, '/api/sistema/paginas', json_encode($apiEntrada), 'PUT');
 		
 	}

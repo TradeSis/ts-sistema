@@ -1,9 +1,9 @@
 
 <?php
 include_once('../head.php');
-include_once('../database/posts.php');
+include_once('../database/banners.php');
 
-$post = buscaPosts($_GET['idPost']);
+$post = buscaBanners($_GET['idBanner']);
 /* echo json_encode($post); */
 ?>
 
@@ -15,23 +15,23 @@ $post = buscaPosts($_GET['idPost']);
     <div class="container" style="margin-top:10px">
             <div class="row mt-4">
                     <div class="col-sm-8">
-                        <h3 class="col">Excluir Post</h3>
+                        <h3 class="col">Excluir Banner</h3>
                     </div>
                     <div class="col-sm-4" style="text-align:right">
-                        <a href="posts.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
+                        <a href="banners.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
                     </div>
             </div>
             <div class="container" style="margin-top: 10px">
 
-                <form action="../database/posts.php?operacao=excluir" method="post" enctype="multipart/form-data">
+                <form action="../database/banners.php?operacao=excluir" method="post" enctype="multipart/form-data">
              
                     <div class="row">
                         <div class="col-sm-12" style="margin-top: 10px">
                             <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -40px;">Titulo</label>
-                                <input type="text" name="titulo" class="form-control" value="<?php echo $post['titulo'] ?>" >
-                                <input type="text" class="form-control" name="idPost" value="<?php echo $post['idPost'] ?>" style="display: none">
-                                <input type="text" class="form-control" name="imgDestaque" value="<?php echo $post['imgDestaque'] ?>" style="display: none">
+                                <label class='control-label' for='inputNormal' style="margin-top: -40px;">Nome</label>
+                                <input type="text" name="nomeBanner" class="form-control" value="<?php echo $post['nomeBanner'] ?>" >
+                                <input type="text" class="form-control" name="idBanner" value="<?php echo $post['idBanner'] ?>" style="display: none">
+                                <input type="text" class="form-control" name="imgBanner" value="<?php echo $post['imgBanner'] ?>" style="display: none">
                             </div>
                         </div>
                     </div>

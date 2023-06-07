@@ -91,8 +91,17 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idPost' => $_POST['idPost'],
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
+
+		if(!empty($_POST['imgDestaque'])){
+			$pasta = ROOT . "/img/imgPosts/";
+			$imagem = $pasta . $_POST['imgDestaque'];
+
+			
+			if(file_exists($imagem)){
+				unlink($imagem);
+			}
+		}
+
 		$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'DELETE');
 	}
 

@@ -3,7 +3,7 @@ include_once('../head.php');
 include_once('../database/produtos.php');
 
 $produto = buscaTodosProdutos($_GET['idProduto']);
-
+/* echo json_encode($produto); */
 ?>
 
 
@@ -30,6 +30,7 @@ $produto = buscaTodosProdutos($_GET['idProduto']);
                             <label class='control-label' for='inputNormal' style="margin-top: -40px;">Nome</label>
                             <input type="text" name="nomeProduto" class="form-control" value="<?php echo $produto['nomeProduto'] ?>">
                             <input type="text" class="form-control" name="idProduto" value="<?php echo $produto['idProduto'] ?>" style="display: none">
+                            <input type="text" class="form-control" name="fotoProduto" value="<?php echo $produto['fotoProduto'] ?>" style="display: none">
                         </div>
                     </div>
                 </div>
