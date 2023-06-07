@@ -9,7 +9,7 @@ function buscaProdutos()
 	$produto = array();
 
 	
-	$produto = chamaAPI(null, '/api/sistema/produtos_card', null, 'GET');
+	$produto = chamaAPI(null, '/sistema/produtos_card', null, 'GET');
 	//echo json_encode($produto);
 	return $produto;
 }
@@ -24,7 +24,7 @@ function buscaTodosProdutos($idProduto=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$produto = chamaAPI(null, '/api/sistema/produtos', json_encode($apiEntrada), 'GET');
+	$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'GET');
 	//echo json_encode($produto);
 	return $produto;
 }
@@ -59,7 +59,7 @@ if (isset($_GET['operacao'])) {
             'destaque' => $_POST['destaque'],
 			
 		);
-		$produto = chamaAPI(null, '/api/sistema/produtos', json_encode($apiEntrada), 'PUT');
+		$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -80,7 +80,7 @@ if (isset($_GET['operacao'])) {
 
 		}
 
-		$produto = chamaAPI(null, '/api/sistema/produtos', json_encode($apiEntrada), 'DELETE');
+		$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'DELETE');
 	}
 
 

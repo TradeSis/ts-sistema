@@ -16,7 +16,7 @@ function buscaNCM($Descricao=null, $Codigo=null)
 	
     /* echo json_encode($apiEntrada);
     return; */
-	$ncm = chamaAPI(null, '/api/sistema/ncm', json_encode($apiEntrada), 'GET');
+	$ncm = chamaAPI(null, '/sistema/ncm', json_encode($apiEntrada), 'GET');
 	
 	return $ncm;
 }
@@ -48,7 +48,7 @@ if (isset($_GET['operacao'])) {
 	
 		//echo json_encode(($apiEntrada));
 		/* return; */
-		$ncm = chamaAPI(null, '/api/sistema/ncm', json_encode($apiEntrada), 'GET');
+		$ncm = chamaAPI(null, '/sistema/ncm', json_encode($apiEntrada), 'GET');
 
 		echo json_encode($ncm);
 		return $ncm;

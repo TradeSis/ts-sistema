@@ -12,7 +12,7 @@ function buscaBanners($idBanner=null)
 		'idBanner' => $idBanner
 	);
 	
-	$post = chamaAPI(null, '/api/sistema/banners', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/sistema/banners', json_encode($apiEntrada), 'GET');
 	
 	return $post;
 }
@@ -47,7 +47,7 @@ if (isset($_GET['operacao'])) {
 		    'statusBanner' => $_POST['statusBanner'],
 			
 		);
-		$post = chamaAPI(null, '/api/sistema/banners', json_encode($apiEntrada), 'PUT');
+		$post = chamaAPI(null, '/sistema/banners', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -66,7 +66,7 @@ if (isset($_GET['operacao'])) {
 				unlink($imagem);
 			}
 		}
-		$post = chamaAPI(null, '/api/sistema/banners', json_encode($apiEntrada), 'DELETE');
+		$post = chamaAPI(null, '/sistema/banners', json_encode($apiEntrada), 'DELETE');
 	}
 
 

@@ -9,7 +9,7 @@ function buscaTemas($idTema=null){
 		'idTema' => $idTema,
 	);
   
-	$temas = chamaAPI(null, '/api/sistema/temas', json_encode($apiEntrada), 'GET');
+	$temas = chamaAPI(null, '/sistema/temas', json_encode($apiEntrada), 'GET');
 	return $temas;
 
 }
