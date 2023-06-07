@@ -47,7 +47,7 @@ $verde     = '';
 $configs  = mysqli_query($conexao, "select * from temas where ativo = true limit 1");
   $config = mysqli_fetch_assoc($configs);
 
- switch ($config["descricao"]){
+ switch ($config["nomeTema"]){
       case  'Default'     : $default  = 'checked';  break;
 		  case  'Roxo'          : $roxo  = 'checked';  break;
 		  case  'Vermelho'         : $vermelho  = 'checked';  break;
