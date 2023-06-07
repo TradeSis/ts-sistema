@@ -2,6 +2,18 @@
 
 include_once (ROOT.'/sistema/conexao.php');
 
+function buscaTemas($idTema=null){
+  $temas = array();
+
+  $apiEntrada = array(
+		'idTema' => $idTema,
+	);
+  
+	$temas = chamaAPI(null, '/api/sistema/temas', json_encode($apiEntrada), 'GET');
+	return $temas;
+
+}
+
 function buscaTema()
 {
 	
