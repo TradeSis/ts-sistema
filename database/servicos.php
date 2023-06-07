@@ -32,6 +32,17 @@ function buscaServicos($idServico=null)
 	return $servicos;
 }
 
+function buscaSlugServicos($slugServicos)
+{
+    $servicos = array();
+	$apiEntrada = array(
+		'slugServicos' => $slugServicos,
+	);
+	$servicos = chamaAPI(null, '/api/sistema/servicos_slug', json_encode($apiEntrada), 'GET');
+	//echo json_encode($servicos);
+	return $servicos;
+}
+
 
 
 
