@@ -93,7 +93,7 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
                         <div class="col-sm-12" style="margin-top: 10px">
                             <div class="form-group">
                                 <label>Parametros</label>
-                                <textarea name="parametros" cols="130" rows="7"><?php echo $secoesPagina['parametros'] ?></textarea>
+                                <textarea name="parametros" cols="130" rows="20"><?php echo $secoesPagina['parametros'] ?></textarea>
                             </div>
                         </div>
                     </div>

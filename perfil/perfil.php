@@ -6,7 +6,7 @@ include_once('../head.php');
 include_once('../database/perfil.php');
 
 $perfis = buscaPerfil();
-//echo json_encode($perfis);
+echo json_encode($perfis);
 
 ?>
 
@@ -40,8 +40,9 @@ $perfis = buscaPerfil();
                 foreach ($perfis as $perfil) {
                 ?>
                     <tr>
-                        <td><img class="img-profile rounded-circle" src="admin/imgPerfil/<?php echo $perfil["foto"] ?>" height="40px" width="40"></td>
+                        <!-- <td><img class="img-profile rounded-circle" src="admin/imgPerfil/<?php echo $perfil["foto"] ?>" height="40px" width="40"></td> -->
                         <td><?php echo $perfil['nome'] ?></td>
+                        <td><?php echo $perfil['endereco'] ?></td>
 
                         <td>
                             <a class="btn btn-primary btn-sm" href="perfil_alterar.php?idPerfil=<?php echo $perfil['idPerfil'] ?>" role="button">Editar</a>
