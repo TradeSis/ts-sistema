@@ -11,7 +11,7 @@ function buscaSlug($slug)
 	$apiEntrada = array(
 		'slug' => $slug,
 	);
-	$post = chamaAPI(null, '/api/sistema/posts_slug', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/sistema/posts_slug', json_encode($apiEntrada), 'GET');
 	//echo json_encode($post);
 	return $post;
 }
@@ -27,7 +27,7 @@ function buscaPosts($idPost=null, $titulo=null, $categoria=null)
 		'categoria' => $categoria
 	);
 	
-	$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'GET');
 	
 	return $post;
 }
@@ -42,20 +42,39 @@ function buscaPostsRecentes()
 	
 	);
 	
-	$post = chamaAPI(null, '/api/sistema/posts_recentes', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/sistema/posts_recentes', json_encode($apiEntrada), 'GET');
 	
 	return $post;
 	
 }
 
 if (isset($_GET['operacao'])) {
+	$operacao = $_GET['operacao'];
 
     if ($operacao=="inserir") {
+
+		$imgDestaque = $_FILES['imgDestaque'];
+
+		if($imgDestaque !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $imgDestaque["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/imgPosts/";
+				$novoNomeFoto = $_POST['slug']. "_" .$imgDestaque["name"];
+				
+				move_uploaded_file($imgDestaque['tmp_name'], $pasta.$novoNomeFoto);
+		
+			}else{
+				$novoNomeFoto = "Sem_imagem";
+			}
+	
+		}
+		
 		$apiEntrada = array(
 
             'slug' => $_POST['slug'],
 		    'titulo' => $_POST['titulo'],
-		    'imgDestaque' => $_FILES['imgDestaque'],
+		    'imgDestaque' => $novoNomeFoto,
 		    'autor' => $_POST['autor'],
 		    'data' => $_POST['data'],
 		    'comentarios' => $_POST['comentarios'],
@@ -63,7 +82,7 @@ if (isset($_GET['operacao'])) {
 		    'txtConteudo' => $_POST['txtConteudo'],
 			
 		);
-		$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'PUT');
+		$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -72,9 +91,18 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idPost' => $_POST['idPost'],
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
-		$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'DELETE');
+
+		if(!empty($_POST['imgDestaque'])){
+			$pasta = ROOT . "/img/imgPosts/";
+			$imagem = $pasta . $_POST['imgDestaque'];
+
+			
+			if(file_exists($imagem)){
+				unlink($imagem);
+			}
+		}
+
+		$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'DELETE');
 	}
 
 

@@ -1,5 +1,7 @@
 <?php
 include_once('../head.php');
+include_once('../database/temas.php');
+$temas = buscaTemas();
 ?>
 
 
@@ -47,6 +49,22 @@ include_once('../head.php');
                         </div>
                     </div>
 
+                </div>
+                <div class="row">
+                        <div class="col-sm-3" style="margin-top: 10px">
+                            <div class="select-form-group">
+
+                                <label class="labelForm">Tema</label>
+                                <select class="select form-control" name="idTema">
+                                    <?php
+                                    foreach ($temas as $tema) {
+                                    ?>
+                                        <option value="<?php echo $tema['idTema'] ?>"><?php echo $tema['nomeTema']  ?></option>
+                                    <?php  } ?>
+                                </select>
+
+                            </div>
+                        </div>
                 </div>
 
                 <div class="row">

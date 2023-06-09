@@ -11,7 +11,7 @@ function buscaSecaoPagina($idPagina)
 	$apiEntrada = array(
 		'idPagina' => $idPagina,
 	);
-	$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina_individual', json_encode($apiEntrada), 'GET');
+	$secoesPagina = chamaAPI(null, '/sistema/secoesPagina_individual', json_encode($apiEntrada), 'GET');
 	return $secoesPagina;
 }
 
@@ -25,7 +25,7 @@ function buscaSecaoPaginas($idSecaoPagina=null, $idPagina=null)
 		'idPagina' => $idPagina
 	);
 	
-	$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'GET');
+	$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'GET');
 	return $secoesPagina;
 }
 
@@ -35,14 +35,19 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
 
     if ($operacao=="inserir") {
+		
 		$apiEntrada = array(
 
             'idPagina' => $_POST['idPagina'],
 		    'idSecao' => $_POST['idSecao'],
 		    'ordem' => $_POST['ordem'],
+			'parametros' => $_POST['parametros'],
 			
 		);
-		$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'PUT');
+
+		/* echo json_encode($apiEntrada);
+		return; */
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -53,11 +58,12 @@ if (isset($_GET['operacao'])) {
             'idPagina' => $_POST['idPagina'],
 		    'idSecao' => $_POST['idSecao'],
 		    'ordem' => $_POST['ordem'],
+			'parametros' => $_POST['parametros']
 			
 		);
        /*  echo json_encode($apiEntrada);
 		return; */
-		$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 		
 	}
 	
@@ -67,7 +73,7 @@ if (isset($_GET['operacao'])) {
 		);
 		/* echo json_encode($apiEntrada);
 		return; */
-		$secoesPagina = chamaAPI(null, '/api/sistema/secoesPagina', json_encode($apiEntrada), 'DELETE');
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'DELETE');
 	}
 
 

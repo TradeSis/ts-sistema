@@ -6,7 +6,6 @@ include_once('../head.php');
 include_once('../database/paginas.php');
 
 $paginas = buscaPaginas();
-/* echo json_encode($paginas); */
 
 ?>
 
@@ -32,7 +31,8 @@ $paginas = buscaPaginas();
                         <th>Titulo</th>
                         <th>Conteudo</th>
                         <th>Arquivo Fonte</th>
-
+                        <th>ID Tema</th>
+                        <th>Nome Tema</th>
                         <th>Ação</th>
 
                     </tr>
@@ -47,6 +47,8 @@ $paginas = buscaPaginas();
                         <td><?php echo $pagina['tituloPagina'] ?></td>
                         <td><?php echo $pagina['conteudoHTML'] ?></td>
                         <td><?php echo $pagina['arquivoFonte'] ?></td>
+                        <td><?php echo $pagina['idTema'] ?></td>
+                        <td><?php echo $pagina['nomeTema'] ?></td>
                         
                         <td>
                             <a class="btn btn-primary btn-sm" href="paginas_alterar.php?idPagina=<?php echo $pagina['idPagina'] ?>" role="button">Editar</a>

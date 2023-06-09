@@ -9,7 +9,7 @@ function buscaProdutos()
 	$produto = array();
 
 	
-	$produto = chamaAPI(null, '/api/sistema/produtos_card', null, 'GET');
+	$produto = chamaAPI(null, '/sistema/produtos_card', null, 'GET');
 	//echo json_encode($produto);
 	return $produto;
 }
@@ -24,7 +24,7 @@ function buscaTodosProdutos($idProduto=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$produto = chamaAPI(null, '/api/sistema/produtos', json_encode($apiEntrada), 'GET');
+	$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'GET');
 	//echo json_encode($produto);
 	return $produto;
 }
@@ -34,25 +34,53 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
 
     if ($operacao=="inserir") {
+
+		$fotoProduto = $_FILES['fotoProduto'];
+
+		if($fotoProduto !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $fotoProduto["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/imgProdutos/";
+				$novoNomeFoto = $_POST['nomeProduto']. "_" .$fotoProduto["name"];
+				
+				move_uploaded_file($fotoProduto['tmp_name'], $pasta.$novoNomeFoto);
+		
+			}else{
+				$novoNomeFoto = "Sem_imagem";
+			}
+	
+		}
+
 		$apiEntrada = array(
 			'nomeProduto' => $_POST['nomeProduto'],
 			'valorProduto' => $_POST['valorProduto'],
-            'fotoProduto' => $_FILES['fotoProduto'],
+            'fotoProduto' => $novoNomeFoto,
             'destaque' => $_POST['destaque'],
 			
 		);
-		$produto = chamaAPI(null, '/api/sistema/produtos', json_encode($apiEntrada), 'PUT');
+		$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'PUT');
 		
 	}
 
 	
 	if ($operacao=="excluir") {
+
 		$apiEntrada = array(
 			'idProduto' => $_POST['idProduto'],
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
-		$produto = chamaAPI(null, '/api/sistema/produtos', json_encode($apiEntrada), 'DELETE');
+
+		if(!empty($_POST['fotoProduto'])){
+			$pasta = ROOT . "/img/imgProdutos/";
+			$imagem = $pasta . $_POST['fotoProduto'];
+
+			if(file_exists($imagem)){
+				unlink($imagem);
+			}
+
+		}
+
+		$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'DELETE');
 	}
 
 

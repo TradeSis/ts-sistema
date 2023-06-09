@@ -11,7 +11,7 @@ function buscaPagina($slug)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$pagina = chamaAPI(null, '/api/sistema/paginas_slug', json_encode($apiEntrada), 'GET');
+	$pagina = chamaAPI(null, '/sistema/paginas_slug', json_encode($apiEntrada), 'GET');
 	
 	return $pagina;
 }
@@ -27,7 +27,7 @@ function buscaPaginas($idPagina=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$pagina = chamaAPI(null, '/api/sistema/paginas', json_encode($apiEntrada), 'GET');
+	$pagina = chamaAPI(null, '/sistema/paginas', json_encode($apiEntrada), 'GET');
 	
 	return $pagina;
 }
@@ -44,9 +44,9 @@ if (isset($_GET['operacao'])) {
 			'conteudoHTML' => $_POST['conteudoHTML'],
 			'arquivoFonte' => $_POST['arquivoFonte'],
 			'arquivoSingle' => $_POST['arquivoSingle'],
+			'idTema' => $_POST['idTema'],
 		);
-
-		$pagina = chamaAPI(null, '/api/sistema/paginas', json_encode($apiEntrada), 'PUT');
+		$pagina = chamaAPI(null, '/sistema/paginas', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -60,7 +60,7 @@ if (isset($_GET['operacao'])) {
             'arquivoSingle' => $_POST['arquivoSingle'],
         );
 
-		$pagina = chamaAPI(null, '/api/sistema/paginas', json_encode($apiEntrada), 'POST');
+		$pagina = chamaAPI(null, '/sistema/paginas', json_encode($apiEntrada), 'POST');
 
 		
 		/* echo json_encode($sql);
@@ -72,7 +72,7 @@ if (isset($_GET['operacao'])) {
             'idPagina' => $_POST['idPagina']
         );
 
-		$pagina = chamaAPI(null, '/api/sistema/paginas', json_encode($apiEntrada), 'DELETE');
+		$pagina = chamaAPI(null, '/sistema/paginas', json_encode($apiEntrada), 'DELETE');
 		
 	}
 
