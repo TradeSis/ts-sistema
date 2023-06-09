@@ -3,14 +3,14 @@ include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
 
-function buscaNCM($Descricao=null, $Codigo=null)
+function buscaNCM($Descricao=null, $codigoNcm=null)
 {
 	
 	$ncm = array();
 	
 	$apiEntrada = array(
 		'Descricao' => $Descricao,
-		'Codigo' => $Codigo
+		'codigoNcm' => $codigoNcm
         
 	);
 	
@@ -28,21 +28,21 @@ if (isset($_GET['operacao'])) {
     if ($operacao == "filtrar") {
 
 		$Descricao = $_POST["Descricao"];
-		$Codigo = $_POST["Codigo"];
+		$codigoNcm  = $_POST["codigoNcm"];
        
 
 		if ($Descricao == ""){
 			$Descricao = null;
 		} 
 
-		if ($Codigo == ""){
-			$Codigo = null;
+		if ($codigoNcm == ""){
+			$codigoNcm = null;
 		}
 
 		$apiEntrada = array(
 
 			'Descricao' => $Descricao,
-			'Codigo' => $Codigo
+			'codigoNcm' => $codigoNcm
 		);
 		
 	
@@ -53,7 +53,6 @@ if (isset($_GET['operacao'])) {
 		echo json_encode($ncm);
 		return $ncm;
 
-		header('Location: ../ncm/ncm.php');
 	}
 	
 

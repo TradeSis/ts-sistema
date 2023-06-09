@@ -4,85 +4,61 @@ include_once '../head.php';
 include_once '../database/ncm.php';
 
 ?>
-<link href="https://cdn.jsdelivr.net/npm/jquery-treegrid@0.3.0/css/jquery.treegrid.css" rel="stylesheet">
-<link href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/jquery-treegrid@0.3.0/js/jquery.treegrid.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.21.4/dist/extensions/treegrid/bootstrap-table-treegrid.min.js"></script>
 
 <body class="bg-transparent">
 
 
-    <div class="container-flex text-center pt-2 mt-3" style="width: 90vw;">
+    <div class="container-fluid">
+        <div class="mt-3">
+            <div class="card mt-3">
+                <label class="tituloTabela pl-4 mt-3">Tabela NCM</label>
 
-        <div class="row" style="margin-left: 10vw">
-            <div class="col-sm-3 ml-2">
+                <div class="row justify-content-center">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Descricao" placeholder="Descricao">
+                        </div>
+                    </div>
 
-            </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="codigoNcm" placeholder="Codigo">
+                        </div>
+                    </div>
 
-            <div class="col-sm-4 ml-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="Descricao" placeholder="Descricao">
+                    <div class="col-sm-3">
+                        <button class="btn btn-primary w-50 mt-3" id="buscar" type="button">Pesquisar</button>
+                    </div>
                 </div>
 
-                <div class="input-group">
-                    <input type="text" class="form-control" id="Codigo" placeholder="Codigo">
+                <div class="table table-sm table-hover table-striped table-bordered table-wrapper-scroll-y my-custom-scrollbar diviFrame mt-2">
+                    <table class="table" id="myIframe">
+                        <thead class="thead-light">
+
+                            <tr>
+                                <th>Código</th>
+                                <th>Descrição</th>
+                                <th>Superior</th>
+                                <th>nivel</th>
+                                <th>Ultimo Nivel</th>
+                                <th>ncm</th>
+                            </tr>
+                        </thead>
+                        <tbody id='dados' class="fonteCorpo">
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="col-sm">
-
-                    <button class="btn btn-primary w-50 mt-3" id="buscar" type="button">Pesquisar</button>
-
-                </div>
             </div>
-
-        </div>
-
-        <div class="" style="margin-left: 10vw; text-align:left">
-            <label class="tituloTabela pl-4">NCM</label>
-        </div>
-        <div class="card mt-2" style="margin-left: 10vw; text-align:left">
-            <div class="table table-sm table-hover table-striped table-wrapper-scroll-y my-custom-scrollbar diviFrame">
-
-                <table id="table"></table>
-            </div>
-        </div>
-
-        <div class="card mt-2" style="margin-left: 10vw; text-align:left">
-            <div class="table table-sm table-hover table-striped table-wrapper-scroll-y my-custom-scrollbar diviFrame">
-
-                <table class="table" id="myIframe">
-                    <thead class="thead-light">
-
-                        <tr>
-                            <th>Código</th>
-                            <th>Descrição</th>
-                            <th>Superior</th>
-                            <th>nivel</th>
-                            <th>ultimo nivel</th>
-                        </tr>
-                    </thead>
-                    <tbody id='dados' class="fonteCorpo">
-
-                    </tbody>
-                </table>
-
-            </div>
-
         </div>
     </div>
 
     <script>
-
         function limpar() {
             buscar(null, null);
             window.location.reload();
         }
 
-        function buscar(Descricao, Codigo) {
-
-
+        function buscar(Descricao, codigoNcm) {
             $.ajax({
                 type: 'POST',
                 dataType: 'html',
@@ -92,124 +68,70 @@ include_once '../database/ncm.php';
                 },
                 data: {
                     Descricao: Descricao,
-                    Codigo: Codigo
+                    codigoNcm: codigoNcm
                 },
-
-
                 success: function (msg) {
                     var json = JSON.parse(msg);
-                    buscartable(json);
 
+                    // Sort the JSON data by codigoNcm and nivel
+                    json.sort(function (a, b) {
+                        if (a.codigoNcm === b.codigoNcm) {
+                            return a.nivel - b.nivel;
+                        } else {
+                            return a.codigoNcm.localeCompare(b.codigoNcm);
+                        }
+                    });
 
                     var linha = "";
-                    for (var $i = 0; $i < json.length; $i++) {
-                        var object = json[$i];
+                    for (var i = 0; i < json.length; i++) {
+                        var object = json[i];
 
+                        var spacesDescricao = "&nbsp;&nbsp;".repeat((object.nivel - 1) * 2); // Calculate the number of spaces for Descricao
+                        var spacesCodigoNcm = "&nbsp;&nbsp;".repeat((object.nivel - 1) * 2); // Calculate the number of spaces for codigoNcm
 
-                        linha = linha + "<tr>";
-                        linha = linha + "<td>" + object.Codigo + "</td>";
-                        linha = linha + "<td>" + object.Descricao + "</td>";
-                        linha = linha + "<td>" + object.superior + "</td>";
-                        linha = linha + "<td>" + object.nivel + "</td>";
-                        linha = linha + "<td>" + object.ultimonivel + "</td>";
-                        linha = linha + "</tr>";
+                        var rowClass = object.pesquisado ? "bold-row" : "";
+
+                        linha += "<tr class='" + rowClass + "'>";
+                        linha += "<td>" + spacesCodigoNcm + object.codigoNcm + "</td>";
+                        linha += "<td><span style='white-space: pre;'>" + spacesDescricao + "</span>" + object.Descricao + "</td>";
+                        linha += "<td>" + object.superior + "</td>";
+                        linha += "<td>" + object.nivel + "</td>";
+                        linha += "<td>" + object.ultimonivel + "</td>";
+                        linha += "<td>" + object.ncm + "</td>";
+                        linha += "</tr>";
                     }
 
-                    //alert(linha);
                     $("#dados").html(linha);
-
                 },
                 error: function (e) {
                     alert('Erro: ' + JSON.stringify(e));
+                }
+            });
+        }
 
-                    return null;
+        $(document).ready(function () {
+            $("#buscar").click(function () {
+                if ($("#Descricao").val() === "" && $("#codigoNcm").val() === "") {
+                    alert("Preencher o campo de Descrição ou Codigo!");
+                } else {
+                    buscar($("#Descricao").val(), $("#codigoNcm").val());
                 }
             });
 
-        }
-
-        $("#buscar").click(function () {
-            if ($("#Descricao").val() == "" && $("#Codigo").val() == "") {
-                alert("Preencher o campo de Descrição ou Codigo!")
-            }
-            else {
-                buscar($("#Descricao").val(), $("#Codigo").val());
-
-            }
-        })
-
-        document.addEventListener("keypress", function (e) {
-            if (e.key === "Enter") {
-                buscar($("#Descricao").val(), $("#Codigo").val());
-            }
-        });
-
-        $('.btnAbre').click(function () {
-            $('.menuFiltros').toggleClass('mostra');
-            $('.diviFrame').toggleClass('mostra');
-        });
-    </script>
-
-    <script>
-        var $table = $('#table')
-
-        function buscartable(json) {
-            var $table = $('#table')
-        
-            $table.bootstrapTable('load', json)
-            
-            $table.bootstrapTable({
-                data: json,
-                idField: 'Codigo',
-                showColumns: true,
-                columns: [
-                    {
-                        field: 'ck',
-                        checkbox: true
-                    },
-                    {
-                        field: 'Codigo',
-                        title: 'Codigo',
-                        width: '180px'
-                    },
-                    {
-                        field: 'Descricao',
-                        title: 'Descricao'
-                    },
-                    {
-                        field: 'superior',
-                        title: 'superior'
-                    },
-                    {
-                        field: 'pesquisado',
-                        title: 'pesquisado'
-                    },
-                    {
-                        field: 'nivel',
-                        title: 'nivel'
-                    }
-                ],
-                treeShowField: 'Descricao',
-                parentIdField: 'superior',
-                onPostBody: function () {
-                    var columns = $table.bootstrapTable('getOptions').columns
-
-                    if (columns && columns[0][1].visible) {
-                        $table.treegrid({
-                            treeColumn: 1,
-                            onChange: function () {
-                                $table.bootstrapTable('resetView')
-                            }
-                        })
-                    }
+            $(document).keypress(function (e) {
+                if (e.key === "Enter") {
+                    buscar($("#Descricao").val(), $("#codigoNcm").val());
                 }
-            })
-        }
-
-        
-
-        
+            });
+        });
     </script>
+
+    <style>
+        .bold-row {
+            font-weight: bold;
+        }
+    </style>
+
 
 </body>
 

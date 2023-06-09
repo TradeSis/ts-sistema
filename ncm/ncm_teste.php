@@ -3,100 +3,140 @@
 include_once '../head.php';
 include_once '../database/ncm.php';
 
-$ncms = buscaNCM();
-/* echo json_encode($ncms); */
 ?>
 
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <body class="bg-transparent">
 
 
-    <div class="container-flex text-center pt-2 mt-3 justify-content-center" >
+  <div class="container-fluid">
+    <div class="mt-3">
+      <div class="card mt-3">
+        <label class="tituloTabela pl-4 mt-3">Tabela NCM</label>
 
         <div class="row justify-content-center">
           <div class="col-sm-3">
-              <form  action="../database/ncm_nivel.php?operacao=filtrar" id="form" method="post">
-                
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="Descricao" name="Descricao" placeholder="Descricao">
-                    </div>
+            <div class="input-group">
+              <input type="text" class="form-control" id="Descricao" placeholder="Descricao">
+            </div>
+          </div>
 
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo">
-                    </div>
+          <div class="col-sm-3">
+            <div class="input-group">
+              <input type="text" class="form-control" id="codigoNcm" placeholder="Codigo">
+            </div>
+          </div>
 
-                    <div class="col-sm">
-
-                        <button class="btn btn-primary w-50 mt-3" id="buscar" type="submit">Pesquisar</button>
-
-                    </div>
-                
-              </form>
+          <div class="col-sm-3">
+            <button class="btn btn-primary w-50 mt-3" id="buscar" type="button">Pesquisar</button>
           </div>
         </div>
-        <div class="mt-4">
-            <label class="tituloTabela pl-4">NCM</label>
+
+        <div class="card mt-2">
+          <div class="table table-sm table-hover table-striped table-bordered table-wrapper-scroll-y my-custom-scrollbar diviFrame">
+            <table class="table" id="myIframe">
+              <thead class="thead-light">
+
+                <tr>
+                  <th>Código</th>
+                  <th>Descrição</th>
+                  <th>Superior</th>
+                  <th>nivel</th>
+                  <th>Ultimo Nivel</th>
+                  <th>ncm</th>
+                </tr>
+              </thead>
+              <tbody id='dados' class="fonteCorpo">
+
+              </tbody>
+            </table>
+          </div>
+
         </div>
-        <section id="principal" class="h-75 container-sm mx-auto bg-light " style="max-width: 800px;">
-
-
-                <div class="accordion" id="accordionExample">
-
-                  <?php foreach ($ncms as $ncm) { ?>
-                    <div class="accordion-item my-4">
-                      <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-
-                          <span class="px-3 text-info"><?php echo $ncm['Descricao'] ?></span> nivel: <?php echo $ncm['nivel'] ?>
-
-                        </button>
-                      </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body"><!-- 1 -->
-
-                          <div class="my-2"><?php echo $ncm['nivel'] ?></div>
-
-
-
-                        </div> <!-- 1 -->
-                      </div>
-
-                    </div>
-
-                  <?php } ?>
-
-                </div>
-
-        </section>
-
+      </div>
     </div>
-    <script>
-    $(document).ready(function() {
-            $("#form").submit(function() {
-                var formData = new FormData(this);
+  </div>
 
-                $.ajax({
-                    url: "../database/ncm_nivel.php?operacao=filtrar",
-                    type: 'POST',
-                    data: formData,
-                    success: refreshPage(),
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    
-                });
+  <script>
+    function limpar() {
+      buscar(null, null);
+      window.location.reload();
+    }
 
-            });
+    function buscar(Descricao, codigoNcm) {
+      $.ajax({
+        type: 'POST',
+        dataType: 'html',
+        url: '../database/ncm.php?operacao=filtrar',
+        beforeSend: function () {
+          $("#dados").html("Carregando...");
+        },
+        data: {
+          Descricao: Descricao,
+          codigoNcm: codigoNcm
+        },
+        success: function (msg) {
+          var json = JSON.parse(msg);
 
-            function refreshPage() {
-            
-                window.location.reload();
+          // Sort the JSON data by codigoNcm and nivel
+          json.sort(function (a, b) {
+            if (a.codigoNcm === b.codigoNcm) {
+              return a.nivel - b.nivel;
+            } else {
+              return a.codigoNcm.localeCompare(b.codigoNcm);
             }
-        });
-        </script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+          });
+
+          var linha = "";
+          for (var i = 0; i < json.length; i++) {
+            var object = json[i];
+
+            var spacesDescricao = "&nbsp;&nbsp;".repeat((object.nivel - 1) * 2); // Calculate the number of spaces for Descricao
+            var spacesCodigoNcm = "&nbsp;&nbsp;".repeat((object.nivel - 1) * 2); // Calculate the number of spaces for codigoNcm
+
+            var rowClass = object.pesquisado ? "bold-row" : "";
+
+            linha += "<tr class='" + rowClass + "'>";
+            linha += "<td>" + spacesCodigoNcm + object.codigoNcm + "</td>";
+            linha += "<td><span style='white-space: pre;'>" + spacesDescricao + "</span>" + object.Descricao + "</td>";
+            linha += "<td>" + object.superior + "</td>";
+            linha += "<td>" + object.nivel + "</td>";
+            linha += "<td>" + object.ultimonivel + "</td>";
+            linha += "<td>" + object.ncm + "</td>";
+            linha += "</tr>";
+          }
+
+          $("#dados").html(linha);
+        },
+        error: function (e) {
+          alert('Erro: ' + JSON.stringify(e));
+        }
+      });
+    }
+
+    $(document).ready(function () {
+      $("#buscar").click(function () {
+        if ($("#Descricao").val() === "" && $("#codigoNcm").val() === "") {
+          alert("Preencher o campo de Descrição ou Codigo!");
+        } else {
+          buscar($("#Descricao").val(), $("#codigoNcm").val());
+        }
+      });
+
+      $(document).keypress(function (e) {
+        if (e.key === "Enter") {
+          buscar($("#Descricao").val(), $("#codigoNcm").val());
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .bold-row {
+      font-weight: bold;
+    }
+  </style>
+
+
 </body>
 
 </html>
