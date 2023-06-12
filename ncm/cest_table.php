@@ -3,6 +3,13 @@
 include_once '../head.php';
 include_once '../database/ncm.php';
 
+$codigoNcm = null;
+
+if (isset($_GET['codigoNcm'])) {
+    $codigoNcm = $_GET['codigoNcm'];
+}
+
+
 ?>
 
 <body class="bg-transparent">
@@ -13,23 +20,34 @@ include_once '../database/ncm.php';
             <div class="card mt-3">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" style="color:blue" href="#">Tabela NCM</a>
+                        <a class="nav-link active" href="ncm_table.php">Tabela NCM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="cest_table.php">Tabela Cest</a>
+                        <a class="nav-link active" style="color:blue" href="#">Tabela Cest</a>
                     </li>
                 </ul>
 
                 <div class="row justify-content-center">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="Descricao" placeholder="Descricao">
+                            <input type="text" class="form-control" id="nomeCest" placeholder="Nome">
                         </div>
                     </div>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="codigoNcm" placeholder="Codigo">
+                            <input type="text" class="form-control" id="codigoCest" placeholder="Código Cest">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <?php if (isset($_GET['codigoNcm'])) { ?>
+                                <input type="text" class="form-control" id="codigoNcm" placeholder="Código Ncm"
+                                    value="<?php echo $_GET['codigoNcm']; ?>">
+                            <?php } else { ?>
+                                <input type="text" class="form-control" id="codigoNcm" placeholder="Código Ncm">
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -45,12 +63,10 @@ include_once '../database/ncm.php';
 
                             <tr>
                                 <th>Código</th>
-                                <th>Descrição</th>
-                                <th>Superior</th>
-                                <th>nivel</th>
-                                <th>Ultimo Nivel</th>
+                                <th>Nome</th>
+                                <th>Cest</th>
+                                <th>superior</th>
                                 <th>ncm</th>
-                                <th>Possui Cest</th>
                             </tr>
                         </thead>
                         <tbody id='dados' class="fonteCorpo">
@@ -62,52 +78,41 @@ include_once '../database/ncm.php';
     </div>
 
     <script>
+        <?php if (isset($_GET['codigoNcm'])) { ?>
+            buscar($("#nomeCest").val(), $("#codigoCest").val(), $("#codigoNcm").val());
+        <?php } ?>
+
         function limpar() {
-            buscar(null, null);
+            buscar(null, null, null);
             window.location.reload();
         }
 
-        function buscar(Descricao, codigoNcm) {
+        function buscar(nomeCest, codigoCest, codigoNcm) {
             $.ajax({
                 type: 'POST',
                 dataType: 'html',
-                url: '../database/ncm.php?operacao=filtrar',
+                url: '../database/cest.php?operacao=filtrar',
                 beforeSend: function () {
                     $("#dados").html("Carregando...");
                 },
                 data: {
-                    Descricao: Descricao,
+                    nomeCest: nomeCest,
+                    codigoCest: codigoCest,
                     codigoNcm: codigoNcm
                 },
                 success: function (msg) {
                     var json = JSON.parse(msg);
 
-
-                    json.sort(function (a, b) {
-                        if (a.codigoNcm === b.codigoNcm) {
-                            return a.nivel - b.nivel;
-                        } else {
-                            return a.codigoNcm.localeCompare(b.codigoNcm);
-                        }
-                    });
-
                     var linha = "";
                     for (var i = 0; i < json.length; i++) {
                         var object = json[i];
 
-                        var spacesDescricao = "&nbsp;&nbsp;".repeat((object.nivel - 1) * 2);
-                        var spacesCodigoNcm = "&nbsp;&nbsp;".repeat((object.nivel - 1) * 2);
-
-                        var rowClass = object.pesquisado ? "bold-row" : "";
-
-                        linha += "<tr class='" + rowClass + "'>";
-                        linha += "<td>" + spacesCodigoNcm + object.codigoNcm + "</td>";
-                        linha += "<td><span style='white-space: pre;'>" + spacesDescricao + "</span>" + object.Descricao + "</td>";
+                        linha += "<tr>";
+                        linha += "<td>" + object.codigoCest + "</td>";
+                        linha += "<td>" + object.nomeCest + "</td>";
+                        linha += "<td>" + object.cest + "</td>";
                         linha += "<td>" + object.superior + "</td>";
-                        linha += "<td>" + object.nivel + "</td>";
-                        linha += "<td>" + object.ultimonivel + "</td>";
-                        linha += "<td>" + object.ncm + "</td>";
-                        linha += "<td>" + (object.codigoCest ? "<a href='cest_table.php?codigoNcm=" + object.codigoNcm + "'>" + "Sim" + "</a>" : "Não") + "</td>";
+                        linha += "<td>" + object.codigoNcm + "</td>";
                         linha += "</tr>";
                     }
 
@@ -121,16 +126,16 @@ include_once '../database/ncm.php';
 
         $(document).ready(function () {
             $("#buscar").click(function () {
-                if ($("#Descricao").val() === "" && $("#codigoNcm").val() === "") {
+                if ($("#nomeCest").val() === "" && $("#codigoCest").val() === "" && $("#codigoNcm").val() === "") {
                     alert("Preencher o campo de Descrição ou Codigo!");
                 } else {
-                    buscar($("#Descricao").val(), $("#codigoNcm").val());
+                    buscar($("#nomeCest").val(), $("#codigoCest").val(), $("#codigoNcm").val());
                 }
             });
 
             $(document).keypress(function (e) {
                 if (e.key === "Enter") {
-                    buscar($("#Descricao").val(), $("#codigoNcm").val());
+                    buscar($("#nomeCest").val(), $("#codigoCest").val(), $("#codigoNcm").val());
                 }
             });
         });
