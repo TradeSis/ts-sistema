@@ -1,5 +1,5 @@
 <?php
-
+include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
 function buscaTemas($idTema=null){
@@ -36,31 +36,49 @@ function buscaTema()
       $tema = $tema[0];
     }
 
-	/* echo json_encode($tema);
-	return; */
 	return $tema;
 }
 
-/* $tema = $_POST['tema'];
+if (isset($_GET['operacao'])) {
 
+	$operacao = $_GET['operacao'];
 
+    if ($operacao=="inserir") {
+		
+		$apiEntrada = array(
+			'nomeTema' => $_POST['nomeTema'],
+			'css' => $_POST['css'],
+			'ativo' => $_POST['ativo'],
+			
+		);
+		$tema = chamaAPI(null, '/sistema/temas', json_encode($apiEntrada), 'PUT');
+		
+	}
 
-	mysqli_query($conexao,"update temas set ativo = false");//desativa todos os temas
+	if ($operacao=="alterar") {
+		$apiEntrada = array(
+            'idTema' => $_POST['idTema'],
+			'nomeTema' => $_POST['nomeTema'],
+			'css' => $_POST['css'],
+			'ativo' => $_POST['ativo'],
+		);
 
-  $insere = mysqli_query($conexao,"select * from temas where descricao = '$tema' limit 1");
-  if (mysqli_num_rows($insere) > 0){
-  	$inserir = mysqli_query($conexao,"update temas set ativo = true where descricao = '$tema'");
-  }else{
-	$inserir = mysqli_query($conexao,"insert into temas VALUES (0, '$tema',true)");
-}
+		$tema = chamaAPI(null, '/sistema/temas', json_encode($apiEntrada), 'POST');
+		
+	}
 
-
-if ($inserir){
-	echo "1";
-	header('Location: ../perfil/temas.php');
 	
-}else{
-	echo "0";
-} */
+	
+	if ($operacao=="excluir") {
+		$apiEntrada = array(
+            'idTema' => $_POST['idTema'],
+		);
+		$tema = chamaAPI(null, '/sistema/temas', json_encode($apiEntrada), 'DELETE');
+	}
+
+
+	header('Location: ../perfil/temas.php');	
+	
+}
 
 ?>

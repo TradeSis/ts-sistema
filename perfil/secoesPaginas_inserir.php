@@ -89,7 +89,7 @@ $paginas = buscaPaginas($_GET["idPagina"]);
                         <div class="col-sm-12" style="margin-top: 10px">
                             <div class="form-group">
                                 <label>Parametros</label>
-                                <textarea name="parametros" cols="130" rows="7"></textarea>
+                                <textarea name="parametros" cols="130" rows="20"></textarea>
                             </div>
                         </div>
                     </div>
