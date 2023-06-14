@@ -1,103 +1,58 @@
 <?php
- include_once '../head.php';
- include_once '../database/temas.php';
+// helio 01022023 altereado para include_once
+// helio 26012023 16:16
 
- $conexao = conectaMysql();
- $tema = buscaTema();
-/* json_encode($tema);
-return; */
+include_once('../head.php');
+include_once('../database/temas.php');
+
+$temas = buscaTemas();
+
+
 ?>
 
+<body class="bg-transparent">
+    <div class="container text-center" style="margin-top:30px">
 
-
-<style>
-input[type="radio"] {
-        visibility: hidden;
-}
-    
-.inputRadio label {
-    display: block;
-    border: 2px solid #CCC;
-    width: 230px;
-	padding: 2px;
-    float: left;
-	text-align: center;
-	
-}
-
-input[type="radio"]:checked+label {  
-	border: 4px solid #000;
-}
-input[type="radio"]:checked+label::before {  
-	content: "Ativo ";
-}	
-	
-
-#DivConfiguracoes img {
-  height: 120px;
-}
-</style>
-<?php
-$default = '';
-$roxo  = '';
-$vermelho = '';
-$azul     = '';
-$verde     = '';
-
-$configs  = mysqli_query($conexao, "select * from temas where ativo = true limit 1");
-  $config = mysqli_fetch_assoc($configs);
-
- switch ($config["nomeTema"]){
-      case  'Default'     : $default  = 'checked';  break;
-		  case  'Roxo'          : $roxo  = 'checked';  break;
-		  case  'Vermelho'         : $vermelho  = 'checked';  break;
-		  case  'Azul'             : $azul  = 'checked';  break;
-      case  'Verde'             : $verde  = 'checked';  break;
-		  
-		  default : $default  = 'checked'; $defaultAtivo = 'Ativo';
-	  }
-?>
-
-
-<div class="container mt-4" style="text-align:center">
-  <h3>Configurações</h3>
-	<h6 style="text-align:left; margin-top:30px">Cor do Cabeçalho</h6>
-    <form method="post" id="grava" name="grava" action="../database/temas.php" enctype="multipart/form-data">
-        <div id="DivConfiguracoes" style="text-align:center">
-        
-          <div class="row inputRadio" >
-            <input type="radio" name="tema" id="i1" value="Default" <?php echo $default; ?> />
-            <label for="i1" style="background-color: #E2EBEB;;"><img src="#" alt=""></label>
-
-            <input type="radio" name="tema" id="i2" value="Roxo" <?php echo $roxo; ?> />
-            <label for="i2" style="background-color: purple;"><img src="#" alt=""></label>
-
-            <input type="radio" name="tema" id="i3"   value="Vermelho" <?php echo $vermelho; ?> />
-            <label for="i3" style="background-color: red;"><img src="#" alt="" ></label>
-            
-            <input type="radio" name="tema" id="i4" value="Azul" <?php echo $azul; ?> />
-            <label for="i4" style="background-color: blue;"><img src="#" alt=""> </label>
-
-            <input type="radio" name="tema" id="i5" value="Verde" <?php echo $verde; ?> />
-            <label for="i5" style="background-color: green;"><img src="#" alt=""> </label>
-          </div>
-
-          <!-- <div class="row inputRadio" >
-            <input type="radio" name="tema" id="i6" value="RoxoVertical" <?php echo $roxoVertical; ?> />
-            <label for="i6"><img src="#" alt=""></label>
-          </div> -->
-
-          <div class="row">
-            <div class="form-group">
-              <button class="btn btn-primary" id="btnGravar"><i class="fa fa-save"></i> Salvar Alterações</button>
+        <div class="row mt-4">
+            <div class="col-sm-8">
+                <h4 class="tituloTabela">Temas</h4>
             </div>
-          </div>
+
+            <div class="col-sm-4" style="text-align:right">
+                <a href="temas_inserir.php" role="button" class="btn btn-primary">Adicionar</a>
+            </div>
 
         </div>
-    </form>
+        <div class="card shadow mt-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tema</th>
+                        <th>Css</th>
+                        <th>Ativo</th>
+                        <th>Ação</th>
 
-</div>
+                    </tr>
+                </thead>
 
+                <?php
+                foreach ($temas as $tema) {
+                ?>
+                    <tr>
+
+                        <td><?php echo $tema['nomeTema'] ?></td>
+                        <td><?php echo $tema['css'] ?></td>
+                        <td><?php echo $tema['ativo'] ?></td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="temas_alterar.php?idTema=<?php echo $tema['idTema'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="temas_excluir.php?idTema=<?php echo $tema['idTema'] ?>" role="button">Excluir</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+
+            </table>
+        </div>
+    </div>
 
 
 </body>

@@ -1,14 +1,9 @@
-
 <?php
-//Lucas 04042023 criado
-
 include_once('../head.php');
 include_once('../database/perfil.php');
 
-$perfil = buscaPerfil($_GET['idPerfil']);
+$perfil = buscaPerfil();
 ?>
-
-
 
 <body class="bg-transparent">
 
@@ -29,68 +24,73 @@ $perfil = buscaPerfil($_GET['idPerfil']);
                 <form action="../database/perfil.php?operacao=alterar" method="post" enctype="multipart/form-data">
 
                     <div class="form-group" style="margin-top:10px">
-                    
-                    <div class="row">
-                        <div class="col-sm-6" style="margin-top: 10px">
-                            <label>Nome</label>
-                            <input type="text" name="nome" class="form-control" value="<?php echo $perfil['nome'] ?>">
-                            <input type="text" class="form-control" name="idPerfil" value="<?php echo $perfil['idPerfil'] ?>" style="display: none">
-                        </div>
-                        
-                        <div class="col-sm-6" style="margin-top: -20px">
-                            <label>Foto</label>
-                            <label class="picture" for="foto" tabIndex="0">
-                                <span class="picture__image"></span>
-                            </label>
-                            <!-- <img src="admin/imgPerfil/<?php echo $perfil['foto'] ?>"> -->
 
-                            <input type="file" name="foto" id="foto" value="admin/imgPerfil/<?php echo $perfil['foto'] ?>">
-                            
+                        <div class="row">
+                            <div class="col-sm-6" style="margin-top: 10px">
+                                <label>Nome</label>
+                                <input type="text" name="nome" class="form-control" value="<?php echo $perfil['nome'] ?>">
+                                <input type="text" class="form-control" name="idPerfil" value="<?php echo $perfil['idPerfil'] ?>" style="display: none">
                             </div>
-                    </div>
-   
 
-                    <div class="row">
-                        <div class="col-sm-6" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Endereço</label>
-                                <input type="text" name="endereco" class="form-control" required value="<?php echo $perfil['endereco'] ?>">
+                            <div class="col-sm-2">
+                                <label>Foto Atual</label>
+                                <img src="<?php echo URLROOT ?>/img/imgPerfil/<?php echo $perfil["foto"] ?>" width="50" height="50">
                             </div>
-                        </div>
-                        <div class="col-sm-2" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Numero</label>
-                                <input type="text" name="numero" class="form-control" required value="<?php echo $perfil['numero'] ?>" >
-                            </div>
-                        </div>
-                        <div class="col-sm-4" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Bairro</label>
-                                <input type="text" name="bairro" class="form-control" required value="<?php echo $perfil['bairro'] ?>" >
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-sm-4" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Cep</label>
-                                <input type="text" name="cep" class="form-control" required value="<?php echo $perfil['cep'] ?>" >
+                            <div class="col-sm-4" style="margin-top: -20px">
+                                <label>Foto</label>
+                                <label class="picture" for="foto" tabIndex="0">
+                                    <span class="picture__image"></span>
+                                </label>
+
+
+                                <input type="file" name="foto" id="foto" value="<?php echo URLROOT ?>/img/imgPerfil/<?php echo $perfil["foto"] ?>">
+
                             </div>
                         </div>
-                        <div class="col-sm-6" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Cidade</label>
-                                <input type="text" name="cidade" class="form-control" required value="<?php echo $perfil['cidade'] ?>" >
+
+
+                        <div class="row">
+                            <div class="col-sm-6" style="margin-top: 10px">
+                                <div class="form-group">
+                                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Endereço</label>
+                                    <input type="text" name="endereco" class="form-control" required value="<?php echo $perfil['endereco'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-2" style="margin-top: 10px">
+                                <div class="form-group">
+                                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Numero</label>
+                                    <input type="text" name="numero" class="form-control" required value="<?php echo $perfil['numero'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-4" style="margin-top: 10px">
+                                <div class="form-group">
+                                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Bairro</label>
+                                    <input type="text" name="bairro" class="form-control" required value="<?php echo $perfil['bairro'] ?>">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-2" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Estado</label>
-                                <input type="text" name="estado" class="form-control" required value="<?php echo $perfil['estado'] ?>" >
+
+                        <div class="row">
+                            <div class="col-sm-4" style="margin-top: 10px">
+                                <div class="form-group">
+                                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Cep</label>
+                                    <input type="text" name="cep" class="form-control" required value="<?php echo $perfil['cep'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="margin-top: 10px">
+                                <div class="form-group">
+                                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Cidade</label>
+                                    <input type="text" name="cidade" class="form-control" required value="<?php echo $perfil['cidade'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-sm-2" style="margin-top: 10px">
+                                <div class="form-group">
+                                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Estado</label>
+                                    <input type="text" name="estado" class="form-control" required value="<?php echo $perfil['estado'] ?>">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                     </div>
 
@@ -98,55 +98,40 @@ $perfil = buscaPerfil($_GET['idPerfil']);
                         <div class="col-sm" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Email</label>
-                                <input type="email" name="email" class="form-control" required value="<?php echo $perfil['email'] ?>" >
+                                <input type="email" name="email" class="form-control" required value="<?php echo $perfil['email'] ?>">
                             </div>
                         </div>
-                        <div class="col-sm" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label class='control-label' for='inputNormal' style="margin-top: -20px;">Telefone</label>
-                                <input type="number" name="telefone" class="form-control" required value="<?php echo $perfil['telefone'] ?>" >
-                            </div>
-                        </div>
+
                         <div class="col-sm" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Whatsapp</label>
-                                <input type="number" name="whatsapp" class="form-control" required value="<?php echo $perfil['whatsapp'] ?>" >
+                                <input type="number" name="whatsapp" class="form-control" required value="<?php echo $perfil['whatsapp'] ?>">
                             </div>
                         </div>
                     </div>
-
-                    <label>Logo</label>
-                        <label class="picture" for="logo" tabIndex="0">
-                            <span class="picture__image"></span>
-                        </label>
-
-                        <input type="file" name="logo" id="logo">
 
                     <div class="row">
                         <div class="col-sm" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Twitter</label>
-                                <input type="email" name="twitter" class="form-control" required value="<?php echo $perfil['twitter'] ?>" >
+                                <input type="email" name="twitter" class="form-control" required value="<?php echo $perfil['twitter'] ?>">
                             </div>
                         </div>
                         <div class="col-sm" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">facebook</label>
-                                <input type="email" name="facebook" class="form-control" required value="<?php echo $perfil['facebook'] ?>" >
+                                <input type="email" name="facebook" class="form-control" required value="<?php echo $perfil['facebook'] ?>">
                             </div>
                         </div>
                         <div class="col-sm" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -20px;">Instagram</label>
-                                <input type="email" name="instagram" class="form-control" required value="<?php echo $perfil['instagram'] ?>" >
+                                <input type="email" name="instagram" class="form-control" required value="<?php echo $perfil['instagram'] ?>">
                             </div>
                         </div>
                     </div>
-                        
-
 
                     <div class="card-footer bg-transparent" style="text-align:right">
-
                         <button type="submit" class="btn btn-sm btn-success">Salvar</button>
                     </div>
                 </form>
@@ -155,41 +140,11 @@ $perfil = buscaPerfil($_GET['idPerfil']);
     </div>
 
 
-
-
-
     <script>
-
-
-
-        $(document).ready(function() {
-            $("#form").submit(function() {
-                var formData = new FormData(this);
-
-                $.ajax({
-                    url: "../database/aplicativo.php?operacao=inserir",
-                    type: 'POST',
-                    data: formData,
-                    success: refreshPage(),
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-
-                });
-
-            });
-
-            function refreshPage() {
-                window.location.reload();
-            }
-        });
-
-        
-
         //Carregar a imagem na tela
         const inputFile = document.querySelector("#foto");
         const pictureImage = document.querySelector(".picture__image");
-        const pictureImageTxt = "Carregar imagem";
+        const pictureImageTxt = "Nova Foto";
         pictureImage.innerHTML = pictureImageTxt;
 
         inputFile.addEventListener("change", function(e) {

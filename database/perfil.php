@@ -6,13 +6,10 @@ function buscaPerfil($idPerfil=null)
 {
 	
 	$perfil = array();
-	//echo json_encode($perfil);
-	//return;
+
 	$apiEntrada = array(
 		'idPerfil' => $idPerfil,
 	);
-	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
-	return; */
 	$perfil = chamaAPI(null, '/sistema/perfil', json_encode($apiEntrada), 'GET');
 		
 	return $perfil[0];
@@ -24,11 +21,28 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
 
 	if ($operacao=="alterar") {
+
+		$foto = $_FILES['foto'];
+
+		if($foto !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $foto["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/imgPerfil/";
+				$novoNomeFoto = $_POST['nome']. "-" .$foto["name"];
+				
+				move_uploaded_file($foto['tmp_name'], $pasta.$novoNomeFoto);
+		
+			}else{
+				$novoNomeFoto = "Sem_imagem";
+			}
+	
+		}
         
 		$apiEntrada = array(
 			'idPerfil' => $_POST['idPerfil'],
 			'nome' => $_POST['nome'],
-			'foto' => $_FILES['foto'],
+			'foto' => $novoNomeFoto,
 			'endereco' => $_POST['endereco'],
 			'numero' => $_POST['numero'],
 			'bairro' => $_POST['bairro'],
@@ -38,18 +52,15 @@ if (isset($_GET['operacao'])) {
 			'email' => $_POST['email'],
 			'telefone' => $_POST['telefone'],
 			'whatsapp' => $_POST['whatsapp'],
-			'logo' => $_FILES['logo'],
 			'twitter' => $_POST['twitter'],
 			'facebook' => $_POST['facebook'],
 			'instagram' => $_POST['instagram'],
 		);
-        /* echo json_encode($apiEntrada);
-        return; */
+
 		$perfil = chamaAPI(null, '/sistema/perfil', json_encode($apiEntrada), 'POST');
 		
 	}
 
-	
 	
 	if ($operacao=="excluir") {
 		$apiEntrada = array(
@@ -57,9 +68,6 @@ if (isset($_GET['operacao'])) {
 		);
 		$clientes = chamaAPI(null, '/services/clientes', json_encode($apiEntrada), 'DELETE');
 	}
-
-
-//	include "../cadastros/clientes_ok.php";
 
 	header('Location: ../perfil/perfil.php');	
 	
