@@ -1,4 +1,8 @@
 <?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
@@ -27,25 +31,16 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
     if ($operacao == "filtrar") {
 
-		$Descricao = $_POST["Descricao"];
-		$codigoNcm  = $_POST["codigoNcm"];
+		$FiltroTipoNcm = $_POST["FiltroTipoNcm"];
+		$dadosNcm  = $_POST["dadosNcm"];
        
-
-		if ($Descricao == ""){
-			$Descricao = null;
-		} 
-
-		if ($codigoNcm == ""){
-			$codigoNcm = null;
-		}
-
 		$apiEntrada = array(
 
-			'Descricao' => $Descricao,
-			'codigoNcm' => $codigoNcm
+			'FiltroTipoNcm' => $FiltroTipoNcm,
+			'dadosNcm' => $dadosNcm
 		);
 		
-	
+		$_SESSION['filtro_ncm'] = $apiEntrada;
 		//echo json_encode(($apiEntrada));
 		/* return; */
 		$ncm = chamaAPI(null, '/sistema/ncm', json_encode($apiEntrada), 'GET');

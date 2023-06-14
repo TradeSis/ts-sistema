@@ -1,4 +1,8 @@
 <?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
@@ -28,31 +32,26 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
     if ($operacao == "filtrar") {
 
-		$nomeCest = $_POST["nomeCest"];
-		$codigoCest  = $_POST["codigoCest"];
-		$codigoNcm  = $_POST["codigoNcm"];
+		$FiltroTipoCest = $_POST["FiltroTipoCest"];
+		$dadosCest  = $_POST["dadosCest"];
        
 
-		if ($nomeCest == ""){
-			$nomeCest = null;
+		if ($FiltroTipoCest == ""){
+			$FiltroTipoCest = null;
 		} 
 
-		if ($codigoCest == ""){
-			$codigoCest = null;
-		}
-
-		if ($codigoNcm == ""){
-			$codigoNcm = null;
+		if ($dadosCest == ""){
+			$dadosCest = null;
 		}
 
 		$apiEntrada = array(
 
-			'nomeCest' => $nomeCest,
-			'codigoCest' => $codigoCest,
-			'codigoNcm' => $codigoNcm
+			'FiltroTipoCest' => $FiltroTipoCest,
+			'dadosCest' => $dadosCest
 		);
 		
-	
+		
+		$_SESSION['filtro_cest'] = $apiEntrada;
 		//echo json_encode(($apiEntrada));
 		/* return; */
 		$cest = chamaAPI(null, '/sistema/cest', json_encode($apiEntrada), 'GET');
