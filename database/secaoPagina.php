@@ -45,24 +45,40 @@ if (isset($_GET['operacao'])) {
 			
 		);
 
-		/* echo json_encode($apiEntrada);
-		return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'PUT');
 		
 	}
 
     if ($operacao=="alterar") {
+	
+		/* echo json_encode($_POST);
+		return; */
+
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		    'subTitulo' => $_POST['subTitulo'],
+			'descricao' => $_POST['descricao'],
+			'pastaImg' => $_POST['pastaImg'],
+			'nomeImg' => $_POST['nomeImg'],
+			'textoBotao' => $_POST['textoBotao'],
+			'corCard' => $_POST['corCard'],
+			'textoFooter1' => $_POST['textoFooter1'],
+			'textoFooter2' => $_POST['textoFooter2'],
+
+		);
+		
+		$parametros = array_map( 'htmlentities' , $parametros1);
+
 		$apiEntrada = array(
 
             'idSecaoPagina' => $_POST['idSecaoPagina'],
             'idPagina' => $_POST['idPagina'],
 		    'idSecao' => $_POST['idSecao'],
 		    'ordem' => $_POST['ordem'],
-			'parametros' => $_POST['parametros']
+			'parametros' => json_encode($parametros),
 			
 		);
-       /*  echo json_encode($apiEntrada);
-		return; */
+
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 		
 	}
@@ -71,8 +87,7 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idSecaoPagina' => $_POST['idSecaoPagina'],
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
+
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'DELETE');
 	}
 
