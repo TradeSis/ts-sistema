@@ -2,11 +2,11 @@
 include_once('../head.php');
 include_once('../database/secao.php');
 include_once('../database/paginas.php');
+include_once('../database/secaoPagina.php');
 
 $secoes = buscaSecao();
 $paginas = buscaPaginas($_GET["idPagina"]);
-
-
+//echo json_encode($secoes);
 ?>
 
 
@@ -87,11 +87,14 @@ $paginas = buscaPaginas($_GET["idPagina"]);
 
                     <div class="row">
                         <div class="col-sm-12" style="margin-top: 10px">
+                   
                             <div class="form-group">
                                 <label>Parametros</label>
-                                <textarea name="parametros" cols="130" rows="20"></textarea>
+                                <textarea name="parametros" cols="130" rows="10"></textarea>
+                               
                             </div>
                         </div>
+
                     </div>
 
                 </div>

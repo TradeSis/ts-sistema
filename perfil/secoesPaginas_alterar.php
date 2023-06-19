@@ -8,15 +8,18 @@ $secoes = buscaSecao();
 $paginas = buscaPaginas();
 $idSecaoPagina = $_GET['idSecaoPagina'];
 $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
-/* echo json_encode($secoes); */
+//echo json_encode($secoesPagina);
 /* echo json_decode($secoesPagina['parametros'], true); */
 
+
+$arquivoFonte = $secoesPagina["arquivoFonte2"];
+$temporaria = explode('.' , $arquivoFonte);
+//echo json_encode($temporaria[0]);
 ?>
 
 <body class="bg-transparent">
 
     <div class="container" style="margin-top:10px">
-
         <div class="row mt-4">
             <div class="col-sm-8">
                 <h3 class="col">Seções da Paginas</h3>
@@ -27,7 +30,7 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
         </div>
 
         <div class="container" style="margin-top: 10px">
-            <form action="../database/secaoPagina.php?operacao=alterar" method="post">
+            <form action="../database/secaoPagina.php?operacao=<?php echo $temporaria[0] ?>" method="post">
                 <div class="row">
                     <div class="col-sm-6" style="margin-top: -5px">
                         <div class="select-form-group">
@@ -87,16 +90,24 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
                     </div>
                 </div>
 
-                <div class="row">
-                    
-                    
-                        <div class="col-sm-12" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label>Parametros</label>
-                                <textarea name="parametros" cols="130" rows="20"><?php echo $secoesPagina['parametros'] ?></textarea>
-                            </div>
+                <div class="row">     
+                    <div class="col-sm-12" style="margin-top: 10px">
+                   
+                        <div class="form-group">
+                            <label>Parametros</label>
+                            
+                            <?php 
+                                    $arquivoFonte = $secoesPagina["arquivoFonte2"];
+                                    $temporaria = explode('.' , $arquivoFonte);
+                                    $arquivoFonte = $temporaria[0] . '-form.' . $temporaria[1];
+                                    include ROOT . '/paginas/secoes/' . $secoesPagina["tipoSecao"] . "/" . $arquivoFonte;
+
+                            ?>
+                            <!-- <textarea name="parametros" cols="130" rows="2"><?php echo $secoesPagina['parametros'] ?></textarea> -->
                         </div>
                     </div>
+
+                </div>
 
                 <div style="text-align:right; margin-right:-20px">
                     <button type="submit" class="btn btn-sm btn-success">Salvar</button>
@@ -105,7 +116,6 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
         </div>
 
     </div>
-
 
 </body>
 
