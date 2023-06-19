@@ -11,6 +11,10 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
 //echo json_encode($secoesPagina);
 /* echo json_decode($secoesPagina['parametros'], true); */
 
+
+$arquivoFonte = $secoesPagina["arquivoFonte2"];
+$temporaria = explode('.' , $arquivoFonte);
+//echo json_encode($temporaria[0]);
 ?>
 
 <body class="bg-transparent">
@@ -26,7 +30,7 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
         </div>
 
         <div class="container" style="margin-top: 10px">
-            <form action="../database/secaoPagina.php?operacao=alterar" method="post">
+            <form action="../database/secaoPagina.php?operacao=<?php echo $temporaria[0] ?>" method="post">
                 <div class="row">
                     <div class="col-sm-6" style="margin-top: -5px">
                         <div class="select-form-group">
@@ -91,7 +95,7 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
                    
                         <div class="form-group">
                             <label>Parametros</label>
-                            <textarea name="parametros" cols="130" rows="2"><?php echo $secoesPagina['parametros'] ?></textarea>
+                            
                             <?php 
                                     $arquivoFonte = $secoesPagina["arquivoFonte2"];
                                     $temporaria = explode('.' , $arquivoFonte);
@@ -99,11 +103,9 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
                                     include ROOT . '/paginas/secoes/' . $secoesPagina["tipoSecao"] . "/" . $arquivoFonte;
 
                             ?>
+                            <!-- <textarea name="parametros" cols="130" rows="2"><?php echo $secoesPagina['parametros'] ?></textarea> -->
                         </div>
                     </div>
-
-                    
-                       
 
                 </div>
 
