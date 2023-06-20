@@ -18,8 +18,8 @@ $idProcesso = null;
 $idNatureza = null;
 
 
-if (isset($_SESSION['filtro_operacao_crud'])) {
-    $filtroEntrada = $_SESSION['filtro_operacao_crud'];
+if (isset($_SESSION['filtro_operacao'])) {
+    $filtroEntrada = $_SESSION['filtro_operacao'];
     $idAtividade = $filtroEntrada['idAtividade'];
     $idProcesso = $filtroEntrada['idProcesso'];
     $idNatureza = $filtroEntrada['idNatureza'];
@@ -143,7 +143,7 @@ if (isset($_SESSION['filtro_operacao_crud'])) {
 
                 type: 'POST',
                 dataType: 'html',
-                url: '../database/fisoperacao.php?operacao=filtrar_crud',
+                url: '../database/fisoperacao.php?operacao=filtrar',
                 beforeSend: function () {
                     $("#dados").html("Carregando...");
                 },
