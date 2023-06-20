@@ -50,10 +50,6 @@ if (isset($_GET['operacao'])) {
 
 	if ($operacao == "alterar") {
 
-		/* echo json_encode($_POST['parametros']);
-		echo json_encode($_POST['titulo']);
-		return; */
-
 		$parametros1 = array(
 
 			'titulo' => $_POST['titulo'],
@@ -67,9 +63,7 @@ if (isset($_GET['operacao'])) {
 			'textoFooter2' => $_POST['textoFooter2'],
 		);
 
-
 		$parametros = array_map('htmlentities', $parametros1);
-
 		$apiEntrada = array(
 
 			'idSecaoPagina' => $_POST['idSecaoPagina'],
@@ -79,9 +73,6 @@ if (isset($_GET['operacao'])) {
 			'parametros' => json_encode($parametros),
 
 		);
-
-		/* echo json_encode($apiEntrada);
-		return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
@@ -148,8 +139,6 @@ if (isset($_GET['operacao'])) {
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros),
 		);
-		/* echo json_encode($apiEntrada);
-			return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
@@ -171,8 +160,6 @@ if (isset($_GET['operacao'])) {
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros),
 		);
-		/* echo json_encode($apiEntrada);
-						return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
@@ -194,8 +181,6 @@ if (isset($_GET['operacao'])) {
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros),
 		);
-		/* echo json_encode($apiEntrada);
-					return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
@@ -217,8 +202,6 @@ if (isset($_GET['operacao'])) {
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros),
 		);
-		/* echo json_encode($apiEntrada);
-						return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
@@ -546,6 +529,7 @@ if (isset($_GET['operacao'])) {
 
 	// headerFaixaTopo
 	if ($operacao == "headerFaixaTopo") {
+		
 		$parametros1 = array(
 			'textoWhatsapp' => $_POST['textoWhatsapp'],
 			'textoEmail' => $_POST['textoEmail'],
@@ -558,7 +542,8 @@ if (isset($_GET['operacao'])) {
 			'idPagina' => $_POST['idPagina'],
 			'idSecao' => $_POST['idSecao'],
 			'ordem' => $_POST['ordem'],
-			'parametros' => json_encode($parametros),
+			'parametros' => json_encode($parametros1),
+			'listas' => $_POST['listas'],
 		);
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
