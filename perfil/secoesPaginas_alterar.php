@@ -25,7 +25,7 @@ $temporaria = explode('.', $arquivoFonte);
         </div>
 
         <div class="container" style="margin-top: 10px">
-            <form action="../database/secaoPagina.php?operacao=<?php echo $temporaria[0] ?>" method="post">
+            <form action="../database/secaoPagina.php?operacao=<?php echo $temporaria[0] ?>" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-sm-6" style="margin-top: -5px">
                         <div class="select-form-group">
@@ -86,11 +86,12 @@ $temporaria = explode('.', $arquivoFonte);
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-12" style="margin-top: 10px">
+                    <div class="col-sm-12" style="margin-top: 10px;">
 
                         <div class="form-group">
                             <h5>Parametros</h5>
-
+                            <hr>
+                            <br>
                             <?php
                             $arquivoFonte = $secoesPagina["arquivoFonte2"];
                             $temporaria = explode('.', $arquivoFonte);
