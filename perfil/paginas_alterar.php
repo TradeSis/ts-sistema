@@ -59,15 +59,6 @@ $secoesPaginas = buscaSecaoPagina($idPagina);
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-3" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class="labelForm">Conteúdo</label>
-                            <textarea name="conteudoHTML" id="" cols="130" rows="5"><?php echo $pagina['conteudoHTML'] ?></textarea>
-                        </div>
-                    </div>
-                </div>
-
                 <div style="text-align:right; margin-right:-10px">
                     <button type="submit" class="btn btn-sm btn-success">Salvar</button>
                 </div>

@@ -59,9 +59,6 @@ $temporaria = explode('.', $programaForm);
                     <div class="col-sm-12" style="margin-top: 10px;">
 
                         <div class="form-group">
-                            <h5>Perfil</h5>
-                            <hr>
-                            <br>
                             <?php
                             $programaForm = $tema['programaForm'];
                             $temporaria = explode('.', $programaForm);
