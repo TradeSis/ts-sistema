@@ -44,6 +44,14 @@ include_once('../head.php');
                     </div>
 
                 </div>
+                <div class="row">
+                    <div class="col-sm-6" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -50px;">Menu</label>
+                            <textarea name="menu" id="" cols="130" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
 
                 <div style="text-align:right; margin-right:-20px">
                     <button type="submit" class="btn btn-sm btn-success">Salvar</button>

@@ -49,7 +49,6 @@ $secao = buscaSecao($_GET['idSecao']);
                                 <option value="html">Html</option>
                                 <option value="card">Card</option>
                                 <option value="form">Form</option>
-                                <option value="banner">Banner</option>
                                 <option value="quemSomos">Quem Somos</option>
                                 <option value="principal">Principal</option>
                                 <option value="divisorPagina">Divisor de Pagina</option>

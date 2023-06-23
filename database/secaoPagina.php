@@ -87,16 +87,8 @@ if (isset($_GET['operacao'])) {
 	// cardImg3col
 	if ($operacao == "cardImg3col") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
 			'subTitulo' => $_POST['subTitulo'],
-			'pastaImg' => $_POST['pastaImg'],
-			'img1' => $_POST['img1'],
-			'href1' => $_POST['href1'],
-			'img2' => $_POST['img2'],
-			'href2' => $_POST['href2'],
-			'img3' => $_POST['img3'],
-			'href3' => $_POST['href3'],
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -105,39 +97,19 @@ if (isset($_GET['operacao'])) {
 			'idSecao' => $_POST['idSecao'],
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros),
+			'listas' => $_POST['listas'],
 		);
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
 	// cardImg5col
 	if ($operacao == "cardImg5col") {
-		$parametros1 = array(
-
-			'pastaImg' => $_POST['pastaImg'],
-			'tituloCard1' => $_POST['tituloCard1'],
-			'img1' => $_POST['img1'],
-			'href1' => $_POST['href1'],
-			'tituloCard2' => $_POST['tituloCard2'],
-			'img2' => $_POST['img2'],
-			'href2' => $_POST['href2'],
-			'tituloCard3' => $_POST['tituloCard3'],
-			'img3' => $_POST['img3'],
-			'href3' => $_POST['href3'],
-			'tituloCard4' => $_POST['tituloCard4'],
-			'img4' => $_POST['img4'],
-			'href4' => $_POST['href4'],
-			'tituloCard5' => $_POST['tituloCard5'],
-			'img5' => $_POST['img5'],
-			'href5' => $_POST['href5'],
-
-		);
-		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
 			'idSecaoPagina' => $_POST['idSecaoPagina'],
 			'idPagina' => $_POST['idPagina'],
 			'idSecao' => $_POST['idSecao'],
 			'ordem' => $_POST['ordem'],
-			'parametros' => json_encode($parametros),
+			'listas' => $_POST['listas'],
 		);
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
@@ -145,12 +117,9 @@ if (isset($_GET['operacao'])) {
 	// cardServicos2col
 	if ($operacao == "cardServicos2col") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
 			'descricao' => $_POST['descricao'],
-			'pastaImg' => $_POST['pastaImg'],
 			'textoBotao' => $_POST['textoBotao'],
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -166,12 +135,9 @@ if (isset($_GET['operacao'])) {
 	// cardServicos3col
 	if ($operacao == "cardServicos3col") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
 			'descricao' => $_POST['descricao'],
-			'pastaImg' => $_POST['pastaImg'],
 			'textoBotao' => $_POST['textoBotao'],
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -187,12 +153,9 @@ if (isset($_GET['operacao'])) {
 	// cardServicos3colBordaRedonda
 	if ($operacao == "cardServicos3colBordaRedonda") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
 			'descricao' => $_POST['descricao'],
-			'pastaImg' => $_POST['pastaImg'],
 			'corCard' => $_POST['corCard'],
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -209,9 +172,7 @@ if (isset($_GET['operacao'])) {
 	// divisorListra
 	if ($operacao == "divisorListra") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -228,14 +189,7 @@ if (isset($_GET['operacao'])) {
 	// divisorListraComItens
 	if ($operacao == "divisorListraComItens") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
-			'item1' => $_POST['item1'],
-			'item2' => $_POST['item2'],
-			'item3' => $_POST['item3'],
-			'item4' => $_POST['item4'],
-			'item5' => $_POST['item5'],
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -244,6 +198,7 @@ if (isset($_GET['operacao'])) {
 			'idSecao' => $_POST['idSecao'],
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros),
+			'listas' => $_POST['listas'],
 		);
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
@@ -268,10 +223,22 @@ if (isset($_GET['operacao'])) {
 	}
 	// footerImgFundo3col
 	if ($operacao == "footerImgFundo3col") {
+		$img = $_FILES['img'];
+		if ($img !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $img["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg = $img["name"];
+
+				move_uploaded_file($img['tmp_name'], $pasta . $novoNomeImg);
+			} else {
+				$novoNomeImg = "Sem_imagem";
+			}
+		}
 		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
-			'nomeImg' => $_POST['nomeImg'],
-			'pastaImg' => $_POST['pastaImg'],
+			'img' => $novoNomeImg,
 			'tituloLinks' => $_POST['tituloLinks'],
 			'nome1' => $_POST['nome1'],
 			'href1' => $_POST['href1'],
@@ -300,10 +267,21 @@ if (isset($_GET['operacao'])) {
 
 	// footerlogo3col
 	if ($operacao == "footerlogo3col") {
-		$parametros1 = array(
+		$logo = $_FILES['logo'];
+		if ($logo !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $logo["name"], $ext);
 
-			'nomeImg' => $_POST['nomeImg'],
-			'pastaImg' => $_POST['pastaImg'],
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeLogo = $logo["name"];
+
+				move_uploaded_file($logo['tmp_name'], $pasta . $novoNomeLogo);
+			} else {
+				$novoNomeLogo = "Sem_imagem";
+			}
+		}
+		$parametros1 = array(
+			'logo' => $novoNomeLogo,
 			'tituloContato' => $_POST['tituloContato'],
 			'textoWhatsapp' => $_POST['textoWhatsapp'],
 			'textoEmail' => $_POST['textoEmail'],
@@ -313,8 +291,6 @@ if (isset($_GET['operacao'])) {
 			'textoCep' => $_POST['textoCep'],
 			'textoCidade' => $_POST['textoCidade'],
 			'textoRedesSociais' => $_POST['textoRedesSociais'],
-
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -330,11 +306,7 @@ if (isset($_GET['operacao'])) {
 	// listaProdutos5col
 	if ($operacao == "listaProdutos5col") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
-			'pastaImg' => $_POST['pastaImg'],
-
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -354,7 +326,6 @@ if (isset($_GET['operacao'])) {
 
 			'titulo' => $_POST['titulo'],
 			'descricao' => $_POST['descricao'],
-			'pastaImg' => $_POST['pastaImg'],
 			'textoBotao' => $_POST['textoBotao'],
 
 		);
@@ -372,12 +343,9 @@ if (isset($_GET['operacao'])) {
 	// listaServicos4col
 	if ($operacao == "listaServicos4col") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
 			'descricao' => $_POST['descricao'],
-			'pastaImg' => $_POST['pastaImg'],
 			'textoBotao' => $_POST['textoBotao'],
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -393,12 +361,9 @@ if (isset($_GET['operacao'])) {
 	// listaServicos4colHorizaontal
 	if ($operacao == "listaServicos4colHorizaontal") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
 			'descricao' => $_POST['descricao'],
-			'pastaImg' => $_POST['pastaImg'],
 			'textoBotao' => $_POST['textoBotao'],
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -414,11 +379,9 @@ if (isset($_GET['operacao'])) {
 	// tituloPrincipal1col
 	if ($operacao == "tituloPrincipal1col") {
 		$parametros1 = array(
-
 			'titulo' => $_POST['titulo'],
 			'subTitulo' => $_POST['subTitulo'],
 			'textoBotao' => $_POST['textoBotao'],
-
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -434,13 +397,24 @@ if (isset($_GET['operacao'])) {
 
 	// tituloPrincipal2col
 	if ($operacao == "tituloPrincipal2col") {
-		$parametros1 = array(
+		$img = $_FILES['img'];
+		if ($img !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $img["name"], $ext);
 
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg = $img["name"];
+
+				move_uploaded_file($img['tmp_name'], $pasta . $novoNomeImg);
+			} else {
+				$novoNomeImg = "Sem_imagem";
+			}
+		}
+		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
 			'subTitulo' => $_POST['subTitulo'],
 			'textoBotao' => $_POST['textoBotao'],
-			'nomeImg' => $_POST['nomeImg'],
-			'pastaImg' => $_POST['pastaImg'],
+			'img' => $novoNomeImg,
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -454,11 +428,24 @@ if (isset($_GET['operacao'])) {
 	}
 	// quemSomosSimples
 	if ($operacao == "quemSomosSimples") {
+		$img = $_FILES['img'];
+		if ($img !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $img["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg = $img["name"];
+
+				move_uploaded_file($img['tmp_name'], $pasta . $novoNomeImg);
+			} else {
+				$novoNomeImg = "Sem_imagem";
+			}
+		}
+
 		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
 			'descricao' => $_POST['descricao'],
-			'nomeImg' => $_POST['nomeImg'],
-			'pastaImg' => $_POST['pastaImg'],
+			'img' => $novoNomeImg,
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -473,12 +460,40 @@ if (isset($_GET['operacao'])) {
 
 	// quemSomosImg
 	if ($operacao == "quemSomosImg") {
+
+		$img = $_FILES['img'];
+		if ($img !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $img["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg = $img["name"];
+
+				move_uploaded_file($img['tmp_name'], $pasta . $novoNomeImg);
+			} else {
+				$novoNomeImg = "Sem_imagem";
+			}
+		}
+
+		$imgFundo = $_FILES['imgFundo'];
+		if ($imgFundo !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $imgFundo["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImgFundo = $imgFundo["name"];
+
+				move_uploaded_file($imgFundo['tmp_name'], $pasta . $novoNomeImgFundo);
+			} else {
+				$novoNomeImgFundo = "Sem_imagem";
+			}
+		}
+		
 		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
 			'descricao' => $_POST['descricao'],
-			'nomeImg' => $_POST['nomeImg'],
-			'nomeImgFundo' => $_POST['nomeImgFundo'],
-			'pastaImg' => $_POST['pastaImg'],
+			'imgFundo' => $novoNomeImgFundo,
+			'img' => $novoNomeImg,
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -488,6 +503,8 @@ if (isset($_GET['operacao'])) {
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros),
 		);
+		/* echo json_encode($apiEntrada);
+		return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
@@ -529,22 +546,38 @@ if (isset($_GET['operacao'])) {
 
 	// headerFaixaTopo
 	if ($operacao == "headerFaixaTopo") {
-		
+
+		$logo = $_FILES['logo'];
+		if ($logo !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $logo["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeLogo = $logo["name"];
+
+				move_uploaded_file($logo['tmp_name'], $pasta . $novoNomeLogo);
+			} else {
+				$novoNomeLogo = "Sem_imagem";
+			}
+		}
+
 		$parametros1 = array(
 			'textoWhatsapp' => $_POST['textoWhatsapp'],
 			'textoEmail' => $_POST['textoEmail'],
-			'nomeImg' => $_POST['nomeImg'],
-			'pastaImg' => $_POST['pastaImg'],
+			'logo' => $novoNomeLogo,
 		);
-		$parametros = array_map('htmlentities', $parametros1);
+		/* echo json_encode($parametros1);
+		return; */
+		//$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
 			'idSecaoPagina' => $_POST['idSecaoPagina'],
 			'idPagina' => $_POST['idPagina'],
 			'idSecao' => $_POST['idSecao'],
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros1),
-			'listas' => $_POST['listas'],
 		);
+		/* echo json_encode($apiEntrada);
+		return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 

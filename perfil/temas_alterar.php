@@ -3,6 +3,10 @@
 include_once('../head.php');
 include_once('../database/temas.php');
 $tema = buscaTemas($_GET['idTema']);
+//echo json_encode($tema);
+
+$programaForm = $tema['programaForm'];
+$temporaria = explode('.', $programaForm);
 ?>
 
 <body class="bg-transparent">
@@ -19,7 +23,7 @@ $tema = buscaTemas($_GET['idTema']);
         </div>
 
         <div class="container" style="margin-top: 10px">
-            <form action="../database/temas.php?operacao=alterar" method="post">
+            <form action="../database/temas.php?operacao=<?php echo $temporaria[0] ?>" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-sm-6" style="margin-top: 10px">
                         <div class="form-group">
@@ -42,6 +46,31 @@ $tema = buscaTemas($_GET['idTema']);
                             <label for="ativo">Ativo</label>
                         </div>
                     </div>
+                </div>
+<!-- 
+                <div class="row form-group">
+                    <div class="col-sm-6">
+                        <label class='control-label' for='inputNormal' style="margin-top: -50px;">Menu</label>
+                        <textarea name="menu" id="" cols="130" rows="5"><?php echo $tema['menu'] ?></textarea>
+                    </div>
+                </div> -->
+
+                <div class="row">
+                    <div class="col-sm-12" style="margin-top: 10px;">
+
+                        <div class="form-group">
+                            <?php
+                            $programaForm = $tema['programaForm'];
+                            $temporaria = explode('.', $programaForm);
+                            //echo json_encode($temporaria[0]);
+                            //return;
+                            $programaForm = $temporaria[0] . '-form.' . $temporaria[1];
+                            include ROOT . '/paginas/programaForm/' . $programaForm;
+                            ?>
+
+                        </div>
+                    </div>
+
                 </div>
 
                 <div style="text-align:right; margin-right:-20px">

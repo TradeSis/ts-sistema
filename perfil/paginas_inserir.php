@@ -67,14 +67,6 @@ $temas = buscaTemas();
                         </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-3" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Conteúdo</label>
-                            <textarea name="conteudoHTML" id="" cols="130" rows="5"></textarea>
-                        </div>
-                    </div>
-                </div>
 
                 <div style="text-align:right; margin-right:-20px">
                     <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
