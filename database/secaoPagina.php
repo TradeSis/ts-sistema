@@ -86,10 +86,57 @@ if (isset($_GET['operacao'])) {
 
 	// cardImg3col
 	if ($operacao == "cardImg3col") {
+		$img1 = $_FILES['img1'];
+		if ($img1 !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $img1["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg1 = $img1["name"];
+
+				move_uploaded_file($img1['tmp_name'], $pasta . $novoNomeImg1);
+			} else {
+				$novoNomeImg1 = "Sem_imagem";
+			}
+		}
+		$img2 = $_FILES['img2'];
+		if ($img2 !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $img2["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg2 = $img2["name"];
+
+				move_uploaded_file($img2['tmp_name'], $pasta . $novoNomeImg2);
+			} else {
+				$novoNomeImg2 = "Sem_imagem";
+			}
+		}
+		$img3 = $_FILES['img3'];
+		if ($img3 !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $img3["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg3 = $img3["name"];
+
+				move_uploaded_file($img3['tmp_name'], $pasta . $novoNomeImg3);
+			} else {
+				$novoNomeImg3 = "Sem_imagem";
+			}
+		}
+		
 		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
 			'subTitulo' => $_POST['subTitulo'],
+			'img1' => $novoNomeImg1,
+			'link1' => $_POST['link1'],
+			'img2' => $novoNomeImg2,
+			'link2' => $_POST['link2'],
+			'img3' => $novoNomeImg3,
+			'link3' => $_POST['link3'],
 		);
+	
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
 			'idSecaoPagina' => $_POST['idSecaoPagina'],
@@ -97,19 +144,106 @@ if (isset($_GET['operacao'])) {
 			'idSecao' => $_POST['idSecao'],
 			'ordem' => $_POST['ordem'],
 			'parametros' => json_encode($parametros),
-			'listas' => $_POST['listas'],
 		);
+		/* echo json_encode($apiEntrada);
+		return; */
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
 	// cardImg5col
 	if ($operacao == "cardImg5col") {
+		$img1 = $_FILES['img1'];
+		if ($img1 !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $img1["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg1 = $img1["name"];
+
+				move_uploaded_file($img1['tmp_name'], $pasta . $novoNomeImg1);
+			} else {
+				$novoNomeImg1 = "Sem_imagem";
+			}
+		}
+		$img2 = $_FILES['img2'];
+		if ($img2 !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $img2["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg2 = $img2["name"];
+
+				move_uploaded_file($img2['tmp_name'], $pasta . $novoNomeImg2);
+			} else {
+				$novoNomeImg2 = "Sem_imagem";
+			}
+		}
+		$img3 = $_FILES['img3'];
+		if ($img3 !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $img3["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg3 = $img3["name"];
+
+				move_uploaded_file($img3['tmp_name'], $pasta . $novoNomeImg3);
+			} else {
+				$novoNomeImg3 = "Sem_imagem";
+			}
+		}
+
+		$img4 = $_FILES['img4'];
+		if ($img4 !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $img4["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg4 = $img4["name"];
+
+				move_uploaded_file($img4['tmp_name'], $pasta . $novoNomeImg4);
+			} else {
+				$novoNomeImg4 = "Sem_imagem";
+			}
+		}
+
+		$img5 = $_FILES['img5'];
+		if ($img5 !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $img5["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg5 = $img5["name"];
+
+				move_uploaded_file($img5['tmp_name'], $pasta . $novoNomeImg5);
+			} else {
+				$novoNomeImg5 = "Sem_imagem";
+			}
+		}
+
+		$parametros = array(
+			'img1' => $novoNomeImg1,
+			'link1' => $_POST['link1'],
+			'tituloCard1' => $_POST['tituloCard1'],
+			'img2' => $novoNomeImg2,
+			'link2' => $_POST['link2'],
+			'tituloCard2' => $_POST['tituloCard2'],
+			'img3' => $novoNomeImg3,
+			'link3' => $_POST['link3'],
+			'tituloCard3' => $_POST['tituloCard3'],
+			'img4' => $novoNomeImg4,
+			'link4' => $_POST['link4'],
+			'tituloCard4' => $_POST['tituloCard4'],
+			'img5' => $novoNomeImg5,
+			'link5' => $_POST['link5'],
+			'tituloCard5' => $_POST['tituloCard5'],
+		);
+		
 		$apiEntrada = array(
 			'idSecaoPagina' => $_POST['idSecaoPagina'],
 			'idPagina' => $_POST['idPagina'],
 			'idSecao' => $_POST['idSecao'],
 			'ordem' => $_POST['ordem'],
-			'listas' => $_POST['listas'],
+			'parametros' => json_encode($parametros),
 		);
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
