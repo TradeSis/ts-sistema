@@ -56,6 +56,9 @@ $secoes = buscaSecao();
                 <li class="nav-item" >
                     <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=quemSomos" style="color: #000;">Quem Somos</a>
                 </li>
+                <li class="nav-item" >
+                    <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=blog" style="color: #000;">Blog</a>
+                </li>
             </ul>
 
 

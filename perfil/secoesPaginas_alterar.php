@@ -52,7 +52,7 @@ $temporaria = explode('.', $arquivoFonte);
                         </div>
                     </div>
 
-                    <div class="col-sm-3" style="margin-top: 10px">
+                    <div class="col-sm-2" style="margin-top: 10px">
                         <div class="select-form-group">
 
                             <label class="labelForm">Ordem</label>
@@ -80,6 +80,20 @@ $temporaria = explode('.', $arquivoFonte);
                                 <option value="20">20</option>
                             </select>
                             <input type="text" class="form-control" name="idSecaoPagina" value="<?php echo $secoesPagina['idSecaoPagina'] ?>" style="display: none">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-1" style="margin-top: 10px">
+                        <div class="select-form-group">
+
+                            <label class="labelForm">Colunas</label>
+                            <select class="select form-control" name="coluna">
+                                <option value="<?php echo $secoesPagina['coluna'] ?>"><?php echo $secoesPagina['coluna'] ?></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                            
 
                         </div>
                     </div>
