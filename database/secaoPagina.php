@@ -220,7 +220,7 @@ if (isset($_GET['operacao'])) {
 			}
 		}
 
-		$parametros = array(
+		$parametros1 = array(
 			'img1' => $novoNomeImg1,
 			'link1' => $_POST['link1'],
 			'tituloCard1' => $_POST['tituloCard1'],
@@ -237,6 +237,8 @@ if (isset($_GET['operacao'])) {
 			'link5' => $_POST['link5'],
 			'tituloCard5' => $_POST['tituloCard5'],
 		);
+
+		$parametros = array_map('htmlentities', $parametros1);
 		
 		$apiEntrada = array(
 			'idSecaoPagina' => $_POST['idSecaoPagina'],
