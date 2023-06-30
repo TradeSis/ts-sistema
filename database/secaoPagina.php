@@ -759,18 +759,18 @@ if (isset($_GET['operacao'])) {
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
-		// postsRecentes
-		if ($operacao == "postsRecentes") {
-			$apiEntrada = array(
-				'idSecaoPagina' => $_POST['idSecaoPagina'],
-				'idPagina' => $_POST['idPagina'],
-				'idSecao' => $_POST['idSecao'],
-				'ordem' => $_POST['ordem'],
-				'coluna' => $_POST['coluna'],
-				'parametros' => $_POST['parametros'],
-			);
-			$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
-		}
+	// postsRecentes
+	if ($operacao == "postsRecentes") {
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => $_POST['parametros'],
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
 
 	// siderBar_modelo1 
 	if ($operacao == "siderBar_modelo1") {
@@ -785,7 +785,57 @@ if (isset($_GET['operacao'])) {
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
+	// sobre_modelo1
+	if ($operacao == "sobre_modelo1") {
 
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+			'descricao' => $_POST['descricao'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// header2linha
+	if ($operacao == "header2linha") {
+
+		$logo = $_FILES['logo'];
+		if ($logo !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $logo["name"], $ext);
+
+			if ($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeLogo = $logo["name"];
+
+				move_uploaded_file($logo['tmp_name'], $pasta . $novoNomeLogo);
+			} else {
+				$novoNomeLogo = "Sem_imagem";
+			}
+		}
+
+		$parametros1 = array(
+			'textoWhatsapp' => $_POST['textoWhatsapp'],
+			'textoEmail' => $_POST['textoEmail'],
+			'logo' => $novoNomeLogo,
+		);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros1),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
 
 	header('Location: ../perfil/paginas.php');
 }
