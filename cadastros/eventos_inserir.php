@@ -86,15 +86,12 @@ $categorias = buscaCategorias();
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4 ml-4" style="margin-top: 10px">
-                        <div class="form-group">
+                    <div class="col-sm-4 ml-4" style="margin-top: 40px">
+                        <div class="select-form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -45px;">Esconder</label>
-                            <div class="row">
-                                <input type="radio" name="esconderEvento" value="1" checked style="margin-right: 10px;">esconder
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="esconderEvento" value="0" style="margin-right: 10px;">aparecer
-                            </div>
+                            <label for="esconderEvento">esconder</label>
+                            <input type="range" id="esconderEvento" name="esconderEvento" min="0" max="1" style="width: 15%;">
+                            <label for="esconderEvento">aparecer</label>
                         </div>
                     </div>
                     

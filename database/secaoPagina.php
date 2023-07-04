@@ -822,8 +822,6 @@ if (isset($_GET['operacao'])) {
 		}
 
 		$parametros1 = array(
-			'textoWhatsapp' => $_POST['textoWhatsapp'],
-			'textoEmail' => $_POST['textoEmail'],
 			'logo' => $novoNomeLogo,
 		);
 		$apiEntrada = array(

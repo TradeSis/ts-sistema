@@ -16,6 +16,58 @@ function buscaEventos($idEvento=null)
 	return $eventos;
 }
 
+function buscaProximosEventos($idEvento=null)
+{
+	
+	$eventos = array();
+	
+	$apiEntrada = array(
+		'idEvento' => $idEvento,
+	);
+
+	$eventos = chamaAPI(null, '/sistema/eventos_proximos', json_encode($apiEntrada), 'GET');
+	return $eventos;
+}
+
+function buscaEventosCursos($idEvento=null)
+{
+	
+	$eventos = array();
+	
+	$apiEntrada = array(
+		'idEvento' => $idEvento,
+	);
+
+	$eventos = chamaAPI(null, '/sistema/eventos_cursos', json_encode($apiEntrada), 'GET');
+	return $eventos;
+}
+
+function buscaVisitacaoEventos($idEvento=null)
+{
+	
+	$eventos = array();
+	
+	$apiEntrada = array(
+		'idEvento' => $idEvento,
+	);
+
+	$eventos = chamaAPI(null, '/sistema/eventos_visitacao', json_encode($apiEntrada), 'GET');
+	return $eventos;
+}
+
+function buscaEventosPodcasts($idEvento=null)
+{
+	
+	$eventos = array();
+	
+	$apiEntrada = array(
+		'idEvento' => $idEvento,
+	);
+
+	$eventos = chamaAPI(null, '/sistema/eventos_podcasts', json_encode($apiEntrada), 'GET');
+	return $eventos;
+}
+
 if (isset($_GET['operacao'])) {
 
 	$operacao = $_GET['operacao'];

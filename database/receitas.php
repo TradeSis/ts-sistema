@@ -23,7 +23,6 @@ if (isset($_GET['operacao'])) {
     if ($operacao=="inserir") {
 
 		$imgReceita = $_FILES['imgReceita'];
-
 		if($imgReceita !== null) {
 			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $imgReceita["name"],$ext);
 		
@@ -36,9 +35,7 @@ if (isset($_GET['operacao'])) {
 			}else{
 				$novoNomeImg = "Sem_imagem";
 			}
-	
 		}
-
 
 		$apiEntrada = array(
 			'nomeReceita' => $_POST['nomeReceita'],
@@ -47,8 +44,6 @@ if (isset($_GET['operacao'])) {
 			'imgReceita' => $novoNomeImg,
 			
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
 		$receitas = chamaAPI(null, '/sistema/receitas', json_encode($apiEntrada), 'PUT');
 		
 	}
@@ -58,7 +53,6 @@ if (isset($_GET['operacao'])) {
     if ($operacao=="alterar") {
 
 		$imgReceita = $_FILES['imgReceita'];
-
 		if($imgReceita !== null) {
 			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $imgReceita["name"],$ext);
 		
@@ -68,22 +62,24 @@ if (isset($_GET['operacao'])) {
 				
 				move_uploaded_file($imgReceita['tmp_name'], $pasta.$novoNomeImg);
 		
-			}else{
-				$novoNomeImg = "Sem_imagem";
 			}
+			$apiEntrada = array(
+				'idReceita' => $_POST['idReceita'],
+				'nomeReceita' => $_POST['nomeReceita'],
+				'conteudoReceita' => $_POST['conteudoReceita'],
+				'autorReceita' => $_POST['autorReceita'],
+				'imgReceita' => $novoNomeImg,
+			);
 	
+		}else{
+			$apiEntrada = array(
+				'idReceita' => $_POST['idReceita'],
+				'nomeReceita' => $_POST['nomeReceita'],
+				'conteudoReceita' => $_POST['conteudoReceita'],
+				'autorReceita' => $_POST['autorReceita'],
+			);
 		}
 
-		$apiEntrada = array(
-			'idReceita' => $_POST['idReceita'],
-			'nomeReceita' => $_POST['nomeReceita'],
-			'conteudoReceita' => $_POST['conteudoReceita'],
-			'autorReceita' => $_POST['autorReceita'],
-			'imgReceita' => $novoNomeImg,
-			
-		);
-		/* echo json_encode($apiEntrada);
-		return; */
 		$receitas = chamaAPI(null, '/sistema/receitas', json_encode($apiEntrada), 'POST');
 		
 	}
@@ -96,6 +92,16 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idReceita' => $_POST['idReceita'],
 		);
+
+		if(!empty($_POST['imgReceita'])){
+			$pasta = ROOT . "/img/";
+			$imagem = $pasta . $_POST['imgReceita'];
+			
+			if(file_exists($imagem)){
+				unlink($imagem);
+			}
+
+		}
 
 		$receitas = chamaAPI(null, '/sistema/receitas', json_encode($apiEntrada), 'DELETE');
 	}

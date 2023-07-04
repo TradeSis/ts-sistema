@@ -16,6 +16,19 @@ function buscaCatalogo($idProduto=null)
 	return $catalogo;
 }
 
+function buscaCardCatalogo($idProduto=null)
+{
+	
+	$catalogo = array();
+	
+	$apiEntrada = array(
+		'idProduto' => $idProduto,
+	);
+
+	$catalogo = chamaAPI(null, '/sistema/catalogo_card', json_encode($apiEntrada), 'GET');
+	return $catalogo;
+}
+
 if (isset($_GET['operacao'])) {
 
 	$operacao = $_GET['operacao'];
@@ -39,7 +52,6 @@ if (isset($_GET['operacao'])) {
 	
 		}
 
-
 		$apiEntrada = array(
 			'nomeProduto' => $_POST['nomeProduto'],
             'imgProduto' => $novoNomeImg,
@@ -50,8 +62,7 @@ if (isset($_GET['operacao'])) {
 			'descricaoProduto' => $_POST['descricaoProduto'],
 			
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
+
 		$catalogo = chamaAPI(null, '/sistema/catalogo', json_encode($apiEntrada), 'PUT');
 		
 	}
@@ -71,13 +82,8 @@ if (isset($_GET['operacao'])) {
 				
 				move_uploaded_file($imgProduto['tmp_name'], $pasta.$novoNomeImg);
 		
-			}else{
-				$novoNomeImg = "Sem_imagem";
 			}
-	
-		}
-
-		$apiEntrada = array(
+			$apiEntrada = array(
 			'idProduto' => $_POST['idProduto'],
 			'nomeProduto' => $_POST['nomeProduto'],
             'imgProduto' => $novoNomeImg,
@@ -86,10 +92,20 @@ if (isset($_GET['operacao'])) {
 			'ativoProduto' => $_POST['ativoProduto'],
 			'propagandaProduto' => $_POST['propagandaProduto'],
 			'descricaoProduto' => $_POST['descricaoProduto'],
-			
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
+	
+		}else{
+			$apiEntrada = array(
+				'idProduto' => $_POST['idProduto'],
+				'nomeProduto' => $_POST['nomeProduto'],
+				'idMarca' => $_POST['idMarca'],
+				'precoProduto' => $_POST['precoProduto'],
+				'ativoProduto' => $_POST['ativoProduto'],
+				'propagandaProduto' => $_POST['propagandaProduto'],
+				'descricaoProduto' => $_POST['descricaoProduto'],
+			);
+		}
+
 		$catalogo = chamaAPI(null, '/sistema/catalogo', json_encode($apiEntrada), 'POST');
 		
 	}
@@ -102,6 +118,15 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idProduto' => $_POST['idProduto'],
 		);
+		if(!empty($_POST['imgProduto'])){
+			$pasta = ROOT . "/img/";
+			$imagem = $pasta . $_POST['imgProduto'];
+			
+			if(file_exists($imagem)){
+				unlink($imagem);
+			}
+
+		}
 
 		$catalogo = chamaAPI(null, '/sistema/catalogo', json_encode($apiEntrada), 'DELETE');
 	}

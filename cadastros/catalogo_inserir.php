@@ -75,27 +75,21 @@ $marcas = buscaMarcas();
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-5 ml-4" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">Ativo</label>
-                            <div class="row">
-                                <input type="radio" name="ativoProduto" value="1" checked style="margin-right: 10px;">Produto
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="ativoProduto" value="0" style="margin-right: 10px;">inativo
-                            </div>
+                    <div class="col-sm-5 ml-4" style="margin-top: 30px">
+                        <div class="select-form-group">
+                        <label class='control-label' for='inputNormal' style="margin-top: -45px;">Ativo</label>
+                            <label for="ativoProduto">Inativo</label>
+                            <input type="range" id="ativoProduto" name="ativoProduto" min="0" max="1" style="width: 15%;">
+                            <label for="ativoProduto">Ativo</label>
                         </div>
                     </div>
 
-                    <div class="col-sm-5" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">Propaganda</label>
-                            <div class="row">
-                                <input type="radio" name="propagandaProduto" value="1" style="margin-right: 10px;">Sim
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="propagandaProduto" value="0" style="margin-right: 10px;">Não
-                            </div>
+                    <div class="col-sm-5" style="margin-top: 30px">
+                        <div class="select-form-group">
+                        <label class='control-label' for='inputNormal' style="margin-top: -45px;">Propaganda</label>
+                            <label for="propagandaProduto">Não</label>
+                            <input type="range" id="propagandaProduto" name="propagandaProduto" min="0" max="1" style="width: 15%;">
+                            <label for="propagandaProduto">Sim</label>
                         </div>
                     </div>
                 </div>

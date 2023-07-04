@@ -68,7 +68,8 @@ $categorias = buscaCategorias();
                             <label class="picture" for="foto" tabIndex="0">
                                 <img src="<?php echo URLROOT ?>/img/<?php echo $noticia["imgNoticia"] ?>" width="100%" height="100%" alt="">
                             </label>
-                            <input type="file" name="imgNoticia" id="foto">
+                           
+                            <input type="file" name="imgNoticia" id="foto" >
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ $marca = buscaMarcas($idMarca);
 
         <div class="row mt-4">
             <div class="col-sm-8">
-                <h3 class="col">Adicionar Marca</h3>
+                <h3 class="col">Editar Marca</h3>
             </div>
             <div class="col-sm-4" style="text-align:right">
                 <a href="marcas.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
@@ -72,47 +72,41 @@ $marca = buscaMarcas($idMarca);
                             <input type="text" name="cidadeMarca" class="form-control" autocomplete="off" value="<?php echo $marca['cidadeMarca'] ?>">
                         </div>
                     </div>
-                    <!--   <div class="col-sm-6" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">estado</label>
-                            <input type="text" name="estado" class="form-control" autocomplete="off">
-                        </div>
-                    </div> -->
 
                     <div class="col-sm-4" style="margin-top: 10px">
                         <div class="select-form-group">
 
                             <label class="labelForm">estado</label>
                             <select class="select form-control" name="estado">
-                                    <option value="<?php echo $marca['estado'] ?>"><?php echo $marca['estado'] ?></option>
-                                    <option value="AC">Acre</option>
-                                    <option value="AL">Alagoas</option>
-                                    <option value="AP">Amapá</option>
-                                    <option value="AM">Amazonas</option>
-                                    <option value="BA">Bahia</option>
-                                    <option value="CE">Ceará</option>
-                                    <option value="DF">Distrito Federal</option>
-                                    <option value="ES">Espírito Santo</option>
-                                    <option value="GO">Goiás</option>
-                                    <option value="MA">Maranhão</option>
-                                    <option value="MT">Mato Grosso</option>
-                                    <option value="MS">Mato Grosso do Sul</option>
-                                    <option value="MG">Minas Gerais</option>
-                                    <option value="PA">Pará</option>
-                                    <option value="PB">Paraíba</option>
-                                    <option value="PR">Paraná</option>
-                                    <option value="PE">Pernambuco</option>
-                                    <option value="PI">Piauí</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="RN">Rio Grande do Norte</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="RO">Rondônia</option>
-                                    <option value="RR">Roraima</option>
-                                    <option value="SC">Santa Catarina</option>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="SE">Sergipe</option>
-                                    <option value="TO">Tocantins</option>
-                                    <option value="EX">Estrangeiro</option>
+                                <option value="<?php echo $marca['estado'] ?>"><?php echo $marca['estado'] ?></option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                                <option value="EX">Estrangeiro</option>
                             </select>
 
                         </div>
@@ -129,50 +123,39 @@ $marca = buscaMarcas($idMarca);
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">ativo*</label>
-                            <div class="row">
-                                <input type="radio" name="ativoMarca" value="1" checked style="margin-right: 10px;">ativo
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="ativoMarca" value="0" style="margin-right: 10px;">inativo
-                            </div>
+                    <div class="col-sm-4" style="margin-top: 30px">
+                        <div class="select-form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">Ativo*</label>
+                            <label for="ativoMarca">inativo</label>
+                            <input type="range" id="ativoMarca" name="ativoMarca" min="0" max="1" value="<?php echo $marca['ativoMarca'] ?>" style="width: 15%;">
+                            <label for="ativoMarca">ativo</label>
                         </div>
                     </div>
 
-                    <div class="col-sm-4" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">catalogo</label>
-                            <div class="row">
-                                <input type="radio" name="catalogo" value="1" style="margin-right: 10px;">Sim
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="catalogo" value="0" style="margin-right: 10px;">Não
-                            </div>
+                    <div class="col-sm-4" style="margin-top: 30px">
+                        <div class="select-form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">Catalogo</label>
+                            <label for="catalogo">Não</label>
+                            <input type="range" id="catalogo" name="catalogo" min="0" max="1" value="<?php echo $marca['catalogo'] ?>" style="width: 15%;">
+                            <label for="catalogo">Sim</label>
                         </div>
                     </div>
 
-                    <div class="col-sm-4" style="margin-top: 10px">
-                        <div class="form-group">
+                    <div class="col-sm-4" style="margin-top: 30px">
+                        <div class="select-form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -45px;">Loja Especializada</label>
-                            <div class="row">
-                                <input type="radio" name="lojasEspecializadas" value="1" style="margin-right: 10px;">Sim
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="lojasEspecializadas" value="0" style="margin-right: 10px;">Não
-                            </div>
+                            <label for="lojasEspecializadas">Não</label>
+                            <input type="range" id="lojasEspecializadas" name="lojasEspecializadas" min="0" max="1" value="<?php echo $marca['lojasEspecializadas'] ?>" style="width: 15%;">
+                            <label for="lojasEspecializadas">Sim</label>
                         </div>
                     </div>
                 </div>
 
+                <div style="text-align:right; margin-right:-20px; margin-top:20px">
+                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                </div>
+            </form>
         </div>
-
-        <div style="text-align:right; margin-right:-20px; margin-top:20px">
-            <button type="submit" class="btn btn-sm btn-success">Salvar</button>
-        </div>
-        </form>
-    </div>
 
     </div>
 

@@ -66,12 +66,6 @@ include_once('../head.php');
                             <input type="text" name="cidadeMarca" class="form-control" autocomplete="off">
                         </div>
                     </div>
-                    <!--   <div class="col-sm-6" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">estado</label>
-                            <input type="text" name="estado" class="form-control" autocomplete="off">
-                        </div>
-                    </div> -->
 
                     <div class="col-sm-4" style="margin-top: 10px">
                         <div class="select-form-group">
@@ -123,38 +117,29 @@ include_once('../head.php');
 
                 <div class="row">
                     <div class="col-sm-4" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">ativo*</label>
-                            <div class="row">
-                                <input type="radio" name="ativoMarca" value="1" checked style="margin-right: 10px;">ativo
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="ativoMarca" value="0" style="margin-right: 10px;">inativo
-                            </div>
+                        <div class="select-form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">Ativo*</label>
+                            <label for="ativoMarca">inativo</label>
+                            <input type="range" id="ativoMarca" name="ativoMarca" min="0" max="1" style="width: 15%;">
+                            <label for="ativoMarca">ativo</label>
                         </div>
                     </div>
 
                     <div class="col-sm-4" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">catalogo</label>
-                            <div class="row">
-                                <input type="radio" name="catalogo" value="1" style="margin-right: 10px;">Sim
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="catalogo" value="0" style="margin-right: 10px;">Não
-                            </div>
+                        <div class="select-form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -45px;">Catalogo</label>
+                            <label for="catalogo">Não</label>
+                            <input type="range" id="catalogo" name="catalogo" min="0" max="1" style="width: 15%;">
+                            <label for="catalogo">Sim</label>
                         </div>
                     </div>
 
                     <div class="col-sm-4" style="margin-top: 10px">
-                        <div class="form-group">
+                        <div class="select-form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -45px;">Loja Especializada</label>
-                            <div class="row">
-                                <input type="radio" name="lojasEspecializadas" value="1" style="margin-right: 10px;">Sim
-                            </div>
-                            <div class="row">
-                                <input type="radio" name="lojasEspecializadas" value="0" style="margin-right: 10px;">Não
-                            </div>
+                            <label for="lojasEspecializadas">Não</label>
+                            <input type="range" id="lojasEspecializadas" name="lojasEspecializadas" min="0" max="1" style="width: 15%;">
+                            <label for="lojasEspecializadas">Sim</label>
                         </div>
                     </div>
                 </div>
