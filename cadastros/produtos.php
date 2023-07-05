@@ -1,13 +1,8 @@
 <?php
-// helio 01022023 altereado para include_once
-// helio 26012023 16:16
-
 include_once('../head.php');
 include_once('../database/produtos.php');
 
-$produtos = buscaTodosProdutos();
-/* echo json_encode($produtos); */
-
+$produtos = buscaProdutos();
 ?>
 
 <body class="bg-transparent">
@@ -15,7 +10,7 @@ $produtos = buscaTodosProdutos();
         
             <div class="row mt-4">
                 <div class="col-sm-8">
-                        <h4 class="tituloTabela">Produtos</h4>
+                        <h4 class="tituloTabela">Catalogo</h4>
                         
                     </div>
 
@@ -30,27 +25,21 @@ $produtos = buscaTodosProdutos();
                     <tr>
                         <th>Foto</th>
                         <th>Nome</th>
-                        <th>Valor</th>
-                        <th>Destaque</th>
-
                         <th>Ação</th>
 
                     </tr>
                 </thead>
 
                 <?php
-                foreach ($produtos as $produto) {
+                foreach ($produtos as $produtos) {
                 ?>
                     <tr>
-                        <td><img src="<?php echo URLROOT ?>/img/imgProdutos/<?php echo $produto['fotoProduto'] ?>" width="60px" height="60px" alt=""></td>
-                        <td><?php echo $produto['nomeProduto'] ?></td>
-                        <td><?php echo $produto['valorProduto'] ?></td>
-                        <td><?php echo $produto['destaque'] ?></td>
-                        
-                        
+                        <td><img src="<?php echo URLROOT ?>/img/<?php echo $produtos['imgProduto'] ?>" width="60px" height="60px" alt=""></td>
+                        <td><?php echo $produtos['nomeProduto'] ?></td>
                         <td>
-                            
-                            <a class="btn btn-danger btn-sm" href="produtos_excluir.php?idProduto=<?php echo $produto['idProduto'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-info btn-sm" href="#" role="button"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-primary btn-sm" href="produtos_alterar.php?idProduto=<?php echo $produtos['idProduto'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger btn-sm" href="produtos_excluir.php?idProduto=<?php echo $produtos['idProduto'] ?>" role="button"><i class="bi bi-trash3"></i></a>
                         </td>
                     </tr>
                 <?php } ?>

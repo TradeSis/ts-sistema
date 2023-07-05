@@ -29,7 +29,7 @@ $post = buscaPosts($_GET['idPost']);
                         <div class="col-sm-12" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class='control-label' for='inputNormal' style="margin-top: -40px;">Titulo</label>
-                                <input type="text" name="titulo" class="form-control" value="<?php echo $post['titulo'] ?>" >
+                                <input type="text" name="titulo" class="form-control" value="<?php echo $post['titulo'] ?>" disabled>
                                 <input type="text" class="form-control" name="idPost" value="<?php echo $post['idPost'] ?>" style="display: none">
                                 <input type="text" class="form-control" name="imgDestaque" value="<?php echo $post['imgDestaque'] ?>" style="display: none">
                             </div>

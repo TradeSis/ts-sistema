@@ -26,7 +26,7 @@ $posts = buscaPosts();
                         <th>Imagem</th>
                         <th>Titulo</th>
                         <th>Autor</th>
-                        <th>Data</th>
+                        <th>Categoria</th>
                         <th>Ação</th>
 
                     </tr>
@@ -37,14 +37,15 @@ $posts = buscaPosts();
                 ?>
                     <tr>
 
-                        <td><img src="<?php echo URLROOT ?>/img/imgPosts/<?php echo $post['imgDestaque'] ?>" width="60px" height="60px" alt=""></td>
+                        <td><img src="<?php echo URLROOT ?>/img/<?php echo $post['imgDestaque'] ?>" width="60px" height="60px" alt=""></td>
                         <td><?php echo $post['titulo'] ?></td>
-                        <td><?php echo $post['autor'] ?></td>
-                        <td><?php echo $post['data'] ?></td>
+                        <td><?php echo $post['nomeAutor'] ?></td>
+                        <td><?php echo $post['nomeCategoria'] ?></td>
 
                         <td>
-                            <!-- <a class="btn btn-primary btn-sm" href="post_completo.php?idPost=<?php echo $post['idPost'] ?>" role="button">Visualizar</a> -->
-                            <a class="btn btn-danger btn-sm" href="post_excluir.php?idPost=<?php echo $post['idPost'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-info btn-sm" href="#" role="button"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-primary btn-sm" href="post_alterar.php?idPost=<?php echo $post['idPost'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger btn-sm" href="post_excluir.php?idPost=<?php echo $post['idPost'] ?>" role="button"><i class="bi bi-trash3"></i></a>
                         </td>
                     </tr>
                 <?php } ?>

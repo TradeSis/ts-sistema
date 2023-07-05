@@ -26,7 +26,7 @@ $noticia = buscaNoticias($idNoticia);
                     <div class="col-sm-12" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Titulo*</label>
-                            <input type="text" name="tituloNoticia" class="form-control" value="<?php echo $noticia['tituloNoticia'] ?>">
+                            <input type="text" name="tituloNoticia" class="form-control" value="<?php echo $noticia['tituloNoticia'] ?>" disabled>
                             <input type="text" class="form-control" name="idNoticia" value="<?php echo $noticia['idNoticia'] ?>" style="display: none">
                             <input type="text" class="form-control" name="imgNoticia" value="<?php echo $noticia['imgNoticia'] ?>" style="display: none">
                         </div>
