@@ -222,6 +222,7 @@ if (isset($_GET['operacao'])) {
 		}
 
 		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
 			'img1' => $novoNomeImg1,
 			'link1' => $_POST['link1'],
 			'tituloCard1' => $_POST['tituloCard1'],
@@ -835,5 +836,227 @@ if (isset($_GET['operacao'])) {
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
-	header('Location: ../perfil/paginas.php');
+	// slidePosts3col
+	if ($operacao == "slidePosts3col") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+			'subTitulo' => $_POST['subTitulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// slideMarcas
+	if ($operacao == "slideMarcas") {
+
+		$parametros = '';
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => $parametros,
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// listaReceitas
+	if ($operacao == "listaReceitas") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// cardUltimasNoticias
+	if ($operacao == "cardUltimasNoticias") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// cardSobreChocolate
+	if ($operacao == "cardSobreChocolate") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// cardCuriosidades
+	if ($operacao == "cardCuriosidades") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// cardCursos
+	if ($operacao == "cardCursos") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// cardPodcast
+	if ($operacao == "cardPodcast") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// cardEventos
+	if ($operacao == "cardEventos") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+
+	// cardVisitacao
+	if ($operacao == "cardVisitacao") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// siderBarColunistas
+	if ($operacao == "siderBarColunistas") {
+
+		$parametros = '';
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+
+	// listaMarcasEspecializadas
+	if ($operacao == "listaMarcasEspecializadas") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// listaMarcas
+	if ($operacao == "listaMarcas") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+
+
+	header("Location: ../perfil/paginas.php");
 }

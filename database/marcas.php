@@ -16,6 +16,30 @@ function buscaMarcas($idMarca=null)
 	return $autor;
 }
 
+function buscaMarcasEspecializadas()
+{
+	
+	$autor = array();
+	
+	$apiEntrada = array(
+	);
+
+	$autor = chamaAPI(null, '/sistema/marcas_especializadas', json_encode($apiEntrada), 'GET');
+	return $autor;
+}
+
+function buscaMarcasParceiras()
+{
+	
+	$autor = array();
+	
+	$apiEntrada = array(
+	);
+
+	$autor = chamaAPI(null, '/sistema/marcas_parceiras', json_encode($apiEntrada), 'GET');
+	return $autor;
+}
+
 if (isset($_GET['operacao'])) {
 
 	$operacao = $_GET['operacao'];
@@ -90,45 +114,36 @@ if (isset($_GET['operacao'])) {
 				
 				move_uploaded_file($imgMarca['tmp_name'], $pasta.$novoNomeImg);
 		
-			}else{
-				$novoNomeImg = "Sem_imagem";
 			}
-	
-		}
-
-		$bannerMarca = $_FILES['bannerMarca'];
-
-		if($bannerMarca !== null) {
-			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $bannerMarca["name"],$ext);
-		
-			if($ext == true) {
-				$pasta = ROOT . "/img/";
-				$novoNomeBanner = $_POST['nomeMarca']. "_" .$bannerMarca["name"];
+			$apiEntrada = array(
+				'idMarca' => $_POST['idMarca'],
+				'nomeMarca' => $_POST['nomeMarca'],
+				'imgMarca' => $novoNomeImg,
+				'descricaoMarca' => $_POST['descricaoMarca'],
+				'cidadeMarca' => $_POST['cidadeMarca'],
+				'estado' => $_POST['estado'],
+				'urlMarca' => $_POST['urlMarca'],
+				'ativoMarca' => $_POST['ativoMarca'],
+				'catalogo' => $_POST['catalogo'],
+				'lojasEspecializadas' => $_POST['lojasEspecializadas'],
 				
-				move_uploaded_file($bannerMarca['tmp_name'], $pasta.$novoNomeBanner);
-		
-			}else{
-				$novoNomeBanner = "Sem_imagem";
-			}
+			);
 	
+		}else{
+			$apiEntrada = array(
+				'idMarca' => $_POST['idMarca'],
+				'nomeMarca' => $_POST['nomeMarca'],
+				'descricaoMarca' => $_POST['descricaoMarca'],
+				'cidadeMarca' => $_POST['cidadeMarca'],
+				'estado' => $_POST['estado'],
+				'urlMarca' => $_POST['urlMarca'],
+				'ativoMarca' => $_POST['ativoMarca'],
+				'catalogo' => $_POST['catalogo'],
+				'lojasEspecializadas' => $_POST['lojasEspecializadas'],
+				
+			);
 		}
 
-		$apiEntrada = array(
-			'idMarca' => $_POST['idMarca'],
-			'nomeMarca' => $_POST['nomeMarca'],
-            'imgMarca' => $novoNomeImg,
-            'bannerMarca' => $novoNomeBanner,
-			'descricaoMarca' => $_POST['descricaoMarca'],
-			'cidadeMarca' => $_POST['cidadeMarca'],
-			'estado' => $_POST['estado'],
-			'urlMarca' => $_POST['urlMarca'],
-			'ativoMarca' => $_POST['ativoMarca'],
-			'catalogo' => $_POST['catalogo'],
-			'lojasEspecializadas' => $_POST['lojasEspecializadas'],
-			
-		);
-		/* echo json_encode($apiEntrada);
-		return; */
 		$marca = chamaAPI(null, '/sistema/marcas', json_encode($apiEntrada), 'POST');
 		
 	}

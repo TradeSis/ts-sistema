@@ -53,6 +53,7 @@ $secao = buscaSecao($_GET['idSecao']);
                                 <option value="principal">Principal</option>
                                 <option value="divisorPagina">Divisor de Pagina</option>
                                 <option value="lista">Lista</option>
+                                <option value="slides">Slides</option>
                                 <option value="blog">Blog</option>
                             </select>
 
