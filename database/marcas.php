@@ -2,6 +2,18 @@
 include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
+function buscaMarcasSlug($slug)
+{
+	
+	$autor = array();
+	
+	$apiEntrada = array(
+		'slug' => $slug,
+	);
+
+	$autor = chamaAPI(null, '/sistema/marcas_slug', json_encode($apiEntrada), 'GET');
+	return $autor;
+}
 
 function buscaMarcas($idMarca=null)
 {

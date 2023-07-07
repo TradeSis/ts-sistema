@@ -2,6 +2,18 @@
 include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
+function buscaReceitasSlug($slug)
+{
+	
+	$post = array();
+
+	$apiEntrada = array(
+		'slug' => $slug,
+	);
+	$post = chamaAPI(null, '/sistema/receitas_slug', json_encode($apiEntrada), 'GET');
+	//echo json_encode($post);
+	return $post;
+}
 
 function buscaReceitas($idReceita=null)
 {

@@ -3,7 +3,7 @@ include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
 
-function buscaSlug($slug)
+function buscaPostSlug($slug)
 {
 	
 	$post = array();
