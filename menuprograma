@@ -1,5 +1,4 @@
-GABRIEL
-GABRIEL
+LUCAS
 
 INSERT INTO `menuprograma` (`idMenuPrograma`, `IDMenu`, `progrNome`, `idAplicativo`, `progrLink`, `nivelMenu`, `menuAtalho`) VALUES
 (1, 2, 'Contrato Status', 2, 'cadastros/contratoStatus.php', 4, 0),
