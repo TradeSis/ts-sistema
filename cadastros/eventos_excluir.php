@@ -28,7 +28,7 @@ $categorias = buscaCategorias();
                     <div class="col-sm-12" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome do Evento*</label>
-                            <input type="text" name="nomeEvento" class="form-control" value="<?php echo $evento['nomeEvento']?>">
+                            <input type="text" name="nomeEvento" class="form-control" value="<?php echo $evento['nomeEvento']?>" disabled>
                             <input type="text" class="form-control" name="idEvento" value="<?php echo $evento['idEvento']?>" style="display: none">
                         </div>
                     </div>

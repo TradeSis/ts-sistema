@@ -45,7 +45,7 @@ $marca = buscaMarcas($idMarca);
                         </div>
                     </div>
 
-                    <div class="col-sm-6" style="margin-top: 50px">
+                  <!--   <div class="col-sm-6" style="margin-top: 50px">
                         <div class="col-sm-6" style="margin-top: -20px">
                             <label class='control-label' for='inputNormal' style="margin-top: -50px;">banner</label>
                             <label class="picture" for="banner" tabIndex="0">
@@ -53,7 +53,7 @@ $marca = buscaMarcas($idMarca);
                             </label>
                             <input type="file" name="bannerMarca" id="banner">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="row">

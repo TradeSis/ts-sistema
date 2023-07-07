@@ -26,7 +26,7 @@ $receita = buscaReceitas($idReceita);
                     <div class="col-sm-12" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Receita*</label>
-                            <input type="text" name="nomeReceita" class="form-control" value="<?php echo $receita['nomeReceita'] ?>">
+                            <input type="text" name="nomeReceita" class="form-control" value="<?php echo $receita['nomeReceita'] ?>" disabled>
                             <input type="text" class="form-control" name="idReceita" value="<?php echo $receita['idReceita'] ?>" style="display: none">
                             <input type="text" class="form-control" name="imgReceita" value="<?php echo $receita['imgReceita'] ?>" style="display: none">
                         </div>

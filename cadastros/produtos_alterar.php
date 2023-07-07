@@ -1,8 +1,11 @@
 <?php
 include_once('../head.php');
 include_once('../database/marcas.php');
-
+include_once('../database/produtos.php');
 $marcas = buscaMarcas();
+$idProduto = $_GET['idProduto']; 
+$produto = buscaProdutos($idProduto);
+
 ?>
 
 
@@ -12,21 +15,22 @@ $marcas = buscaMarcas();
 
         <div class="row mt-4">
             <div class="col-sm-8">
-                <h3 class="col">Adicionar Produto</h3>
+                <h3 class="col">Editar Produto</h3>
             </div>
             <div class="col-sm-4" style="text-align:right">
-                <a href="catalogo.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
+                <a href="produtos.php" role="button" class="btn btn-primary btn-sm">Voltar</a>
             </div>
         </div>
         <div class="container" style="margin-top: 10px">
 
-            <form action="../database/catalogo.php?operacao=inserir" method="post" enctype="multipart/form-data">
+            <form action="../database/produtos.php?operacao=alterar" method="post" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-sm-12" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome do Produto*</label>
-                            <input type="text" name="nomeProduto" class="form-control" required autocomplete="off">
+                            <input type="text" name="nomeProduto" class="form-control" value="<?php echo $produto['nomeProduto'] ?>">
+                            <input type="text" class="form-control" name="idProduto" value="<?php echo $produto['idProduto'] ?>" style="display: none">
                         </div>
                     </div>
                 </div>
@@ -36,26 +40,21 @@ $marcas = buscaMarcas();
                         <div class="col-sm-6" style="margin-top: -20px">
                             <label class='control-label' for='inputNormal' style="margin-top: -50px;">Imagem do Produto*</label>
                             <label class="picture" for="foto" tabIndex="0">
-                                <span class="picture__image"></span>
+                                <img src="<?php echo URLROOT ?>/img/<?php echo $produto["imgProduto"] ?>" width="100%" height="100%" alt="">
                             </label>
-                            <input type="file" name="imgProduto" id="foto" required>
+                            <input type="file" name="imgProduto" id="foto">
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <!-- <div class="col-sm-6" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Marcas*</label>
-                            <input type="text" name="nomeProduto" class="form-control" required autocomplete="off">
-                        </div>
-                    </div> -->
 
                         <div class="col-sm-6" style="margin-top: 10px">
                             <div class="select-form-group">
 
                                 <label class="labelForm">Marcas*</label>
                                 <select class="select form-control" name="idMarca">
+                                <option value="<?php echo $produto['idMarca'] ?>"><?php echo $produto['nomeMarca']  ?></option>
                                     <?php
                                     foreach ($marcas as $marca) {
                                     ?>
@@ -69,7 +68,7 @@ $marcas = buscaMarcas();
                     <div class="col-sm-6" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Preço*</label>
-                            <input type="number" name="precoProduto" class="form-control" autocomplete="off">
+                            <input type="number" name="precoProduto" class="form-control" value="<?php echo $produto['precoProduto'] ?>">
                         </div>
                     </div>
                 </div>
@@ -79,7 +78,7 @@ $marcas = buscaMarcas();
                         <div class="select-form-group">
                         <label class='control-label' for='inputNormal' style="margin-top: -45px;">Ativo</label>
                             <label for="ativoProduto">Inativo</label>
-                            <input type="range" id="ativoProduto" name="ativoProduto" min="0" max="1" style="width: 15%;">
+                            <input type="range" id="ativoProduto" name="ativoProduto" min="0" max="1" value="<?php echo $produto['ativoProduto'] ?>" style="width: 15%;">
                             <label for="ativoProduto">Ativo</label>
                         </div>
                     </div>
@@ -88,7 +87,7 @@ $marcas = buscaMarcas();
                         <div class="select-form-group">
                         <label class='control-label' for='inputNormal' style="margin-top: -45px;">Propaganda</label>
                             <label for="propagandaProduto">Não</label>
-                            <input type="range" id="propagandaProduto" name="propagandaProduto" min="0" max="1" style="width: 15%;">
+                            <input type="range" id="propagandaProduto" name="propagandaProduto" min="0" max="1" value="<?php echo $produto['propagandaProduto'] ?>" style="width: 15%;">
                             <label for="propagandaProduto">Sim</label>
                         </div>
                     </div>
@@ -98,7 +97,7 @@ $marcas = buscaMarcas();
                     <div class="col-sm-3" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -43px;">Descrição</label>
-                            <textarea name="descricaoProduto" id="" cols="135" rows="10"></textarea>
+                            <textarea name="descricaoProduto" id="" cols="135" rows="10"><?php echo $produto['descricaoProduto'] ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -106,7 +105,7 @@ $marcas = buscaMarcas();
         </div>
 
         <div style="text-align:right; margin-right:-20px; margin-top:20px">
-            <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
+            <button type="submit" class="btn btn-sm btn-success">Salvar</button>
         </div>
         </form>
     </div>

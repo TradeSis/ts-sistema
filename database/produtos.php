@@ -3,30 +3,30 @@ include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
 
-function buscaProdutos()
+function buscaProdutos($idProduto=null)
 {
 	
-	$produto = array();
-
-	
-	$produto = chamaAPI(null, '/sistema/produtos_card', null, 'GET');
-	//echo json_encode($produto);
-	return $produto;
-}
-
-function buscaTodosProdutos($idProduto=null)
-{
-	
-	$produto = array();
+	$produtos = array();
 	
 	$apiEntrada = array(
 		'idProduto' => $idProduto,
 	);
-	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
-	return; */
-	$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'GET');
-	//echo json_encode($produto);
-	return $produto;
+
+	$produtos = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'GET');
+	return $produtos;
+}
+
+function buscaCardProdutos($idProduto=null)
+{
+	
+	$produtos = array();
+	
+	$apiEntrada = array(
+		'idProduto' => $idProduto,
+	);
+
+	$produtos = chamaAPI(null, '/sistema/produtos_card', json_encode($apiEntrada), 'GET');
+	return $produtos;
 }
 
 if (isset($_GET['operacao'])) {
@@ -35,33 +35,82 @@ if (isset($_GET['operacao'])) {
 
     if ($operacao=="inserir") {
 
-		$fotoProduto = $_FILES['fotoProduto'];
+		$imgProduto = $_FILES['imgProduto'];
 
-		if($fotoProduto !== null) {
-			preg_match("/\.(png|jpg|jpeg){1}$/i", $fotoProduto["name"],$ext);
+		if($imgProduto !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $imgProduto["name"],$ext);
 		
 			if($ext == true) {
-				$pasta = ROOT . "/img/imgProdutos/";
-				$novoNomeFoto = $_POST['nomeProduto']. "_" .$fotoProduto["name"];
+				$pasta = ROOT . "/img/";
+				$novoNomeImg = $_POST['nomeProduto']. "_" .$imgProduto["name"];
 				
-				move_uploaded_file($fotoProduto['tmp_name'], $pasta.$novoNomeFoto);
+				move_uploaded_file($imgProduto['tmp_name'], $pasta.$novoNomeImg);
 		
 			}else{
-				$novoNomeFoto = "Sem_imagem";
+				$novoNomeImg = "Sem_imagem";
 			}
 	
 		}
 
 		$apiEntrada = array(
 			'nomeProduto' => $_POST['nomeProduto'],
-			'valorProduto' => $_POST['valorProduto'],
-            'fotoProduto' => $novoNomeFoto,
-            'destaque' => $_POST['destaque'],
+            'imgProduto' => $novoNomeImg,
+			'idMarca' => $_POST['idMarca'],
+			'precoProduto' => $_POST['precoProduto'],
+			'ativoProduto' => $_POST['ativoProduto'],
+			'propagandaProduto' => $_POST['propagandaProduto'],
+			'descricaoProduto' => $_POST['descricaoProduto'],
 			
 		);
-		$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'PUT');
+
+		$produtos = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'PUT');
 		
 	}
+
+	$operacao = $_GET['operacao'];
+
+    if ($operacao=="alterar") {
+
+		$imgProduto = $_FILES['imgProduto'];
+
+		if($imgProduto !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $imgProduto["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg = $_POST['nomeProduto']. "_" .$imgProduto["name"];
+				
+				move_uploaded_file($imgProduto['tmp_name'], $pasta.$novoNomeImg);
+		
+			}
+			$apiEntrada = array(
+			'idProduto' => $_POST['idProduto'],
+			'nomeProduto' => $_POST['nomeProduto'],
+            'imgProduto' => $novoNomeImg,
+			'idMarca' => $_POST['idMarca'],
+			'precoProduto' => $_POST['precoProduto'],
+			'ativoProduto' => $_POST['ativoProduto'],
+			'propagandaProduto' => $_POST['propagandaProduto'],
+			'descricaoProduto' => $_POST['descricaoProduto'],
+		);
+	
+		}else{
+			$apiEntrada = array(
+				'idProduto' => $_POST['idProduto'],
+				'nomeProduto' => $_POST['nomeProduto'],
+				'idMarca' => $_POST['idMarca'],
+				'precoProduto' => $_POST['precoProduto'],
+				'ativoProduto' => $_POST['ativoProduto'],
+				'propagandaProduto' => $_POST['propagandaProduto'],
+				'descricaoProduto' => $_POST['descricaoProduto'],
+			);
+		}
+
+		$produtos = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'POST');
+		
+	}
+
+	
 
 	
 	if ($operacao=="excluir") {
@@ -69,18 +118,17 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idProduto' => $_POST['idProduto'],
 		);
-
-		if(!empty($_POST['fotoProduto'])){
-			$pasta = ROOT . "/img/imgProdutos/";
-			$imagem = $pasta . $_POST['fotoProduto'];
-
+		if(!empty($_POST['imgProduto'])){
+			$pasta = ROOT . "/img/";
+			$imagem = $pasta . $_POST['imgProduto'];
+			
 			if(file_exists($imagem)){
 				unlink($imagem);
 			}
 
 		}
 
-		$produto = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'DELETE');
+		$produtos = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'DELETE');
 	}
 
 
