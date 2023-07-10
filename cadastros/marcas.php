@@ -23,23 +23,6 @@ $marcas = buscaMarcas();
         height: 15px;
     }
 
-/*     .ativoMarca_0 p{
-        background-color: #D9534F;
-        border-radius: 5px;
-        border-bottom: 2px solid;
-        color: transparent;
-        margin: 10px 30px 0px 30px;
-        height: 15px;
-    } */
-
-    .ativoMarca_0 p{
-        /* background-color: #4ddd87; */
-       /*  border-radius: 5px;
-        border-bottom: 2px solid; */
-        /* color: transparent; */
-        /* margin: 10px 30px 0px 30px;
-        height: 15px; */
-    }
 
     .ativoMarca_0 p .emojiNaoAtivo{
        font-size: 30px;
@@ -51,15 +34,6 @@ $marcas = buscaMarcas();
      
     }
 
-    .ativoMarca_1 p{
-        /* background-color: #4ddd87; */
-       /*  border-radius: 5px;
-        border-bottom: 2px solid; */
-        /* color: transparent; */
-        /* margin: 10px 30px 0px 30px;
-        height: 15px; */
-    }
-
     .ativoMarca_1 p .emojiAtivo{
        font-size: 30px;
         color: #4ddd87;
@@ -69,7 +43,6 @@ $marcas = buscaMarcas();
        display: none;
      
     }
-
 
 </style>
 <body class="bg-transparent">
