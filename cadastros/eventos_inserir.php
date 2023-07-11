@@ -23,7 +23,13 @@ $categorias = buscaCategorias();
             <form action="../database/eventos.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
                 <div class="row">
-                    <div class="col-sm-12" style="margin-top: 10px">
+                    <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Slug*</label>
+                            <input type="text" name="slug" class="form-control" required autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-sm-9" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome do Evento*</label>
                             <input type="text" name="nomeEvento" class="form-control" required autocomplete="off">
