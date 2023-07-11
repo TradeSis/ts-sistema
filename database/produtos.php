@@ -3,13 +3,14 @@ include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
 
-function buscaProdutos($idProduto=null)
+function buscaProdutos($idProduto=null,$idMarca=null)
 {
 	
 	$produtos = array();
 	
 	$apiEntrada = array(
 		'idProduto' => $idProduto,
+		'idMarca' => $idMarca,
 	);
 
 	$produtos = chamaAPI(null, '/sistema/produtos', json_encode($apiEntrada), 'GET');
@@ -26,6 +27,19 @@ function buscaCardProdutos($idProduto=null)
 	);
 
 	$produtos = chamaAPI(null, '/sistema/produtos_card', json_encode($apiEntrada), 'GET');
+	return $produtos;
+}
+
+function buscaListaProdutosSemCatalogo($idProduto=null)
+{
+	
+	$produtos = array();
+	
+	$apiEntrada = array(
+		'idProduto' => $idProduto,
+	);
+
+	$produtos = chamaAPI(null, '/sistema/produtos_listaSemCatalogo', json_encode($apiEntrada), 'GET');
 	return $produtos;
 }
 

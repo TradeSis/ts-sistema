@@ -2,6 +2,18 @@
 include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
+function buscaEventosSlug($slug)
+{
+	
+	$eventos = array();
+	
+	$apiEntrada = array(
+		'slug' => $slug,
+	);
+
+	$eventos = chamaAPI(null, '/sistema/eventos_slug', json_encode($apiEntrada), 'GET');
+	return $eventos;
+}
 
 function buscaEventos($idEvento=null)
 {
@@ -15,6 +27,8 @@ function buscaEventos($idEvento=null)
 	$eventos = chamaAPI(null, '/sistema/eventos', json_encode($apiEntrada), 'GET');
 	return $eventos;
 }
+
+
 
 function buscaProximosEventos($idEvento=null)
 {
@@ -110,6 +124,7 @@ if (isset($_GET['operacao'])) {
 
 
 		$apiEntrada = array(
+			'slug' => $_POST['slug'],
 			'nomeEvento' => $_POST['nomeEvento'],
 			'descricaoEvento' => $_POST['descricaoEvento'],
 			'dataEvento' => $_POST['dataEvento'],

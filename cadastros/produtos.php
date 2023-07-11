@@ -10,7 +10,7 @@ $produtos = buscaProdutos();
         border-radius: 5px;
         border-bottom: 2px solid;
         color: transparent;
-        margin: 10px 20px 0px 20px;
+        margin: 10px 30px 0px 30px;
         height: 15px;
     }
 
@@ -19,9 +19,31 @@ $produtos = buscaProdutos();
         border-radius: 5px;
         border-bottom: 2px solid;
         color: transparent;
-        margin: 10px 20px 0px 20px;
+        margin: 10px 30px 0px 30px;
         height: 15px;
     }
+
+
+    .ativoProduto_0 p .emojiNaoAtivo{
+       font-size: 30px;
+        color: #D9534F;
+     
+    }
+    .ativoProduto_0 p .emojiAtivo{
+       display: none;
+     
+    }
+
+    .ativoProduto_1 p .emojiAtivo{
+       font-size: 30px;
+        color: #4ddd87;
+     
+    }
+    .ativoProduto_1 p .emojiNaoAtivo{
+       display: none;
+     
+    }
+
 </style>
 <body class="bg-transparent">
     <div class="container text-center" style="margin-top:30px"> 
@@ -41,6 +63,7 @@ $produtos = buscaProdutos();
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Ativo</th>
                         <th>Foto</th>
                         <th>Nome</th>
                         <th style="width:5px">Propaganda</th>
@@ -50,16 +73,17 @@ $produtos = buscaProdutos();
                 </thead>
 
                 <?php
-                foreach ($produtos as $produtos) {
+                foreach ($produtos as $produto) {
                 ?>
                     <tr>
-                        <td><img src="<?php echo URLROOT ?>/img/<?php echo $produtos['imgProduto'] ?>" width="60px" height="60px" alt=""></td>
-                        <td><?php echo $produtos['nomeProduto'] ?></td>
-                        <td class="ativo_<?php echo $produtos['propagandaProduto'] ?>"><p><?php echo $produtos['propagandaProduto'] ?></p></td>
+                        <td class="ativoProduto_<?php echo $produto['ativoProduto'] ?>"><p><i class="emojiAtivo bi bi-emoji-smile-fill"></i><i class="emojiNaoAtivo bi bi-emoji-frown-fill"></i></i></p></td>
+                        <td><img src="<?php echo URLROOT ?>/img/<?php echo $produto['imgProduto'] ?>" width="60px" height="60px" alt=""></td>
+                        <td><?php echo $produto['nomeProduto'] ?></td>
+                        <td class="ativo_<?php echo $produto['propagandaProduto'] ?>"><p><?php echo $produto['propagandaProduto'] ?></p></td>
                         <td>
                             <a class="btn btn-info btn-sm" href="#" role="button"><i class="bi bi-eye"></i></a>
-                            <a class="btn btn-primary btn-sm" href="produtos_alterar.php?idProduto=<?php echo $produtos['idProduto'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger btn-sm" href="produtos_excluir.php?idProduto=<?php echo $produtos['idProduto'] ?>" role="button"><i class="bi bi-trash3"></i></a>
+                            <a class="btn btn-primary btn-sm" href="produtos_alterar.php?idProduto=<?php echo $produto['idProduto'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger btn-sm" href="produtos_excluir.php?idProduto=<?php echo $produto['idProduto'] ?>" role="button"><i class="bi bi-trash3"></i></a>
                         </td>
                     </tr>
                 <?php } ?>

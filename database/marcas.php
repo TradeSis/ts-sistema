@@ -93,6 +93,7 @@ if (isset($_GET['operacao'])) {
 		}
 
 		$apiEntrada = array(
+			'slug' => $_POST['slug'],
 			'nomeMarca' => $_POST['nomeMarca'],
             'imgMarca' => $novoNomeImg,
             'bannerMarca' => $novoNomeBanner,
