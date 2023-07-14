@@ -1,6 +1,9 @@
 <?php
 // gabriel 060623 15:06
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once('../conexao.php');
 
 function buscaOperacao($idOperacao=null)
@@ -55,10 +58,19 @@ if (isset($_GET['operacao'])) {
 
     if ($operacao == "filtrar") {
 
+		$FiltroTipoOp = $_POST["FiltroTipoOp"];
+		$dadosOp = $_POST["dadosOp"];
 		$idAtividade = $_POST["idAtividade"];
 		$idProcesso  = $_POST["idProcesso"];
 		$idNatureza  = $_POST["idNatureza"];
-       
+
+		if ($FiltroTipoOp == ""){
+			$FiltroTipoOp = null;
+		} 
+
+		if ($dadosOp == ""){
+			$dadosOp = null;
+		} 
 
 		if ($idAtividade == ""){
 			$idAtividade = null;
@@ -73,12 +85,15 @@ if (isset($_GET['operacao'])) {
 		}
 
 		$apiEntrada = array(
+			'FiltroTipoOp' => $FiltroTipoOp,
+			'dadosOp' => $dadosOp,
 			'idAtividade' => $idAtividade,
 			'idProcesso' => $idProcesso,
 			'idNatureza' => $idNatureza
 		);
 		
-	
+		$_SESSION['filtro_operacao'] = $apiEntrada;
+
 		$operacao = chamaAPI(null, '/sistema/fisoperacao', json_encode($apiEntrada), 'GET');
 
 		echo json_encode($operacao);

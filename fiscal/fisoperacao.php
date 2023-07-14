@@ -12,6 +12,20 @@ $processos = buscaProcesso();
 $naturezas = buscaNatureza();
 $operacoes = buscaOperacao();
 
+$filtroEntrada = null;
+$idAtividade = null;
+$idProcesso = null;
+$idNatureza = null;
+
+
+if (isset($_SESSION['filtro_operacao'])) {
+    $filtroEntrada = $_SESSION['filtro_operacao'];
+    $idAtividade = $filtroEntrada['idAtividade'];
+    $idProcesso = $filtroEntrada['idProcesso'];
+    $idNatureza = $filtroEntrada['idNatureza'];
+}
+
+
 ?>
 
 <style>
@@ -21,60 +35,6 @@ $operacoes = buscaOperacao();
 </style>
 
 <body class="bg-transparent">
-
-    <nav id="menuFiltros" class="menuFiltros" style="width:165px;margin-left:15px;margin-top:-89px">
-        <div class="titulo"><span>Filtrar por:</span></div>
-        <ul>
-            <li class="ls-label col-sm-12">
-                <form class="d-flex" action="" method="post" style="text-align: right; margin-right:5px">
-                    <select class="form-control fonteSelect" name="idAtividade" id="FiltroAtividade"
-                        style="font-size: 14px; width: 130px; height: 35px">
-                        <option value="<?php echo null ?>"><?php echo " Atividade" ?></option>
-                        <?php
-                        foreach ($atividades as $atividade) {
-                            ?>
-                            <option value="<?php echo $atividade['idAtividade'] ?>"><?php echo $atividade['nomeAtividade'] ?></option>
-                        <?php } ?>
-                    </select>
-                </form>
-            </li>
-
-            <li class="ls-label col-sm-12">
-                <form class="d-flex" action="" method="post" style="text-align: right;">
-                    <select class="form-control" name="idProcesso" id="FiltroProcesso"
-                        style="font-size: 14px; width: 130px; height: 35px">
-                        <option value="<?php echo null ?>"><?php echo " Processo" ?></option>
-                        <?php
-                        foreach ($processos as $processo) {
-                            ?>
-                            <option value="<?php echo $processo['idProcesso'] ?>"><?php echo $processo['nomeProcesso'] ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                </form>
-            </li>
-
-            <li class="ls-label col-sm-12">
-                <form class="d-flex" action="" method="post" style="text-align: right;">
-                    <select class="form-control" name="idNatureza" id="FiltroNatureza"
-                        style="font-size: 14px; width: 130px; height: 35px">
-                        <option value="<?php echo null ?>"><?php echo " Natureza" ?></option>
-                        <?php
-                        foreach ($naturezas as $natureza) {
-                            ?>
-                            <option value="<?php echo $natureza['idNatureza'] ?>"><?php echo $natureza['nomeNatureza'] ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                </form>
-            </li>
-        </ul>
-
-        <div class="col-sm" style="text-align:right;color: #fff;margin-bottom:167px">
-            <a onClick="limpar()" role=" button" class="btn btn-sm" style="background-color:#84bfc3; ">Limpar</a>
-        </div>
-    </nav>
-
 
     <div class="container-fluid text-center mt-4">
 
@@ -101,13 +61,61 @@ $operacoes = buscaOperacao();
                     <thead class="thead-light">
                         <tr>
                             <th class="text-center">Operação</th>
-                            <th class="text-center">Atividade</th>
-                            <th class="text-center">Processo</th>
-                            <th class="text-center">Natureza</th>
+                            <th class="text-center">
+                                <form class="d-flex" action="" method="post">
+                                    <select class="form-control fonteSelect text-center" name="idAtividade"
+                                        id="FiltroAtividade" style="font-size: 14px;">
+                                        <option value="<?php echo null ?>"><?php echo " Atividade" ?></option>
+                                        <?php
+                                        foreach ($atividades as $atividade) {
+                                            ?>
+                                            <option <?php
+                                            if ($atividade['idAtividade'] == $idAtividade) {
+                                                echo "selected";
+                                            }
+                                            ?>  value="<?php echo $atividade['idAtividade'] ?>"><?php echo $atividade['nomeAtividade'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </form>
+                            </th>
+                            <th class="text-center">
+                                <form class="d-flex" action="" method="post">
+                                    <select class="form-control text-center" name="idProcesso" id="FiltroProcesso"
+                                        style="font-size: 14px;">
+                                        <option value="<?php echo null ?>"><?php echo " Processo" ?></option>
+                                        <?php
+                                        foreach ($processos as $processo) {
+                                            ?>
+                                            <option <?php
+                                            if ($processo['idProcesso'] == $idProcesso) {
+                                                echo "selected";
+                                            }
+                                            ?> value="<?php echo $processo['idProcesso'] ?>"><?php echo $processo['nomeProcesso'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </form>
+                            </th>
+                            <th class="text-center">
+                                <form class="d-flex" action="" method="post">
+                                    <select class="form-control text-center" name="idNatureza" id="FiltroNatureza"
+                                        style="font-size: 14px;">
+                                        <option value="<?php echo null ?>"><?php echo " Natureza" ?></option>
+                                        <?php
+                                        foreach ($naturezas as $natureza) {
+                                            ?>
+                                            <option <?php
+                                            if ($natureza['idNatureza'] == $idNatureza) {
+                                                echo "selected";
+                                            }
+                                            ?>  value="<?php echo $natureza['idNatureza'] ?>"><?php echo $natureza['nomeNatureza'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </form>
+                            </th>
                             <th class="text-center">idGrupoOper</th>
                             <th class="text-center">idEntSai</th>
                             <th class="text-center">xfop</th>
-                            <th class="text-center">Ação</th>
+                            <th class="text-center" colspan="2">Ação</th>
                         </tr>
                     </thead>
 
@@ -162,6 +170,7 @@ $operacoes = buscaOperacao();
                         linha = linha + "<TD>" + object.idEntSai + "</TD>";
                         linha = linha + "<TD>" + object.xfop + "</TD>";
                         linha = linha + "<TD>" + "<a class='btn btn-primary btn-sm' href='fisoperacao_alterar.php?idOperacao=" + object.idOperacao + "' role='button'><i class='bi bi-pencil-square'></i></i></a>" + "</TD>";
+                        linha = linha + "<TD>" + "<a class='btn btn-danger btn-sm' href='fisoperacao_excluir.php?idOperacao=" + object.idOperacao + "' role='button'><i class='bi bi-trash'></i></i></a>" + "</TD>";
                         linha = linha + "</TR>";
                     }
 

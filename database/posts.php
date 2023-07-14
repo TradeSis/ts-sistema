@@ -3,7 +3,7 @@ include_once __DIR__."/../../config.php";
 include_once (ROOT.'/sistema/conexao.php');
 
 
-function buscaSlug($slug)
+function buscaPostSlug($slug)
 {
 	
 	$post = array();
@@ -16,15 +16,28 @@ function buscaSlug($slug)
 	return $post;
 }
 
-function buscaPosts($idPost=null, $titulo=null, $categoria=null)
+function buscaPosts($idPost=null)
 {
 	
 	$post = array();
 	
 	$apiEntrada = array(
-		'idPost' => $idPost,
-		'titulo' => $titulo,
-		'categoria' => $categoria
+		'idPost' => $idPost
+	);
+	
+	$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'GET');
+	
+	return $post;
+}
+
+function buscaPostsCategoria($idCategoria=null,$qtdPosts=null)
+{
+	
+	$post = array();
+	
+	$apiEntrada = array(
+		'idCategoria' => $idCategoria,
+		'qtdPosts' => $qtdPosts,
 	);
 	
 	$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'GET');
@@ -33,20 +46,8 @@ function buscaPosts($idPost=null, $titulo=null, $categoria=null)
 }
 
 
-function buscaPostsRecentes()
-{
-	
-	$post = array();
-	
-	$apiEntrada = array(
-	
-	);
-	
-	$post = chamaAPI(null, '/sistema/posts_recentes', json_encode($apiEntrada), 'GET');
-	
-	return $post;
-	
-}
+
+
 
 if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
@@ -59,7 +60,7 @@ if (isset($_GET['operacao'])) {
 			preg_match("/\.(png|jpg|jpeg){1}$/i", $imgDestaque["name"],$ext);
 		
 			if($ext == true) {
-				$pasta = ROOT . "/img/imgPosts/";
+				$pasta = ROOT . "/img/";
 				$novoNomeFoto = $_POST['slug']. "_" .$imgDestaque["name"];
 				
 				move_uploaded_file($imgDestaque['tmp_name'], $pasta.$novoNomeFoto);
@@ -75,14 +76,56 @@ if (isset($_GET['operacao'])) {
             'slug' => $_POST['slug'],
 		    'titulo' => $_POST['titulo'],
 		    'imgDestaque' => $novoNomeFoto,
-		    'autor' => $_POST['autor'],
+		    'idAutor' => $_POST['idAutor'],
 		    'data' => $_POST['data'],
 		    'comentarios' => $_POST['comentarios'],
-		    'textoIntro' => $_POST['textoIntro'],
+		    'idCategoria' => $_POST['idCategoria'],
 		    'txtConteudo' => $_POST['txtConteudo'],
 			
 		);
 		$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'PUT');
+		
+	}
+
+	if ($operacao=="alterar") {
+
+		$imgDestaque = $_FILES['imgDestaque'];
+		if($imgDestaque !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $imgDestaque["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg = $_POST['slug']. "_" .$imgDestaque["name"];
+				
+				move_uploaded_file($imgDestaque['tmp_name'], $pasta.$novoNomeImg);
+		
+			}
+			$apiEntrada = array(
+			'idPost' => $_POST['idPost'],
+		    'slug' => $_POST['slug'],
+		    'titulo' => $_POST['titulo'],
+		    'imgDestaque' => $novoNomeImg,
+		    'idAutor' => $_POST['idAutor'],
+		    'data' => $_POST['data'],
+		    'comentarios' => $_POST['comentarios'],
+		    'idCategoria' => $_POST['idCategoria'],
+		    'txtConteudo' => $_POST['txtConteudo'],
+			);
+	
+		}else{
+			$apiEntrada = array(
+				'idPost' => $_POST['idPost'],
+				'slug' => $_POST['slug'],
+				'titulo' => $_POST['titulo'],
+				'idAutor' => $_POST['idAutor'],
+				'data' => $_POST['data'],
+				'comentarios' => $_POST['comentarios'],
+				'idCategoria' => $_POST['idCategoria'],
+				'txtConteudo' => $_POST['txtConteudo'],
+			);
+		}
+
+		$receitas = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'POST');
 		
 	}
 
@@ -93,7 +136,7 @@ if (isset($_GET['operacao'])) {
 		);
 
 		if(!empty($_POST['imgDestaque'])){
-			$pasta = ROOT . "/img/imgPosts/";
+			$pasta = ROOT . "/img/";
 			$imagem = $pasta . $_POST['imgDestaque'];
 
 			

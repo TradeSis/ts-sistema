@@ -1,5 +1,9 @@
 <?php
 include_once('../head.php');
+include_once('../database/autor.php');
+include_once('../database/categorias.php');
+$autores = buscaAutor();
+$categorias = buscaCategorias();
 ?>
 
 <style>
@@ -44,32 +48,43 @@ include_once('../head.php');
                             <input type="titulo" name="slug" class="form-control" required autocomplete="off">
                         </div>
                     </div>
-                    <div class="col-sm-6" style="margin-top: 10px">
+                    <div class="col-sm-9" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Titulo</label>
                             <input type="titulo" name="titulo" class="form-control" required autocomplete="off">
                         </div>
                     </div>
-                    <div class="col-sm-3" style="margin-top: 10px">
+
+                </div>
+
+                <div class="row">
+                <div class="col-sm-3" style="margin-top: 10px">
                         <div class="select-form-group">
 
-                            <label class="labelForm">Categoria</label>
-                            <select class="select form-control" name="categoria">
-                                <option value="tecnologia">tecnologia</option>
-                                <option value="informacao">informação</option>
-                                <option value="novidade">novidade</option>
-
+                            <label class="labelForm">Categorias*</label>
+                            <select class="select form-control" name="idCategoria">
+                                <?php
+                                foreach ($categorias as $categoria) {
+                                ?>
+                                    <option value="<?php echo $categoria['idCategoria'] ?>"><?php echo $categoria['nomeCategoria']  ?></option>
+                                <?php  } ?>
                             </select>
 
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-3" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Autor</label>
-                            <input type="text" name="autor" class="form-control" required autocomplete="off">
+                <div class="col-sm-3" style="margin-top: 10px">
+                        <div class="select-form-group">
+
+                            <label class="labelForm">Colunista/Autor*</label>
+                            <select class="select form-control" name="idAutor">
+                                <?php
+                                foreach ($autores as $autor) {
+                                ?>
+                                    <option value="<?php echo $autor['idAutor'] ?>"><?php echo $autor['nomeAutor']  ?></option>
+                                <?php  } ?>
+                            </select>
+
                         </div>
                     </div>
                     <div class="col-sm-3" style="margin-top: -28px">
@@ -79,28 +94,29 @@ include_once('../head.php');
                         </div>
                     </div>
 
-                    <div class="col-sm-3" style="margin-top: 10px">
+                <!--     <div class="col-sm-3" style="margin-top: 10px">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Comentarios</label>
                             <input type="text" name="comentarios" class="form-control" autocomplete="off">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-sm-12" style="margin-top: 10px">
                         <div class="form-group">
                             <label>Introdução</label>
                             <textarea name="textoIntro" cols="130" rows="5" required></textarea>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row">
                     <div class="col-sm-12" style="margin-top: 10px">
                         <div class="form-group">
-                            <textarea name="txtConteudo" id="txtConteudo"></textarea>
+                        <label class='control-label' for='inputNormal' style="margin-top: -43px;">Conteudo</label>
+                            <textarea name="txtConteudo" cols="135" rows="7" id="txtConteudo"></textarea>
                         </div>
                     </div>
                 </div>

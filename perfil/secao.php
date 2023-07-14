@@ -39,9 +39,6 @@ $secoes = buscaSecao();
                     <a class="nav-link" id="tab2" src="secao_tipoSecao.php?tipoSecao=footer" style="color: #000;">Footer</a>
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link" id="tab3" src="secao_tipoSecao.php?tipoSecao=banner" style="color: #000;">Banner</a>
-                </li>
-                <li class="nav-item" >
                     <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=principal" style="color: #000;">Principal</a>
                 </li>
                 <li class="nav-item" >
@@ -58,6 +55,12 @@ $secoes = buscaSecao();
                 </li>
                 <li class="nav-item" >
                     <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=quemSomos" style="color: #000;">Quem Somos</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=slides" style="color: #000;">Slides</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link" src="secao_tipoSecao.php?tipoSecao=blog" style="color: #000;">Blog</a>
                 </li>
             </ul>
 

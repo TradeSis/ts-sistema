@@ -8,15 +8,13 @@ $secoes = buscaSecao();
 $paginas = buscaPaginas();
 $idSecaoPagina = $_GET['idSecaoPagina'];
 $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
-/* echo json_encode($secoes); */
-/* echo json_decode($secoesPagina['parametros'], true); */
-
+$arquivoFonte = $secoesPagina["arquivoFonte2"];
+$temporaria = explode('.', $arquivoFonte);
 ?>
 
 <body class="bg-transparent">
 
     <div class="container" style="margin-top:10px">
-
         <div class="row mt-4">
             <div class="col-sm-8">
                 <h3 class="col">Seções da Paginas</h3>
@@ -27,7 +25,7 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
         </div>
 
         <div class="container" style="margin-top: 10px">
-            <form action="../database/secaoPagina.php?operacao=alterar" method="post">
+            <form action="../database/secaoPagina.php?operacao=<?php echo $temporaria[0] ?>" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-sm-6" style="margin-top: -5px">
                         <div class="select-form-group">
@@ -54,7 +52,7 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
                         </div>
                     </div>
 
-                    <div class="col-sm-3" style="margin-top: 10px">
+                    <div class="col-sm-2" style="margin-top: 10px">
                         <div class="select-form-group">
 
                             <label class="labelForm">Ordem</label>
@@ -85,18 +83,40 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
 
                         </div>
                     </div>
+
+                    <div class="col-sm-1" style="margin-top: 10px">
+                        <div class="select-form-group">
+
+                            <label class="labelForm">Colunas</label>
+                            <select class="select form-control" name="coluna">
+                                <option value="<?php echo $secoesPagina['coluna'] ?>"><?php echo $secoesPagina['coluna'] ?></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                            
+
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
-                    
-                    
-                        <div class="col-sm-12" style="margin-top: 10px">
-                            <div class="form-group">
-                                <label>Parametros</label>
-                                <textarea name="parametros" cols="130" rows="7"><?php echo $secoesPagina['parametros'] ?></textarea>
-                            </div>
+                    <div class="col-sm-12" style="margin-top: 10px;">
+
+                        <div class="form-group">
+                            <h5>Parametros</h5>
+                            <hr>
+                            <br>
+                            <?php
+                            $arquivoFonte = $secoesPagina["arquivoFonte2"];
+                            $temporaria = explode('.', $arquivoFonte);
+                            $arquivoFonte = $temporaria[0] . '-form.' . $temporaria[1];
+                            include ROOT . '/paginas/secoes/' . $secoesPagina["tipoSecao"] . "/" . $arquivoFonte;
+                            ?>
+
                         </div>
                     </div>
+
+                </div>
 
                 <div style="text-align:right; margin-right:-20px">
                     <button type="submit" class="btn btn-sm btn-success">Salvar</button>
@@ -105,7 +125,6 @@ $secoesPagina = buscaSecaoPaginas($idSecaoPagina);
         </div>
 
     </div>
-
 
 </body>
 
