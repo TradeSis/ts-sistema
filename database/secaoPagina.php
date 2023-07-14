@@ -760,19 +760,6 @@ if (isset($_GET['operacao'])) {
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
-	// postsRecentes
-	if ($operacao == "postsRecentes") {
-		$apiEntrada = array(
-			'idSecaoPagina' => $_POST['idSecaoPagina'],
-			'idPagina' => $_POST['idPagina'],
-			'idSecao' => $_POST['idSecao'],
-			'ordem' => $_POST['ordem'],
-			'coluna' => $_POST['coluna'],
-			'parametros' => $_POST['parametros'],
-		);
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
-	}
-
 	// siderBar_modelo1 
 	if ($operacao == "siderBar_modelo1") {
 		$apiEntrada = array(
@@ -886,10 +873,14 @@ if (isset($_GET['operacao'])) {
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
-	// cardUltimasNoticias
-	if ($operacao == "cardUltimasNoticias") {
+
+
+	// cardEventos_modelo1
+	if ($operacao == "cardEventos_modelo1") {
 		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
+			'tipoEvento' => $_POST['tipoEvento'],
+			'qtdEvento' => $_POST['qtdEvento'],
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -902,11 +893,12 @@ if (isset($_GET['operacao'])) {
 		);
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
-
-	// cardSobreChocolate
-	if ($operacao == "cardSobreChocolate") {
+	// cardEventos_modelo2
+	if ($operacao == "cardEventos_modelo2") {
 		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
+			'tipoEvento' => $_POST['tipoEvento'],
+			'qtdEvento' => $_POST['qtdEvento'],
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -919,62 +911,12 @@ if (isset($_GET['operacao'])) {
 		);
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
-
-	// cardCuriosidades
-	if ($operacao == "cardCuriosidades") {
+	// cardEventos_modelo3
+	if ($operacao == "cardEventos_modelo3") {
 		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
-		);
-		$parametros = array_map('htmlentities', $parametros1);
-		$apiEntrada = array(
-			'idSecaoPagina' => $_POST['idSecaoPagina'],
-			'idPagina' => $_POST['idPagina'],
-			'idSecao' => $_POST['idSecao'],
-			'ordem' => $_POST['ordem'],
-			'coluna' => $_POST['coluna'],
-			'parametros' => json_encode($parametros),
-		);
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
-	}
-
-	// cardCursos
-	if ($operacao == "cardCursos") {
-		$parametros1 = array(
-			'titulo' => $_POST['titulo'],
-		);
-		$parametros = array_map('htmlentities', $parametros1);
-		$apiEntrada = array(
-			'idSecaoPagina' => $_POST['idSecaoPagina'],
-			'idPagina' => $_POST['idPagina'],
-			'idSecao' => $_POST['idSecao'],
-			'ordem' => $_POST['ordem'],
-			'coluna' => $_POST['coluna'],
-			'parametros' => json_encode($parametros),
-		);
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
-	}
-
-	// cardPodcast
-	if ($operacao == "cardPodcast") {
-		$parametros1 = array(
-			'titulo' => $_POST['titulo'],
-		);
-		$parametros = array_map('htmlentities', $parametros1);
-		$apiEntrada = array(
-			'idSecaoPagina' => $_POST['idSecaoPagina'],
-			'idPagina' => $_POST['idPagina'],
-			'idSecao' => $_POST['idSecao'],
-			'ordem' => $_POST['ordem'],
-			'coluna' => $_POST['coluna'],
-			'parametros' => json_encode($parametros),
-		);
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
-	}
-
-	// cardEventos
-	if ($operacao == "cardEventos") {
-		$parametros1 = array(
-			'titulo' => $_POST['titulo'],
+			'tipoEvento' => $_POST['tipoEvento'],
+			'qtdEvento' => $_POST['qtdEvento'],
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -989,22 +931,6 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	// cardVisitacao
-	if ($operacao == "cardVisitacao") {
-		$parametros1 = array(
-			'titulo' => $_POST['titulo'],
-		);
-		$parametros = array_map('htmlentities', $parametros1);
-		$apiEntrada = array(
-			'idSecaoPagina' => $_POST['idSecaoPagina'],
-			'idPagina' => $_POST['idPagina'],
-			'idSecao' => $_POST['idSecao'],
-			'ordem' => $_POST['ordem'],
-			'coluna' => $_POST['coluna'],
-			'parametros' => json_encode($parametros),
-		);
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
-	}
 
 	// siderBarColunistas
 	if ($operacao == "siderBarColunistas") {
@@ -1022,27 +948,12 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	// listaMarcasEspecializadas
-	if ($operacao == "listaMarcasEspecializadas") {
-		$parametros1 = array(
-			'titulo' => $_POST['titulo'],
-		);
-		$parametros = array_map('htmlentities', $parametros1);
-		$apiEntrada = array(
-			'idSecaoPagina' => $_POST['idSecaoPagina'],
-			'idPagina' => $_POST['idPagina'],
-			'idSecao' => $_POST['idSecao'],
-			'ordem' => $_POST['ordem'],
-			'coluna' => $_POST['coluna'],
-			'parametros' => json_encode($parametros),
-		);
-		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
-	}
-
 	// listaMarcas
 	if ($operacao == "listaMarcas") {
 		$parametros1 = array(
 			'titulo' => $_POST['titulo'],
+			'lojasEspecializadas' => $_POST['lojasEspecializadas'],
+
 		);
 		$parametros = array_map('htmlentities', $parametros1);
 		$apiEntrada = array(
@@ -1056,20 +967,39 @@ if (isset($_GET['operacao'])) {
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
-		// listaMarcas_mapa
-		if ($operacao == "listaMarcas_mapa") {
-			
-			$parametros = '';
-			$apiEntrada = array(
-				'idSecaoPagina' => $_POST['idSecaoPagina'],
-				'idPagina' => $_POST['idPagina'],
-				'idSecao' => $_POST['idSecao'],
-				'ordem' => $_POST['ordem'],
-				'coluna' => $_POST['coluna'],
-				'parametros' => json_encode($parametros),
-			);
-			$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
-		}
+	// listaMarcas_mapa
+	if ($operacao == "listaMarcas_mapa") {
+
+		$parametros = '';
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
+
+	// cardNoticias
+	if ($operacao == "cardNoticias") {
+		$parametros1 = array(
+			'titulo' => $_POST['titulo'],
+			'categoria' => $_POST['categoria'],
+			'qtdPosts' => $_POST['qtdPosts'],
+		);
+		$parametros = array_map('htmlentities', $parametros1);
+		$apiEntrada = array(
+			'idSecaoPagina' => $_POST['idSecaoPagina'],
+			'idPagina' => $_POST['idPagina'],
+			'idSecao' => $_POST['idSecao'],
+			'ordem' => $_POST['ordem'],
+			'coluna' => $_POST['coluna'],
+			'parametros' => json_encode($parametros),
+		);
+		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+	}
 
 
 

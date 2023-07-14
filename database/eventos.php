@@ -28,7 +28,21 @@ function buscaEventos($idEvento=null)
 	return $eventos;
 }
 
+function buscaTipoEvento($tipoEvento,$qtdEvento)
+{
+	
+	$eventos = array();
+	
+	$apiEntrada = array(
+		'tipoEvento' => $tipoEvento,
+		'qtdEvento' => $qtdEvento,
+	);
 
+	$eventos = chamaAPI(null, '/sistema/eventos', json_encode($apiEntrada), 'GET');
+	return $eventos;
+}
+
+/* 
 
 function buscaProximosEventos($idEvento=null)
 {
@@ -80,7 +94,7 @@ function buscaEventosPodcasts($idEvento=null)
 
 	$eventos = chamaAPI(null, '/sistema/eventos_podcasts', json_encode($apiEntrada), 'GET');
 	return $eventos;
-}
+} */
 
 if (isset($_GET['operacao'])) {
 
