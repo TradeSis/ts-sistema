@@ -1056,6 +1056,21 @@ if (isset($_GET['operacao'])) {
 		$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
 	}
 
+		// listaMarcas_mapa
+		if ($operacao == "listaMarcas_mapa") {
+			
+			$parametros = '';
+			$apiEntrada = array(
+				'idSecaoPagina' => $_POST['idSecaoPagina'],
+				'idPagina' => $_POST['idPagina'],
+				'idSecao' => $_POST['idSecao'],
+				'ordem' => $_POST['ordem'],
+				'coluna' => $_POST['coluna'],
+				'parametros' => json_encode($parametros),
+			);
+			$secoesPagina = chamaAPI(null, '/sistema/secoesPagina', json_encode($apiEntrada), 'POST');
+		}
+
 
 
 	header("Location: ../perfil/paginas.php");

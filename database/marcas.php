@@ -21,12 +21,13 @@ function buscaMarcas($idMarca=null)
 	$autor = array();
 	
 	$apiEntrada = array(
-		'idMarca' => $idMarca,
+		'idMarca' => $idMarca
 	);
 
 	$autor = chamaAPI(null, '/sistema/marcas', json_encode($apiEntrada), 'GET');
 	return $autor;
 }
+
 
 function buscaMarcasEspecializadas()
 {
@@ -40,12 +41,14 @@ function buscaMarcasEspecializadas()
 	return $autor;
 }
 
-function buscaMarcasParceiras()
+function buscaMarcasParceiras($estado=null)
 {
 	
 	$autor = array();
 	
 	$apiEntrada = array(
+		
+		'estado' => $estado,
 	);
 
 	$autor = chamaAPI(null, '/sistema/marcas_parceiras', json_encode($apiEntrada), 'GET');
