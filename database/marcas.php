@@ -28,32 +28,19 @@ function buscaMarcas($idMarca=null)
 	return $autor;
 }
 
-
-function buscaMarcasEspecializadas()
+function buscaMarcasAtiva($estado=null, $lojasEspecializadas=null)
 {
 	
 	$autor = array();
-	
 	$apiEntrada = array(
-	);
-
-	$autor = chamaAPI(null, '/sistema/marcas_especializadas', json_encode($apiEntrada), 'GET');
-	return $autor;
-}
-
-function buscaMarcasParceiras($estado=null)
-{
-	
-	$autor = array();
-	
-	$apiEntrada = array(
-		
 		'estado' => $estado,
+		'lojasEspecializadas' => $lojasEspecializadas,
 	);
 
-	$autor = chamaAPI(null, '/sistema/marcas_parceiras', json_encode($apiEntrada), 'GET');
+	$autor = chamaAPI(null, '/sistema/marcas', json_encode($apiEntrada), 'GET');
 	return $autor;
 }
+
 
 if (isset($_GET['operacao'])) {
 

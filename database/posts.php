@@ -16,15 +16,28 @@ function buscaPostSlug($slug)
 	return $post;
 }
 
-function buscaPosts($idPost=null, $titulo=null, $categoria=null)
+function buscaPosts($idPost=null)
 {
 	
 	$post = array();
 	
 	$apiEntrada = array(
-		'idPost' => $idPost,
-		'titulo' => $titulo,
-		'categoria' => $categoria
+		'idPost' => $idPost
+	);
+	
+	$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'GET');
+	
+	return $post;
+}
+
+function buscaPostsCategoria($idCategoria=null,$qtdPosts=null)
+{
+	
+	$post = array();
+	
+	$apiEntrada = array(
+		'idCategoria' => $idCategoria,
+		'qtdPosts' => $qtdPosts,
 	);
 	
 	$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'GET');
@@ -33,44 +46,8 @@ function buscaPosts($idPost=null, $titulo=null, $categoria=null)
 }
 
 
-function buscaPostsRecentes()
-{
-	
-	$post = array();
-	
-	$apiEntrada = array(
-	
-	);
-	
-	$post = chamaAPI(null, '/sistema/posts_recentes', json_encode($apiEntrada), 'GET');
-	
-	return $post;
-	
-}
 
-function buscaPostCuriosidades(){
-	$post = array();
-	
-	$apiEntrada = array(
-	
-	);
-	
-	$post = chamaAPI(null, '/sistema/posts_curiosidades', json_encode($apiEntrada), 'GET');
-	
-	return $post;
-}
 
-function buscaPostChocolate(){
-	$post = array();
-	
-	$apiEntrada = array(
-	
-	);
-	
-	$post = chamaAPI(null, '/sistema/posts_sobreChocolate', json_encode($apiEntrada), 'GET');
-	
-	return $post;
-}
 
 if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];

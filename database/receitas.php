@@ -50,6 +50,7 @@ if (isset($_GET['operacao'])) {
 		}
 
 		$apiEntrada = array(
+			'slug' => $_POST['slug'],
 			'nomeReceita' => $_POST['nomeReceita'],
 			'conteudoReceita' => $_POST['conteudoReceita'],
 			'autorReceita' => $_POST['autorReceita'],
