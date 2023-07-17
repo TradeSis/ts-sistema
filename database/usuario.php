@@ -6,7 +6,7 @@
 // helio 01022023 altereado para include_once, usando funcao conectaMysql
 // helio 26012023 16:16
 
-include_once __DIR__."/../conexao.php";
+include_once('../conexao.php');
 
 function buscaUsuarios($idUsuario=null)
 {

@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__."/../conexao.php";
+include_once('../conexao.php');
 //Lucas 25052023 - modificado para Api
 function buscaServicosCards()
 {
