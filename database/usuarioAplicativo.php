@@ -11,7 +11,7 @@ function buscaUsuarioAplicativo($idUsuario = null, $idAplicativo = null)
 		'idUsuario' => $idUsuario,
 		'idAplicativo' => $idAplicativo
 	);
-	$usuarioaplicativo = chamaAPI(null, '/services/usuarioaplicativo', json_encode($apiEntrada), 'GET');
+	$usuarioaplicativo = chamaAPI(null, '/sistema/usuarioaplicativo', json_encode($apiEntrada), 'GET');
 	return $usuarioaplicativo;
 }
 
@@ -29,7 +29,7 @@ if (isset($_GET['operacao'])) {
 
 		);
 
-		$usuarioaplicativo = chamaAPI(null, '/services/usuarioaplicativo', json_encode($apiEntrada), 'PUT');
+		$usuarioaplicativo = chamaAPI(null, '/sistema/usuarioaplicativo', json_encode($apiEntrada), 'PUT');
 
 	}
 
@@ -41,7 +41,7 @@ if (isset($_GET['operacao'])) {
 			'nivelMenu' => $_POST['nivelMenu']
 		);
 
-		$usuarioaplicativo = chamaAPI(null, '/services/usuarioaplicativo', json_encode($apiEntrada), 'POST');
+		$usuarioaplicativo = chamaAPI(null, '/sistema/usuarioaplicativo', json_encode($apiEntrada), 'POST');
 
 	}
 
@@ -51,10 +51,10 @@ if (isset($_GET['operacao'])) {
 			'idAplicativo' => $_POST['idAplicativo']
 		);
 
-		$usuarioaplicativo = chamaAPI(null, '/services/usuarioaplicativo', json_encode($apiEntrada), 'DELETE');
+		$usuarioaplicativo = chamaAPI(null, '/sistema/usuarioaplicativo', json_encode($apiEntrada), 'DELETE');
 
 	}
 
-	header('Location: ../usuario/usuario_alterar.php?idUsuario=' . $_POST['idUsuario']);
+	header('Location: ../configuracao/usuario_alterar.php?idUsuario=' . $_POST['idUsuario']);
 
 }

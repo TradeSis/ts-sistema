@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once __DIR__."/../conexao.php";
 //Lucas 25052023 - modificado para Api
 function buscaServicosCards()
 {

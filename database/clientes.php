@@ -20,7 +20,7 @@ function buscaClientes($idCliente=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$clientes = chamaAPI(null, '/services/clientes', json_encode($apiEntrada), 'GET');
+	$clientes = chamaAPI(null, '/sistema/clientes', json_encode($apiEntrada), 'GET');
 	//echo json_encode($clientes);
 	return $clientes;
 }
@@ -34,7 +34,7 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'nomeCliente' => $_POST['nomeCliente']
 		);
-		$clientes = chamaAPI(null, '/services/clientes', json_encode($apiEntrada), 'PUT');
+		$clientes = chamaAPI(null, '/sistema/clientes', json_encode($apiEntrada), 'PUT');
 	}
 
 	if ($operacao=="alterar") {
@@ -42,20 +42,20 @@ if (isset($_GET['operacao'])) {
 			'idCliente' => $_POST['idCliente'],
 			'nomeCliente' => $_POST['nomeCliente']
 		);
-		$clientes = chamaAPI(null, '/services/clientes', json_encode($apiEntrada), 'POST');
+		$clientes = chamaAPI(null, '/sistema/clientes', json_encode($apiEntrada), 'POST');
 	}
 	
 	if ($operacao=="excluir") {
 		$apiEntrada = array(
 			'idCliente' => $_POST['idCliente']
 		);
-		$clientes = chamaAPI(null, '/services/clientes', json_encode($apiEntrada), 'DELETE');
+		$clientes = chamaAPI(null, '/sistema/clientes', json_encode($apiEntrada), 'DELETE');
 	}
 
 
-//	include "../cadastros/clientes_ok.php";
+//	include "../configuracao/clientes_ok.php";
 
-	header('Location: ../cadastros/clientes.php');	
+	header('Location: ../configuracao/clientes.php');	
 	
 }
 

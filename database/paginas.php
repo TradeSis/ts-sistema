@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__ . "/../../config.php";
-include_once(ROOT . '/sistema/conexao.php');
+include_once('../conexao.php');
 function buscaPagina($slug)
 {
 
@@ -62,5 +61,5 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../perfil/paginas.php');
+	header('Location: ../funcoes/paginas.php');
 }

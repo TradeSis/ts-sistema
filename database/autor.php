@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once('../conexao.php');
 
 
 function buscaAutor($idAutor=null)
@@ -211,7 +210,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../cadastros/autor.php');	
+	header('Location: ../configuracao/autor.php');	
 	
 }
 

@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once('../conexao.php');
 
 
 function buscaCategorias($idCategoria=null)
@@ -52,7 +51,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../cadastros/categorias.php');	
+	header('Location: ../configuracao/categorias.php');	
 	
 }
 
