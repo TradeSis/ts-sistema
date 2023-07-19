@@ -1,6 +1,6 @@
 <?php
 //Lucas 05042023 criado
-
+echo "sistema/aplicativo.php<hr>";
 include_once __DIR__."/../conexao.php";
 
 function buscaAplicativos($idAplicativo=null)
