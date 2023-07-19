@@ -7,7 +7,7 @@
 if ($metodo == "GET") {
 
   if ($funcao == "usuario" && $parametro == "verifica") {
-    $funcao = "configuracao/verifica";
+    $funcao = "usuario/verifica";
     $parametro = null;
   }
 
@@ -169,7 +169,7 @@ if ($metodo == "GET") {
       include 'usuario.php';
       break;
 
-    case "configuracao/verifica":
+    case "usuario/verifica":
       include 'usuario_verifica.php';
       break;
 
@@ -306,7 +306,7 @@ if ($metodo == "PUT") {
 
 if ($metodo == "POST") {
   if ($funcao == "usuario" && $parametro == "ativar") {
-    $funcao = "configuracao/ativar";
+    $funcao = "usuario/ativar";
     $parametro = null;
   }
 
@@ -372,7 +372,9 @@ if ($metodo == "POST") {
     case "usuario":
       include 'usuario_alterar.php';
       break;
-
+    case "usuario/ativar":
+      include 'usuario_ativar.php';
+      break;
     case "aplicativo":
       include 'aplicativo_alterar.php';
       break;
