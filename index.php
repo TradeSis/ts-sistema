@@ -84,22 +84,16 @@ if (!empty($montamenu['menuHeader'])){
                 </div>
             </li>
 
-            <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
-
-            <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <!-- <img class="img-profile rounded-circle" src="../imgs/undraw_profile.svg"> -->
-                    <!--  <i class="bi bi-person-circle"></i>&#32; -->
                     <span class="fs-1 text"><?php echo $logado ?></span>
                 </a>
-                <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/usuario/usuario_alterar.php?idUsuario=<?php echo $_SESSION['idUsuario'] ?>">
+                    <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/configuracao/usuario_alterar.php?idUsuario=<?php echo $_SESSION['idUsuario'] ?>">
                         <i class="bi bi-person-circle"></i>&#32;
                         Perfil
                     </a>
-                    <a class="dropdown-item" href="<?php echo URLROOT ?>/painel/">
+                    <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/">
                         <i class="bi bi-display"></i>&#32;
                         Painel
                     </a>
@@ -174,7 +168,7 @@ if (!empty($montamenu['menuHeader'])){
                 <div class="modal-body">Selecione "Logout" abaixo se você deseja encerrar sua sessão.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary logout" href="<?php echo URLROOT ?>/painel/logout.php">Logout</a>
+                    <a class="btn btn-primary logout" href="<?php echo URLROOT ?>/sistema/logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -183,7 +177,7 @@ if (!empty($montamenu['menuHeader'])){
     <div class="diviFrame" style="overflow:hidden;">
         <iframe class="iFrame container-fluid " id="myIframe" src=""></iframe>
     </div>
-    <script type="text/javascript" src="menu.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
 
