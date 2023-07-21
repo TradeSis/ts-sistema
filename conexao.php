@@ -4,7 +4,7 @@
 // helio 01022023 altereado para include_once
 // helio 31012023 - include database/api
 // helio 26012023 16:16
-echo "sistema/conexao.php<hr>";
+//echo "sistema/conexao.php<hr>";
 include_once __DIR__."/../config.php";
 
 
