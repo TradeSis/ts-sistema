@@ -7,7 +7,8 @@
 // helio 26012023 - function buscasClientes - Retirado mysql e Colocado CURL (API)
 // helio 26012023 16:16
 
-include_once('../conexao.php');
+//include_once('../conexao.php');
+include_once __DIR__ . "/../conexao.php";
 
 function buscaClientes($idCliente=null)
 {
