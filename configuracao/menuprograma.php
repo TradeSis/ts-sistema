@@ -1,10 +1,12 @@
 <?php
 //Lucas 04042023 criado
 
-include_once('../head.php');
-include_once ('../database/menuprograma.php');
+include_once(__DIR__ . '/../database/menuprograma.php');
+include_once(__DIR__ . '/../database/menu.php');
+include_once(__DIR__ . '/../database/aplicativo.php');
+/* include_once ('../database/menuprograma.php');
 include_once('../database/menu.php');
-include_once('../database/aplicativo.php');
+include_once('../database/aplicativo.php'); */
 
 $menuProgramas = buscaMenuProgramas();
 $menus= buscaMenu();

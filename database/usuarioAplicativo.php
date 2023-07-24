@@ -1,7 +1,8 @@
 <?php
 //Gabriel 28042023
 
-include_once('../conexao.php');
+/* include_once('../conexao.php'); */
+include_once __DIR__ . "/../conexao.php";
 
 function buscaUsuarioAplicativo($idUsuario = null, $idAplicativo = null)
 {
