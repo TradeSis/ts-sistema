@@ -2,7 +2,7 @@
 include_once __DIR__ . "/../config.php";
 include_once ROOT . "/painel/index.php";
 include_once ROOT . "/sistema/database/montaMenu.php";
-$montamenu = buscaMontaMenu('Sistema', $_SESSION['idUsuario']);
+$montamenu = buscaMontaMenu('Services', $_SESSION['idUsuario']);
 //echo json_encode($montamenu);
 
 $menus = $montamenu['menu'];
@@ -12,12 +12,17 @@ if (!empty($montamenu['menuAtalho'])) {
 if (!empty($montamenu['menuHeader'])) {
     $menuHeader = $montamenu['menuHeader'][0];
 }
-//echo json_encode($menusAtalho);
-$configuracao = 0;
+
+$configuracao = 1; 
+
+$nivelUsuario   =   4;
+
+
+
 ?>
 
 <style>
-    .nav-link.active.show {
+    .nav-link.active {
         border-bottom: 3px solid #2E59D9;
         border-radius: 3px 3px 0 0;
         color: #1B4D60;
@@ -28,40 +33,99 @@ $configuracao = 0;
 <div class="container-fluid mt-1">
     <div class="row">
         <div class="col-md-12 d-flex justify-content-center">
-            <ul class="nav nav-pills" id="myTab" role="tablist">
-                <?php foreach ($menusAtalho as $menuAtalho) { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" id="<?php echo $menuAtalho['progrNome'] ?>-tab" data-toggle="tab" href="#<?php echo $menuAtalho['progrNome'] ?>" role="tab" aria-controls="<?php echo $menuAtalho['progrNome'] ?>" aria-selected="true" style="color:black"><?php echo $menuAtalho['progrNome'] ?></a>
-                    </li>
-                <?php } ?>
+            <ul class="nav a" id="myTabs">
 
-                <?php if ($configuracao == 1) { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" id="ConfiguracaoPaginas-tab" data-toggle="tab" href="#ConfiguracaoPaginas" role="tab" aria-controls="ConfiguracaoPaginas" aria-selected="true" style="color:black">ConfiguracaoPaginas</a>
-                    </li>
-                <?php } ?>
+
+                <?php
+                    $tab = '';
+
+                    if (isset($_GET['tab'])) {$tab = $_GET['tab'];}
+               
+                ?>    
+
+
+            <?php if ($nivelUsuario>=3) { ?>
+                <li class="nav-item ">
+                    <a class="nav-link <?php if ($tab=="cliente") {echo " active ";} ?>" 
+                        href="?tab=cliente" 
+                        role="tab"                        
+                        style="color:black">Cliente</a>
+                </li>
+            <?php } if ($nivelUsuario>=3) { ?>
+                <li class="nav-item ">
+                    <a class="nav-link <?php if ($tab=="usuarios") {echo " active ";} ?>" 
+                        href="?tab=usuarios" 
+                        role="tab"                        
+                        style="color:black">Usuários</a>
+                </li>
+            <?php } if ($nivelUsuario>=3) { ?>
+                <li class="nav-item ">
+                    <a class="nav-link <?php if ($tab=="aplicativo") {echo " active ";} ?>" 
+                        href="?tab=aplicativo" 
+                        role="tab"                        
+                        style="color:black">Aplicativos</a>
+                </li>
+            <?php } if ($nivelUsuario>=3) { ?>
+                <li class="nav-item ">
+                    <a class="nav-link <?php if ($tab=="menu") {echo " active ";} ?>" 
+                        href="?tab=menu" 
+                        role="tab"                        
+                        style="color:black">Menu</a>
+                </li>
+            <?php } if ($nivelUsuario>=3) { ?>
+                <li class="nav-item ">
+                    <a class="nav-link <?php if ($tab=="menuprograma") {echo " active ";} ?>" 
+                        href="?tab=menuprograma" 
+                        role="tab"                        
+                        style="color:black">Menu Programa</a>
+                </li>
+            <?php } if ($nivelUsuario>=4) { ?>
+                <li class="nav-item ">
+                    <a class="nav-link <?php if ($tab=="configuracao") {echo " active ";} ?>" 
+                        href="?tab=configuracao" 
+                        role="tab"     
+                        data-toggle="tooltip" data-placement="top" title="Configurações"                   
+                        style="color:black"><i class="bi bi-gear" style="font-size: 18px;"></i></a>
+                </li>
+            <?php } ?>
+
+                           
             </ul>
-        </div>
 
-        <div class="col-md-12 mt-3">
-            <div class="tab-content" id="myTabContent">
-                <?php foreach ($menusAtalho as $menuAtalho) { ?>
 
-                    <div class="tab-pane fade" id="<?php echo $menuAtalho['progrNome'] ?>" role="tabpanel" aria-labelledby="<?php echo $menuAtalho['progrNome'] ?>-tab">
-                        <?php include $menuAtalho['progrLink'] ?>
-                    </div>
-                <?php } ?>
-
-                <?php if ($configuracao == 1) { ?>
-                    <div class="tab-pane fade" id="ConfiguracaoPaginas" role="tabpanel" aria-labelledby="ConfiguracaoPaginas-tab">
-                        <?php include 'ConfiguracaoPaginas.php' ?>
-                    </div>
-                <?php } ?>
-            </div>
         </div>
 
     </div>
 
-
-
 </div>
+
+<?php
+    $src="";
+
+    if ($tab=="cliente") {$src="configuracao/clientes.php";}
+    if ($tab=="usuarios") {$src="configuracao/usuario.php";}
+    if ($tab=="aplicativo") {$src="configuracao/aplicativo.php";}
+    if ($tab=="menu") {$src="configuracao/menu.php";}
+    if ($tab=="menuprograma") {$src="configuracao/menuprograma.php";}
+    if ($tab=="configuracao") {
+            $src="configuracao/";
+            if (isset($_GET['stab'])) {
+                $src = $src . "?stab=".$_GET['stab'];
+            }
+
+            
+    }
+    
+if ($src!=="") {
+    //echo URLROOT ."/sistema/". $src;
+?>
+    <div class="diviFrame" style="overflow:hidden;">
+        <iframe class="iFrame container-fluid " id="iFrameTab" src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
+    </div>
+<?php
+}
+?>
+
+</body>
+
+</html>
