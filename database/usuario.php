@@ -77,10 +77,7 @@ if (isset($_GET['operacao'])) {
 		);
 		
 		$usuario = chamaAPI(null, '/sistema/usuario', json_encode($apiEntrada), 'POST');
-/* echo json_encode($apiEntrada);
-return; */
-		//header(sprintf('location: %s', $_SERVER['HTTP_REFERER']));
-		//exit;
+
 		header('Location:' . $_POST['ultimaulr']);
 	}
 

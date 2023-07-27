@@ -3,7 +3,6 @@
 include_once 'head.php';
 include_once ROOT . "/sistema/database/aplicativo.php";
 $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
-//echo json_encode($aplicativos[2]['appLink']);
 
 
 ?>
@@ -28,7 +27,6 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
     $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
     ?>
     <nav class="Menu navbar navbar-expand topbar static-top shadow ">
-        <!-- <div class="container"> -->
 
         <a class="navbar-brand" href="<?php echo URLROOT ?>/sistema"><img src="../img/white.png" width="150"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,22 +66,6 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
                         <?php echo $aplicativos[4]['nomeAplicativo'] ?></a>
                     </li>
                 <?php }  ?>
-                <!-- /*
-                <li class="nav-item mr-4"><a href="/ts/sistema/" class="nav-link nav-link-menu <?php if ($url == "/ts/sistema/") {
-                                                                                                    echo " active ";
-                                                                                                } ?>">Sistema</a></li>
-                <li class="nav-item mr-4"><a href="/ts/services/" class="nav-link nav-link-menu <?php if ($url == "/ts/services/") {
-                                                                                                    echo " active ";
-                                                                                                } ?>">Services</a></li>
-                <li class="nav-item mr-4"><a href="/ts/cadastros/" class="nav-link nav-link-menu <?php if ($url == "/ts/cadastros/") {
-                                                                                                        echo " active ";
-                                                                                                    } ?>">Cadastros</a></li>
-                <li class="nav-item mr-4"><a href="/ts/paginas/" class="nav-link nav-link-menu <?php if ($url == "/ts/paginas/") {
-                                                                                                    echo " active ";
-                                                                                                } ?>">Paginas</a></li>
-                <li class="nav-item mr-4"><a href="/ts/impostos/" class="nav-link nav-link-menu <?php if ($url == "/ts/impostos/") {
-                                                                                                    echo " active ";
-                                                                                                } ?>">Impostos</a></li> */ -->
 
             </ul>
 
@@ -133,7 +115,7 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
             </ul>
 
         </div>
-        <!--   </div> -->
+    
 
     </nav>
 

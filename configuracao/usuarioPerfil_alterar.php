@@ -9,9 +9,9 @@ include_once('../database/usuario.php');
 $idUsuario = $_GET['idUsuario'];
 $usuario = buscaUsuarios($idUsuario);
 
-echo $_SERVER['HTTP_REFERER'];
+//echo $_SERVER['HTTP_REFERER'];
 $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
-echo 'session -> ' . ($_SESSION['ultimaulr']);
+//echo 'session -> ' . ($_SESSION['ultimaulr']);
 ?>
 
 <body class="bg-transparent">
