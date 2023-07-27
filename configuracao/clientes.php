@@ -1,9 +1,9 @@
 <?php
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
+include_once(__DIR__ . '/../head.php');
+include_once(__DIR__ . '/../database/clientes.php');
 
-include_once('../head.php');
-include_once('../database/clientes.php');
 
 $clientes = buscaClientes();
 //echo json_encode($clientes);

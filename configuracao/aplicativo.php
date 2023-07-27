@@ -1,8 +1,8 @@
 <?php
 //Lucas 04042023 criado
+include_once(__DIR__ . '/../head.php');
+include_once(__DIR__ . '/../database/aplicativo.php');
 
-include_once('../head.php');
-include_once ('../database/aplicativo.php');
 
 $aplicativos = buscaAplicativos();
 //echo json_encode($aplicativos);

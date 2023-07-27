@@ -6,7 +6,8 @@
 // helio 01022023 altereado para include_once, usando funcao conectaMysql
 // helio 26012023 16:16
 
-include_once('../conexao.php');
+//include_once('../conexao.php');
+include_once __DIR__ . "/../conexao.php";
 
 function buscaUsuarios($idUsuario=null)
 {
@@ -46,6 +47,38 @@ if (isset($_GET['operacao'])) {
 		$usuario = chamaAPI(null, '/sistema/usuario', json_encode($apiEntrada), 'PUT');
 
 		header('Location: ../configuracao/usuario.php');
+	}
+
+	if ($operacao == "alterar") {
+		
+		$apiEntrada = array(
+			'idUsuario' => $_POST['idUsuario'],
+			'nomeUsuario' => $_POST['nomeUsuario'],
+			'email' => $_POST['email'],
+			'cpfCnpj' => $_POST['cpfCnpj'],
+			'telefone' => $_POST['telefone'],
+			'password' => md5 ($_POST['password'])
+		);
+		
+		$usuario = chamaAPI(null, '/sistema/usuario', json_encode($apiEntrada), 'POST');
+
+		header('Location: ../configuracao/usuario.php');
+	}
+
+	if ($operacao == "usuarioalterar") {
+		
+		$apiEntrada = array(
+			'idUsuario' => $_POST['idUsuario'],
+			'nomeUsuario' => $_POST['nomeUsuario'],
+			'email' => $_POST['email'],
+			'cpfCnpj' => $_POST['cpfCnpj'],
+			'telefone' => $_POST['telefone'],
+			'password' => $_POST['password'],
+		);
+		
+		$usuario = chamaAPI(null, '/sistema/usuario', json_encode($apiEntrada), 'POST');
+
+		header('Location:' . $_POST['ultimaulr']);
 	}
 
 	if ($operacao == "alterar") {

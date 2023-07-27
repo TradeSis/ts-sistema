@@ -1,8 +1,8 @@
 <?php
 //Lucas 06042023 criado
 // NOVA VERSAO - Conexao esta ../
-//include_once __DIR__."/../conexao.php";
-include_once('conexao.php');
+include_once __DIR__."/../conexao.php";
+//include_once('conexao.php');
 
 function buscaMontaMenu($nomeAplicativo,$idUsuario)
 {

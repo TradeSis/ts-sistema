@@ -1,7 +1,7 @@
 <?php
 //Lucas 05042023 criado
 
-include_once('../conexao.php');
+include_once __DIR__ . "/../conexao.php";
 
 function buscaMenuProgramas($idMenuPrograma=null)
 {

@@ -23,6 +23,7 @@ $idUsuario = $dados['idUsuario'];
 $idCliente = $dados['idCliente'];
 $email = $dados['email'];
 $senhaVerificada = md5($passwordDigitada);
+
 //
 if (!$user == "") {
 
