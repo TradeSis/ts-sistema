@@ -17,7 +17,7 @@ $menuProgr = buscaMenuProgramas($_GET['idMenuPrograma']);
     <div class="container" style="margin-top:10px">
 
         <div class="col-sm mt-4" style="text-align:right">
-            <a href="menuprograma.php" role="button" class="btn btn-primary"><i
+            <a href="../configuracao/?tab=configuracao&stab=menuprograma" role="button" class="btn btn-primary"><i
                     class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
         </div>
         <div class="col-sm">
