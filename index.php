@@ -1,10 +1,12 @@
 <?php
 include_once __DIR__ . "/../config.php";
+
+
 include_once "painel.php";
 include_once ROOT . "/sistema/database/usuarioAplicativo.php";
 
 $nivelMenuUsuario =  buscaUsuarioAplicativo($_SESSION['idUsuario'],'1'); //Sistema
-
+//echo json_encode($nivelMenuUsuario);
 $configuracao = 1; 
 
 $nivelMenu   =  $nivelMenuUsuario['nivelMenu'];

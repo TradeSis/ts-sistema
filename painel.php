@@ -4,7 +4,14 @@ include_once 'head.php';
 include_once ROOT . "/sistema/database/aplicativo.php";
 $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
 
+$aplicativo = array();
+foreach($aplicativos as $unico) {
+    $aplicativo[] = $unico["nomeAplicativo"];
+}
 
+$URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url = (parse_url($URL_ATUAL, PHP_URL_PATH));
+//echo json_encode(URLROOT);
 ?>
 
 <style>
@@ -21,11 +28,7 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
 </style>
 
 <body>
-    <?php
-    $URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    //echo $URL_ATUAL;
-    $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
-    ?>
+
     <nav class="Menu navbar navbar-expand topbar static-top shadow ">
 
         <a class="navbar-brand" href="<?php echo URLROOT ?>/sistema"><img src="../img/white.png" width="150"></a>
@@ -37,33 +40,30 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
             <ul class="navbar-nav mx-auto">
 
 
-                <?php if (isset($aplicativos[0])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[0]['appLink'] ?>" class="nav-link nav-link-menu 
+                <?php if (in_array("Sistema", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/sistema/" class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/sistema/") { echo " active ";} ?>">
-                        <?php echo $aplicativos[0]['nomeAplicativo'] ?></a>
+                        Sistema</a>
                     </li>
-                <?php }if (isset($aplicativos[1])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[1]['appLink'] ?> " class="nav-link nav-link-menu 
+                <?php }if (in_array("Services", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/services/ " class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/services/") {echo " active ";} ?>">
-                        <?php echo $aplicativos[1]['nomeAplicativo'] ?></a>
+                        Services</a>
                     </li>
-                <?php }
-                if (isset($aplicativos[2])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[2]['appLink'] ?>" class="nav-link nav-link-menu 
+                <?php }if (in_array("Cadastros", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/cadastros/" class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/cadastros/") {echo " active ";} ?>">
-                        <?php echo $aplicativos[2]['nomeAplicativo'] ?></a>
+                        Cadastros</a>
                     </li>
-                <?php }
-                if (isset($aplicativos[3])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[3]['appLink'] ?>" class="nav-link nav-link-menu 
+                <?php }if (in_array("Paginas", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/paginas/" class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/paginas/") {echo " active ";} ?>">
-                        <?php echo $aplicativos[3]['nomeAplicativo'] ?></a>
+                        Paginas</a>
                     </li>
-                <?php }
-                if (isset($aplicativos[4])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[4]['appLink'] ?>" class="nav-link nav-link-menu 
+                <?php }if (in_array("Impostos", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/impostos/ " class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/impostos/") {echo " active ";} ?>">
-                        <?php echo $aplicativos[4]['nomeAplicativo'] ?></a>
+                        Impostos</a>
                     </li>
                 <?php }  ?>
 
