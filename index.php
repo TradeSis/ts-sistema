@@ -9,9 +9,11 @@ $nivelMenuUsuario =  buscaUsuarioAplicativo($_SESSION['idUsuario'],'1'); //Siste
 //echo json_encode($nivelMenuUsuario);
 $configuracao = 1; 
 
-$nivelMenu   =  $nivelMenuUsuario['nivelMenu'];
-
-
+if($nivelMenuUsuario == null){
+    return;
+}else{
+    $nivelMenu   =  $nivelMenuUsuario['nivelMenu'];
+}
 
 ?>
 

@@ -4,8 +4,11 @@ include_once 'head.php';
 include_once ROOT . "/sistema/database/aplicativo.php";
 $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
 
+//echo 'usuario -> ' . json_encode($_SESSION['idUsuario']);
+//return;
 $aplicativo = array();
-foreach($aplicativos as $unico) {
+foreach($aplicativos as $unico) { 
+    //echo '<hr> aplicativos -> ' . json_encode($unico);
     $aplicativo[] = $unico["nomeAplicativo"];
 }
 
@@ -136,7 +139,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                 <div class="modal-body">Selecione "Logout" abaixo se você deseja encerrar sua sessão.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary logout" href="logout.php">Logout</a>
+                    <a class="btn btn-primary logout" href="<?php URLROOT ?> /sistema/logout.php">Logout</a>
                 </div>
             </div>
         </div>
