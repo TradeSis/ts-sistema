@@ -14,8 +14,7 @@ function buscaClientes($idCliente=null)
 {
 	
 	$clientes = array();
-	//echo json_encode($clientes);
-	//return;
+	
 	$apiEntrada = array(
 		'idCliente' => $idCliente,
 	);

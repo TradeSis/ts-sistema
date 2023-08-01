@@ -4,8 +4,12 @@
 //gabriel 06022023 16:52
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
+$idCliente = null;
+	if (isset($jsonEntrada["idCliente"])) {
+    	$idCliente = $jsonEntrada["idCliente"];
+	}
 
-$conexao = conectaMysql();
+$conexao = conectaMysql($idCliente);
 $usuario = array();
 
 $sql = "SELECT usuario.*, cliente.nomeCliente FROM usuario

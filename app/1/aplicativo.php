@@ -2,8 +2,12 @@
 //Lucas 05042023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
+$idCliente = null;
+	if (isset($jsonEntrada["idCliente"])) {
+    	$idCliente = $jsonEntrada["idCliente"];
+	}
 
-$conexao = conectaMysql();
+$conexao = conectaMysql($idCliente);
 $app = array();
 
 if (isset($jsonEntrada["idUsuario"])) {

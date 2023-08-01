@@ -7,8 +7,15 @@ function buscaAplicativos($idAplicativo=null)
 {
 
     $app = array();
+
+	$idCliente = null;
+	if (isset($_SESSION['idCliente'])) {
+    	$idCliente = $_SESSION['idCliente'];
+	}
+	
     $apiEntrada = array(
         'idAplicativo' => $idAplicativo,
+		'idCliente' => $idCliente,
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;

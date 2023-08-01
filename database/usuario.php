@@ -13,8 +13,15 @@ function buscaUsuarios($idUsuario=null)
 {
 
 	$usuario = array();	
+
+	$idCliente = null;
+	if (isset($_SESSION['idCliente'])) {
+    	$idCliente = $_SESSION['idCliente'];
+	}
+	
 	$apiEntrada = array(
 		'idUsuario' => $idUsuario,
+		'idCliente' => $idCliente,
 	);	
 	$usuario = chamaAPI(null, '/sistema/usuario', json_encode($apiEntrada), 'GET');
 	return $usuario;
