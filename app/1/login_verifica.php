@@ -10,43 +10,43 @@
     $sql = $sql . " where usuario.idUsuario = '$idUsuario'";
   }  */
 
-if (!isset($jsonEntrada["usuario"])) {
+if (!isset($jsonEntrada["loginNome"])) {
     $jsonSaida = array(
         "status" => 400,
-        "retorno" => "Faltou parâmetro usuario"
+        "retorno" => "Faltou parâmetro de login"
     );
 } else {
 
 
-    $usuario = $jsonEntrada["usuario"];
+    $loginNome = $jsonEntrada["loginNome"];
 
 
     $conexao = conectaMysql();
-    $usuarios = array();
+    $loginNomes = array();
    
 
 
-    $sql = "SELECT * FROM usuario WHERE email = '$usuario' or nomeUsuario = '$usuario' or cpfCnpj = '$usuario'";
-
+    $sql = "SELECT * FROM login WHERE email = '$loginNome' or loginNome = '$loginNome' or cpf = '$loginNome'";
+//echo $sql;
 
     $rows = 0;
     $buscar = mysqli_query($conexao, $sql);
     while ($row = mysqli_fetch_array($buscar, MYSQLI_ASSOC)) {
-        array_push($usuarios, $row);
+        array_push($loginNomes, $row);
         $rows = $rows + 1;
     }
 
 
-    if (isset($jsonEntrada["usuario"]) && $rows == 1) {
-        $usuarios = $usuarios[0];
+    if (isset($jsonEntrada["loginNome"]) && $rows == 1) {
+        $loginNomes = $loginNomes[0];
         $jsonSaida = array(
-            "idUsuario" => $usuarios["idUsuario"],
-            "idCliente" => $usuarios["idCliente"],
-            "nomeUsuario" => $usuarios["nomeUsuario"],
-            "cpfCnpj" => $usuarios["cpfCnpj"],
-            "password" => $usuarios["password"],
-            "statusUsuario" => $usuarios["statusUsuario"],
-            "email" => $usuarios["email"],
+            "idLogin" => $loginNomes["idLogin"],
+            "idEmpresa" => $loginNomes["idEmpresa"],
+            "loginNome" => $loginNomes["loginNome"],
+            "cpf" => $loginNomes["cpf"],
+            "password" => $loginNomes["password"],
+            "statusLogin" => $loginNomes["statusLogin"],
+            "email" => $loginNomes["email"],
             "status" => 200,
             "retorno" => ""
         );

@@ -116,10 +116,13 @@ if (isset($_GET['operacao'])) {
 	
 	if ($operacao == "ativar") {
 		$apiEntrada = array(
-			'idUsuario' => $_POST['idUsuario'],
+			'idLogin' => $_POST['idLogin'],
 			'secret_key' => $_POST['secret_key'] // no ativar, guarda a secret
 		);
-		$usuario = chamaAPI(null, '/sistema/usuario/ativar', json_encode($apiEntrada), 'POST');
+
+/* 	echo json_encode($apiEntrada);
+	return; */
+		$usuario = chamaAPI(null, '/sistema/login/ativar', json_encode($apiEntrada), 'POST');
 	
 		header('Location: ../login.php');
 	}

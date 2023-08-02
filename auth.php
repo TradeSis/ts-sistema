@@ -5,7 +5,7 @@ require_once '../vendor/autoload.php';
 
 use PragmaRX\Google2FA\Google2FA;
 
-$idUsuario = $_GET['idUsuario'];
+$idLogin = $_GET['idLogin'];
 $email  = $_GET['email'];
 
 
@@ -81,7 +81,7 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl='.$text;
                             <form action="database/usuario.php?operacao=ativar" method="post">
                                 <h5 class="text-center">Registre a autenticação em 2 fatores</h5>
                                 <p style="text-align:center"><?php echo '<img src="'.$image_url.'" />'; ?></p>
-                                <input type="text" class="form-control" name="idUsuario" value="<?php echo $idUsuario ?>" hidden>
+                                <input type="text" class="form-control" name="idLogin" value="<?php echo $idLogin ?>" hidden>
                                 <input type="text" class="form-control" name="secret_key" value="<?php echo $secret_key ?>" hidden>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary my-4">Voltar ao Login</button>

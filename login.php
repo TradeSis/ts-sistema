@@ -77,12 +77,12 @@ include_once __DIR__."/../config.php";
               
               ?>
 
-              <form role="form" action="verificar_usuario.php" method="post">
+              <form role="form" action="verificar_login.php" method="post">
                 <div class="form-group mb-3">
 
                   <div class="input-group input-group-alternative">
                     <span class="input-group-text"></i></span>
-                    <input class="form-control" placeholder="Usuário" type="text" name="usuario" autocomplete="off" autofocus="on">
+                    <input class="form-control" placeholder="Usuário" type="text" name="loginNome" autocomplete="off" autofocus="on">
                   </div>
                 </div>
                 <div class="form-group">

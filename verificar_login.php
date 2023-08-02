@@ -7,20 +7,23 @@
 
 
 include_once 'conexao.php';
-$usuario = $_POST['usuario'];
+$loginNome = $_POST['loginNome'];
 $passwordDigitada = $_POST['password'];
 
 $dados = array();
 $apiEntrada = array(
-        'usuario' => $usuario,
+        'loginNome' => $loginNome,
 );
-$dados = chamaAPI(null, '/sistema/usuario/verifica', json_encode($apiEntrada), 'GET');
+$dados = chamaAPI(null, '/sistema/login/verifica', json_encode($apiEntrada), 'GET');
+/* echo json_encode($dados);
+return; */
 
 $password = $dados['password'];
-$statusUsuario = $dados['statusUsuario'];
-$user = $dados['nomeUsuario'];
-$idUsuario = $dados['idUsuario'];
-$idCliente = $dados['idCliente'];
+
+$statusLogin = $dados['statusLogin'];
+$user = $dados['loginNome'];
+$idLogin = $dados['idLogin'];
+$idEmpresa = $dados['idEmpresa'];
 $email = $dados['email'];
 $senhaVerificada = md5($passwordDigitada);
 
@@ -28,11 +31,11 @@ $senhaVerificada = md5($passwordDigitada);
 if (!$user == "") {
 
         if ($password == $senhaVerificada) {
-                if ($statusUsuario == 0) {
-                        header('Location: auth.php?idUsuario=' . $idUsuario . '&email=' . $email);
+                if ($statusLogin == 0) {
+                        header('Location: auth.php?idLogin=' . $idLogin . '&email=' . $email);
                 } else {
 
-                        header('Location: autenticar.php?idUsuario=' . $idUsuario);
+                        header('Location: autenticar.php?idLogin=' . $idLogin);
                 }
         } else {
                 $mensagem = "senha errada!";

@@ -6,7 +6,7 @@
 
 if ($metodo == "GET") {
 
-  if ($funcao == "usuario" && $parametro == "verifica") {
+  if ($funcao == "login" && $parametro == "verifica") {
     $funcao = "configuracao/verifica";
     $parametro = null;
   }
@@ -165,12 +165,12 @@ if ($metodo == "GET") {
       include 'clientes.php';
       break;
 
-    case "usuario":
-      include 'usuario.php';
+    case "login":
+      include 'login.php';
       break;
 
     case "configuracao/verifica":
-      include 'usuario_verifica.php';
+      include 'login_verifica.php';
       break;
 
     case "aplicativo":
@@ -305,7 +305,7 @@ if ($metodo == "PUT") {
 }
 
 if ($metodo == "POST") {
-  if ($funcao == "usuario" && $parametro == "ativar") {
+  if ($funcao == "login" && $parametro == "ativar") {
     $funcao = "configuracao/ativar";
     $parametro = null;
   }
@@ -388,6 +388,10 @@ if ($metodo == "POST") {
     case "usuarioaplicativo":
       include 'usuarioaplicativo_alterar.php';
       break;
+
+      case "configuracao/ativar": //inclui
+        include 'login_ativar.php';
+        break;
 
     default:
       $jsonSaida = json_decode(

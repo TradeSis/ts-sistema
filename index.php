@@ -15,6 +15,12 @@ if($nivelMenuUsuario == null){
     $nivelMenu   =  $nivelMenuUsuario['nivelMenu'];
 }
 
+
+echo '<hr> usuario -> ' . json_encode($_SESSION['usuario']);
+echo '<hr> idLogin -> ' . json_encode($_SESSION['idLogin']);
+echo '<hr> idEmpresa -> ' . json_encode($_SESSION['idEmpresa']);
+echo '<hr> email -> ' . json_encode($_SESSION['email']);
+
 ?>
 
 <style>
