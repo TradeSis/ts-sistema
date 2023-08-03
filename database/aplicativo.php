@@ -21,12 +21,12 @@ function buscaAplicativos($idAplicativo=null)
     return $app;
 }
 
-function buscaAplicativosMenu($idUsuario)
+function buscaAplicativosMenu($idLogin)
 {
 
     $app = array();
     $apiEntrada = array(
-        'idUsuario' => $idUsuario
+        'idLogin' => $idLogin,
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;

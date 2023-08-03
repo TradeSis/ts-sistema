@@ -15,8 +15,6 @@ $apiEntrada = array(
         'loginNome' => $loginNome,
 );
 $dados = chamaAPI(null, '/sistema/login/verifica', json_encode($apiEntrada), 'GET');
-/* echo json_encode($dados);
-return; */
 
 $password = $dados['password'];
 

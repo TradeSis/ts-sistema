@@ -2,10 +2,10 @@
 //Lucas 04042023 criado
 
 include_once('../head.php');
-include_once('../database/usuario.php');
+include_once('../database/login.php');
 include_once('../database/aplicativo.php');
 
-$usuario = buscaUsuarios($_GET['idUsuario']);
+$login = buscaLogins($_GET['idLogin']);
 $aplicativos = buscaAplicativos();
 
 ?>
@@ -23,17 +23,17 @@ $aplicativos = buscaAplicativos();
 
         <div class="container" style="margin-top: 30px">
 
-            <form action="../database/usuarioAplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
+            <form action="../database/loginAplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
-                            <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>" readonly>
-                            <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" hidden>
+                            <label class='control-label' for='inputNormal' style="margin-top: -22px;">Usuário</label>
+                            <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
+                            <input type="text" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>" hidden>
                         </div>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm mt-1">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
                             <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
@@ -45,7 +45,7 @@ $aplicativos = buscaAplicativos();
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm mt-1">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nivel</label>
                             <select class="select form-control" style="padding-right: 50px;" name="nivelMenu">

@@ -4,14 +4,15 @@
 // helio 26012023 16:16
 
 include_once('../head.php');
-include_once('../database/usuario.php');
+include_once('../database/login.php');
+include_once('../database/aplicativo.php');
+include_once('../database/loginAplicativo.php');
 
-$idUsuario = $_GET['idUsuario'];
-$usuario = buscaUsuarios($idUsuario);
+$idLogin = $_GET['idLogin'];
+$aplicativos = buscaAplicativos();
+$usuario = buscaLogins($idLogin);
+$usuarioaplicativos = buscaLoginAplicativo($idLogin);
 
-//echo $_SERVER['HTTP_REFERER'];
-$_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
-//echo 'session -> ' . ($_SESSION['ultimaulr']);
 ?>
 
 <body class="bg-transparent">
@@ -26,14 +27,13 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
         </div>
 
         <div class="container" style="margin-top: 30px">
-            <form action="../database/usuario.php?operacao=usuarioalterar" method="post">
+            <form action="../database/login.php?operacao=alterar" method="post">
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-group">
                             <label class="labelForm">Nome</label>
-                            <input type="text" class="form-control" name="nomeUsuario" value="<?php echo $usuario['nomeUsuario'] ?>">
-                            <input type="text" class="form-control" name="idUsuario" value="<?php echo $usuario['idUsuario'] ?>" style="display: none">
-                            <input type="text" class="form-control" name="ultimaulr" value="<?php echo $_SESSION['ultimaulr'] ?>" style="display: none">
+                            <input type="text" class="form-control" name="loginNome" value="<?php echo $usuario['loginNome'] ?>">
+                            <input type="text" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>" style="display: none">
                         </div>
                     </div>
                     <div class="col-sm">
@@ -88,6 +88,44 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
             <button data-classe="classe1" id="btn1" class="btn btn-sm btn-danger mb-3">Alterar Senha</button>
 
             
+            <div class="card shadow mt-2">   
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Usuário</th>
+                            <th class="text-center">Aplicativo</th>
+                            <th class="text-center">Nível</th>
+                            <th class="text-center">Ação</th>
+                        </tr>
+                    </thead>
+                    <?php if (isset($usuarioaplicativos['idLogin'])) {;?>
+                            <tr>
+                            <td class="text-center"><?php echo $usuarioaplicativos['loginNome'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativos['nomeAplicativo'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativos['nivelMenu'] ?></td>
+                            <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Excluir</a>
+                            </td>
+                        </tr>
+                        <?php } else {
+                            foreach ($usuarioaplicativos as $usuarioaplicativo) { ?>
+                        <tr>
+                            <td class="text-center"><?php echo $usuarioaplicativo['loginNome'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativo['nomeAplicativo'] ?></td>
+                            <td class="text-center"><?php echo $usuarioaplicativo['nivelMenu'] ?></td>
+                            <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Excluir</a>
+                            </td>
+                        </tr>
+                    <?php }} ?>
+
+                </table>
+                <div class="py-3 px-3" style="text-align:right">
+                    <a href="loginAplicativo_inserir.php?idLogin=<?php echo $idLogin ?>" role="button" class="btn btn-primary">Adicionar</a>
+                </div>
+            </div>
         </div>
     </div>
 

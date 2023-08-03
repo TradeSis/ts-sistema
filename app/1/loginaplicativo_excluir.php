@@ -4,15 +4,12 @@
 
 
 $conexao = conectaMysql();
-if (isset($jsonEntrada['idUsuario'])) {
-    $idUsuario = $jsonEntrada['idUsuario'];
+if (isset($jsonEntrada['idLogin'])) {
+    $idLogin = $jsonEntrada['idLogin'];
     $idAplicativo = $jsonEntrada['idAplicativo'];
-    $nivelMenu = $jsonEntrada['nivelMenu'];
     
-    $sql = "UPDATE usuarioaplicativo SET nivelMenu = $nivelMenu WHERE idUsuario = $idUsuario and idAplicativo = $idAplicativo";
-
-   //echo "-SQL->".json_encode($sql)."\n";
-
+    $sql = "DELETE FROM loginaplicativo WHERE idLogin = $idLogin and idAplicativo = '$idAplicativo'";
+    echo "-SQL->".json_encode($sql)."\n";
     if ($atualizar = mysqli_query($conexao, $sql)) {
         $jsonSaida = array(
             "status" => 200,

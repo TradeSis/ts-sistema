@@ -2,10 +2,9 @@
 
 include_once 'head.php';
 include_once ROOT . "/sistema/database/aplicativo.php";
-$aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
+$aplicativos = buscaAplicativosMenu($_SESSION['idLogin']);
 
-//echo 'usuario -> ' . json_encode($_SESSION['idUsuario']);
-//return;
+
 $aplicativo = array();
 foreach($aplicativos as $unico) { 
     //echo '<hr> aplicativos -> ' . json_encode($unico);
@@ -102,7 +101,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/configuracao/usuarioPerfil_alterar.php?idUsuario=<?php echo $_SESSION['idUsuario'] ?>">
+                        <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/configuracao/loginPerfil_alterar.php?idLogin=<?php echo $_SESSION['idLogin'] ?>">
                             <i class="bi bi-person-circle"></i>&#32;
                             Perfil
                         </a>

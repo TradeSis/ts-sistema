@@ -161,8 +161,8 @@ if ($metodo == "GET") {
       include 'posts_categoria.php';
       break;
 
-    case "clientes":
-      include 'clientes.php';
+    case "empresa":
+      include 'empresa.php';
       break;
 
     case "login":
@@ -189,8 +189,12 @@ if ($metodo == "GET") {
       include 'montaMenu.php';
       break;
 
-    case "usuarioaplicativo":
-      include 'usuarioaplicativo.php';
+    case "loginaplicativo":
+      include 'loginaplicativo.php';
+      break;
+
+    case "usuario":
+      include 'usuario.php';
       break;
 
     case "atendente":
@@ -266,8 +270,8 @@ if ($metodo == "PUT") {
       include 'eventos_inserir.php';
       break;
 
-    case "clientes":
-      include 'clientes_inserir.php';
+    case "empresa":
+      include 'empresa_inserir.php';
       break;
 
     case "usuario":
@@ -286,8 +290,12 @@ if ($metodo == "PUT") {
       include 'menuprograma_inserir.php';
       break;
 
-    case "usuarioaplicativo":
-      include 'usuarioaplicativo_inserir.php';
+    case "loginaplicativo":
+      include 'loginaplicativo_inserir.php';
+      break;
+
+    case "login":
+      include 'login_inserir.php';
       break;
 
     default:
@@ -365,8 +373,8 @@ if ($metodo == "POST") {
       include 'posts_alterar.php';
       break;
 
-    case "clientes":
-      include 'clientes_alterar.php';
+    case "empresa":
+      include 'empresa_alterar.php';
       break;
 
     case "usuario":
@@ -385,14 +393,17 @@ if ($metodo == "POST") {
       include 'menuprograma_alterar.php';
       break;
 
-    case "usuarioaplicativo":
-      include 'usuarioaplicativo_alterar.php';
+    case "loginaplicativo":
+      include 'loginaplicativo_alterar.php';
       break;
 
-      case "configuracao/ativar": //inclui
-        include 'login_ativar.php';
-        break;
+    case "configuracao/ativar":
+      include 'login_ativar.php';
+      break;
 
+    case "login":
+      include 'login_alterar.php';
+      break;
     default:
       $jsonSaida = json_decode(
         json_encode(
@@ -462,8 +473,8 @@ if ($metodo == "DELETE") {
       include 'eventos_excluir.php';
       break;
 
-    case "clientes":
-      include 'clientes_excluir.php';
+    case "empresa":
+      include 'empresa_excluir.php';
       break;
 
     case "menu":
@@ -478,12 +489,16 @@ if ($metodo == "DELETE") {
       include 'menuprograma_excluir.php';
       break;
 
-    case "usuarioaplicativo":
-      include 'usuarioaplicativo_excluir.php';
+    case "loginaplicativo":
+      include 'loginaplicativo_excluir.php';
       break;
 
     case "usuario":
       include 'usuario_excluir.php';
+      break;
+
+    case "login":
+      include 'login_excluir.php';
       break;
 
     default:

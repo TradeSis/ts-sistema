@@ -3,23 +3,18 @@ include_once __DIR__ . "/../config.php";
 
 
 include_once "painel.php";
-include_once ROOT . "/sistema/database/usuarioAplicativo.php";
+include_once ROOT . "/sistema/database/loginAplicativo.php";
 
-$nivelMenuUsuario =  buscaUsuarioAplicativo($_SESSION['idUsuario'],'1'); //Sistema
-//echo json_encode($nivelMenuUsuario);
+$nivelMenuLogin =  buscaLoginAplicativo($_SESSION['idLogin'],'1'); //Sistema
+//echo json_encode($nivelMenuLogin);
 $configuracao = 1; 
 
-if($nivelMenuUsuario == null){
+if($nivelMenuLogin == null){
     return;
 }else{
-    $nivelMenu   =  $nivelMenuUsuario['nivelMenu'];
+    $nivelMenu   =  $nivelMenuLogin['nivelMenu'];
 }
 
-
-echo '<hr> usuario -> ' . json_encode($_SESSION['usuario']);
-echo '<hr> idLogin -> ' . json_encode($_SESSION['idLogin']);
-echo '<hr> idEmpresa -> ' . json_encode($_SESSION['idEmpresa']);
-echo '<hr> email -> ' . json_encode($_SESSION['email']);
 
 ?>
 
@@ -48,17 +43,17 @@ echo '<hr> email -> ' . json_encode($_SESSION['email']);
 
             <?php if ($nivelMenu>=3) { ?>
                 <li class="nav-item ">
-                    <a class="nav-link <?php if ($tab=="cliente") {echo " active ";} ?>" 
-                        href="?tab=cliente" 
+                    <a class="nav-link <?php if ($tab=="empresa") {echo " active ";} ?>" 
+                        href="?tab=empresa" 
                         role="tab"                        
-                        style="color:black">Cliente</a>
+                        style="color:black">Empresa</a>
                 </li>
             <?php } if ($nivelMenu>=3) { ?>
                 <li class="nav-item ">
-                    <a class="nav-link <?php if ($tab=="usuarios") {echo " active ";} ?>" 
-                        href="?tab=usuarios" 
+                    <a class="nav-link <?php if ($tab=="login") {echo " active ";} ?>" 
+                        href="?tab=login" 
                         role="tab"                        
-                        style="color:black">Usuários</a>
+                        style="color:black">Login</a>
                 </li>
             <?php } if ($nivelMenu>=3) { ?>
                 <li class="nav-item ">
@@ -104,8 +99,8 @@ echo '<hr> email -> ' . json_encode($_SESSION['email']);
 <?php
     $src="";
 
-    if ($tab=="cliente") {$src="configuracao/clientes.php";}
-    if ($tab=="usuarios") {$src="configuracao/usuario.php";}
+    if ($tab=="empresa") {$src="configuracao/empresa.php";}
+    if ($tab=="login") {$src="configuracao/login.php";}
     if ($tab=="aplicativo") {$src="configuracao/aplicativo.php";}
     if ($tab=="menu") {$src="configuracao/menu.php";}
     if ($tab=="menuprograma") {$src="configuracao/menuprograma.php";}

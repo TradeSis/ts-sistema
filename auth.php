@@ -78,7 +78,7 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl='.$text;
                     <div class="card bg-gray-200 shadow border-1">
 
                         <div class="card-body px-lg-4 py-lg-6">
-                            <form action="database/usuario.php?operacao=ativar" method="post">
+                            <form action="database/login.php?operacao=ativar" method="post">
                                 <h5 class="text-center">Registre a autenticação em 2 fatores</h5>
                                 <p style="text-align:center"><?php echo '<img src="'.$image_url.'" />'; ?></p>
                                 <input type="text" class="form-control" name="idLogin" value="<?php echo $idLogin ?>" hidden>

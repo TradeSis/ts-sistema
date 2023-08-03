@@ -1,15 +1,13 @@
 <?php
-//Lucas 05042023 criado
+// helio 31012023 criacao
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
 
 $conexao = conectaMysql();
-if (isset($jsonEntrada['idUsuario'])) {
-    $idUsuario = $jsonEntrada['idUsuario'];
-    $idAplicativo = $jsonEntrada['idAplicativo'];
-    
-    $sql = "DELETE FROM usuarioaplicativo WHERE idUsuario = $idUsuario and idAplicativo = '$idAplicativo'";
-    //echo "-SQL->".json_encode($sql)."\n";
+if (isset($jsonEntrada['idEmpresa'])) {
+    $idEmpresa = $jsonEntrada['idEmpresa'];
+    $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
+    $sql = "UPDATE empresa SET nomeEmpresa='$nomeEmpresa' WHERE idEmpresa = $idEmpresa";
     if ($atualizar = mysqli_query($conexao, $sql)) {
         $jsonSaida = array(
             "status" => 200,
