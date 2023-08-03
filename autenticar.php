@@ -11,9 +11,7 @@ $apiEntrada = array(
         'idLogin' => $idLogin,
 );
 $dados = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'GET');
-echo '<hr>' . json_encode($dados);
-echo '<hr>' . json_encode($dados['pedeToken']);
-//return;
+
 $secret_key = $dados['secret'];
 $user = $dados['loginNome'];
 $idLogin = $dados['idLogin'];
