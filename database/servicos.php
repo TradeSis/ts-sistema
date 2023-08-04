@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once('../conexao.php');
 //Lucas 25052023 - modificado para Api
 function buscaServicosCards()
 {
@@ -12,7 +11,7 @@ function buscaServicosCards()
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$servicos = chamaAPI(null, '/api/sistema/servicos_card', json_encode($apiEntrada), 'GET');
+	$servicos = chamaAPI(null, '/sistema/servicos_card', json_encode($apiEntrada), 'GET');
 	//echo json_encode($servicos);
 	return $servicos;
 }
@@ -27,7 +26,18 @@ function buscaServicos($idServico=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$servicos = chamaAPI(null, '/api/sistema/servicos', json_encode($apiEntrada), 'GET');
+	$servicos = chamaAPI(null, '/sistema/servicos', json_encode($apiEntrada), 'GET');
+	//echo json_encode($servicos);
+	return $servicos;
+}
+
+function buscaSlugServicos($slugServicos)
+{
+    $servicos = array();
+	$apiEntrada = array(
+		'slugServicos' => $slugServicos,
+	);
+	$servicos = chamaAPI(null, '/sistema/servicos_slug', json_encode($apiEntrada), 'GET');
 	//echo json_encode($servicos);
 	return $servicos;
 }
