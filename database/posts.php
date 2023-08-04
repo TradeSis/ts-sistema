@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once('../conexao.php');
 
 
 function buscaPostSlug($slug)
@@ -149,7 +148,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../cadastros/posts.php');	
+	header('Location: ../configuracao/posts.php');	
 	
 }
 

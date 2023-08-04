@@ -73,7 +73,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../perfil/secao.php');	
+	header('Location: ../funcoes/secao.php');	
 	
 }
 

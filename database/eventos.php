@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once('../conexao.php');
 
 function buscaEventosSlug($slug)
 {
@@ -227,7 +226,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../cadastros/eventos.php');	
+	header('Location: ../configuracao/eventos.php');	
 	
 }
 

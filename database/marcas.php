@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once('../conexao.php');
 
 function buscaMarcasSlug($slug)
 {
@@ -184,7 +183,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../cadastros/marcas.php');	
+	header('Location: ../configuracao/marcas.php');	
 	
 }
 

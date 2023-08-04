@@ -1,0 +1,237 @@
+/* FILTRO TABELA */
+
+
+  
+  .menuFiltros{
+    background-color:#d3d3d3;
+    width: 180px;
+    position: fixed;
+    top: 170px;
+    left: -250px; /* menu desaparece */  
+    transition: left 1s;
+    transition: right 0.5s;
+    z-index: 2;
+    border-radius: 2%;
+  
+  }
+  .menuFiltros select{
+    background-color: #FFF;
+  }
+  
+  .menuFiltros .titulo{
+    padding-top: 10px;
+    padding-left: 30px;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .menuFiltros li{
+    margin-top: -5px;
+  }
+  
+  .btnAbre{   /* BOTÂO DO FILTRO */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    align-items: center;
+    color: rgb(2, 2, 2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 50px;
+  }
+  
+  .btnAbre span{
+    font-size: 35px;
+  }
+  
+  .btnAbre:hover{
+    background-color: rgba(0, 0, 0, 0.103);;
+  }
+  
+  .btnFiltroOff{
+    margin-top: 8px;
+  left: 5px;
+  align-items: center;
+  color: rgb(2, 2, 2);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  /* margin-right: 70px; */
+  width: 50px;
+  }
+  
+  .btnFiltroOff:hover{
+  background-color: rgba(0, 0, 0, 0.103);;
+  }
+  
+  
+  
+  .menuFiltros.mostra{
+    left: 0px; /* menu aparece */ 
+    /*left: var(--nav-left);*/
+  }
+  
+  .menuFiltros.esconde{
+    left: -250px; /* menu aparece */ 
+    /*left: var(--nav-left);*/
+  }
+  
+  
+  .fonteCorpo{
+    font-family: 'Dosis', sans-serif;
+    font-weight:500;
+    font-size: 14px;
+    color:rgb(75, 75, 75);
+  
+  }
+  
+  
+  .estilo1 {
+    background-color: #2FB12B;
+    border: 0px solid;
+  }
+  
+  .my-custom-scrollbar {
+    position: relative;
+    height: 350px;
+    overflow: auto;
+  }
+  
+  /* .my-custom-scrollbar {
+    position: relative;
+    height: 600px;
+    overflow: auto;
+  }
+  
+  
+  @media (max-height: 768px) {
+    .my-custom-scrollbar {
+    position: relative;
+    height: 350px;
+    overflow: auto;
+  }
+  } */
+
+  /* TABELAS */
+
+.tituloTabela{
+    font-family: 'Dosis', sans-serif;
+    font-weight:600;
+    font-size: 20px;
+    color:rgb(75, 75, 75);
+    
+text-align: left;
+
+    /* background-color: #E02D1B; */
+}
+
+
+.data{
+    margin-top: -2px;
+  }
+  @media (max-width: 576px) {
+    .form-group-select{
+        margin-bottom: 50px;
+        /* width: 30px; */   
+    }
+  
+    .data{
+        margin-bottom: 60px;
+    }
+  }
+  
+  @media (max-width: 764px) {
+    .form-group-select{
+        margin-bottom: 50px;
+        /* width: 30px; */   
+    }
+  
+    .data{
+        margin-bottom: 60px;
+    }
+  }
+  
+  .data_disabled{
+    background-color: #484848;
+  }
+  
+  /* MOSTRAR/ ESCONDER SENHA - ALTERAR USUARIO */
+  #conteudo {
+    display: none;
+  }
+  
+  #conteudo.mostra {
+    display: flex;
+  }
+  
+  /* SISTEMA/APLICATIVO */
+  
+  #imgAplicativo {
+    display: none;
+  }
+  
+  .picture {
+    width: 100px;
+    height: 100px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #aaa;
+    border: 1px dashed currentcolor;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+  }
+  
+  .picture:hover {
+    color: #777;
+    background: #ccc;
+  }
+  
+  .picture:active {
+    border-color: turquoise;
+    color: turquoise;
+    background: #eee;
+  }
+  
+  .picture:focus {
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .picture__img {
+    height: 100px;
+    border-radius: 50%;
+  }
+
+/* COMENTARIO DEMANDA */
+  .Anexos {
+    display: none;
+}
+
+.Anexos.mostra {
+    display: block;
+}
+
+.custom-file-upload {
+/* border: 1px solid #ccc; */
+display: inline-block;
+padding: 6px 12px;
+cursor: pointer;
+color: #fff;
+}
+::-webkit-file-upload-button {
+opacity: 0;
+
+padding: 0.5em;
+}

@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once('../conexao.php');
 
 
 function buscaProdutos($idProduto=null,$idMarca=null)
@@ -146,7 +145,7 @@ if (isset($_GET['operacao'])) {
 	}
 
 
-	header('Location: ../cadastros/produtos.php');	
+	header('Location: ../configuracao/produtos.php');	
 	
 }
 
