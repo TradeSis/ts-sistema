@@ -14,8 +14,8 @@ if (isset($jsonEntrada["idLogin"])) {
   $sql = $sql . $where . " loginaplicativo.idLogin = " . $jsonEntrada["idLogin"];
   $where = " AND ";
 } 
-if (isset($jsonEntrada["idAplicativo"])) {
-  $sql = $sql . $where . " loginaplicativo.idAplicativo = " . $jsonEntrada["idAplicativo"];
+if (isset($jsonEntrada["nomeAplicativo"])) {
+  $sql = $sql . $where . " aplicativo.nomeAplicativo = " . "'" . $jsonEntrada["nomeAplicativo"] . "'";
   $where = " AND ";
 }
 
@@ -29,7 +29,7 @@ while ($row = mysqli_fetch_array($buscar, MYSQLI_ASSOC)) {
   $rows = $rows + 1;
 }
 
-if (isset($jsonEntrada["idAplicativo"]) && $rows == 1) {
+if (isset($jsonEntrada["nomeAplicativo"]) && $rows == 1) {
   $app = $app[0];
 }
 $jsonSaida = $app;

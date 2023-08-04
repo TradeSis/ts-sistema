@@ -44,5 +44,4 @@ if (!$user == "") {
         //$mensagem = $dados['retorno'];
         /* echo $mensagem; */
         header('Location: login.php?mensagem=' . $mensagem);
-
 }

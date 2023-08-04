@@ -8,14 +8,14 @@ function buscaAplicativos($idAplicativo=null)
 
     $app = array();
 
-	$idCliente = null;
-	if (isset($_SESSION['idCliente'])) {
-    	$idCliente = $_SESSION['idCliente'];
+	$idEmpresa = null;
+	if (isset($_SESSION['idEmpresa'])) {
+    	$idEmpresa = $_SESSION['idEmpresa'];
 	}
 	
     $apiEntrada = array(
         'idAplicativo' => $idAplicativo,
-		'idCliente' => $idCliente,
+		'idEmpresa' => $idEmpresa,
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;

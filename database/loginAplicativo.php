@@ -4,13 +4,13 @@
 /* include_once('../conexao.php'); */
 include_once __DIR__ . "/../conexao.php";
 
-function buscaLoginAplicativo($idLogin = null, $idAplicativo = null)
+function buscaLoginAplicativo($idLogin = null, $nomeAplicativo = null)
 {
 
 	$loginaplicativo = array();
 	$apiEntrada = array(
 		'idLogin' => $idLogin,
-		'idAplicativo' => $idAplicativo
+		'nomeAplicativo' => $nomeAplicativo
 	);
 	$loginaplicativo = chamaAPI(null, '/sistema/loginaplicativo', json_encode($apiEntrada), 'GET');
 	return $loginaplicativo;

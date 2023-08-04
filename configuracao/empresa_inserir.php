@@ -15,7 +15,7 @@ include_once('../head.php');
             <a href="../configuracao/?tab=configuracao&stab=empresa" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
         </div>
         <div class="col-sm">
-            <spam class="col titulo">Inserir Cliente</spam>
+            <spam class="col titulo">Inserir Empresa</spam>
         </div>
         
         <div class="container" style="margin-top: 30px">

@@ -1,15 +1,12 @@
 <?php
-//Lucas 09032023 - linha 16, adicionado condição para receber mais um valor "nomeUsuario". 
-//Lucas 08032023- 
-//gabriel 06022023 16:52
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
-$idCliente = null;
-	if (isset($jsonEntrada["idCliente"])) {
-    	$idCliente = $jsonEntrada["idCliente"];
-	}
+$idEmpresa = null;
+/* 	if (isset($jsonEntrada["idEmpresa"])) {
+    	$idEmpresa = $jsonEntrada["idEmpresa"];
+	} */
 
-$conexao = conectaMysql($idCliente);
+$conexao = conectaMysql($idEmpresa);
 $login = array();
 
 $sql = "SELECT login.*, empresa.nomeEmpresa FROM login
@@ -39,10 +36,7 @@ if (isset($jsonEntrada["idLogin"]) && $rows==1) {
 
 $jsonSaida = $login;
 //echo "-SAIDA->".json_encode($jsonSaida)."\n";
-/** VARIAVEL A MAO 
-$retorno = '[{"idCliente":"3","nomeCliente":"Loja Aduana"},{"idCliente":"24","nomeCliente":"Lebes"}]';
-$jsonSaida =  json_decode($retorno, TRUE);
-**/
+
 
 
 ?>

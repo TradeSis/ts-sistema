@@ -5,10 +5,7 @@
 include_once(__DIR__ . '/../head.php');
 include_once(__DIR__ . '/../database/login.php');
 include_once(__DIR__ . '/../database/empresa.php');
-
-
-$usuarios = buscaLogins();
-
+$logins = buscaLogins();
 ?>
 
 <body class="bg-transparent">
@@ -17,11 +14,11 @@ $usuarios = buscaLogins();
 
             <div class="row mt-4">
                 <div class="col-sm-8">
-                        <p class="tituloTabela">Usuários login</p>
+                        <p class="tituloTabela">Login</p>
                     </div>
 
                 <div class="col-sm-4" style="text-align:right">
-                        <a href="login_inserir.php" role="button" class="btn btn-primary">Cadastrar Novo Usuário</a>
+                        <a href="login_inserir.php" role="button" class="btn btn-primary">Cadastrar Login de usuário</a>
                     </div>
           
             </div>
@@ -38,21 +35,21 @@ $usuarios = buscaLogins();
                 </thead>
 
                 <?php
-                foreach ($usuarios as $usuario) {
+                foreach ($logins as $login) {
 
                     $nomeEmpresa = "Interno";
-                    if ($usuario["idEmpresa"]) {
-                        $empresa = buscaEmpresas ($usuario["idEmpresa"]);
+                    if ($login["idEmpresa"]) {
+                        $empresa = buscaEmpresas($login["idEmpresa"]);
                         $nomeEmpresa = $empresa ["nomeEmpresa"];
                     }
                 ?>
                     <tr>
-                        <td class="text-center"><?php echo $usuario['loginNome'] ?></td>
-                        <td class="text-center"><?php echo $usuario['email'] ?></td>
+                        <td class="text-center"><?php echo $login['loginNome'] ?></td>
+                        <td class="text-center"><?php echo $login['email'] ?></td>
                         <td class="text-center"><?php echo $nomeEmpresa ?></td>
                         <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="login_alterar.php?idLogin=<?php echo $usuario['idLogin'] ?>" role="button">Alterar</a>
-                            <a class="btn btn-danger btn-sm" href="login_excluir.php?idLogin=<?php echo $usuario['idLogin'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-primary btn-sm" href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button">Alterar</a>
+                            <a class="btn btn-danger btn-sm" href="login_excluir.php?idLogin=<?php echo $login['idLogin'] ?>" role="button">Excluir</a>
                             
                         </td>
                     </tr>

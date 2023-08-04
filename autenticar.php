@@ -17,7 +17,7 @@ $user = $dados['loginNome'];
 $idLogin = $dados['idLogin'];
 $idEmpresa = $dados['idEmpresa'];
 $email = $dados['email'];
-
+//$pedeToken = $dados['pedeToken'];
 if(isset($_POST['token'])){
     $token = $_POST['token'];
     if($google2fa->verifyKey($secret_key, $token)){

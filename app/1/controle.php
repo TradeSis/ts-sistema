@@ -197,9 +197,9 @@ if ($metodo == "GET") {
       include 'usuario.php';
       break;
 
-    case "atendente":
+/*     case "atendente":
       include 'atendente.php';
-      break;
+      break; */
 
     default:
       $jsonSaida = json_decode(

@@ -1,7 +1,7 @@
 <?php
 // helio 01022023 usando conexaoMysql com parametros de banco
 // helio 01022023 retirado global conexao, criado funcao conectaMysql
-function conectaMysql($idCliente=null)
+function conectaMysql($idEmpresa=null)
 {
     $dadosConexao = defineConexaoMysql();
     $host       = $dadosConexao['host'];
@@ -11,9 +11,9 @@ function conectaMysql($idCliente=null)
     $conexao    = mysqli_connect($host,$usuario,$senhabd,$base);
     
    
-    if (isset($idCliente)) {
+    if (isset($idEmpresa)) {
         $empresa = array();
-        $sql = "SELECT * FROM cliente where cliente.idCliente = " . $idCliente;
+        $sql = "SELECT * FROM empresa where empresa.idEmpresa = " . $idEmpresa;
         $buscar = mysqli_query($conexao, $sql);
         while ($row = mysqli_fetch_array($buscar, MYSQLI_ASSOC)) {
           array_push($empresa, $row);

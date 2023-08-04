@@ -2,20 +2,17 @@
 // helio 31012023 - ajustado a api para receber o jsonEntrada, e pegar parametro od idCliente
 // helio 26012023 18:10 - Criacao primeira api - falta parametros para where
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+$idEmpresa = null;
 
-
-$idCliente = null;
-	if (isset($jsonEntrada["idCliente"])) {
-    	$idCliente = $jsonEntrada["idCliente"];
-	}
-
-$conexao = conectaMysql($idCliente);
+$conexao = conectaMysql($idEmpresa);
 $empresa = array();
 
 $sql = "SELECT * FROM empresa ";
 if (isset($jsonEntrada["idEmpresa"])) {
   $sql = $sql . " where empresa.idEmpresa = " . $jsonEntrada["idEmpresa"];
 }
+
+//echo $sql;
 $rows = 0;
 $buscar = mysqli_query($conexao, $sql);
 while ($row = mysqli_fetch_array($buscar, MYSQLI_ASSOC)) {

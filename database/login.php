@@ -13,15 +13,9 @@ function buscaLogins($idLogin=null)
 {
 
 	$login = array();	
-
-	$idCliente = null;
-	if (isset($_SESSION['idCliente'])) {
-    	$idCliente = $_SESSION['idCliente'];
-	}
 	
 	$apiEntrada = array(
 		'idLogin' => $idLogin,
-		'idCliente' => $idCliente,
 	);	
 	$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'GET');
 	return $login;
