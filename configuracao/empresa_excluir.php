@@ -27,8 +27,9 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
                     <label class='control-label' for='inputNormal'></label>
                     <div class="for-group">
                         <input type="text" class="form-control" name="nomeEmpresa" value="<?php echo $empresa['nomeEmpresa'] ?>">
+                        <input type="text" class="form-control" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>" style="display: none">
                     </div>
-                    <input type="text" class="form-control" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>" style="display: none">
+                    
                 </div>
                     <div style="text-align:right">
                     <button type="submit" id="botao" class="btn btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>

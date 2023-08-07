@@ -2,8 +2,8 @@
 // helio 31012023 criacao
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
-
-$conexao = conectaMysql();
+$idEmpresa = null;
+$conexao = conectaMysql($idEmpresa);
 if (isset($jsonEntrada['idEmpresa'])) {
     $idEmpresa = $jsonEntrada['idEmpresa'];
     $nomeEmpresa = $jsonEntrada['nomeEmpresa'];

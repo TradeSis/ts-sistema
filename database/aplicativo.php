@@ -9,9 +9,6 @@ function buscaAplicativos($idAplicativo=null)
     $app = array();
 
 	$idEmpresa = null;
-	if (isset($_SESSION['idEmpresa'])) {
-    	$idEmpresa = $_SESSION['idEmpresa'];
-	}
 	
     $apiEntrada = array(
         'idAplicativo' => $idAplicativo,
@@ -25,8 +22,12 @@ function buscaAplicativosMenu($idLogin)
 {
 
     $app = array();
+
+	$idEmpresa = null;
+	
     $apiEntrada = array(
         'idLogin' => $idLogin,
+		'idEmpresa' => $idEmpresa,
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
@@ -95,6 +96,8 @@ if (isset($_GET['operacao'])) {
 			'pathImg'=> $pathImg,
 		);
 
+		/* echo json_encode($apiEntrada);
+		return; */
 		$app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'POST');
 		
 	}
