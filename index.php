@@ -62,20 +62,6 @@ if($nivelMenuLogin == null){
                         role="tab"                        
                         style="color:black">Aplicativos</a>
                 </li>
-            <?php } if ($nivelMenu>=3) { ?>
-                <li class="nav-item ">
-                    <a class="nav-link <?php if ($tab=="menu") {echo " active ";} ?>" 
-                        href="?tab=menu" 
-                        role="tab"                        
-                        style="color:black">Menu</a>
-                </li>
-            <?php } if ($nivelMenu>=3) { ?>
-                <li class="nav-item ">
-                    <a class="nav-link <?php if ($tab=="menuprograma") {echo " active ";} ?>" 
-                        href="?tab=menuprograma" 
-                        role="tab"                        
-                        style="color:black">Menu Programa</a>
-                </li>
             <?php } if ($nivelMenu>=4) { ?>
                 <li class="nav-item ">
                     <a class="nav-link <?php if ($tab=="configuracao") {echo " active ";} ?>" 
@@ -102,8 +88,6 @@ if($nivelMenuLogin == null){
     if ($tab=="empresa") {$src="configuracao/empresa.php";}
     if ($tab=="login") {$src="configuracao/login.php";}
     if ($tab=="aplicativo") {$src="configuracao/aplicativo.php";}
-    if ($tab=="menu") {$src="configuracao/menu.php";}
-    if ($tab=="menuprograma") {$src="configuracao/menuprograma.php";}
     if ($tab=="configuracao") {
             $src="configuracao/";
             if (isset($_GET['stab'])) {

@@ -36,18 +36,7 @@ include_once(__DIR__ . '/../head.php');
           } ?>"
             href="?tab=configuracao&stab=aplicativo" role="tab" style="color:black">Aplicativos</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link <?php if ($stab == "menu") {
-            echo " active ";
-          } ?>"
-            href="?tab=configuracao&stab=menu" role="tab" style="color:black">Menu</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link <?php if ($stab == "menuprograma") {
-            echo " active ";
-          } ?>"
-            href="?tab=configuracao&stab=menuprograma" role="tab" style="color:black">Menu Programa</a>
-        </li>
+
     
 
       </ul>
@@ -64,12 +53,6 @@ include_once(__DIR__ . '/../head.php');
           }
           if ($stab == "aplicativo") {
             $ssrc = "aplicativo.php";
-          }
-          if ($stab == "menu") {
-            $ssrc = "menu.php";
-          }
-          if ($stab == "menuprograma") {
-            $ssrc = "menuprograma.php";
           }
 
           if ($ssrc !== "") {

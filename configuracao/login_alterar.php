@@ -11,7 +11,8 @@ include_once('../database/loginAplicativo.php');
 $idLogin = $_GET['idLogin'];
 $aplicativos = buscaAplicativos();
 $usuario = buscaLogins($idLogin);
-$usuarioaplicativos = buscaLoginAplicativo($idLogin);
+echo json_encode($usuario);
+$loginAplicativos = buscaLoginAplicativo($idLogin);
 
 ?>
 
@@ -98,25 +99,25 @@ $usuarioaplicativos = buscaLoginAplicativo($idLogin);
                             <th class="text-center">Ação</th>
                         </tr>
                     </thead>
-                    <?php if (isset($usuarioaplicativos['idLogin'])) {;?>
+                    <?php if (isset($loginAplicativos['idLogin'])) {;?>
                             <tr>
-                            <td class="text-center"><?php echo $usuarioaplicativos['loginNome'] ?></td>
-                            <td class="text-center"><?php echo $usuarioaplicativos['nomeAplicativo'] ?></td>
-                            <td class="text-center"><?php echo $usuarioaplicativos['nivelMenu'] ?></td>
+                            <td class="text-center"><?php echo $loginAplicativos['loginNome'] ?></td>
+                            <td class="text-center"><?php echo $loginAplicativos['nomeAplicativo'] ?></td>
+                            <td class="text-center"><?php echo $loginAplicativos['nivelMenu'] ?></td>
                             <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $usuarioaplicativos['idAplicativo'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>" role="button">Excluir</a>
                             </td>
                         </tr>
                         <?php } else {
-                            foreach ($usuarioaplicativos as $usuarioaplicativo) { ?>
+                            foreach ($loginAplicativos as $loginAaplicativo) { ?>
                         <tr>
-                            <td class="text-center"><?php echo $usuarioaplicativo['loginNome'] ?></td>
-                            <td class="text-center"><?php echo $usuarioaplicativo['nomeAplicativo'] ?></td>
-                            <td class="text-center"><?php echo $usuarioaplicativo['nivelMenu'] ?></td>
+                            <td class="text-center"><?php echo $loginAaplicativo['loginNome'] ?></td>
+                            <td class="text-center"><?php echo $loginAaplicativo['nomeAplicativo'] ?></td>
+                            <td class="text-center"><?php echo $loginAaplicativo['nivelMenu'] ?></td>
                             <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $usuarioaplicativo['idAplicativo'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>" role="button">Excluir</a>
                             </td>
                         </tr>
                     <?php }} ?>
