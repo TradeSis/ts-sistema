@@ -1,14 +1,12 @@
 <?php
-//Lucas 05042023 criado
+// helio 31012023 criacao
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
-$idEmpresa = $jsonEntrada["idEmpresa"];
+$idEmpresa = null;
 $conexao = conectaMysql($idEmpresa);
-if (isset($jsonEntrada['idAplicativo'])) {
-    $idAplicativo = $jsonEntrada['idAplicativo'];
-    
-    $sql = "DELETE FROM aplicativo WHERE idAplicativo = '$idAplicativo'";
-    //echo "-SQL->".json_encode($sql)."\n";
+if (isset($jsonEntrada['nomeEmpresa'])) {
+    $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
+    $sql = "INSERT INTO empresa (nomeEmpresa) values ('$nomeEmpresa')";
     if ($atualizar = mysqli_query($conexao, $sql)) {
         $jsonSaida = array(
             "status" => 200,

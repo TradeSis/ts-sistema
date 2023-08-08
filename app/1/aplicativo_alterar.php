@@ -2,8 +2,8 @@
 //Lucas 05042023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
-
-$conexao = conectaMysql();
+$idEmpresa = $jsonEntrada["idEmpresa"];
+$conexao = conectaMysql($idEmpresa);
 if (isset($jsonEntrada['idAplicativo'])) {
     $idAplicativo = $jsonEntrada['idAplicativo'];
     $nomeAplicativo = $jsonEntrada['nomeAplicativo'];

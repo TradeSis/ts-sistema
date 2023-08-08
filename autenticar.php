@@ -5,18 +5,19 @@ require_once '../vendor/autoload.php';
 
 $google2fa = new \PragmaRX\Google2FA\Google2FA();
 
-$idUsuario = $_GET['idUsuario'];
+$idLogin = $_GET['idLogin'];
 $dados = array();
 $apiEntrada = array(
-        'idUsuario' => $idUsuario,
+        'idLogin' => $idLogin,
 );
-$dados = chamaAPI(null, '/sistema/usuario', json_encode($apiEntrada), 'GET');
-$secret_key = $dados['secret'];
-$user = $dados['nomeUsuario'];
-$idUsuario = $dados['idUsuario'];
-$idCliente = $dados['idCliente'];
-$email = $dados['email'];
+$dados = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'GET');
 
+$secret_key = $dados['secret'];
+$user = $dados['loginNome'];
+$idLogin = $dados['idLogin'];
+$idEmpresa = $dados['idEmpresa'];
+$email = $dados['email'];
+//$pedeToken = $dados['pedeToken'];
 if(isset($_POST['token'])){
     $token = $_POST['token'];
     if($google2fa->verifyKey($secret_key, $token)){
@@ -25,12 +26,13 @@ if(isset($_POST['token'])){
         $_SESSION['START'] = time();
         $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
         $_SESSION['usuario'] = $user;
-        $_SESSION['idUsuario'] = $idUsuario;
-        $_SESSION['idCliente'] = $idCliente;
+        $_SESSION['idLogin'] = $idLogin;
+        $_SESSION['idEmpresa'] = $idEmpresa;
         $_SESSION['email'] = $email;
         header('Location: '. URLROOT . '/sistema/');
     }
     else {
+
         $mensagem = "Token inválido ou expirado!";
                 header('Location: '. URLROOT . '/sistema/login.php?mensagem=' . $mensagem);
     }

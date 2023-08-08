@@ -7,19 +7,27 @@ function buscaAplicativos($idAplicativo=null)
 {
 
     $app = array();
+
+	$idEmpresa = null;
+	
     $apiEntrada = array(
         'idAplicativo' => $idAplicativo,
+		'idEmpresa' => $idEmpresa,
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
 }
 
-function buscaAplicativosMenu($idUsuario)
+function buscaAplicativosMenu($idLogin)
 {
 
     $app = array();
+
+	$idEmpresa = null;
+	
     $apiEntrada = array(
-        'idUsuario' => $idUsuario
+        'idLogin' => $idLogin,
+		'idEmpresa' => $idEmpresa,
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
@@ -88,6 +96,8 @@ if (isset($_GET['operacao'])) {
 			'pathImg'=> $pathImg,
 		);
 
+		/* echo json_encode($apiEntrada);
+		return; */
 		$app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'POST');
 		
 	}

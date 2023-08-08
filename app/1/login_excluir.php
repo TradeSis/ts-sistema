@@ -1,14 +1,11 @@
 <?php
-//Lucas 05042023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
-$idEmpresa = $jsonEntrada["idEmpresa"];
-$conexao = conectaMysql($idEmpresa);
-if (isset($jsonEntrada['idAplicativo'])) {
-    $idAplicativo = $jsonEntrada['idAplicativo'];
-    
-    $sql = "DELETE FROM aplicativo WHERE idAplicativo = '$idAplicativo'";
-    //echo "-SQL->".json_encode($sql)."\n";
+
+$conexao = conectaMysql();
+if (isset($jsonEntrada['idLogin'])) {
+    $idLogin = $jsonEntrada['idLogin'];
+    $sql = "DELETE FROM login WHERE idLogin = $idLogin";
     if ($atualizar = mysqli_query($conexao, $sql)) {
         $jsonSaida = array(
             "status" => 200,

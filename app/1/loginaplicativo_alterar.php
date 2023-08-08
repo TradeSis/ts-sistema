@@ -2,13 +2,17 @@
 //Lucas 05042023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
-$idEmpresa = $jsonEntrada["idEmpresa"];
-$conexao = conectaMysql($idEmpresa);
-if (isset($jsonEntrada['idAplicativo'])) {
+
+$conexao = conectaMysql();
+if (isset($jsonEntrada['idLogin'])) {
+    $idLogin = $jsonEntrada['idLogin'];
     $idAplicativo = $jsonEntrada['idAplicativo'];
+    $nivelMenu = $jsonEntrada['nivelMenu'];
     
-    $sql = "DELETE FROM aplicativo WHERE idAplicativo = '$idAplicativo'";
-    //echo "-SQL->".json_encode($sql)."\n";
+    $sql = "UPDATE loginaplicativo SET nivelMenu = $nivelMenu WHERE idLogin = $idLogin and idAplicativo = $idAplicativo";
+
+   //echo "-SQL->".json_encode($sql)."\n";
+
     if ($atualizar = mysqli_query($conexao, $sql)) {
         $jsonSaida = array(
             "status" => 200,
