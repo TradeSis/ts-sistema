@@ -21,8 +21,13 @@ function conectaMysql($idEmpresa=null)
         $empresa = $empresa[0];
         $host       = $empresa['host'];
         $base       = $empresa['base'];
-        $usuario    = $empresa['usuario'];
-        $senhabd    = $empresa['senhadb'];
+        if ( $empresa['usuario']!="") {
+          $usuario    = $empresa['usuario'];
+        }
+        if ( $empresa['senhadb']!="") {
+          $senhabd    = $empresa['senhadb'];
+        }
+
         $conexao    = mysqli_connect($host,$usuario,$senhabd,$base);
 
     } 
