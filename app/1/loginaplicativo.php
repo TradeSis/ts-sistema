@@ -1,8 +1,11 @@
 <?php
 //Lucas 05042023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-
-$conexao = conectaMysql();
+$idEmpresa = null;
+	if (isset($jsonEntrada["idEmpresa"])) {
+    	$idEmpresa = $jsonEntrada["idEmpresa"];
+	}
+$conexao = conectaMysql($idEmpresa);
 $app = array();
 
 $sql = "SELECT loginaplicativo.*, login.loginNome, aplicativo.nomeAplicativo FROM loginaplicativo
