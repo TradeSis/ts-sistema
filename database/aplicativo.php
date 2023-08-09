@@ -7,12 +7,9 @@ function buscaAplicativos($idAplicativo=null)
 {
 
     $app = array();
-
-	$idEmpresa = null;
 	
     $apiEntrada = array(
-        'idAplicativo' => $idAplicativo,
-		'idEmpresa' => $idEmpresa,
+        'idAplicativo' => $idAplicativo
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
@@ -23,11 +20,10 @@ function buscaAplicativosMenu($idLogin)
 
     $app = array();
 
-	$idEmpresa = null;
+
 	
     $apiEntrada = array(
-        'idLogin' => $idLogin,
-		'idEmpresa' => $idEmpresa,
+        'idLogin' => $idLogin
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
