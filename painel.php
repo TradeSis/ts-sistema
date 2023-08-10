@@ -2,12 +2,6 @@
 
 include_once 'head.php';
 include_once ROOT . "/sistema/database/aplicativo.php";
-
-if (!isset($_SESSION['idLogin'])) {
-        echo "<script>top.window.location = '" . URLROOT . "/sistema/login.php'</script>";
-        return;
-}
-
 $aplicativos = buscaAplicativosMenu($_SESSION['idLogin']);
 
 
