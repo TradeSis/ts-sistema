@@ -21,9 +21,7 @@ $email = $dados['email'];
 if(isset($_POST['token'])){
     $token = $_POST['token'];
     if($google2fa->verifyKey($secret_key, $token)){
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        session_start();
 
         $_SESSION['START'] = time();
         $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
