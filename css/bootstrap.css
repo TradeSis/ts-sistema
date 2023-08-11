@@ -114,7 +114,8 @@
   
 }
 .labelForm{
-  font-family: 'Dosis', sans-serif;
+  /* font-family: 'Dosis', sans-serif; */
+  font-family: 'Inter', sans-serif;
   color:rgb(122, 122, 122);
   font-size: 12px;
   margin-bottom: -20px;
@@ -159,4 +160,17 @@ select::-ms-expand {
   pointer-events:none;
 }
 
+
+/**/
+.input-group input{
+  background-color: #fff;
+}
+.form-control{
+  background-color: #fff;
+}
+
+
+*{
+  font-family: 'Inter', sans-serif !important;
+}
 
