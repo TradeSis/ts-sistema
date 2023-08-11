@@ -8,7 +8,7 @@ include_once('../database/aplicativo.php');
 
 $login = buscaLogins($_GET['idLogin']);
 $aplicativo = buscaAplicativos($_GET['idAplicativo']);
-$usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'],$_GET['idAplicativo']);
+$usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'],$_GET['nomeAplicativo']);
 ?>
 
 <body class="bg-transparent">
@@ -43,14 +43,13 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'],$_GET['idAplicativo']
             </div>
             <div class="col-sm">
                 <div class="form-group">
-                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nivel</label>
-                    <select class="select form-control" style="padding-right: 50px;" name="nivelMenu">
-                        <option value="<?php echo $usuarioaplicativo['nivelMenu'] ?>">Nível <?php echo $usuarioaplicativo['nivelMenu'] ?></option>
-                        <option value="1">Nível 1</option>
-                        <option value="2">Nível 2</option>
-                        <option value="3">Nível 3</option>
-                        <option value="4">Nível 4</option>
-                        <option value="5">Nível 5</option>
+                    <label class='control-label' for='inputNormal' style="margin-top: -15px;">Nivel</label>
+                    <select class="form-control" style="padding-right: 50px;" name="nivelMenu">
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "1") { echo "selected"; } ?> value="1">1</option>
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "2") { echo "selected"; } ?> value="2">2</option>
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "3") { echo "selected"; } ?> value="3">3</option>
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "4") { echo "selected"; } ?> value="4">4</option>
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "5") { echo "selected"; } ?> value="5">5</option>
                     </select>
                 </div>
             </div>

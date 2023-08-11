@@ -7,11 +7,13 @@
 
 
 include_once 'conexao.php';
+$nomeEmpresa = $_POST['nomeEmpresa'];
 $loginNome = $_POST['loginNome'];
 $passwordDigitada = $_POST['password'];
 
 $dados = array();
 $apiEntrada = array(
+        'nomeEmpresa' => $nomeEmpresa,
         'loginNome' => $loginNome,
 );
 $dados = chamaAPI(null, '/sistema/login/verifica', json_encode($apiEntrada), 'GET');

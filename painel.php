@@ -6,11 +6,13 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idLogin']);
 
 
 $aplicativo = array();
-foreach($aplicativos as $unico) { 
-    //echo '<hr> aplicativos -> ' . json_encode($unico);
-    $aplicativo[] = $unico["nomeAplicativo"];
-}
-
+if (isset($aplicativos['nomeAplicativo'])) { 
+    $aplicativo[] = $aplicativos["nomeAplicativo"];
+} else {
+    foreach($aplicativos as $unico) { 
+        //echo '<hr> aplicativos -> ' . json_encode($unico);
+        $aplicativo[] = $unico["nomeAplicativo"];
+    } }
 $URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 //echo json_encode(URLROOT);

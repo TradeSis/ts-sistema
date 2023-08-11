@@ -29,7 +29,9 @@ $logins = buscaLogins();
                     <tr>
                         <th class="text-center">Nome</th>
                         <th class="text-center">E-mail</th>
-                        <th class="text-center">Empresa/Cliente</th>
+                        <th class="text-center">Empresa</th>
+                        <th class="text-center">Cpf/Cnpj</th>
+                        <th class="text-center">Token</th>
                         <th class="text-center">Ação</th>
                     </tr>
                 </thead>
@@ -47,6 +49,8 @@ $logins = buscaLogins();
                         <td class="text-center"><?php echo $login['loginNome'] ?></td>
                         <td class="text-center"><?php echo $login['email'] ?></td>
                         <td class="text-center"><?php echo $nomeEmpresa ?></td>
+                        <td class="text-center"><?php echo $login['cpfCnpj'] ?></td>
+                        <td class="text-center"><?php echo $login['pedeToken'] == 1 ? 'Sim' : 'Não'; ?></td>
                         <td class="text-center">
                             <a class="btn btn-primary btn-sm" href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button">Alterar</a>
                             <a class="btn btn-danger btn-sm" href="login_excluir.php?idLogin=<?php echo $login['idLogin'] ?>" role="button">Excluir</a>

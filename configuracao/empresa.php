@@ -27,6 +27,7 @@ $empresas = buscaEmpresas();
                 <thead>
                     <tr>
                         <th class="text-center">Empresa</th>
+                        <th class="text-center">Tempo Sessão</th>
                         <th class="text-center">Ação</th>
 
                     </tr>
@@ -37,6 +38,7 @@ $empresas = buscaEmpresas();
                 ?>
                     <tr>
                         <td class="text-center"><?php echo $empresa['nomeEmpresa'] ?></td>
+                        <td class="text-center"><?php echo $empresa['timeSessao'] ?></td>
                         <td class="text-center">
                             <a class="btn btn-primary btn-sm" href="empresa_alterar.php?idEmpresa=<?php echo $empresa['idEmpresa'] ?>" role="button">Editar</a>
                             <a class="btn btn-danger btn-sm" href="empresa_excluir.php?idEmpresa=<?php echo $empresa['idEmpresa'] ?>" role="button">Excluir</a>

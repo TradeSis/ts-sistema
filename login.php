@@ -82,6 +82,13 @@ include_once __DIR__."/../config.php";
 
                   <div class="input-group input-group-alternative">
                     <span class="input-group-text"></i></span>
+                    <input class="form-control" placeholder="Empresa" type="text" name="nomeEmpresa" autocomplete="off" autofocus="on">
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+
+                  <div class="input-group input-group-alternative">
+                    <span class="input-group-text"></i></span>
                     <input class="form-control" placeholder="Usuário" type="text" name="loginNome" autocomplete="off" autofocus="on">
                   </div>
                 </div>

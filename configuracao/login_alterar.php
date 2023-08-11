@@ -11,7 +11,7 @@ include_once('../database/loginAplicativo.php');
 $idLogin = $_GET['idLogin'];
 $aplicativos = buscaAplicativos();
 $usuario = buscaLogins($idLogin);
-echo json_encode($usuario);
+//echo json_encode($usuario);
 $loginAplicativos = buscaLoginAplicativo($idLogin);
 
 ?>
@@ -53,8 +53,15 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                     </div>
                     <div class="col-sm">
                         <div class="form-group">
-                            <label class="labelForm">Telefone</label>
-                            <input type="text" class="form-control" name="telefone" value="<?php echo $usuario['telefone'] ?>">
+                            <label class="labelForm">Pede Token</label>
+                            <select class="form-control" name="pedeToken">
+                                <option <?php if ($usuario['pedeToken'] == "1") {
+                                echo "selected";
+                                } ?> value="1">Sim</option>
+                                <option <?php if ($usuario['pedeToken'] == "0") {
+                                echo "selected";
+                                } ?> value="0">Não</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -105,8 +112,8 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                             <td class="text-center"><?php echo $loginAplicativos['nomeAplicativo'] ?></td>
                             <td class="text-center"><?php echo $loginAplicativos['nivelMenu'] ?></td>
                             <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAplicativos['nomeAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAplicativos['nomeAplicativo'] ?>" role="button">Excluir</a>
                             </td>
                         </tr>
                         <?php } else {
@@ -116,8 +123,8 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                             <td class="text-center"><?php echo $loginAaplicativo['nomeAplicativo'] ?></td>
                             <td class="text-center"><?php echo $loginAaplicativo['nivelMenu'] ?></td>
                             <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAaplicativo['nomeAplicativo'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAaplicativo['nomeAplicativo'] ?>" role="button">Excluir</a>
                             </td>
                         </tr>
                     <?php }} ?>

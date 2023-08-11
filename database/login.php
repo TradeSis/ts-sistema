@@ -40,9 +40,9 @@ if (isset($_GET['operacao'])) {
 			'loginNome' => $_POST['loginNome'],
 			'email' => $_POST['email'],
 			'cpfCnpj' => $_POST['cpfCnpj'],
-			'telefone' => $_POST['telefone'],
 			'idEmpresa' => $_POST['idEmpresa'],
-			'password' => $_POST['password']
+			'pedeToken' => $_POST['pedeToken'],
+			'password' => md5($_POST['password'])
 			
 		);
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'PUT');

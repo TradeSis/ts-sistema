@@ -10,7 +10,7 @@
     $sql = $sql . " where usuario.idUsuario = '$idUsuario'";
   }  */
 
-if (!isset($jsonEntrada["loginNome"])) {
+if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])) {
     $jsonSaida = array(
         "status" => 400,
         "retorno" => "Faltou parâmetro de login"
@@ -18,6 +18,7 @@ if (!isset($jsonEntrada["loginNome"])) {
 } else {
 
 
+    $nomeEmpresa = $jsonEntrada["nomeEmpresa"];
     $loginNome = $jsonEntrada["loginNome"];
 
 
@@ -26,7 +27,9 @@ if (!isset($jsonEntrada["loginNome"])) {
    
 
 
-    $sql = "SELECT * FROM login WHERE email = '$loginNome' or loginNome = '$loginNome' or cpfCnpj = '$loginNome'";
+    $sql = "SELECT login.*, empresa.nomeEmpresa FROM login
+            LEFT JOIN empresa on empresa.idEmpresa = login.idEmpresa 
+            WHERE nomeEmpresa='$nomeEmpresa' and email = '$loginNome' or loginNome = '$loginNome' or cpfCnpj = '$loginNome'";
 //echo $sql;
 
     $rows = 0;
@@ -41,12 +44,13 @@ if (!isset($jsonEntrada["loginNome"])) {
         $loginNomes = $loginNomes[0];
         $jsonSaida = array(
             "idLogin" => $loginNomes["idLogin"],
-            "idEmpresa" => $loginNomes["idEmpresa"],
             "loginNome" => $loginNomes["loginNome"],
-            "cpfCnpj" => $loginNomes["cpfCnpj"],
-            "password" => $loginNomes["password"],
+            "idEmpresa" => $loginNomes["idEmpresa"],
             "statusLogin" => $loginNomes["statusLogin"],
+            "password" => $loginNomes["password"],
             "email" => $loginNomes["email"],
+            "cpfCnpj" => $loginNomes["cpfCnpj"],
+            "pedeToken" => $loginNomes["pedeToken"],
             "status" => 200,
             "retorno" => ""
         );

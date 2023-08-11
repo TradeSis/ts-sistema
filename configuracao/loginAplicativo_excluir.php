@@ -8,7 +8,7 @@ include_once('../database/aplicativo.php');
 
 $login = buscaLogins($_GET['idLogin']);
 $aplicativo = buscaAplicativos($_GET['idAplicativo']);
-$usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'],$_GET['idAplicativo']);
+$usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'],$_GET['nomeAplicativo']);
 ?>
 
 <body class="bg-transparent">
