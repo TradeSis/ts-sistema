@@ -11,27 +11,27 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
+    <div class="container p-4" style="margin-top:10px">
 
-        <div class="col-sm mt-4" style="text-align:right">
-            <a href="../configuracao/?tab=configuracao&stab=aplicativo" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
-        </div>
-        <div class="col-sm">
-            <spam class="col titulo">Excluir Aplicativo</spam>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2 class="tituloTabela">Excluir Aplicativo</h2>
+            </div>
+            <div class="col-sm-4" style="text-align:right">
+                <a href="../configuracao/?tab=configuracao&stab=aplicativo" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            </div>
         </div>
 
-        <div class="container" style="margin-top: 30px">
+        <form class="mb-4" action="../database/aplicativo.php?operacao=excluir" method="post">
+            <div class="form-group" style="margin-top:10px">
+                <label class='control-label' for='inputNormal'></label>
+                <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
+                <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>" style="display: none">
+            </div>
+            <div style="text-align:right; margin-top:30px">
+                <button type="submit" id="botao" class="btn btn-sm btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>
+            </div>
 
-            <form action="../database/aplicativo.php?operacao=excluir" method="post">
-                <div class="form-group" style="margin-top:10px">
-                    <label class='control-label' for='inputNormal'></label>
-                    <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
-                    <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>" style="display: none">
-                </div>
-                <div style="text-align:right; margin-top:30px">
-                    <button type="submit" id="botao" class="btn btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>
-                </div>
-        </div>
         </form>
 
 

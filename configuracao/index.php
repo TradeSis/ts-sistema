@@ -3,9 +3,21 @@ include_once(__DIR__ . '/../head.php');
 ?>
 
 <style>
-  .temp {
-    color: black
+
+  .nav-link.active:any-link{
+    background-color: transparent;
+    border: 2px solid #DFDFDF;
+    border-radius: 5px 5px 0px 0px;
+    color: #1B4D60;
   }
+
+  .nav-link:any-link{
+    background-color: #567381;
+    border: 1px solid #DFDFDF;
+    border-radius: 5px 5px 0px 0px;
+    color: #fff;
+  }
+  
 </style>
 <div class="container-fluid">
   <div class="row">
@@ -22,19 +34,19 @@ include_once(__DIR__ . '/../head.php');
           <a class="nav-link <?php if ($stab == "empresa") {
             echo " active ";
           } ?>"
-            href="?tab=configuracao&stab=empresa" role="tab" style="color:black">Empresa</a>
+            href="?tab=configuracao&stab=empresa" role="tab">Empresa</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link <?php if ($stab == "login") {
             echo " active ";
           } ?>"
-            href="?tab=configuracao&stab=login" role="tab" style="color:black">Login</a>
+            href="?tab=configuracao&stab=login" role="tab">Login</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link <?php if ($stab == "aplicativo") {
             echo " active ";
           } ?>"
-            href="?tab=configuracao&stab=aplicativo" role="tab" style="color:black">Aplicativos</a>
+            href="?tab=configuracao&stab=aplicativo" role="tab">Aplicativos</a>
         </li>
 
     

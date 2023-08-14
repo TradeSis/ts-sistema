@@ -11,16 +11,17 @@ $login = buscaLogins($idLogin);
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:30px">
+    <div class="container p-4" style="margin-top:30px">
 
-        <div class="col-sm mt-4" style="text-align:right">
-            <a href="../configuracao/?tab=configuracao&stab=login" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2 class="tituloTabela">Excluir Usuário</h2>
+            </div>
+            <div class="col-sm-4" style="text-align:right">
+                <a href="../configuracao/?tab=configuracao&stab=login" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            </div>
         </div>
-        <div class="col-sm">
-            <spam class="col titulo">Excluir Usuário</spam>
-        </div>
-
-        <div class="container" style="margin-top: 10px">
+    
             <form action="../database/login.php?operacao=excluir" method="post">
 
                 <div class="col-md-12 form-group">
@@ -28,11 +29,11 @@ $login = buscaLogins($idLogin);
                     <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>">
                     <input type="text" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>" style="display: none">
                 </div>
-                <div style="text-align:right">
-                    <button type="submit" id="botao" class="btn btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>
+
+                <div style="text-align:right; margin-top:20px">
+                    <button type="submit" id="botao" class="btn btn-sm btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>
                 </div>
             </form>
-        </div>
 
     </div>
 

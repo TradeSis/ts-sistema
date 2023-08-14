@@ -14,23 +14,23 @@ $logins = buscaLogins();
 
             <div class="row mt-4">
                 <div class="col-sm-8">
-                        <p class="tituloTabela">Login</p>
+                        <h2 class="tituloTabela">Login</h2>
                     </div>
 
                 <div class="col-sm-4" style="text-align:right">
-                        <a href="login_inserir.php" role="button" class="btn btn-primary">Cadastrar Login de usuário</a>
+                        <a href="login_inserir.php" role="button" class="btn btn-success"><i class="bi bi-plus-square"></i>&nbsp Novo</a>
                     </div>
           
             </div>
 
-        <div class="card shadow mt-2">
+        <div class="card mt-2 text-center">
             <table class="table">
-                <thead>
+                <thead class="cabecalhoTabela">
                     <tr>
-                        <th class="text-center">Nome</th>
-                        <th class="text-center">E-mail</th>
-                        <th class="text-center">Empresa/Cliente</th>
-                        <th class="text-center">Ação</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Empresa/Cliente</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
 
@@ -44,12 +44,12 @@ $logins = buscaLogins();
                     }
                 ?>
                     <tr>
-                        <td class="text-center"><?php echo $login['loginNome'] ?></td>
-                        <td class="text-center"><?php echo $login['email'] ?></td>
-                        <td class="text-center"><?php echo $nomeEmpresa ?></td>
-                        <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button">Alterar</a>
-                            <a class="btn btn-danger btn-sm" href="login_excluir.php?idLogin=<?php echo $login['idLogin'] ?>" role="button">Excluir</a>
+                        <td><?php echo $login['loginNome'] ?></td>
+                        <td><?php echo $login['email'] ?></td>
+                        <td><?php echo $nomeEmpresa ?></td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger btn-sm" href="login_excluir.php?idLogin=<?php echo $login['idLogin'] ?>" role="button"><i class="bi bi-trash3"></i></a>
                             
                         </td>
                     </tr>

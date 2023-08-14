@@ -12,16 +12,16 @@ $aplicativos = buscaAplicativos();
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
+    <div class="container p-4" style="margin-top:10px">
 
-        <div class="col-sm mt-4" style="text-align:right">
-            <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2 class="tituloTabela">Inserir Usuario/Aplicativo</h2>
+            </div>
+            <div class="col-sm-4" style="text-align:right">
+                <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            </div>
         </div>
-        <div class="col-sm">
-            <spam class="col titulo">Inserir Usuario/Aplicativo</spam>
-        </div>
-
-        <div class="container" style="margin-top: 30px">
 
             <form action="../database/loginAplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
@@ -37,11 +37,11 @@ $aplicativos = buscaAplicativos();
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
                             <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
-                            <?php
-                            foreach ($aplicativos as $aplicativo) {
-                            ?>
-                            <option value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
-                            <?php  } ?>
+                                <?php
+                                foreach ($aplicativos as $aplicativo) {
+                                ?>
+                                    <option value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
+                                <?php  } ?>
                             </select>
                         </div>
                     </div>
@@ -59,12 +59,10 @@ $aplicativos = buscaAplicativos();
                     </div>
                 </div>
 
-                <div style="text-align:right; margin-top: 30px">
-
+                <div style="text-align:right; margin-top:20px">
                     <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
                 </div>
             </form>
-        </div>
 
     </div>
 
@@ -73,8 +71,8 @@ $aplicativos = buscaAplicativos();
 
 
     <script>
-        $(document).ready(function () {
-            $("#form").submit(function () {
+        $(document).ready(function() {
+            $("#form").submit(function() {
                 var formData = new FormData(this);
 
                 $.ajax({
@@ -101,14 +99,14 @@ $aplicativos = buscaAplicativos();
         const pictureImageTxt = "Carregar imagem";
         pictureImage.innerHTML = pictureImageTxt;
 
-        inputFile.addEventListener("change", function (e) {
+        inputFile.addEventListener("change", function(e) {
             const inputTarget = e.target;
             const file = inputTarget.files[0];
 
             if (file) {
                 const reader = new FileReader();
 
-                reader.addEventListener("load", function (e) {
+                reader.addEventListener("load", function(e) {
                     const readerTarget = e.target;
 
                     const img = document.createElement("img");

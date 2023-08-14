@@ -116,18 +116,7 @@
   }
   } */
 
-  /* TABELAS */
 
-.tituloTabela{
-    font-family: 'Dosis', sans-serif;
-    font-weight:600;
-    font-size: 20px;
-    color:rgb(75, 75, 75);
-    
-text-align: left;
-
-    /* background-color: #E02D1B; */
-}
 
 
 .data{
@@ -235,3 +224,24 @@ opacity: 0;
 
 padding: 0.5em;
 }
+
+
+  /* TABELAS */
+
+.tituloTabela{
+  font-weight:600;
+  font-size: 20px;  
+  text-align: left;
+  color:#12192C;
+}
+
+.cabecalhoTabela{
+  background-color: #12192C; 
+  color:#fff;
+  font-weight: 300;
+}
+
+.cabecalhoTabela tr th{
+  font-weight: 500;
+}
+
