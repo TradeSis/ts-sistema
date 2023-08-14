@@ -22,14 +22,6 @@ if($nivelMenuLogin == null){
 
 ?>
 
-<style>
-    .nav-link.active {
-        border-bottom: 3px solid #2E59D9;
-        border-radius: 3px 3px 0 0;
-        color: #1B4D60;
-        background-color: transparent;
-    }
-</style>
 
 <div class="container-fluid mt-1">
     <div class="row">
@@ -46,33 +38,34 @@ if($nivelMenuLogin == null){
 
 
             <?php if ($nivelMenu>=3) { ?>
-                <li class="nav-item ">
-                    <a class="nav-link <?php if ($tab=="empresa") {echo " active ";} ?>" 
+                <li class="nav-item mr-1 ">
+                    <a class="nav-link1 nav-link <?php if ($tab=="empresa") {echo " active ";} ?>" 
                         href="?tab=empresa" 
                         role="tab"                        
-                        style="color:black">Empresa</a>
+                        >Empresa</a>
                 </li>
             <?php } if ($nivelMenu>=3) { ?>
-                <li class="nav-item ">
-                    <a class="nav-link <?php if ($tab=="login") {echo " active ";} ?>" 
+                <li class="nav-item mr-1 ">
+                    <a class="nav-link1 nav-link <?php if ($tab=="login") {echo " active ";} ?>" 
                         href="?tab=login" 
                         role="tab"                        
-                        style="color:black">Login</a>
+                        >Login</a>
                 </li>
             <?php } if ($nivelMenu>=3) { ?>
-                <li class="nav-item ">
-                    <a class="nav-link <?php if ($tab=="aplicativo") {echo " active ";} ?>" 
+                <li class="nav-item mr-1 ">
+                    <a class="nav-link1 nav-link <?php if ($tab=="aplicativo") {echo " active ";} ?>" 
                         href="?tab=aplicativo" 
                         role="tab"                        
-                        style="color:black">Aplicativos</a>
+                        >Aplicativos</a>
                 </li>
             <?php } if ($nivelMenu>=4) { ?>
-                <li class="nav-item ">
-                    <a class="nav-link <?php if ($tab=="configuracao") {echo " active ";} ?>" 
+                <li class="nav-item mr-1 ">
+                    <a class="nav-link1 nav-link <?php if ($tab=="configuracao") {echo " active ";} ?>" 
                         href="?tab=configuracao" 
                         role="tab"     
                         data-toggle="tooltip" data-placement="top" title="Configurações"                   
-                        style="color:black"><i class="bi bi-gear" style="font-size: 18px;"></i></a>
+                        ><i class="bi bi-gear"
+                        ></i></a>
                 </li>
             <?php } ?>
 
@@ -104,7 +97,7 @@ if($nivelMenuLogin == null){
 if ($src!=="") {
     //echo URLROOT ."/sistema/". $src;
 ?>
-    <div class="diviFrame" style="overflow:hidden; height: 85vh">
+    <div class="diviFrame" style="overflow:hidden; height: 85vh;">
         <iframe class="iFrame container-fluid " id="iFrameTab" src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
     </div>
 <?php
