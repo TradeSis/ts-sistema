@@ -16,6 +16,7 @@ $secret_key = $dados['secret'];
 $user = $dados['loginNome'];
 $idLogin = $dados['idLogin'];
 $idEmpresa = $dados['idEmpresa'];
+$nomeEmpresa = $dados['nomeEmpresa'];
 $email = $dados['email'];
 $pedeToken = $dados['pedeToken'];
 $timeSessao = $dados['timeSessao'];
@@ -25,16 +26,18 @@ if(isset($_POST['token'])){
         session_start();
 
         $_SESSION['START'] = time();
-        $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+        $_SESSION['LAST_ACTIVITY'] = time(); 
         $_SESSION['usuario'] = $user;
         $_SESSION['idLogin'] = $idLogin;
+        $_SESSION['idEmpresa'] = $idEmpresa;
         $_SESSION['email'] = $email;
         $_SESSION['timeSessao'] = $timeSessao;
-
-        $expiry = time() + (86400 * 14); // Cookie expira em 14 dias
-        setcookie('idEmpresa', $idEmpresa, $expiry, '/');
         
-        header('Location: '. URLROOT . '/sistema/');
+        $expiry = time() + (86400 * 7); // Cookie expira em 7 dias
+        setcookie('Empresa', $nomeEmpresa, $expiry, '/');
+        setcookie('User', $user, $expiry, '/');
+        
+        header('Location: ' . URLROOT . '/sistema/');
     }
     else {
 

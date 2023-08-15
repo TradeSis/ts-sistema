@@ -82,14 +82,14 @@ include_once __DIR__."/../config.php";
 
                   <div class="input-group input-group-alternative">
                     <span class="input-group-text"></i></span>
-                    <input class="form-control" placeholder="Empresa" type="text" name="nomeEmpresa" autocomplete="off" autofocus="on">
+                    <input class="form-control" type="text" name="nomeEmpresa" value="<?php echo isset($_COOKIE['Empresa']) ? $_COOKIE['Empresa'] : '' ?>" placeholder="Empresa" autocomplete="off" autofocus>
                   </div>
                 </div>
                 <div class="form-group mb-3">
 
                   <div class="input-group input-group-alternative">
                     <span class="input-group-text"></i></span>
-                    <input class="form-control" placeholder="Usuário" type="text" name="loginNome" autocomplete="off" autofocus="on">
+                    <input class="form-control" type="text" name="loginNome" value="<?php echo isset($_COOKIE['User']) ? $_COOKIE['User'] : '' ?>" placeholder="Usuário" autocomplete="off" autofocus>
                   </div>
                 </div>
                 <div class="form-group">

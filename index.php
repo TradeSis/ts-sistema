@@ -6,7 +6,7 @@ include_once "painel.php";
 include_once ROOT . "/sistema/database/loginAplicativo.php";
 $nivelMenuLogin = null;
 
-if ($_COOKIE['idEmpresa']==1) { // Proteção
+if ($_SESSION["idEmpresa"]==1) { // Proteção
     $nivelMenuLogin =  buscaLoginAplicativo($_SESSION['idLogin'],'Sistema'); //Sistema
 }
 

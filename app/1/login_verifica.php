@@ -38,6 +38,7 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
                 $jsonSaida = array(
                     "idLogin" => $loginNomes["idLogin"],
                     "loginNome" => $loginNomes["loginNome"],
+                    "nomeEmpresa" => $loginNomes["nomeEmpresa"],
                     "idEmpresa" => $loginNomes["idEmpresa"],
                     "timeSessao" => $loginNomes["timeSessao"],
                     "statusLogin" => $loginNomes["statusLogin"],

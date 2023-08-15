@@ -15,7 +15,7 @@ if (isset($aplicativos['nomeAplicativo'])) {
     } }
 $URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
-//echo json_encode($_COOKIE['idEmpresa']);
+//echo json_encode(URLROOT);
 ?>
 
 <style>
@@ -44,7 +44,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
             <ul class="navbar-nav mx-auto">
 
 
-                <?php if ($_COOKIE['idEmpresa']==1 && in_array("Sistema", $aplicativo)) { ?>
+                <?php if ($_SESSION["idEmpresa"]==1 && in_array("Sistema", $aplicativo)) { ?>
                     <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/sistema/" class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/sistema/") { echo " active ";} ?>">
                         Sistema</a>
