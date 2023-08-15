@@ -9,53 +9,55 @@ $logins = buscaLogins();
 ?>
 
 <body class="bg-transparent">
-    <div class="container" style="margin-top:10px">
+    <div class="container" style="margin-bottom:30px">
 
 
-            <div class="row mt-4">
-                <div class="col-sm-8">
-                        <h2 class="tituloTabela">Login</h2>
-                    </div>
-
-                <div class="col-sm-4" style="text-align:right">
-                        <a href="login_inserir.php" role="button" class="btn btn-success"><i class="bi bi-plus-square"></i>&nbsp Novo</a>
-                    </div>
-          
+        <div class="row mt-4">
+            <div class="col-sm-8">
+                <h2 class="tituloTabela">Login</h2>
             </div>
 
+            <div class="col-sm-4" style="text-align:right">
+                <a href="login_inserir.php" role="button" class="btn btn-success"><i class="bi bi-plus-square"></i>&nbsp Novo</a>
+            </div>
+
+        </div>
+
         <div class="card mt-2 text-center">
-            <table class="table">
-                <thead class="cabecalhoTabela">
-                    <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Empresa/Cliente</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
+            <div class="table scrollbar-tabela">
+                <table class="table">
+                    <thead class="cabecalhoTabela">
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Empresa/Cliente</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
 
-                <?php
-                foreach ($logins as $login) {
+                    <?php
+                    foreach ($logins as $login) {
 
-                    $nomeEmpresa = "Interno";
-                    if ($login["idEmpresa"]) {
-                        $empresa = buscaEmpresas($login["idEmpresa"]);
-                        $nomeEmpresa = $empresa ["nomeEmpresa"];
-                    }
-                ?>
-                    <tr>
-                        <td><?php echo $login['loginNome'] ?></td>
-                        <td><?php echo $login['email'] ?></td>
-                        <td><?php echo $nomeEmpresa ?></td>
-                        <td>
-                            <a class="btn btn-warning btn-sm" href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger btn-sm" href="login_excluir.php?idLogin=<?php echo $login['idLogin'] ?>" role="button"><i class="bi bi-trash3"></i></a>
-                            
-                        </td>
-                    </tr>
-                <?php } ?>
+                        $nomeEmpresa = "Interno";
+                        if ($login["idEmpresa"]) {
+                            $empresa = buscaEmpresas($login["idEmpresa"]);
+                            $nomeEmpresa = $empresa["nomeEmpresa"];
+                        }
+                    ?>
+                        <tr>
+                            <td><?php echo $login['loginNome'] ?></td>
+                            <td><?php echo $login['email'] ?></td>
+                            <td><?php echo $nomeEmpresa ?></td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-danger btn-sm" href="login_excluir.php?idLogin=<?php echo $login['idLogin'] ?>" role="button"><i class="bi bi-trash3"></i></a>
 
-            </table>
+                            </td>
+                        </tr>
+                    <?php } ?>
+
+                </table>
+            </div>
         </div>
     </div>
 
