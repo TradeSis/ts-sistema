@@ -46,7 +46,6 @@ if (isset($_GET['operacao'])) {
 			
 		);
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'PUT');
-
 		header('Location: ../configuracao/login.php');
 	}
 

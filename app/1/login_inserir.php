@@ -13,14 +13,16 @@ if (isset($jsonEntrada['loginNome'])) {
     $pedeToken = $jsonEntrada['pedeToken'];
     $password = md5($jsonEntrada['password']);
 
-    $statusLogin = 0;
+    $statusLogin = INATIVO_PADRAOBD;
+    $statusUsuario = ATIVO_PADRAOBD;
+    if($cpfCnpj===""){$cpfCnpj="NULL";}
 
-    $sql = "INSERT INTO tsplaces_etradesis.login( `loginNome`, `idEmpresa`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, '$email', '$cpfCnpj', '$pedeToken', '$password', $statusLogin)";
-
-    if ($idEmpresa == "") { // sem id , tira do insert para deixar NULL
-        $sql = "INSERT INTO `login`( `loginNome`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', '$email', '$cpfCnpj', '$telefone', '$password', $statusLogin)";
+    if($email===""){
+        $sql = "INSERT INTO tsplaces_etradesis.login( `loginNome`, `idEmpresa`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, $cpfCnpj, $pedeToken, '$password', $statusLogin)";
+    } else {
+        $sql = "INSERT INTO tsplaces_etradesis.login( `loginNome`, `idEmpresa`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, '$email', $cpfCnpj, $pedeToken, '$password', $statusLogin)";
     }
-    echo "-SQL->".$sql."\n";
+    //echo "-SQL->".$sql."\n";
     $atualizar = mysqli_query($conexao, $sql);
 
 
@@ -29,11 +31,11 @@ if (isset($jsonEntrada['loginNome'])) {
     $buscar2 = mysqli_query($conexao, $sql2);
     $row = mysqli_fetch_array($buscar2, MYSQLI_ASSOC);
     $idLogin = $row["idLogin"];
-    echo "-SQL2->".$sql2."\n";
+    //echo "-SQL2->".$sql2."\n";
 
 
-    $sql3 = "INSERT INTO `usuario`( `nomeUsuario`, `email`, `idLogin`) VALUES ('$loginNome', '$email', $idLogin)";
-    echo "-SQL3->".$sql3."\n";
+    $sql3 = "INSERT INTO `usuario`( `nomeUsuario`, `email`, `idLogin`, `statusUsuario`) VALUES ('$loginNome', '$email', $idLogin, $statusUsuario)";
+    //echo "-SQL3->".$sql3."\n";
     $atualizar3 = mysqli_query($conexao, $sql3);
 
 

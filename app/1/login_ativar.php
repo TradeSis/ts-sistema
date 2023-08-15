@@ -7,7 +7,7 @@ $conexao = conectaMysql();
 if (isset($jsonEntrada['idLogin'])) {
     $idLogin = $jsonEntrada['idLogin'];
     $secret = $jsonEntrada['secret_key']; /* Guarda secret */
-    $statusLogin = 1;
+    $statusLogin = ATIVO_PADRAOBD;
 
     $sql = "UPDATE `login` SET `statusLogin` = $statusLogin, `secret` = '$secret' WHERE idLogin = $idLogin";
    // echo "-ENTRADA->".$sql."\n"; 

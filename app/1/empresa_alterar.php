@@ -7,7 +7,8 @@ $conexao = conectaMysql($idEmpresa);
 if (isset($jsonEntrada['idEmpresa'])) {
     $idEmpresa = $jsonEntrada['idEmpresa'];
     $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
-    $sql = "UPDATE empresa SET nomeEmpresa='$nomeEmpresa' WHERE idEmpresa = $idEmpresa";
+    $timeSessao = $jsonEntrada['timeSessao'];
+    $sql = "UPDATE empresa SET nomeEmpresa='$nomeEmpresa', timeSessao=$timeSessao WHERE idEmpresa = $idEmpresa";
     if ($atualizar = mysqli_query($conexao, $sql)) {
         $jsonSaida = array(
             "status" => 200,

@@ -34,7 +34,7 @@ $empresas = buscaEmpresas();
                     <div class="col-sm">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">E-mail</label>
-                            <input type="email" name="email" class="form-control" required autocomplete="off">
+                            <input type="email" name="email" class="form-control" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ $empresas = buscaEmpresas();
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">Cpf/Cnpj</label>
-                            <input type="text" name="cpfCnpj" class="form-control" required autocomplete="off">
+                            <input type="text" name="cpfCnpj" class="form-control" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -76,7 +76,7 @@ $empresas = buscaEmpresas();
                     <div class="col-sm">
                         <div class="form-group-select">
                             <label class="labelForm">Empresa</label>
-                            <select class="select form-control" style="padding-right: 100px;" name="idEmpresa">
+                            <select class="select form-control" style="padding-right: 100px;" name="idEmpresa" required>
                                 <option value=""></option>
                                 <?php
                                 foreach ($empresas as $empresa) {

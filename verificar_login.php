@@ -28,8 +28,8 @@ $timeSessao = $dados['timeSessao'];
 
 if (!$user == "") {
 
-        if ($pedeToken == 1) {
-                if ($statusLogin == 0) {
+        if ($pedeToken == ATIVO_PADRAOBD) {
+                if ($statusLogin == INATIVO_PADRAOBD) {
                         header('Location: auth.php?idLogin=' . $idLogin . '&email=' . $email);
                 } else {
                         header('Location: autenticar.php?idLogin=' . $idLogin);

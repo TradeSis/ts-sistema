@@ -31,7 +31,8 @@ if (isset($_GET['operacao'])) {
 
 	if ($operacao=="inserir") {
 		$apiEntrada = array(
-			'nomeEmpresa' => $_POST['nomeEmpresa']
+			'nomeEmpresa' => $_POST['nomeEmpresa'],
+			'timeSessao' => $_POST['timeSessao']
 		);
 		$empresa = chamaAPI(null, '/sistema/empresa', json_encode($apiEntrada), 'PUT');
 	}
@@ -39,7 +40,8 @@ if (isset($_GET['operacao'])) {
 	if ($operacao=="alterar") {
 		$apiEntrada = array(
 			'idEmpresa' => $_POST['idEmpresa'],
-			'nomeEmpresa' => $_POST['nomeEmpresa']
+			'nomeEmpresa' => $_POST['nomeEmpresa'],
+			'timeSessao' => $_POST['timeSessao']
 		);
 		$empresa = chamaAPI(null, '/sistema/empresa', json_encode($apiEntrada), 'POST');
 	}
