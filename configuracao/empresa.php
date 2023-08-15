@@ -14,20 +14,21 @@ $empresas = buscaEmpresas();
         
             <div class="row mt-4">
                 <div class="col-sm-8">
-                        <h2 class="tituloTabela">Empresas</h2>
+                        <p class="tituloTabela">Empresas</p>
                     </div>
 
                 <div class="col-sm-4" style="text-align:right">
-                        <a href="empresa_inserir.php" role="button" class="btn btn-success"><i class="bi bi-plus-square"></i>&nbsp Novo</a>
+                        <a href="empresa_inserir.php" role="button" class="btn btn-primary">Adicionar Empresa</a>
                     </div>
           
             </div>
-        <div class="card mt-2 text-center">
+        <div class="card shadow mt-2">
             <table class="table">
-                <thead class="cabecalhoTabela">
+                <thead>
                     <tr>
-                        <th>Empresa</th>
-                        <th>Ação</th>
+                        <th class="text-center">Empresa</th>
+                        <th class="text-center">Tempo Sessão</th>
+                        <th class="text-center">Ação</th>
 
                     </tr>
                 </thead>
@@ -36,10 +37,11 @@ $empresas = buscaEmpresas();
                 foreach ($empresas as $empresa) {
                 ?>
                     <tr>
-                        <td><?php echo $empresa['nomeEmpresa'] ?></td>
-                        <td>
-                            <a class="btn btn-warning btn-sm" href="empresa_alterar.php?idEmpresa=<?php echo $empresa['idEmpresa'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger btn-sm" href="empresa_excluir.php?idEmpresa=<?php echo $empresa['idEmpresa'] ?>" role="button"><i class="bi bi-trash3"></i></a>
+                        <td class="text-center"><?php echo $empresa['nomeEmpresa'] ?></td>
+                        <td class="text-center"><?php echo $empresa['timeSessao'] ?></td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" href="empresa_alterar.php?idEmpresa=<?php echo $empresa['idEmpresa'] ?>" role="button">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="empresa_excluir.php?idEmpresa=<?php echo $empresa['idEmpresa'] ?>" role="button">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>

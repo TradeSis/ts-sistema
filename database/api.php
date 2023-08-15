@@ -42,9 +42,9 @@ function chamaAPI ($URL,$apiUrlParametros,$apiEntrada,$apiMethod) {
 
 	curl_close($apiCurl);
           
-	if ($apiInfo['http_code'] == 200) {
+	//if ($apiInfo['http_code'] == 200) {
 		$apiRetorno = json_decode($apiResponse, true);
-	}
+	//}
 	return $apiRetorno;
 
 }

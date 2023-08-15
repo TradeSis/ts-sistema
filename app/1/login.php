@@ -6,7 +6,7 @@ $idEmpresa = null;
 $conexao = conectaMysql($idEmpresa);
 $login = array();
 
-$sql = "SELECT login.*, empresa.nomeEmpresa FROM login
+$sql = "SELECT login.*, empresa.nomeEmpresa, empresa.timeSessao FROM login
         LEFT JOIN empresa on empresa.idEmpresa = login.idEmpresa ";
 if (isset($jsonEntrada["idLogin"])) {
   $idLogin = $jsonEntrada["idLogin"];

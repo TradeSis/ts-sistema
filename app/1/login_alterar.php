@@ -8,10 +8,14 @@ if (isset($jsonEntrada['idLogin'])) {
     $loginNome = $jsonEntrada['loginNome'];
     $email = $jsonEntrada['email'];
     $cpfCnpj = $jsonEntrada['cpfCnpj'];
-    $telefone = $jsonEntrada['telefone'];
-    $password = $jsonEntrada['password'];
-
-    $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `cpfCnpj`='$cpfCnpj', `telefone`='$telefone', `password` = '$password' WHERE idLogin = $idLogin";
+    $pedeToken = $jsonEntrada['pedeToken'];
+    
+    $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `cpfCnpj`='$cpfCnpj', `pedeToken`=$pedeToken WHERE idLogin = $idLogin";
+    
+    if (isset($jsonEntrada['password'])) {
+    $password = md5($jsonEntrada['password']);
+    $sql = "UPDATE `login` SET `password` = '$password' WHERE idLogin = $idLogin";
+    }
     //echo "-ENTRADA->".$sql."\n"; 
     
     if ($atualizar = mysqli_query($conexao, $sql)) {

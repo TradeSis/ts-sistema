@@ -16,20 +16,28 @@ $secret_key = $dados['secret'];
 $user = $dados['loginNome'];
 $idLogin = $dados['idLogin'];
 $idEmpresa = $dados['idEmpresa'];
+$nomeEmpresa = $dados['nomeEmpresa'];
 $email = $dados['email'];
-//$pedeToken = $dados['pedeToken'];
+$pedeToken = $dados['pedeToken'];
+$timeSessao = $dados['timeSessao'];
 if(isset($_POST['token'])){
     $token = $_POST['token'];
     if($google2fa->verifyKey($secret_key, $token)){
         session_start();
 
         $_SESSION['START'] = time();
-        $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+        $_SESSION['LAST_ACTIVITY'] = time(); 
         $_SESSION['usuario'] = $user;
         $_SESSION['idLogin'] = $idLogin;
         $_SESSION['idEmpresa'] = $idEmpresa;
         $_SESSION['email'] = $email;
-        header('Location: '. URLROOT . '/sistema/');
+        $_SESSION['timeSessao'] = $timeSessao;
+        
+        $expiry = time() + (86400 * 7); // Cookie expira em 7 dias
+        setcookie('Empresa', $nomeEmpresa, $expiry, '/');
+        setcookie('User', $user, $expiry, '/');
+        
+        header('Location: ' . URLROOT . '/sistema/');
     }
     else {
 

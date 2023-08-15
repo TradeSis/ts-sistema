@@ -4,67 +4,58 @@
 //Lucas 08032023
 //echo "-ENTRADA->" . json_encode($jsonEntrada) . "\n";
 
-
-/* if (isset($jsonEntrada["idUsuario"])) {
-    $idUsuario = $jsonEntrada["idUsuario"];
-    $sql = $sql . " where usuario.idUsuario = '$idUsuario'";
-  }  */
-
-if (!isset($jsonEntrada["loginNome"])) {
+if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!isset($jsonEntrada["vpassword"])||$jsonEntrada["loginNome"]==""||$jsonEntrada["nomeEmpresa"]==""||$jsonEntrada["vpassword"]=="") {
     $jsonSaida = array(
         "status" => 400,
-        "retorno" => "Faltou parâmetro de login"
+        "retorno" => "Faltou dados de login"
     );
 } else {
-
-
+    $nomeEmpresa = $jsonEntrada["nomeEmpresa"];
     $loginNome = $jsonEntrada["loginNome"];
-
+    $password = md5($jsonEntrada["vpassword"]);
 
     $conexao = conectaMysql();
     $loginNomes = array();
-   
 
+    $sql = "SELECT login.*, empresa.nomeEmpresa, empresa.timeSessao FROM login
+                LEFT JOIN empresa on empresa.idEmpresa = login.idEmpresa 
+                WHERE nomeEmpresa='$nomeEmpresa' AND (email = '$loginNome' OR loginNome = '$loginNome' OR cpfCnpj = '$loginNome')";
+    //echo $sql;
 
-    $sql = "SELECT * FROM login WHERE email = '$loginNome' or loginNome = '$loginNome' or cpfCnpj = '$loginNome'";
-//echo $sql;
-
-    $rows = 0;
     $buscar = mysqli_query($conexao, $sql);
-    while ($row = mysqli_fetch_array($buscar, MYSQLI_ASSOC)) {
-        array_push($loginNomes, $row);
-        $rows = $rows + 1;
-    }
+    $rows = mysqli_num_rows($buscar);
 
-
-    if (isset($jsonEntrada["loginNome"]) && $rows == 1) {
-        $loginNomes = $loginNomes[0];
+    if ($rows == 0) {
         $jsonSaida = array(
-            "idLogin" => $loginNomes["idLogin"],
-            "idEmpresa" => $loginNomes["idEmpresa"],
-            "loginNome" => $loginNomes["loginNome"],
-            "cpfCnpj" => $loginNomes["cpfCnpj"],
-            "password" => $loginNomes["password"],
-            "statusLogin" => $loginNomes["statusLogin"],
-            "email" => $loginNomes["email"],
-            "status" => 200,
-            "retorno" => ""
+            "status" => 401,
+            "retorno" => "Empresa ou usuario incorreto"
         );
-   
     } else {
-       /*  $jsonSaida = array(
-            "nomeUsuario" => null,
-            "password" => null,
-            "statusUsuario" => null,
-            "status" => 400,
-            "retorno" => "Usuario Nao Encontrado",
-            
-        ); */
 
-
+        $loginNomes = mysqli_fetch_assoc($buscar);
+        if ($loginNomes["loginNome"] == $loginNome || $loginNomes["email"] == $loginNome || $loginNomes["cpfCnpj"] == $loginNome) {
+            if ($loginNomes["password"] == $password) {
+                $jsonSaida = array(
+                    "idLogin" => $loginNomes["idLogin"],
+                    "loginNome" => $loginNomes["loginNome"],
+                    "nomeEmpresa" => $loginNomes["nomeEmpresa"],
+                    "idEmpresa" => $loginNomes["idEmpresa"],
+                    "timeSessao" => $loginNomes["timeSessao"],
+                    "statusLogin" => $loginNomes["statusLogin"],
+                    "email" => $loginNomes["email"],
+                    "cpfCnpj" => $loginNomes["cpfCnpj"],
+                    "pedeToken" => $loginNomes["pedeToken"],
+                    "status" => 200,
+                    "retorno" => ""
+                );
+            } else {
+                $jsonSaida = array(
+                    "status" => 401,
+                    "retorno" => "Senha incorreta"
+                );
+            }
+        }
     }
- 
 }
-
 
 ?>
