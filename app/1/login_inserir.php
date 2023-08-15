@@ -13,8 +13,8 @@ if (isset($jsonEntrada['loginNome'])) {
     $pedeToken = $jsonEntrada['pedeToken'];
     $password = md5($jsonEntrada['password']);
 
-    $statusLogin = INATIVO_PADRAOBD;
-    $statusUsuario = ATIVO_PADRAOBD;
+    $statusLogin = 0;
+    $statusUsuario = 1;
     if($cpfCnpj===""){$cpfCnpj="NULL";}
 
     if($email===""){

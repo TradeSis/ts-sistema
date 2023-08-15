@@ -44,7 +44,7 @@ $logins = buscaLogins();
                         <td class="text-center"><?php echo $login['email'] ?></td>
                         <td class="text-center"><?php echo $login['nomeEmpresa'] ?></td>
                         <td class="text-center"><?php echo $login['cpfCnpj'] ?></td>
-                        <td class="text-center"><?php echo $login['pedeToken'] == ATIVO_PADRAOBD ? 'Sim' : 'Não'; ?></td>
+                        <td class="text-center"><?php echo $login['pedeToken'] == 1 ? 'Sim' : 'Não'; ?></td>
                         <td class="text-center">
                             <a class="btn btn-primary btn-sm" href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button">Alterar</a>
                             <a class="btn btn-danger btn-sm" href="login_excluir.php?idLogin=<?php echo $login['idLogin'] ?>" role="button">Excluir</a>
