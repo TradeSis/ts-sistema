@@ -11,7 +11,7 @@ if (isset($jsonEntrada['loginNome'])) {
     $email = $jsonEntrada['email'];
     $cpfCnpj = $jsonEntrada['cpfCnpj'];
     $pedeToken = $jsonEntrada['pedeToken'];
-    $password = $jsonEntrada['password'];
+    $password = md5($jsonEntrada['password']);
 
     $statusLogin = 0;
 

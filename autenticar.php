@@ -18,6 +18,7 @@ $idLogin = $dados['idLogin'];
 $idEmpresa = $dados['idEmpresa'];
 $email = $dados['email'];
 $pedeToken = $dados['pedeToken'];
+$timeSessao = $dados['timeSessao'];
 if(isset($_POST['token'])){
     $token = $_POST['token'];
     if($google2fa->verifyKey($secret_key, $token)){
@@ -27,8 +28,12 @@ if(isset($_POST['token'])){
         $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
         $_SESSION['usuario'] = $user;
         $_SESSION['idLogin'] = $idLogin;
-        $_SESSION['idEmpresa'] = $idEmpresa;
         $_SESSION['email'] = $email;
+        $_SESSION['timeSessao'] = $timeSessao;
+
+        $expiry = time() + (86400 * 14); // Cookie expira em 14 dias
+        setcookie('idEmpresa', $idEmpresa, $expiry, '/');
+        
         header('Location: '. URLROOT . '/sistema/');
     }
     else {

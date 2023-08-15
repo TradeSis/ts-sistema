@@ -71,7 +71,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                         <div class="col-sm" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class="labelForm">Nova Senha</label>
-                                <input id="txtSenha" type="password" name="password" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>">
+                                <input id="txtSenha" type="password" name="password" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
                             </div>
                         </div>
                         <div class="col-sm" style="margin-top: 10px">
@@ -150,6 +150,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
 
         $('#btn1').click(function() {
             $('#conteudo').toggleClass('mostra');
+            $('#txtSenha').removeAttr('disabled');
         });
     </script>
 </body>

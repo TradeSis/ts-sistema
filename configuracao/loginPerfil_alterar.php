@@ -33,6 +33,7 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
                             <label class="labelForm">Nome</label>
                             <input type="text" class="form-control" name="loginNome" value="<?php echo $usuario['loginNome'] ?>">
                             <input type="text" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>" style="display: none">
+                            <input type="text" class="form-control" name="pedeToken" value="<?php echo $usuario['pedeToken'] ?>" style="display: none">
                             <input type="text" class="form-control" name="ultimaulr" value="<?php echo $_SESSION['ultimaulr'] ?>" style="display: none">
                         </div>
                     </div>
@@ -44,16 +45,10 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label class="labelForm">Cpf/Cnpj</label>
                             <input type="text" class="form-control" name="cpfCnpj" value="<?php echo $usuario['cpfCnpj'] ?>">
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <label class="labelForm">Telefone</label>
-                            <input type="text" class="form-control" name="telefone" value="<?php echo $usuario['telefone'] ?>">
                         </div>
                     </div>
                 </div>
@@ -63,7 +58,7 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
                         <div class="col-sm" style="margin-top: 10px">
                             <div class="form-group">
                                 <label class="labelForm">Nova Senha</label>
-                                <input id="txtSenha" type="password" name="password" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>">
+                                <input id="txtSenha" type="password" name="password" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
                             </div>
                         </div>
                         <div class="col-sm" style="margin-top: 10px">
@@ -104,6 +99,7 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
 
         $('#btn1').click(function() {
             $('#conteudo').toggleClass('mostra');
+            $('#txtSenha').removeAttr('disabled');
         });
     </script>
 </body>

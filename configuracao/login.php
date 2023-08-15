@@ -38,17 +38,11 @@ $logins = buscaLogins();
 
                 <?php
                 foreach ($logins as $login) {
-
-                    $nomeEmpresa = "Interno";
-                    if ($login["idEmpresa"]) {
-                        $empresa = buscaEmpresas($login["idEmpresa"]);
-                        $nomeEmpresa = $empresa ["nomeEmpresa"];
-                    }
                 ?>
                     <tr>
                         <td class="text-center"><?php echo $login['loginNome'] ?></td>
                         <td class="text-center"><?php echo $login['email'] ?></td>
-                        <td class="text-center"><?php echo $nomeEmpresa ?></td>
+                        <td class="text-center"><?php echo $login['nomeEmpresa'] ?></td>
                         <td class="text-center"><?php echo $login['cpfCnpj'] ?></td>
                         <td class="text-center"><?php echo $login['pedeToken'] == 1 ? 'Sim' : 'Não'; ?></td>
                         <td class="text-center">

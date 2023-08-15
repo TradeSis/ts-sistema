@@ -42,7 +42,7 @@ if (isset($_GET['operacao'])) {
 			'cpfCnpj' => $_POST['cpfCnpj'],
 			'idEmpresa' => $_POST['idEmpresa'],
 			'pedeToken' => $_POST['pedeToken'],
-			'password' => md5($_POST['password'])
+			'password' => $_POST['password']
 			
 		);
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'PUT');
@@ -57,12 +57,11 @@ if (isset($_GET['operacao'])) {
 			'loginNome' => $_POST['loginNome'],
 			'email' => $_POST['email'],
 			'cpfCnpj' => $_POST['cpfCnpj'],
-			'telefone' => $_POST['telefone'],
-			'password' => md5($_POST['password'])
+			'pedeToken' => $_POST['pedeToken'],
+			'password' => $_POST['password']
 		);
 		
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'POST');
-
 		header('Location: ../configuracao/login.php');
 	}
 
@@ -73,12 +72,11 @@ if (isset($_GET['operacao'])) {
 			'loginNome' => $_POST['loginNome'],
 			'email' => $_POST['email'],
 			'cpfCnpj' => $_POST['cpfCnpj'],
-			'telefone' => $_POST['telefone'],
-			'password' => md5($_POST['password'])
+			'pedeToken' => $_POST['pedeToken'],
+			'password' => $_POST['password']
 		);
 		
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'POST');
-
 		header('Location:' . $_POST['ultimaulr']);
 	}
 
