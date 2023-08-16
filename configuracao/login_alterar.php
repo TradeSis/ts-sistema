@@ -18,16 +18,19 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
+
+    <div class="container formContainer">
 
         <div class="col-sm mt-4" style="text-align:right">
             <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
         </div>
+
         <div class="col-sm">
             <spam class="col titulo">Alterar Usuário</spam>
         </div>
 
         <div class="container" style="margin-top: 30px">
+
             <form action="../database/login.php?operacao=alterar" method="post">
                 <div class="row">
                     <div class="col-sm">

@@ -11,7 +11,7 @@ $login = buscaLogins($idLogin);
 
 <body class="bg-transparent">
 
-    <div class="container p-4" style="margin-top:30px">
+    <div class="container formContainer">
 
         <div class="row">
             <div class="col-sm-8">

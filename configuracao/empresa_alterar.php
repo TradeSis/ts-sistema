@@ -11,7 +11,7 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="col-sm mt-4" style="text-align:right">
             <a href="../configuracao/?tab=configuracao&stab=empresa" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
@@ -37,8 +37,8 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
                     </div>
                  </div>
 
-                <div style="text-align:right">
-                <button type="submit" id="botao" class="btn btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>
+                <div style="text-align:right; margin-top:20px">
+                    <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>
                 </div>
             </form>
         </div>

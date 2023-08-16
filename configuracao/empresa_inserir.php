@@ -8,7 +8,8 @@ include_once('../head.php');
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
+
+    <div class="container formContainer">
 
 
         <div class="col-sm mt-4" style="text-align:right">
@@ -34,10 +35,10 @@ include_once('../head.php');
                         </div>
                     </div>
                  </div>
-                <div style="text-align:right">
 
+                <div style="text-align:right; margin-top:20px">
                     <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
-                </div>
+            </div>
             </form>
         </div>
 

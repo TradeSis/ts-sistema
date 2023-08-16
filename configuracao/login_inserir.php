@@ -11,7 +11,7 @@ $empresas = buscaEmpresas();
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="col-sm mt-4" style="text-align:right">
             <a href="../configuracao/?tab=configuracao&stab=usuarios" role="button" class="btn btn-primary"><i
@@ -20,6 +20,7 @@ $empresas = buscaEmpresas();
         <div class="col-sm">
             <spam class="col titulo">Cadastrar Usuário</spam>
         </div>
+
 
         <div class="container" style="margin-top: 10px">
             <form action="../database/login.php?operacao=inserir" method="post">
@@ -36,6 +37,7 @@ $empresas = buscaEmpresas();
                             <label class='control-label' for='inputNormal' style="margin-top: -20px;">E-mail</label>
                             <input type="email" name="email" class="form-control" autocomplete="off">
                         </div>
+
                     </div>
                 </div>
                 <div class="row">
