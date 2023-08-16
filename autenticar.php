@@ -16,6 +16,7 @@ $secret_key = $dados['secret'];
 $user = $dados['loginNome'];
 $idLogin = $dados['idLogin'];
 $idEmpresa = $dados['idEmpresa'];
+$idCliente = $dados['idCliente'];
 $nomeEmpresa = $dados['nomeEmpresa'];
 $email = $dados['email'];
 $pedeToken = $dados['pedeToken'];
@@ -30,6 +31,7 @@ if(isset($_POST['token'])){
         $_SESSION['usuario'] = $user;
         $_SESSION['idLogin'] = $idLogin;
         $_SESSION['idEmpresa'] = $idEmpresa;
+        $_SESSION['idCliente'] = $idCliente;
         $_SESSION['email'] = $email;
         $_SESSION['timeSessao'] = $timeSessao;
         

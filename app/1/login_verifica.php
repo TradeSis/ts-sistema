@@ -25,6 +25,7 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
     $buscar = mysqli_query($conexao, $sql);
     $rows = mysqli_num_rows($buscar);
 
+
     if ($rows == 0) {
         $jsonSaida = array(
             "status" => 401,
@@ -35,11 +36,19 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
         $loginNomes = mysqli_fetch_assoc($buscar);
         if ($loginNomes["loginNome"] == $loginNome || $loginNomes["email"] == $loginNome || $loginNomes["cpfCnpj"] == $loginNome) {
             if ($loginNomes["password"] == $password) {
+
+                //Busca idCliente no banco da empresa
+                $conexao2 = conectaMysql($loginNomes["idEmpresa"]);
+                $sql2 = "SELECT usuario.idCliente FROM usuario where usuario.idLogin = " . $loginNomes["idLogin"];
+                $buscar2 = mysqli_query($conexao2, $sql2);
+                $dadosUsuario = mysqli_fetch_assoc($buscar2);
+
                 $jsonSaida = array(
                     "idLogin" => $loginNomes["idLogin"],
                     "loginNome" => $loginNomes["loginNome"],
                     "nomeEmpresa" => $loginNomes["nomeEmpresa"],
                     "idEmpresa" => $loginNomes["idEmpresa"],
+                    "idCliente" => $dadosUsuario["idCliente"],
                     "timeSessao" => $loginNomes["timeSessao"],
                     "statusLogin" => $loginNomes["statusLogin"],
                     "email" => $loginNomes["email"],

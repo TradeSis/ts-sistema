@@ -21,6 +21,7 @@ $statusLogin = $dados['statusLogin'];
 $user = $dados['loginNome'];
 $idLogin = $dados['idLogin'];
 $idEmpresa = $dados['idEmpresa'];
+$idCliente = $dados['idCliente'];
 $nomeEmpresa = $dados['nomeEmpresa'];
 $email = $dados['email'];
 $pedeToken = $dados['pedeToken'];
@@ -42,6 +43,7 @@ if (!$user == "") {
                 $_SESSION['usuario'] = $user;
                 $_SESSION['idLogin'] = $idLogin;
                 $_SESSION['idEmpresa'] = $idEmpresa;
+                $_SESSION['idCliente'] = $idCliente;
                 $_SESSION['email'] = $email;
                 $_SESSION['timeSessao'] = $timeSessao;
 
