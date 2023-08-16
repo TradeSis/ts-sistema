@@ -27,19 +27,10 @@ include_once('../head.php');
                             <input type="text" class="form-control" name="nomeEmpresa" autocomplete="off" required>
                         </div>
                     </div>
-                    <div class="col-sm mt-1">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Tempo Sessão</label>
-                            <select class="form-control" style="padding-right: 50px;" name="timeSessao">
-                                <option value="1">1 hora</option>
-                                <option value="2">2 horas</option>
-                                <option value="3">3 horas</option>
-                                <option value="4">4 horas</option>
-                                <option value="5">5 horas</option>
-                                <option value="6">6 horas</option>
-                                <option value="7">7 horas</option>
-                                <option value="8">8 horas</option>
-                            </select>
+                    <div class="col-md form-group">
+                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Tempo Sessão</label>
+                        <div class="for-group">
+                            <input type="number" min="1" placeholder="1" class="form-control" name="timeSessao" autocomplete="off" required>
                         </div>
                     </div>
                  </div>

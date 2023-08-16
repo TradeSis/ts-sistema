@@ -47,9 +47,8 @@ if (!$user == "") {
                 $_SESSION['email'] = $email;
                 $_SESSION['timeSessao'] = $timeSessao;
 
-                $expiry = time() + (86400 * 7); // Cookie expira em 7 dias
-                setcookie('Empresa', $nomeEmpresa, $expiry, '/');
-                setcookie('User', $user, $expiry, '/');
+                setcookie('Empresa', $nomeEmpresa, 0, '/');
+                setcookie('User', $user, 0, '/');
 
                 header('Location: ' . URLROOT . '/sistema/');
         }

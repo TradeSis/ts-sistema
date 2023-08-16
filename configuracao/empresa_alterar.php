@@ -29,19 +29,10 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
                             <input type="text" class="form-control" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>" style="display: none">
                         </div>
                     </div>
-                    <div class="col-sm mt-1">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Tempo Sessão</label>
-                            <select class="form-control" style="padding-right: 50px;" name="timeSessao">
-                                <option <?php if ($empresa['timeSessao'] == "1") { echo "selected"; } ?> value="1">1 hora</option>
-                                <option <?php if ($empresa['timeSessao'] == "2") { echo "selected"; } ?> value="2">2 horas</option>
-                                <option <?php if ($empresa['timeSessao'] == "3") { echo "selected"; } ?> value="3">3 horas</option>
-                                <option <?php if ($empresa['timeSessao'] == "4") { echo "selected"; } ?> value="4">4 horas</option>
-                                <option <?php if ($empresa['timeSessao'] == "5") { echo "selected"; } ?> value="5">5 horas</option>
-                                <option <?php if ($empresa['timeSessao'] == "6") { echo "selected"; } ?> value="6">6 horas</option>
-                                <option <?php if ($empresa['timeSessao'] == "7") { echo "selected"; } ?> value="7">7 horas</option>
-                                <option <?php if ($empresa['timeSessao'] == "8") { echo "selected"; } ?> value="8">8 horas</option>
-                            </select>
+                    <div class="col-md form-group">
+                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Tempo Sessão</label>
+                        <div class="for-group">
+                            <input type="number" min="1" value="<?php echo $empresa['timeSessao'] ?>" class="form-control" name="timeSessao" autocomplete="off" required>
                         </div>
                     </div>
                  </div>
