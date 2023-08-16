@@ -12,7 +12,7 @@ $aplicativos = buscaAplicativos();
 
 <body class="bg-transparent">
 
-    <div class="container p-4" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="row">
             <div class="col-sm-8">

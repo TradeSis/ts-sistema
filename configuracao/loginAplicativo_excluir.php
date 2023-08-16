@@ -13,7 +13,7 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['idAplicativo'
 
 <body class="bg-transparent">
 
-    <div class="container p-4" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="row">
             <div class="col-sm-8">
@@ -24,7 +24,7 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['idAplicativo'
             </div>
         </div>
 
-        <form class="mb-4" action="../database/loginAplicativo.php?operacao=excluir" method="post">
+        <form action="../database/loginAplicativo.php?operacao=excluir" method="post">
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">

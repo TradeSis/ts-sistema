@@ -11,7 +11,7 @@ $empresas = buscaEmpresas();
 
 <body class="bg-transparent">
 
-    <div class="container p-4" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="row">
             <div class="col-sm-8">
@@ -22,7 +22,7 @@ $empresas = buscaEmpresas();
             </div>
         </div>
 
-        <form class="mb-4" action="../database/login.php?operacao=inserir" method="post">
+        <form action="../database/login.php?operacao=inserir" method="post">
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">

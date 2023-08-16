@@ -6,7 +6,7 @@ include_once('../head.php');
 
 <body class="bg-transparent">
 
-    <div class="container p-4" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="row">
             <div class="col-sm-8">
@@ -17,7 +17,7 @@ include_once('../head.php');
             </div>
         </div>
 
-            <form class="mb-4" action="../database/aplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
+            <form action="../database/aplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-sm">

@@ -17,7 +17,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
 
 <body class="bg-transparent">
 
-    <div class="container p-4" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="row">
             <div class="col-sm-8">
@@ -28,7 +28,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
             </div>
         </div>
      
-            <form class="mb-4" action="../database/login.php?operacao=alterar" method="post">
+            <form action="../database/login.php?operacao=alterar" method="post">
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-group">

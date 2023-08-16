@@ -11,7 +11,7 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
 
 <body class="bg-transparent">
 
-    <div class="container p-4" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="row">
             <div class="col-sm-8">
@@ -22,7 +22,7 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
             </div>
         </div>
 
-        <form class="mb-4" action="../database/empresa.php?operacao=alterar" method="post">
+        <form action="../database/empresa.php?operacao=alterar" method="post">
 
             <div class="col-md-12 form-group mb-4">
                 <label class='control-label' for='inputNormal'></label>

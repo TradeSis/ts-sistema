@@ -11,7 +11,7 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
 
 <body class="bg-transparent">
 
-    <div class="container p-4" style="margin-top:10px">
+    <div class="container formContainer">
 
         <div class="row">
             <div class="col-sm-8">
@@ -22,7 +22,7 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
             </div>
         </div>
 
-        <form class="mb-4" action="../database/aplicativo.php?operacao=excluir" method="post">
+        <form action="../database/aplicativo.php?operacao=excluir" method="post">
             <div class="form-group" style="margin-top:10px">
                 <label class='control-label' for='inputNormal'></label>
                 <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
