@@ -18,16 +18,16 @@ if (isset($jsonEntrada['loginNome'])) {
     if($cpfCnpj===""){$cpfCnpj="NULL";}
 
     if($email===""){
-        $sql = "INSERT INTO tsplaces_etradesis.login( `loginNome`, `idEmpresa`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, $cpfCnpj, $pedeToken, '$password', $statusLogin)";
+        $sql = "INSERT INTO ". MYSQL_BASE .".login( `loginNome`, `idEmpresa`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, $cpfCnpj, $pedeToken, '$password', $statusLogin)";
     } else {
-        $sql = "INSERT INTO tsplaces_etradesis.login( `loginNome`, `idEmpresa`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, '$email', $cpfCnpj, $pedeToken, '$password', $statusLogin)";
+        $sql = "INSERT INTO ". MYSQL_BASE .".login( `loginNome`, `idEmpresa`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, '$email', $cpfCnpj, $pedeToken, '$password', $statusLogin)";
     }
     //echo "-SQL->".$sql."\n";
     $atualizar = mysqli_query($conexao, $sql);
 
 
     // busca dados idLogin    
-    $sql2 = "SELECT * FROM tsplaces_etradesis.login WHERE loginNome = '$loginNome'";
+    $sql2 = "SELECT * FROM ". MYSQL_BASE .".login WHERE loginNome = '$loginNome'";
     $buscar2 = mysqli_query($conexao, $sql2);
     $row = mysqli_fetch_array($buscar2, MYSQLI_ASSOC);
     $idLogin = $row["idLogin"];
