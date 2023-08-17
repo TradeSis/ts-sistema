@@ -4,7 +4,7 @@ $idEmpresa = null;
     if (isset($jsonEntrada["idEmpresa"])) {
         $idEmpresa = $jsonEntrada["idEmpresa"];
     }
-$conexao = conectaMysql($idEmpresa);
+$conexao = conectaMysql();
 if (isset($jsonEntrada['loginNome'])) {
     $loginNome = $jsonEntrada['loginNome'];
     $idEmpresa = $jsonEntrada['idEmpresa'];
@@ -18,25 +18,25 @@ if (isset($jsonEntrada['loginNome'])) {
     if($cpfCnpj===""){$cpfCnpj="NULL";}
 
     if($email===""){
-        $sql = "INSERT INTO ". MYSQL_BASE .".login( `loginNome`, `idEmpresa`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, $cpfCnpj, $pedeToken, '$password', $statusLogin)";
+        $sql = "INSERT INTO login( `loginNome`, `idEmpresa`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, $cpfCnpj, $pedeToken, '$password', $statusLogin)";
     } else {
-        $sql = "INSERT INTO ". MYSQL_BASE .".login( `loginNome`, `idEmpresa`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, '$email', $cpfCnpj, $pedeToken, '$password', $statusLogin)";
+        $sql = "INSERT INTO login( `loginNome`, `idEmpresa`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, '$email', $cpfCnpj, $pedeToken, '$password', $statusLogin)";
     }
     //echo "-SQL->".$sql."\n";
     $atualizar = mysqli_query($conexao, $sql);
 
 
     // busca dados idLogin    
-    $sql2 = "SELECT * FROM ". MYSQL_BASE .".login WHERE loginNome = '$loginNome'";
+    $sql2 = "SELECT * FROM login WHERE loginNome = '$loginNome'";
     $buscar2 = mysqli_query($conexao, $sql2);
     $row = mysqli_fetch_array($buscar2, MYSQLI_ASSOC);
     $idLogin = $row["idLogin"];
     //echo "-SQL2->".$sql2."\n";
 
-
+    $conexao2 = conectaMysql($idEmpresa);
     $sql3 = "INSERT INTO `usuario`( `nomeUsuario`, `email`, `idLogin`, `statusUsuario`) VALUES ('$loginNome', '$email', $idLogin, $statusUsuario)";
     //echo "-SQL3->".$sql3."\n";
-    $atualizar3 = mysqli_query($conexao, $sql3);
+    $atualizar3 = mysqli_query($conexao2, $sql3);
 
 
 
