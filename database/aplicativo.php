@@ -47,7 +47,7 @@ if (isset($_GET['operacao'])) {
 		if($extensao != "" && $extensao != "jpg" && $extensao != "png")
         die("Tipo de aquivo não aceito");
 
-		$pathImgFisico = defineROOT() . $pasta . $novoNomeImg . "." . $extensao;
+		$pathImgFisico = ROOT . $pasta . $novoNomeImg . "." . $extensao;
 		$pathImgURL = "/ts" . $pasta . $novoNomeImg . "." . $extensao;
 		move_uploaded_file($img["tmp_name"],$pathImgFisico);
 
