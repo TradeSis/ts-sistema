@@ -33,7 +33,7 @@ if (!$user == "") {
                 if ($statusLogin == 0) {
                         header('Location: auth.php?idLogin=' . $idLogin . '&email=' . $email);
                 } else {
-                        header('Location: autenticar.php?idLogin=' . $idLogin);
+                        header('Location: autenticar.php?' . http_build_query(['apiEntrada' => $apiEntrada]));
                 }
         } else {
                 session_start();
@@ -47,8 +47,8 @@ if (!$user == "") {
                 $_SESSION['email'] = $email;
                 $_SESSION['timeSessao'] = $timeSessao;
 
-                setcookie('Empresa', $nomeEmpresa, 0, '/');
-                setcookie('User', $user, 0, '/');
+                setcookie('Empresa', $nomeEmpresa, strtotime("+1 year"), "/", "", false, true );
+                setcookie('User', $user, strtotime("+1 year"), "/", "", false, true );
 
                 header('Location: ' . URLROOT . '/sistema/');
         }

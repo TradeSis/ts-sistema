@@ -6,7 +6,7 @@ include_once __DIR__."/../config.php";
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-white">
 
 <head>
             <title>TS/painel</title>
@@ -37,17 +37,17 @@ include_once __DIR__."/../config.php";
     </head>
     
     
-<body class="bg-default">
+<body class="bg-default mt-5">
   <div>
     <!-- Header -->
-    <div class="header ">
+    <div class="header">
       <div class="container">
-        <div class="header-body text-center mb-7">
+        <div class="header-body text-center mb-2">
 
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
-              <h1 class="text-white">Bem Vindo!</h1>
-              <p class="text-lead text-light">Para acessar o nosso painel de serviços, por favor faça login.</p>
+              <h1 class="text">Bem Vindo!</h1>
+              <p class="text-lead text">Para acessar o nosso painel de serviços, por favor faça login.</p>
             </div>
             <div class="container">
               <a class="brand">
@@ -59,7 +59,7 @@ include_once __DIR__."/../config.php";
       </div>
     </div>
     <!-- Page content -->
-    <div class="container mt--7 pb-5">
+    <div class="container pb-5">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
           <div class="card bg-gray-200 shadow border-1">
@@ -115,7 +115,7 @@ include_once __DIR__."/../config.php";
     <footer class="sticky-footer fixed bottom">
       <div class="container">
         <div class="copyright text-center">
-          <span class="text-white text-gray-600 small">Copyright &copy; TRADESIS Soluções em Sistemas 2022</span>
+          <span class="text text-gray-600 small">Copyright &copy; TRADESIS Soluções em Sistemas 2022</span>
         </div>
       </div>
     </footer>
