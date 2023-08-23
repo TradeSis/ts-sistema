@@ -12,7 +12,23 @@ function buscaSecao($idSecao=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$secao = chamaAPI(null, '/api/sistema/secoes', json_encode($apiEntrada), 'GET');
+	$secao = chamaAPI(null, '/sistema/secoes', json_encode($apiEntrada), 'GET');
+	//echo json_encode($secao);
+	return $secao;
+}
+
+function buscaTipoSecao($tipoSecao=null)
+{
+	
+	$secao = array();
+	//echo json_encode($secao);
+	//return;
+	$apiEntrada = array(
+		'tipoSecao' => $tipoSecao,
+	);
+	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
+	return; */
+	$secao = chamaAPI(null, '/sistema/secoes_tipoSecao', json_encode($apiEntrada), 'GET');
 	//echo json_encode($secao);
 	return $secao;
 }
@@ -29,7 +45,7 @@ if (isset($_GET['operacao'])) {
 			'tipoSecao' => $_POST['tipoSecao'],
 			
 		);
-		$secao = chamaAPI(null, '/api/sistema/secoes', json_encode($apiEntrada), 'PUT');
+		$secao = chamaAPI(null, '/sistema/secoes', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -41,7 +57,7 @@ if (isset($_GET['operacao'])) {
 			'tipoSecao' => $_POST['tipoSecao'],
 		);
 
-		$secao = chamaAPI(null, '/api/sistema/secoes', json_encode($apiEntrada), 'POST');
+		$secao = chamaAPI(null, '/sistema/secoes', json_encode($apiEntrada), 'POST');
 		
 	}
 
@@ -53,11 +69,11 @@ if (isset($_GET['operacao'])) {
 		);
 		/* echo json_encode($apiEntrada);
 		return; */
-		$secao = chamaAPI(null, '/api/sistema/secoes', json_encode($apiEntrada), 'DELETE');
+		$secao = chamaAPI(null, '/sistema/secoes', json_encode($apiEntrada), 'DELETE');
 	}
 
 
-	header('Location: ../perfil/secao.php');	
+	header('Location: ../funcoes/secao.php');	
 	
 }
 

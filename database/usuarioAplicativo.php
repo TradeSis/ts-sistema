@@ -1,18 +1,19 @@
 <?php
 //Gabriel 28042023
 
-include_once('../conexao.php');
+/* include_once('../conexao.php'); */
+include_once __DIR__ . "/../conexao.php";
 
-function buscaUsuarioAplicativo($idUsuario=null, $idAplicativo=null)
+function buscaUsuarioAplicativo($idUsuario = null, $idAplicativo = null)
 {
 
-    $usuarioaplicativo = array();
-    $apiEntrada = array(
-        'idUsuario' => $idUsuario,
-        'idAplicativo' => $idAplicativo
-    );
-    $usuarioaplicativo = chamaAPI(null, '/api/services/usuarioaplicativo', json_encode($apiEntrada), 'GET');
-    return $usuarioaplicativo;
+	$usuarioaplicativo = array();
+	$apiEntrada = array(
+		'idUsuario' => $idUsuario,
+		'idAplicativo' => $idAplicativo
+	);
+	$usuarioaplicativo = chamaAPI(null, '/sistema/usuarioaplicativo', json_encode($apiEntrada), 'GET');
+	return $usuarioaplicativo;
 }
 
 
@@ -26,14 +27,14 @@ if (isset($_GET['operacao'])) {
 			'idUsuario' => $_POST['idUsuario'],
 			'idAplicativo' => $_POST['idAplicativo'],
 			'nivelMenu' => $_POST['nivelMenu']
-			
+
 		);
 
-		$usuarioaplicativo = chamaAPI(null, '/api/services/usuarioaplicativo', json_encode($apiEntrada), 'PUT');
-		
+		$usuarioaplicativo = chamaAPI(null, '/sistema/usuarioaplicativo', json_encode($apiEntrada), 'PUT');
+
 	}
 
-    if ($operacao == "alterar") {
+	if ($operacao == "alterar") {
 
 		$apiEntrada = array(
 			'idUsuario' => $_POST['idUsuario'],
@@ -41,20 +42,20 @@ if (isset($_GET['operacao'])) {
 			'nivelMenu' => $_POST['nivelMenu']
 		);
 
-		$usuarioaplicativo = chamaAPI(null, '/api/services/usuarioaplicativo', json_encode($apiEntrada), 'POST');
-		
+		$usuarioaplicativo = chamaAPI(null, '/sistema/usuarioaplicativo', json_encode($apiEntrada), 'POST');
+
 	}
 
 	if ($operacao == "excluir") {
 		$apiEntrada = array(
-			'idUsuario' => $_POST['idUsuario'],		
-			'idAplicativo' => $_POST['idAplicativo']		
+			'idUsuario' => $_POST['idUsuario'],
+			'idAplicativo' => $_POST['idAplicativo']
 		);
 
-		$usuarioaplicativo = chamaAPI(null, '/api/services/usuarioaplicativo', json_encode($apiEntrada), 'DELETE');
-		
+		$usuarioaplicativo = chamaAPI(null, '/sistema/usuarioaplicativo', json_encode($apiEntrada), 'DELETE');
+
 	}
 
-	
-	header('Location: ../usuario/usuario.php');
+	header('Location: ../configuracao/usuario_alterar.php?idUsuario=' . $_POST['idUsuario']);
+
 }

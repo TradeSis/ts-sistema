@@ -1,7 +1,7 @@
 <?php
 //Lucas 05042023 criado
-
-include_once('../conexao.php');
+//echo "sistema/aplicativo.php<hr>";
+include_once __DIR__."/../conexao.php";
 
 function buscaAplicativos($idAplicativo=null)
 {
@@ -10,7 +10,18 @@ function buscaAplicativos($idAplicativo=null)
     $apiEntrada = array(
         'idAplicativo' => $idAplicativo,
     );
-    $app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'GET');
+    $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
+    return $app;
+}
+
+function buscaAplicativosMenu($idUsuario)
+{
+
+    $app = array();
+    $apiEntrada = array(
+        'idUsuario' => $idUsuario
+    );
+    $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
 }
 
@@ -49,7 +60,7 @@ if (isset($_GET['operacao'])) {
 		echo "\n";
 		echo json_encode($apiEntrada);
 		return;  */
-		$app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'PUT');
+		$app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'PUT');
 		
 	}
 
@@ -77,7 +88,7 @@ if (isset($_GET['operacao'])) {
 			'pathImg'=> $pathImg,
 		);
 
-		$app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'POST');
+		$app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'POST');
 		
 	}
 
@@ -86,10 +97,10 @@ if (isset($_GET['operacao'])) {
 			'idAplicativo' => $_POST['idAplicativo']		
 		);
 
-		$app = chamaAPI(null, '/api/services/aplicativo', json_encode($apiEntrada), 'DELETE');
+		$app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'DELETE');
 		
 	}
 
 	
-	header('Location: ../sistema/aplicativo.php');
+	header('Location: ../configuracao/aplicativo.php');
 }

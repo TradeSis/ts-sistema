@@ -1,9 +1,8 @@
 <?php
-include_once __DIR__."/../../config.php";
-include_once (ROOT.'/sistema/conexao.php');
+include_once('../conexao.php');
 
 
-function buscaSlug($slug)
+function buscaPostSlug($slug)
 {
 	
 	$post = array();
@@ -11,7 +10,7 @@ function buscaSlug($slug)
 	$apiEntrada = array(
 		'slug' => $slug,
 	);
-	$post = chamaAPI(null, '/api/sistema/posts_slug', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/sistema/posts_slug', json_encode($apiEntrada), 'GET');
 	//echo json_encode($post);
 	return $post;
 }
@@ -22,32 +21,110 @@ function buscaPosts($idPost=null)
 	$post = array();
 	
 	$apiEntrada = array(
-		'idPost' => $idPost,
+		'idPost' => $idPost
 	);
 	
-	$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'GET');
+	$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'GET');
 	
 	return $post;
 }
 
-if (isset($_GET['operacao'])) {
+function buscaPostsCategoria($idCategoria=null,$qtdPosts=null)
+{
+	
+	$post = array();
+	
+	$apiEntrada = array(
+		'idCategoria' => $idCategoria,
+		'qtdPosts' => $qtdPosts,
+	);
+	
+	$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'GET');
+	
+	return $post;
+}
 
+
+
+
+
+if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
 
     if ($operacao=="inserir") {
+
+		$imgDestaque = $_FILES['imgDestaque'];
+
+		if($imgDestaque !== null) {
+			preg_match("/\.(png|jpg|jpeg){1}$/i", $imgDestaque["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeFoto = $_POST['slug']. "_" .$imgDestaque["name"];
+				
+				move_uploaded_file($imgDestaque['tmp_name'], $pasta.$novoNomeFoto);
+		
+			}else{
+				$novoNomeFoto = "Sem_imagem";
+			}
+	
+		}
+		
 		$apiEntrada = array(
 
             'slug' => $_POST['slug'],
 		    'titulo' => $_POST['titulo'],
-		    'imgDestaque' => $_FILES['imgDestaque'],
-		    'autor' => $_POST['autor'],
+		    'imgDestaque' => $novoNomeFoto,
+		    'idAutor' => $_POST['idAutor'],
 		    'data' => $_POST['data'],
 		    'comentarios' => $_POST['comentarios'],
-		    'textoIntro' => $_POST['textoIntro'],
+		    'idCategoria' => $_POST['idCategoria'],
 		    'txtConteudo' => $_POST['txtConteudo'],
 			
 		);
-		$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'PUT');
+		$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'PUT');
+		
+	}
+
+	if ($operacao=="alterar") {
+
+		$imgDestaque = $_FILES['imgDestaque'];
+		if($imgDestaque !== null) {
+			preg_match("/\.(png|jpg|jpeg|svg){1}$/i", $imgDestaque["name"],$ext);
+		
+			if($ext == true) {
+				$pasta = ROOT . "/img/";
+				$novoNomeImg = $_POST['slug']. "_" .$imgDestaque["name"];
+				
+				move_uploaded_file($imgDestaque['tmp_name'], $pasta.$novoNomeImg);
+		
+			}
+			$apiEntrada = array(
+			'idPost' => $_POST['idPost'],
+		    'slug' => $_POST['slug'],
+		    'titulo' => $_POST['titulo'],
+		    'imgDestaque' => $novoNomeImg,
+		    'idAutor' => $_POST['idAutor'],
+		    'data' => $_POST['data'],
+		    'comentarios' => $_POST['comentarios'],
+		    'idCategoria' => $_POST['idCategoria'],
+		    'txtConteudo' => $_POST['txtConteudo'],
+			);
+	
+		}else{
+			$apiEntrada = array(
+				'idPost' => $_POST['idPost'],
+				'slug' => $_POST['slug'],
+				'titulo' => $_POST['titulo'],
+				'idAutor' => $_POST['idAutor'],
+				'data' => $_POST['data'],
+				'comentarios' => $_POST['comentarios'],
+				'idCategoria' => $_POST['idCategoria'],
+				'txtConteudo' => $_POST['txtConteudo'],
+			);
+		}
+
+		$receitas = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'POST');
 		
 	}
 
@@ -56,13 +133,22 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idPost' => $_POST['idPost'],
 		);
-		/* echo json_encode($apiEntrada);
-		return; */
-		$post = chamaAPI(null, '/api/sistema/posts', json_encode($apiEntrada), 'DELETE');
+
+		if(!empty($_POST['imgDestaque'])){
+			$pasta = ROOT . "/img/";
+			$imagem = $pasta . $_POST['imgDestaque'];
+
+			
+			if(file_exists($imagem)){
+				unlink($imagem);
+			}
+		}
+
+		$post = chamaAPI(null, '/sistema/posts', json_encode($apiEntrada), 'DELETE');
 	}
 
 
-	header('Location: ../cadastros/posts.php');	
+	header('Location: ../configuracao/posts.php');	
 	
 }
 

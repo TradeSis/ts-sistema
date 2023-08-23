@@ -1,7 +1,8 @@
 <?php
 //Lucas 05042023 criado
-include_once __DIR__."/../head.php";
-include_once (ROOT.'/sistema/conexao.php');
+/* include_once __DIR__."/../head.php";
+include_once (ROOT.'/sistema/conexao.php'); */
+include_once __DIR__ . "/../conexao.php";
 
 function buscaMenu($IDMenu=null)
 {
@@ -14,7 +15,7 @@ function buscaMenu($IDMenu=null)
 	);
 	/* echo "-ENTRADA->".json_encode($apiEntrada)."\n";
 	return; */
-	$menu = chamaAPI(null, '/api/services/menu', json_encode($apiEntrada), 'GET');
+	$menu = chamaAPI(null, '/sistema/menu', json_encode($apiEntrada), 'GET');
 	//echo json_encode($menu);
 	return $menu;
 }
@@ -31,7 +32,7 @@ if (isset($_GET['operacao'])) {
             'nivelMenu' => $_POST['nivelMenu'],
             'menuHeader' => $_POST['menuHeader']
 		);
-		$menu = chamaAPI(null, '/api/services/menu', json_encode($apiEntrada), 'PUT');
+		$menu = chamaAPI(null, '/sistema/menu', json_encode($apiEntrada), 'PUT');
 	}
 
 	if ($operacao=="alterar") {
@@ -44,19 +45,19 @@ if (isset($_GET['operacao'])) {
             'menuHeader' => $_POST['menuHeader']
 		);
 
-		$menu = chamaAPI(null, '/api/services/menu', json_encode($apiEntrada), 'POST');
+		$menu = chamaAPI(null, '/sistema/menu', json_encode($apiEntrada), 'POST');
 	}
 	
 	if ($operacao=="excluir") {
 		$apiEntrada = array(
 			'IDMenu' => $_POST['IDMenu']
 		);
-		$menu = chamaAPI(null, '/api/services/menu', json_encode($apiEntrada), 'DELETE');
+		$menu = chamaAPI(null, '/sistema/menu', json_encode($apiEntrada), 'DELETE');
 	}
 
 
 
-	header('Location: ../sistema/menu.php');	
+	header('Location: ../configuracao/menu.php');	
 	
 }
 
