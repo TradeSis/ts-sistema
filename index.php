@@ -10,8 +10,8 @@ if ($_SESSION["idEmpresa"]==1) { // Proteção
     $nivelMenuLogin =  buscaLoginAplicativo($_SESSION['idLogin'],'Sistema'); //Sistema
 }
 
-//echo json_encode($nivelMenuLogin);
 $configuracao = 1; 
+$nivelMenu = 0;
 
 if($nivelMenuLogin == null){
     return;
@@ -30,6 +30,7 @@ if($nivelMenuLogin == null){
 
 
                 <?php
+                    
                     $tab = '';
 
                     if (isset($_GET['tab'])) {$tab = $_GET['tab'];}
@@ -37,35 +38,27 @@ if($nivelMenuLogin == null){
                 ?>    
 
 
-            <?php if ($nivelMenu>=3) { ?>
+            <?php if ($nivelMenu==5) { 
+                if ($tab=='') {$tab = 'empresa';} ?>
                 <li class="nav-item mr-1 ">
                     <a class="nav-link1 nav-link <?php if ($tab=="empresa") {echo " active ";} ?>" 
                         href="?tab=empresa" 
                         role="tab"                        
                         >Empresa</a>
                 </li>
-            <?php } if ($nivelMenu>=3) { ?>
+            <?php }  if ($nivelMenu==5) { ?>
                 <li class="nav-item mr-1 ">
                     <a class="nav-link1 nav-link <?php if ($tab=="login") {echo " active ";} ?>" 
                         href="?tab=login" 
                         role="tab"                        
                         >Login</a>
                 </li>
-            <?php } if ($nivelMenu>=3) { ?>
+            <?php }  if ($nivelMenu==5) { ?>
                 <li class="nav-item mr-1 ">
                     <a class="nav-link1 nav-link <?php if ($tab=="aplicativo") {echo " active ";} ?>" 
                         href="?tab=aplicativo" 
                         role="tab"                        
                         >Aplicativos</a>
-                </li>
-            <?php } if ($nivelMenu>=4) { ?>
-                <li class="nav-item mr-1 ">
-                    <a class="nav-link1 nav-link <?php if ($tab=="configuracao") {echo " active ";} ?>" 
-                        href="?tab=configuracao" 
-                        role="tab"     
-                        data-toggle="tooltip" data-placement="top" title="Configurações"                   
-                        ><i class="bi bi-gear"
-                        ></i></a>
                 </li>
             <?php } ?>
 
