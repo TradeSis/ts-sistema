@@ -101,7 +101,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
             
             <div class="card shadow mt-2">   
                 <table class="table">
-                    <thead>
+                    <thead class="cabecalhoTabela">
                         <tr>
                             <th class="text-center">Usuário</th>
                             <th class="text-center">Aplicativo</th>
@@ -115,8 +115,10 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                             <td class="text-center"><?php echo $loginAplicativos['nomeAplicativo'] ?></td>
                             <td class="text-center"><?php echo $loginAplicativos['nivelMenu'] ?></td>
                             <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAplicativos['nomeAplicativo'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAplicativos['nomeAplicativo'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-warning btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAplicativos['nomeAplicativo'] ?>" role="button"><i
+                                    class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAplicativos['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAplicativos['nomeAplicativo'] ?>" role="button"><i
+                                        class="bi bi-trash3"></i></a>
                             </td>
                         </tr>
                         <?php } else {
@@ -126,15 +128,18 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                             <td class="text-center"><?php echo $loginAaplicativo['nomeAplicativo'] ?></td>
                             <td class="text-center"><?php echo $loginAaplicativo['nivelMenu'] ?></td>
                             <td class="text-center">
-                            <a class="btn btn-primary btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAaplicativo['nomeAplicativo'] ?>" role="button">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAaplicativo['nomeAplicativo'] ?>" role="button">Excluir</a>
+                            <a class="btn btn-warning btn-sm" href="loginAplicativo_alterar.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAaplicativo['nomeAplicativo'] ?>" role="button"><i
+                                    class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger btn-sm" href="loginAplicativo_excluir.php?idLogin=<?php echo $idLogin ?>&idAplicativo=<?php echo $loginAaplicativo['idAplicativo'] ?>&nomeAplicativo=<?php echo $loginAaplicativo['nomeAplicativo'] ?>" role="button"><i
+                                        class="bi bi-trash3"></i></a>
                             </td>
                         </tr>
                     <?php }} ?>
 
                 </table>
                 <div class="py-3 px-3" style="text-align:right">
-                    <a href="loginAplicativo_inserir.php?idLogin=<?php echo $idLogin ?>" role="button" class="btn btn-primary">Adicionar</a>
+                    <a href="loginAplicativo_inserir.php?idLogin=<?php echo $idLogin ?>" role="button" class="btn btn-success"><i class="bi bi-plus-square"></i>&nbsp
+                    Novo</a>
                 </div>
             </div>
         </div>
