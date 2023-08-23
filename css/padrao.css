@@ -1,6 +1,13 @@
-/* FILTRO TABELA */
+html{
+  background-color: #EEEEEE;;
+}
 
-
+.diviFrame {
+  padding-left: 0px;
+  background-color: #EEEEEE;
+  overflow:hidden; 
+  height: 80vh;
+}
   
   .menuFiltros{
     background-color:#d3d3d3;
@@ -100,6 +107,12 @@
     height: 350px;
     overflow: auto;
   }
+
+  .scrollbar-tabela {
+    position: relative;
+    height: 70vh;/* 430px; */
+    overflow: auto;
+  }
   
   /* .my-custom-scrollbar {
     position: relative;
@@ -116,18 +129,7 @@
   }
   } */
 
-  /* TABELAS */
 
-.tituloTabela{
-    font-family: 'Dosis', sans-serif;
-    font-weight:600;
-    font-size: 20px;
-    color:rgb(75, 75, 75);
-    
-text-align: left;
-
-    /* background-color: #E02D1B; */
-}
 
 
 .data{
@@ -235,3 +237,29 @@ opacity: 0;
 
 padding: 0.5em;
 }
+
+/* TABELAS */
+
+.tituloTabela{
+  font-weight:600;
+  font-size: 20px;  
+  text-align: left;
+  color:#12192C;
+}
+
+.cabecalhoTabela{
+  background-color: #12192C; 
+  color:#fff;
+  font-weight: 300;
+}
+
+.cabecalhoTabela tr th{
+  font-weight: 500;
+}
+/*  */
+.formContainer{
+  margin-top:10px;
+  margin-bottom:50px;
+  padding: 30px;
+}
+

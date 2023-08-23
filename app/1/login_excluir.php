@@ -1,15 +1,11 @@
 <?php
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-$idEmpresa = null;
-	if (isset($jsonEntrada["idEmpresa"])) {
-    	$idEmpresa = $jsonEntrada["idEmpresa"];
-	}
-$conexao = conectaMysql($idEmpresa);
-if (isset($jsonEntrada['idSecao'])) {
 
-    $idSecao = $jsonEntrada['idSecao'];
-    
-    $sql = "DELETE FROM secoes WHERE idSecao = $idSecao";
+
+$conexao = conectaMysql();
+if (isset($jsonEntrada['idLogin'])) {
+    $idLogin = $jsonEntrada['idLogin'];
+    $sql = "DELETE FROM login WHERE idLogin = $idLogin";
     if ($atualizar = mysqli_query($conexao, $sql)) {
         $jsonSaida = array(
             "status" => 200,
