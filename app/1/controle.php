@@ -7,7 +7,11 @@
 if ($metodo == "GET") {
 
   if ($funcao == "login" && $parametro == "verifica") {
-    $funcao = "configuracao/verifica";
+    $funcao = "login/verifica";
+    $parametro = null;
+  }
+  if ($funcao == "login" && $parametro == "token") {
+    $funcao = "login/token";
     $parametro = null;
   }
 
@@ -25,8 +29,12 @@ if ($metodo == "GET") {
       include 'login.php';
       break;
 
-    case "configuracao/verifica":
+    case "login/verifica":
       include 'login_verifica.php';
+      break;
+
+    case "login/token":
+      include 'login_token.php';
       break;
 
     case "aplicativo":

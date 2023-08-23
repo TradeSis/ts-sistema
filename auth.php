@@ -24,7 +24,7 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl='.$text;
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-white">
 
 <head>
     <title>TS/painel</title>
@@ -49,17 +49,17 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl='.$text;
 </head>
 
 
-<body class="bg-default">
+<body class="bg-default mt-5">
     <div>
         <!-- Header -->
         <div class="header ">
             <div class="container">
-                <div class="header-body text-center mb-7">
+                <div class="header-body text-center mb-2">
 
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-7">
-                            <h1 class="text-white">Bem Vindo!</h1>
-                            <p class="text-lead text-light">Para acessar o nosso painel de serviços, por favor faça
+                            <h1 class="text">Bem Vindo!</h1>
+                            <p class="text-lead text">Para acessar o nosso painel de serviços, por favor faça
                                 login.</p>
                         </div>
                         <div class="container">
@@ -72,7 +72,7 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl='.$text;
             </div>
         </div>
         <!-- Page content -->
-        <div class="container mt--7 pb-5">
+        <div class="container pb-5">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-7">
                     <div class="card bg-gray-200 shadow border-1">
