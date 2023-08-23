@@ -21,11 +21,12 @@
     color: #FFF;
 }
 
-.diviFrame {
+/* .diviFrame {
     padding-left: 0px;
-}
+    background-color: #EEEEEE;
+} */
 .diviFrame.mostra {
-    padding-left: 163px;              /* ESTA OK */
+    padding-left: 163px;            
 }
 
 .navbar ul {
