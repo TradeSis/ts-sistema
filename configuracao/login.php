@@ -33,7 +33,7 @@ $logins = buscaLogins();
                         <th>Empresa</th>
                         <th>Cpf/Cnpj</th>
                         <th>Token</th>
-                        <th ">Ação</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
 
