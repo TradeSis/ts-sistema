@@ -2,15 +2,19 @@
 //Lucas 05042023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 
+$idEmpresa = null;
+	if (isset($jsonEntrada["idEmpresa"])) {
+    	$idEmpresa = $jsonEntrada["idEmpresa"];
+	}
 
-$conexao = conectaMysql();
+$conexao = conectaMysql($idEmpresa);
 $app = array();
 
-if (isset($jsonEntrada["idUsuario"])) {
-  $sql = "SELECT aplicativo.*, usuarioaplicativo.idUsuario FROM aplicativo
-          LEFT JOIN usuarioaplicativo on aplicativo.idAplicativo = usuarioaplicativo.idAplicativo";
-  if (isset($jsonEntrada["idUsuario"])) {
-    $sql = $sql . " where usuarioaplicativo.idUsuario = " . $jsonEntrada["idUsuario"];
+if (isset($jsonEntrada["idLogin"])) {
+  $sql = "SELECT aplicativo.*, loginaplicativo.idLogin FROM aplicativo
+          LEFT JOIN loginaplicativo on aplicativo.idAplicativo = loginaplicativo.idAplicativo";
+  if (isset($jsonEntrada["idLogin"])) {
+    $sql = $sql . " where loginaplicativo.idLogin = " . $jsonEntrada["idLogin"];
   } 
 } else {
 $sql = $sql = "SELECT aplicativo.* FROM aplicativo";
@@ -28,7 +32,7 @@ while ($row = mysqli_fetch_array($buscar, MYSQLI_ASSOC)) {
   $rows = $rows + 1;
 }
 
-if (isset($jsonEntrada["idUsuario"]) && $rows==1) {
+if (isset($jsonEntrada["idLogin"]) && $rows==1) {
   $app = $app[0];
 }
 

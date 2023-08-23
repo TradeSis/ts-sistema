@@ -3,51 +3,52 @@ include_once(__DIR__ . '/../head.php');
 ?>
 
 <style>
-  .temp {
-    color: black
+
+  .nav-link.active:any-link{
+    background-color: transparent;
+    border: 2px solid #DFDFDF;
+    border-radius: 5px 5px 0px 0px;
+    color: #1B4D60;
   }
+
+  .nav-link:any-link{
+    background-color: #567381;
+    border: 1px solid #DFDFDF;
+    border-radius: 5px 5px 0px 0px;
+    color: #fff;
+  }
+  
 </style>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-2 mb-3">
       <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
         <?php
-        $stab = 'cliente';
+        $stab = 'empresa';
         if (isset($_GET['stab'])) {
           $stab = $_GET['stab'];
         }
         //echo "<HR>stab=" . $stab;
         ?>
         <li class="nav-item ">
-          <a class="nav-link <?php if ($stab == "cliente") {
+          <a class="nav-link <?php if ($stab == "empresa") {
             echo " active ";
           } ?>"
-            href="?tab=configuracao&stab=cliente" role="tab" style="color:black">Cliente</a>
+            href="?tab=configuracao&stab=empresa" role="tab">Empresa</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link <?php if ($stab == "usuarios") {
+          <a class="nav-link <?php if ($stab == "login") {
             echo " active ";
           } ?>"
-            href="?tab=configuracao&stab=usuarios" role="tab" style="color:black">Usuários</a>
+            href="?tab=configuracao&stab=login" role="tab">Login</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link <?php if ($stab == "aplicativo") {
             echo " active ";
           } ?>"
-            href="?tab=configuracao&stab=aplicativo" role="tab" style="color:black">Aplicativos</a>
+            href="?tab=configuracao&stab=aplicativo" role="tab">Aplicativos</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link <?php if ($stab == "menu") {
-            echo " active ";
-          } ?>"
-            href="?tab=configuracao&stab=menu" role="tab" style="color:black">Menu</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link <?php if ($stab == "menuprograma") {
-            echo " active ";
-          } ?>"
-            href="?tab=configuracao&stab=menuprograma" role="tab" style="color:black">Menu Programa</a>
-        </li>
+
     
 
       </ul>
@@ -56,20 +57,14 @@ include_once(__DIR__ . '/../head.php');
       <?php
           $ssrc = "";
 
-          if ($stab == "cliente") {
-            $ssrc = "clientes.php";
+          if ($stab == "empresa") {
+            $ssrc = "empresa.php";
           }
-          if ($stab == "usuarios") {
-            $ssrc = "usuario.php";
+          if ($stab == "login") {
+            $ssrc = "login.php";
           }
           if ($stab == "aplicativo") {
             $ssrc = "aplicativo.php";
-          }
-          if ($stab == "menu") {
-            $ssrc = "menu.php";
-          }
-          if ($stab == "menuprograma") {
-            $ssrc = "menuprograma.php";
           }
 
           if ($ssrc !== "") {

@@ -2,6 +2,12 @@
 //Lucas 04042023 criado
 
 include_once('../head.php');
+include_once('../database/login.php');
+include_once('../database/aplicativo.php');
+
+$login = buscaLogins($_GET['idLogin']);
+$aplicativos = buscaAplicativos();
+
 ?>
 
 <body class="bg-transparent">
@@ -10,39 +16,52 @@ include_once('../head.php');
 
         <div class="row">
             <div class="col-sm-8">
-                <h2 class="tituloTabela">Inserir Aplicativo</h2>
+                <h2 class="tituloTabela">Inserir Usuario/Aplicativo</h2>
             </div>
             <div class="col-sm-4" style="text-align:right">
-                <a href="../configuracao/?tab=configuracao&stab=aplicativo" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+                <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
 
-            <form action="../database/aplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
+            <form action="../database/loginAplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome do Aplicativo</label>
-                            <input type="text" name="nomeAplicativo" class="form-control" required autocomplete="off">
+                            <label class='control-label' for='inputNormal' style="margin-top: -22px;">Usuário</label>
+                            <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
+                            <input type="text" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>" hidden>
                         </div>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm mt-1">
                         <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Caminho</label>
-                            <input type="text" name="appLink" class="form-control" required autocomplete="off">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
+                            <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
+                                <?php
+                                foreach ($aplicativos as $aplicativo) {
+                                ?>
+                                    <option value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
+                                <?php  } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm mt-1">
+                        <div class="form-group">
+                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nivel</label>
+                            <select class="select form-control" style="padding-right: 50px;" name="nivelMenu">
+                                <option value="1">Nível 1</option>
+                                <option value="2">Nível 2</option>
+                                <option value="3">Nível 3</option>
+                                <option value="4">Nível 4</option>
+                                <option value="5">Nível 5</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-                <label class="labelForm mt-4">Imagem</label>
-                <label class="picture ml-4" for="imgAplicativo" tabIndex="0">
-                    <span class="picture__image"></span>
-                </label>
-
-                <input type="file" name="imgAplicativo" id="imgAplicativo">
 
                 <div style="text-align:right; margin-top:20px">
                     <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
-            </div>
+                </div>
             </form>
 
     </div>

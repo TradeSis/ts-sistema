@@ -7,19 +7,23 @@ function buscaAplicativos($idAplicativo=null)
 {
 
     $app = array();
+	
     $apiEntrada = array(
-        'idAplicativo' => $idAplicativo,
+        'idAplicativo' => $idAplicativo
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
 }
 
-function buscaAplicativosMenu($idUsuario)
+function buscaAplicativosMenu($idLogin)
 {
 
     $app = array();
+
+
+	
     $apiEntrada = array(
-        'idUsuario' => $idUsuario
+        'idLogin' => $idLogin
     );
     $app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'GET');
     return $app;
@@ -43,7 +47,7 @@ if (isset($_GET['operacao'])) {
 		if($extensao != "" && $extensao != "jpg" && $extensao != "png")
         die("Tipo de aquivo não aceito");
 
-		$pathImgFisico = defineROOT() . $pasta . $novoNomeImg . "." . $extensao;
+		$pathImgFisico = ROOT . $pasta . $novoNomeImg . "." . $extensao;
 		$pathImgURL = "/ts" . $pasta . $novoNomeImg . "." . $extensao;
 		move_uploaded_file($img["tmp_name"],$pathImgFisico);
 
@@ -88,6 +92,8 @@ if (isset($_GET['operacao'])) {
 			'pathImg'=> $pathImg,
 		);
 
+		/* echo json_encode($apiEntrada);
+		return; */
 		$app = chamaAPI(null, '/sistema/aplicativo', json_encode($apiEntrada), 'POST');
 		
 	}
