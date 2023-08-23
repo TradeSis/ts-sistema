@@ -69,12 +69,9 @@ if (isset($_POST['token'])) {
         <div class="header ">
             <div class="container">
                 <div class="header-body text-center mb-2">
-
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-7">
-                            <h1 class="text">Bem Vindo!</h1>
-                            <p class="text-lead text">Para acessar o nosso painel de serviços, por favor faça
-                                login.</p>
+                            <p class="text-lead text">Por favor faça login.</p>
                         </div>
                         <div class="container">
                             <a class="brand">
