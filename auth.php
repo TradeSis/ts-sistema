@@ -62,7 +62,7 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=' . $tex
                         </div>
                         <div class="container">
                             <a class="brand">
-                                <img src="../img/brand/logo.png">
+                                <img src="<?php echo URLROOT ?>/img/logo.png">
                             </a>
                         </div>
                     </div>

@@ -75,7 +75,7 @@ if (isset($_POST['token'])) {
                         </div>
                         <div class="container">
                             <a class="brand">
-                                <img src="<?php echo URLROOT ?>/img/brand/logo.png">
+                                <img src="<?php echo URLROOT ?>/img/logo.png">
                             </a>
                         </div>
                     </div>
