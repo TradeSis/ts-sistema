@@ -28,6 +28,7 @@ $anexos = buscaAnexos();
                     <thead class="cabecalhoTabela">
                         <tr>
                             <th>Nome</th>
+                            <th>Imagem gif</th>
                             <th>Imagem</th>
                             <th>Ação</th>
 
@@ -40,6 +41,8 @@ $anexos = buscaAnexos();
                         <tr>
                             <td><?php echo $anexo['nomeAnexo'] ?></td>
                             <td><?php echo '<img src="data:image/gif;base64,' . $anexo['base64'] . '" width="60px" height="60px" alt=""/>' ?></td>
+                            <td><?php echo '<img src="' . $anexo['base64'] . '" width="60px" height="60px" alt=""/>' ?></td>
+                            
                             <td>
                                 <a class="btn btn-warning btn-sm" href="anexos_alterar.php?idAnexo=<?php echo $anexo['idAnexo'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
                                 <a class="btn btn-danger btn-sm" href="anexos_excluir.php?idAnexo=<?php echo $anexo['idAnexo'] ?>" role="button"><i class="bi bi-trash3"></i></a>
