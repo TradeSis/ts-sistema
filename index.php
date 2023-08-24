@@ -60,6 +60,13 @@ if($nivelMenuLogin == null){
                         role="tab"                        
                         >Aplicativos</a>
                 </li>
+            <?php }  if ($nivelMenu==5) { ?>
+                <li class="nav-item mr-1 ">
+                    <a class="nav-link1 nav-link <?php if ($tab=="anexos") {echo " active ";} ?>" 
+                        href="?tab=anexos" 
+                        role="tab"                        
+                        >Anexos</a>
+                </li>
             <?php } ?>
 
                            
@@ -78,6 +85,7 @@ if($nivelMenuLogin == null){
     if ($tab=="empresa") {$src="configuracao/empresa.php";}
     if ($tab=="login") {$src="configuracao/login.php";}
     if ($tab=="aplicativo") {$src="configuracao/aplicativo.php";}
+    if ($tab=="anexos") {$src="configuracao/anexos.php";}
     if ($tab=="configuracao") {
             $src="configuracao/";
             if (isset($_GET['stab'])) {
