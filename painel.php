@@ -52,7 +52,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                 <?php }if (in_array("Services", $aplicativo)) { ?>
                     <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/services/ " class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/services/") {echo " active ";} ?>">
-                        Services</a>
+                        Serviços</a>
                     </li>
                 <?php }if (in_array("Cadastros", $aplicativo)) { ?>
                     <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/cadastros/" class="nav-link nav-link-menu 
