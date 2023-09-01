@@ -50,7 +50,7 @@ include_once __DIR__ . "/../config.php";
             </div>
             <div class="container">
               <a class="brand">
-                <img src="../img/logo.png">
+                <img src="<?php echo URLROOT ?>/img/logo.png">
               </a>
             </div>
           </div>

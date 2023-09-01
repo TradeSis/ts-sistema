@@ -1,9 +1,31 @@
 <?php
 
-$idEmpresa = null;
-    if (isset($jsonEntrada["idEmpresa"])) {
-        $idEmpresa = $jsonEntrada["idEmpresa"];
+
+//LOG
+$LOG_CAMINHO = defineCaminhoLog();
+if (isset($LOG_CAMINHO)) {
+    $LOG_NIVEL = defineNivelLog();
+    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "login_inserir";
+    if (isset($LOG_NIVEL)) {
+        if ($LOG_NIVEL >= 1) {
+            $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
+        }
     }
+}
+if (isset($LOG_NIVEL)) {
+    if ($LOG_NIVEL == 1) {
+        fwrite($arquivo, $identificacao . "\n");
+    }
+    if ($LOG_NIVEL >= 2) {
+        fwrite($arquivo, $identificacao . "-ENTRADA->" . json_encode($jsonEntrada) . "\n");
+    }
+}
+//LOG
+
+$idEmpresa = null;
+if (isset($jsonEntrada["idEmpresa"])) {
+    $idEmpresa = $jsonEntrada["idEmpresa"];
+}
 $conexao = conectaMysql();
 if (isset($jsonEntrada['loginNome'])) {
     $loginNome = $jsonEntrada['loginNome'];
@@ -15,9 +37,11 @@ if (isset($jsonEntrada['loginNome'])) {
 
     $statusLogin = 0;
     $statusUsuario = 1;
-    if($cpfCnpj===""){$cpfCnpj="NULL";}
+    if ($cpfCnpj === "") {
+        $cpfCnpj = "NULL";
+    }
 
-    if($email===""){
+    if ($email === "") {
         $sql = "INSERT INTO login( `loginNome`, `idEmpresa`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, $cpfCnpj, $pedeToken, '$password', $statusLogin)";
     } else {
         $sql = "INSERT INTO login( `loginNome`, `idEmpresa`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, '$email', $cpfCnpj, $pedeToken, '$password', $statusLogin)";
@@ -38,19 +62,30 @@ if (isset($jsonEntrada['loginNome'])) {
     //echo "-SQL3->".$sql3."\n";
     $atualizar3 = mysqli_query($conexao2, $sql3);
 
+    //TRY-CATCH
+    try {
 
+        $atualizar3 = mysqli_query($conexao, $sql);
+        if (!$atualizar && $atualizar3)
+            throw new Exception(mysqli_error($conexao));
 
-    if ($atualizar && $atualizar3) {
         $jsonSaida = array(
             "status" => 200,
             "retorno" => "ok"
         );
-    } else {
+    } catch (Exception $e) {
         $jsonSaida = array(
             "status" => 500,
-            "retorno" => "erro no mysql"
+            "retorno" => $e->getMessage()
         );
+        if ($LOG_NIVEL >= 1) {
+            fwrite($arquivo, $identificacao . "-ERRO->" . $e->getMessage() . "\n");
+        }
+    } finally {
+        // ACAO EM CASO DE ERRO (CATCH), que mesmo assim precise
     }
+    //TRY-CATCH
+
 } else {
     $jsonSaida = array(
         "status" => 400,
@@ -58,4 +93,10 @@ if (isset($jsonEntrada['loginNome'])) {
     );
 }
 
-?>
+//LOG
+if (isset($LOG_NIVEL)) {
+    if ($LOG_NIVEL >= 2) {
+        fwrite($arquivo, $identificacao . "-SAIDA->" . json_encode($jsonSaida) . "\n\n");
+    }
+}
+//LOG
