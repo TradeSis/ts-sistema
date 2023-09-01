@@ -31,13 +31,13 @@ if (isset($jsonEntrada['loginNome'])) {
     $loginNome = $jsonEntrada['loginNome'];
     $idEmpresa = $jsonEntrada['idEmpresa'];
     $email = $jsonEntrada['email'];
-    $cpfCnpj = isset($jsonEntrada['cpfCnpj']) && $jsonEntrada['cpfCnpj'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['cpfCnpj']) . "'" : "NULL";
+    $cpfCnpj = $jsonEntrada['cpfCnpj'];
     $pedeToken = $jsonEntrada['pedeToken'];
     $password = md5($jsonEntrada['password']);
 
     $statusLogin = 0;
     $statusUsuario = 1;
-    if ($cpfCnpj === "") {
+    if ($cpfCnpj == "") {
         $cpfCnpj = "NULL";
     }
 
@@ -47,8 +47,38 @@ if (isset($jsonEntrada['loginNome'])) {
         $sql = "INSERT INTO login( `loginNome`, `idEmpresa`, `email`, `cpfCnpj`, `pedeToken`, `password`, `statusLogin`) VALUES ('$loginNome', $idEmpresa, '$email', $cpfCnpj, $pedeToken, '$password', $statusLogin)";
     }
     //echo "-SQL->".$sql."\n";
-    $atualizar = mysqli_query($conexao, $sql);
 
+      //LOG
+      if (isset($LOG_NIVEL)) {
+        if ($LOG_NIVEL >= 3) {
+            fwrite($arquivo, $identificacao . "-SQL->" . $sql . "\n");
+        }
+    }
+    //LOG
+    $atualizar = mysqli_query($conexao, $sql);
+  //TRY-CATCH
+  try {
+
+    $atualizar = mysqli_query($conexao, $sql);
+    if (!$atualizar)
+        throw new Exception(mysqli_error($conexao));
+
+    $jsonSaida = array(
+        "status" => 200,
+        "retorno" => "ok"
+    );
+} catch (Exception $e) {
+    $jsonSaida = array(
+        "status" => 500,
+        "retorno" => $e->getMessage()
+    );
+    if ($LOG_NIVEL >= 1) {
+        fwrite($arquivo, $identificacao . "-ERRO->" . $e->getMessage() . "\n");
+    }
+} finally {
+    // ACAO EM CASO DE ERRO (CATCH), que mesmo assim precise
+}
+//TRY-CATCH
 
     // busca dados idLogin    
     $sql2 = "SELECT * FROM login WHERE loginNome = '$loginNome'";
@@ -62,11 +92,11 @@ if (isset($jsonEntrada['loginNome'])) {
     //echo "-SQL3->".$sql3."\n";
     $atualizar3 = mysqli_query($conexao2, $sql3);
 
-    //TRY-CATCH
-    try {
+     //TRY-CATCH
+     try {
 
         $atualizar3 = mysqli_query($conexao, $sql);
-        if (!$atualizar && $atualizar3)
+        if (!$atualizar3)
             throw new Exception(mysqli_error($conexao));
 
         $jsonSaida = array(
