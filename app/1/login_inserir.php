@@ -31,7 +31,7 @@ if (isset($jsonEntrada['loginNome'])) {
     $loginNome = $jsonEntrada['loginNome'];
     $idEmpresa = $jsonEntrada['idEmpresa'];
     $email = $jsonEntrada['email'];
-    $cpfCnpj = $jsonEntrada['cpfCnpj'];
+    $cpfCnpj = isset($jsonEntrada['cpfCnpj']) && $jsonEntrada['cpfCnpj'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['cpfCnpj']) . "'" : "NULL";
     $pedeToken = $jsonEntrada['pedeToken'];
     $password = md5($jsonEntrada['password']);
 
