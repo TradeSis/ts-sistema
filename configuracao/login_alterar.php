@@ -36,7 +36,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                     <div class="col-sm">
                         <div class="form-group">
                             <label class="labelForm">Nome</label>
-                            <input type="text" class="form-control" name="loginNome" value="<?php echo $usuario['loginNome'] ?>">
+                            <input type="text" class="form-control" name="loginNome" value="<?php echo $usuario['loginNome'] ?>" readonly>
                             <input type="text" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>" style="display: none">
                         </div>
                     </div>
