@@ -6,17 +6,17 @@ include_once "painel.php";
 include_once ROOT . "/sistema/database/loginAplicativo.php";
 $nivelMenuLogin = null;
 
-if ($_SESSION["idEmpresa"]==1) { // Proteção
-    $nivelMenuLogin =  buscaLoginAplicativo($_SESSION['idLogin'],'Sistema'); //Sistema
+if ($_SESSION["idEmpresa"] == 1) { // Proteção
+    $nivelMenuLogin = buscaLoginAplicativo($_SESSION['idLogin'], 'Sistema'); //Sistema
 }
 
-$configuracao = 1; 
+$configuracao = 1;
 $nivelMenu = 0;
 
-if($nivelMenuLogin == null){
+if ($nivelMenuLogin == null) {
     return;
-}else{
-    $nivelMenu   =  $nivelMenuLogin['nivelMenu'];
+} else {
+    $nivelMenu = $nivelMenuLogin['nivelMenu'];
 }
 
 
@@ -30,39 +30,45 @@ if($nivelMenuLogin == null){
 
 
                 <?php
-                    
-                    $tab = '';
 
-                    if (isset($_GET['tab'])) {$tab = $_GET['tab'];}
-               
-                ?>    
+                $tab = '';
+
+                if (isset($_GET['tab'])) {
+                    $tab = $_GET['tab'];
+                }
+
+                ?>
 
 
-            <?php if ($nivelMenu==5) { 
-                if ($tab=='') {$tab = 'empresa';} ?>
-                <li class="nav-item mr-1 ">
-                    <a class="nav-link1 nav-link <?php if ($tab=="empresa") {echo " active ";} ?>" 
-                        href="?tab=empresa" 
-                        role="tab"                        
-                        >Empresa</a>
-                </li>
-            <?php }  if ($nivelMenu==5) { ?>
-                <li class="nav-item mr-1 ">
-                    <a class="nav-link1 nav-link <?php if ($tab=="login") {echo " active ";} ?>" 
-                        href="?tab=login" 
-                        role="tab"                        
-                        >Login</a>
-                </li>
-            <?php }  if ($nivelMenu==5) { ?>
-                <li class="nav-item mr-1 ">
-                    <a class="nav-link1 nav-link <?php if ($tab=="aplicativo") {echo " active ";} ?>" 
-                        href="?tab=aplicativo" 
-                        role="tab"                        
-                        >Aplicativos</a>
-                </li>
-            <?php } ?>
+                <?php if ($nivelMenu == 5) {
+                    if ($tab == '') {
+                        $tab = 'empresa';
+                    } ?>
+                    <li class="nav-item mr-1 ">
+                        <a class="nav-link1 nav-link <?php if ($tab == "empresa") {
+                            echo " active ";
+                        } ?>" href="?tab=empresa"
+                            role="tab">Empresa</a>
+                    </li>
+                <?php }
+                if ($nivelMenu == 5) { ?>
+                    <li class="nav-item mr-1 ">
+                        <a class="nav-link1 nav-link <?php if ($tab == "login") {
+                            echo " active ";
+                        } ?>" href="?tab=login"
+                            role="tab">Login</a>
+                    </li>
+                <?php }
+                if ($nivelMenu == 5) { ?>
+                    <li class="nav-item mr-1 ">
+                        <a class="nav-link1 nav-link <?php if ($tab == "aplicativo") {
+                            echo " active ";
+                        } ?>"
+                            href="?tab=aplicativo" role="tab">Aplicativos</a>
+                    </li>
+                <?php } ?>
 
-                           
+
             </ul>
 
 
@@ -73,27 +79,54 @@ if($nivelMenuLogin == null){
 </div>
 
 <?php
-    $src="";
+$src = "";
+$title = "Sistema";
 
-    if ($tab=="empresa") {$src="configuracao/empresa.php";}
-    if ($tab=="login") {$src="configuracao/login.php";}
-    if ($tab=="aplicativo") {$src="configuracao/aplicativo.php";}
-    if ($tab=="configuracao") {
-            $src="configuracao/";
-            if (isset($_GET['stab'])) {
-                $src = $src . "?stab=".$_GET['stab'];
-            }
+if ($tab == "empresa") {
+    $src = "configuracao/empresa.php";
+    $title = "Sistema/Empresa";
 
-            
+}
+if ($tab == "login") {
+    $src = "configuracao/login.php";
+    $title = "Sistema/Login";
+}
+if ($tab == "aplicativo") {
+    $src = "configuracao/aplicativo.php";
+    $title = "Sistema/Aplicativo";
+}
+if ($tab == "configuracao") {
+    $src = "configuracao/";
+    $title = "Sistema/Configuração";
+    if (isset($_GET['stab'])) {
+        $src = $src . "?stab=" . $_GET['stab'];
+
     }
-    
-if ($src!=="") {
+
+
+}
+
+if ($src !== "") {
     //echo URLROOT ."/sistema/". $src;
-?>
-    <div class="diviFrame">
-        <iframe class="iFrame container-fluid " id="iFrameTab" src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
-    </div>
-<?php
+    ?>
+    </body>
+
+    </html>
+
+    <!DOCTYPE html>
+
+    <head>
+        <title><?php echo $title; ?></title>
+    </head>
+    <html>
+
+    <body>
+
+        <div class="diviFrame">
+            <iframe class="iFrame container-fluid " id="iFrameTab"
+                src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
+        </div>
+        <?php
 }
 ?>
 
