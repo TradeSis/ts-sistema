@@ -50,7 +50,7 @@ if (!$user == "") {
                 setcookie('Empresa', $nomeEmpresa, strtotime("+1 year"), "/", "", false, true );
                 setcookie('User', $user, strtotime("+1 year"), "/", "", false, true );
 
-                header('Location: ' . URLROOT . '/sistema/');
+                header('Location: ' . URLROOT . '/services/');
         }
 } else {
         $mensagem = $dados['retorno'];
