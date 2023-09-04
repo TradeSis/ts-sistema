@@ -79,14 +79,6 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                             Projetos</a>
                     </li>
                 <?php }
-                if (in_array("Services", $aplicativo)) { ?>
-                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/services/atendimento.php" class="nav-link nav-link-menu 
-                        <?php if ($url == URLROOT . "/services/atendimento.php") {
-                            echo " active ";
-                        } ?>">
-                            Atendimento</a>
-                    </li>
-                <?php }
                 if (in_array("Cadastros", $aplicativo)) { ?>
                     <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/cadastros/" class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/cadastros/") {
@@ -109,6 +101,14 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                             echo " active ";
                         } ?>">
                             Impostos</a>
+                    </li>
+                <?php }
+                if (in_array("Financeiro", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/financeiro/ " class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/financeiro/") {
+                            echo " active ";
+                        } ?>">
+                            Financeiro</a>
                     </li>
                 <?php } ?>
 
