@@ -53,7 +53,7 @@ function emailEnviar($from,$fromNome,$arrayPara,$assunto,$corpo)
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
         $mail->Port = $Port; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
-        $mail->CharSet = 'iso-8859-1'; // Charset da mensagem (opcional)
+        $mail->CharSet = 'UTF-8'; // Charset da mensagem (opcional)
 
         //Recipients
         $mail->setFrom($from, $fromNome);
