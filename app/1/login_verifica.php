@@ -69,7 +69,7 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
 
                 //Busca idCliente no banco da empresa
                 $conexao2 = conectaMysql($loginNomes["idEmpresa"]);
-                $sql2 = "SELECT usuario.idCliente FROM usuario where usuario.idLogin = " . $loginNomes["idLogin"];
+                $sql2 = "SELECT usuario.idCliente, usuario.idUsuario FROM usuario where usuario.idLogin = " . $loginNomes["idLogin"];
                 $buscar2 = mysqli_query($conexao2, $sql2);
                 $dadosUsuario = mysqli_fetch_assoc($buscar2);
 
@@ -79,6 +79,7 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
                     "nomeEmpresa" => $loginNomes["nomeEmpresa"],
                     "idEmpresa" => $loginNomes["idEmpresa"],
                     "idCliente" => $dadosUsuario["idCliente"],
+                    "idUsuario" => $dadosUsuario["idUsuario"],
                     "timeSessao" => $loginNomes["timeSessao"],
                     "statusLogin" => $loginNomes["statusLogin"],
                     "email" => $loginNomes["email"],
