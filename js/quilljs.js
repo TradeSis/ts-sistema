@@ -4,22 +4,22 @@ var quill = new Quill('.quill-textarea', {
     modules: {
         toolbar: [
             ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-            ['blockquote', 'code-block'],
-            [{
+            ['blockquote'],
+           /*  [{
                 'header': 1
             }, {
                 'header': 2
-            }], // custom button values
+            }], */ // custom button values
             [{
                 'list': 'ordered'
             }, {
                 'list': 'bullet'
             }],
-            [{
+            /* [{
                 'script': 'sub'
             }, {
                 'script': 'super'
-            }], // superscript/subscript
+            }], */ // superscript/subscript
             [{
                 'indent': '-1'
             }, {
@@ -46,7 +46,7 @@ var quill = new Quill('.quill-textarea', {
             [{
                 'align': []
             }],
-            ['clean']
+            /* ['clean'] */
         ]
     }
 });
