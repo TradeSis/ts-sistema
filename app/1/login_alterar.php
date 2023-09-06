@@ -30,7 +30,12 @@ if (isset($jsonEntrada['idLogin'])) {
     $cpfCnpj = $jsonEntrada['cpfCnpj'];
     $pedeToken = $jsonEntrada['pedeToken'];
 
-    $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `cpfCnpj`='$cpfCnpj', `pedeToken`=$pedeToken WHERE idLogin = $idLogin";
+    if($cpfCnpj == ''){
+        $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `pedeToken`=$pedeToken WHERE idLogin = $idLogin";
+    }else{
+        $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `cpfCnpj`='$cpfCnpj', `pedeToken`=$pedeToken WHERE idLogin = $idLogin";
+    }
+    
 
     if (isset($jsonEntrada['password'])) {
         $password = md5($jsonEntrada['password']);

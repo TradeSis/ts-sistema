@@ -42,7 +42,7 @@ $empresas = buscaEmpresas();
                             <td><?php echo $empresa['timeSessao'] ?></td>
                             <td>
                                 <a class="btn btn-warning btn-sm" href="empresa_alterar.php?idEmpresa=<?php echo $empresa['idEmpresa'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
-                                <a class="btn btn-danger btn-sm" href="empresa_excluir.php?idEmpresa=<?php echo $empresa['idEmpresa'] ?>" role="button"><i class="bi bi-trash3"></i></a>
+                               
                             </td>
                         </tr>
                     <?php } ?>
