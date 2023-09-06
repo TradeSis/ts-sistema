@@ -263,3 +263,13 @@ padding: 0.5em;
   padding: 30px;
 }
 
+.quill-textarea{
+  background-color: #fff;
+  height:300px !important; 
+  width:100% !important;
+}
+
+.tituloEditor{
+  font-size: 16px;
+  color: #777;
+}
