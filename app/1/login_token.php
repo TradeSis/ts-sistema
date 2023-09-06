@@ -8,6 +8,29 @@ require_once '../vendor/autoload.php';
 
 $google2fa = new \PragmaRX\Google2FA\Google2FA();
 
+
+//LOG
+$LOG_CAMINHO=defineCaminhoLog();
+if (isset($LOG_CAMINHO)) {
+    $LOG_NIVEL=defineNivelLog();
+    $identificacao=date("dmYHis")."-PID".getmypid()."-"."login_token";
+    if(isset($LOG_NIVEL)) {
+        if ($LOG_NIVEL>=1) {
+            $arquivo = fopen(defineCaminhoLog()."sistema_".date("dmY").".log","a");
+        }
+    }
+    
+}
+if(isset($LOG_NIVEL)) {
+    if ($LOG_NIVEL==1) {
+        fwrite($arquivo,$identificacao."\n");
+    }
+    if ($LOG_NIVEL>=2) {
+        fwrite($arquivo,$identificacao."-ENTRADA->".json_encode($jsonEntrada)."\n");
+    }
+}
+//LOG
+
 if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!isset($jsonEntrada["token"])||$jsonEntrada["loginNome"]==""||$jsonEntrada["nomeEmpresa"]==""||$jsonEntrada["token"]=="") {
     $jsonSaida = array(
         "status" => 400,
@@ -25,6 +48,14 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
                 LEFT JOIN empresa on empresa.idEmpresa = login.idEmpresa 
                 WHERE nomeEmpresa='$nomeEmpresa' AND (email = '$loginNome' OR loginNome = '$loginNome' OR cpfCnpj = '$loginNome')";
     //echo $sql;
+
+     //LOG
+     if(isset($LOG_NIVEL)) {
+        if ($LOG_NIVEL>=3) {
+            fwrite($arquivo,$identificacao."-SQL->".$sql."\n");
+        }
+    }
+    //LOG
 
     $buscar = mysqli_query($conexao, $sql);
     $rows = mysqli_num_rows($buscar);
@@ -72,4 +103,11 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
     }
 }
 
+//LOG
+if(isset($LOG_NIVEL)) {
+    if ($LOG_NIVEL>=2) {
+        fwrite($arquivo,$identificacao."-SAIDA->".json_encode($jsonSaida)."\n\n");
+    }
+}
+//LOG
 ?>

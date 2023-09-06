@@ -22,6 +22,7 @@ $user = $dados['loginNome'];
 $idLogin = $dados['idLogin'];
 $idEmpresa = $dados['idEmpresa'];
 $idCliente = $dados['idCliente'];
+$idUsuario = $dados['idUsuario'];
 $nomeEmpresa = $dados['nomeEmpresa'];
 $email = $dados['email'];
 $pedeToken = $dados['pedeToken'];
@@ -44,13 +45,14 @@ if (!$user == "") {
                 $_SESSION['idLogin'] = $idLogin;
                 $_SESSION['idEmpresa'] = $idEmpresa;
                 $_SESSION['idCliente'] = $idCliente;
+                $_SESSION['idUsuario'] = $idUsuario;
                 $_SESSION['email'] = $email;
                 $_SESSION['timeSessao'] = $timeSessao;
 
                 setcookie('Empresa', $nomeEmpresa, strtotime("+1 year"), "/", "", false, true );
                 setcookie('User', $user, strtotime("+1 year"), "/", "", false, true );
 
-                header('Location: ' . URLROOT . '/sistema/');
+                header('Location: ' . URLROOT . '/services/');
         }
 } else {
         $mensagem = $dados['retorno'];
