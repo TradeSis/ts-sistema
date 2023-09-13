@@ -31,6 +31,7 @@ if ($nivelMenuLogin == null) {
 
                 <?php
 
+                           
                 $tab = '';
 
                 if (isset($_GET['tab'])) {
@@ -66,7 +67,15 @@ if ($nivelMenuLogin == null) {
                         } ?>"
                             href="?tab=aplicativo" role="tab">Aplicativos</a>
                     </li>
-                <?php } ?>
+                <?php }
+            <?php }  if ($nivelMenu==5) { ?>
+                <li class="nav-item mr-1 ">
+                    <a class="nav-link1 nav-link <?php if ($tab=="anexos") {echo " active ";} ?>" 
+                        href="?tab=anexos" 
+                        role="tab"                        
+                        >Anexos</a>
+                </li>
+            <?php } ?>
 
 
             </ul>
@@ -79,6 +88,7 @@ if ($nivelMenuLogin == null) {
 </div>
 
 <?php
+
 $src = "";
 $title = "Sistema";
 
@@ -95,11 +105,17 @@ if ($tab == "aplicativo") {
     $src = "configuracao/aplicativo.php";
     $title = "Sistema/Aplicativo";
 }
+if ($tab == "anexos") {
+    $src = "configuracao/anexos.php";
+    $title = "Sistema/Anexos";
+}
+      
 if ($tab == "configuracao") {
     $src = "configuracao/";
     $title = "Sistema/Configuração";
     if (isset($_GET['stab'])) {
         $src = $src . "?stab=" . $_GET['stab'];
+
 
     }
 
