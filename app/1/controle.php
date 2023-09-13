@@ -44,6 +44,10 @@ if ($metodo == "GET") {
     case "loginaplicativo":
       include 'loginaplicativo.php';
       break;
+      
+    case "anexos":
+      include 'anexos.php';
+      break;
 
 
     default:
@@ -82,7 +86,10 @@ if ($metodo == "PUT") {
     case "login":
       include 'login_inserir.php';
       break;
-
+      
+      case "anexos":
+        include 'anexos_inserir.php';
+        break;
     default:
       $jsonSaida = json_decode(
         json_encode(
@@ -130,6 +137,10 @@ if ($metodo == "POST") {
     case "login":
       include 'login_alterar.php';
       break;
+            
+    case "anexos":
+      include 'anexos_alterar.php';
+      break;
     default:
       $jsonSaida = json_decode(
         json_encode(
@@ -166,7 +177,10 @@ if ($metodo == "DELETE") {
     case "login":
       include 'login_excluir.php';
       break;
-
+      
+      case "anexos":
+        include 'anexos_excluir.php';
+        break;
     default:
       $jsonSaida = json_decode(
         json_encode(
