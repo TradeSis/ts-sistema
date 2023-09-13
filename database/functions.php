@@ -1,6 +1,21 @@
 <?php
 
 // helio 26042023 - funcoes padrão
+function defineCaminhoLog() {
+  $pasta = null;
+  if (defined('LOG_CAMINHO')) {
+    $pasta = LOG_CAMINHO;
+  }
+	return $pasta;
+}
+
+function defineNivelLog() {
+  $nivel = null;
+  if (defined('LOG_NIVEL')) {
+    $nivel = LOG_NIVEL;
+  }
+	return $nivel;
+}
 
 function defineConexaoApi () {
     return API_IP;

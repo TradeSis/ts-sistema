@@ -6,16 +6,16 @@ include_once('../head.php');
 
 <body class="bg-transparent">
 
-    <div class="container" style="margin-top:10px">
+    <div class="container formContainer">
 
-        <div class="col-sm mt-4" style="text-align:right">
-            <a href="../configuracao/?tab=configuracao&stab=aplicativo" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2 class="tituloTabela">Inserir Aplicativo</h2>
+            </div>
+            <div class="col-sm-4" style="text-align:right">
+                <a href="../configuracao/?tab=configuracao&stab=aplicativo" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            </div>
         </div>
-        <div class="col-sm">
-            <spam class="col titulo">Inserir Aplicativo</spam>
-        </div>
-
-        <div class="container" style="margin-top: 30px">
 
             <form action="../database/aplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
@@ -33,19 +33,17 @@ include_once('../head.php');
                         </div>
                     </div>
                 </div>
-                    <label class="labelForm mt-4">Imagem</label>
-                    <label class="picture ml-4" for="imgAplicativo" tabIndex="0">
-                        <span class="picture__image"></span>
-                    </label>
+                <label class="labelForm mt-4">Imagem</label>
+                <label class="picture ml-4" for="imgAplicativo" tabIndex="0">
+                    <span class="picture__image"></span>
+                </label>
 
-                    <input type="file" name="imgAplicativo" id="imgAplicativo">
+                <input type="file" name="imgAplicativo" id="imgAplicativo">
 
-                <div style="text-align:right; margin-top: 30px">
-
+                <div style="text-align:right; margin-top:20px">
                     <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
-                </div>
+            </div>
             </form>
-        </div>
 
     </div>
 
@@ -54,8 +52,8 @@ include_once('../head.php');
 
 
     <script>
-        $(document).ready(function () {
-            $("#form").submit(function () {
+        $(document).ready(function() {
+            $("#form").submit(function() {
                 var formData = new FormData(this);
 
                 $.ajax({
@@ -82,14 +80,14 @@ include_once('../head.php');
         const pictureImageTxt = "Carregar imagem";
         pictureImage.innerHTML = pictureImageTxt;
 
-        inputFile.addEventListener("change", function (e) {
+        inputFile.addEventListener("change", function(e) {
             const inputTarget = e.target;
             const file = inputTarget.files[0];
 
             if (file) {
                 const reader = new FileReader();
 
-                reader.addEventListener("load", function (e) {
+                reader.addEventListener("load", function(e) {
                     const readerTarget = e.target;
 
                     const img = document.createElement("img");

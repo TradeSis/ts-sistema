@@ -2,9 +2,21 @@
 
 include_once 'head.php';
 include_once ROOT . "/sistema/database/aplicativo.php";
-$aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
+$aplicativos = buscaAplicativosMenu($_SESSION['idLogin']);
 
 
+$aplicativo = array();
+if (isset($aplicativos['nomeAplicativo'])) {
+    $aplicativo[] = $aplicativos["nomeAplicativo"];
+} else {
+    foreach ($aplicativos as $unico) {
+        //echo '<hr> aplicativos -> ' . json_encode($unico);
+        $aplicativo[] = $unico["nomeAplicativo"];
+    }
+}
+$URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url = (parse_url($URL_ATUAL, PHP_URL_PATH));
+//echo json_encode(URLROOT);
 ?>
 
 <style>
@@ -21,15 +33,12 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
 </style>
 
 <body>
-    <?php
-    $URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    //echo $URL_ATUAL;
-    $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
-    ?>
+
     <nav class="Menu navbar navbar-expand topbar static-top shadow ">
 
         <a class="navbar-brand" href="<?php echo URLROOT ?>/sistema"><img src="../img/white.png" width="150"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -37,35 +46,83 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
             <ul class="navbar-nav mx-auto">
 
 
-                <?php if (isset($aplicativos[0])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[0]['appLink'] ?>" class="nav-link nav-link-menu 
-                        <?php if ($url == URLROOT . "/sistema/") { echo " active ";} ?>">
-                        <?php echo $aplicativos[0]['nomeAplicativo'] ?></a>
-                    </li>
-                <?php }if (isset($aplicativos[1])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[1]['appLink'] ?> " class="nav-link nav-link-menu 
-                        <?php if ($url == URLROOT . "/services/") {echo " active ";} ?>">
-                        <?php echo $aplicativos[1]['nomeAplicativo'] ?></a>
+                <?php
+                if (in_array("Services", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/services/ " class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/services/") {
+                            echo " active ";
+                        } ?>">
+                            Serviços</a>
                     </li>
                 <?php }
-                if (isset($aplicativos[2])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[2]['appLink'] ?>" class="nav-link nav-link-menu 
-                        <?php if ($url == URLROOT . "/cadastros/") {echo " active ";} ?>">
-                        <?php echo $aplicativos[2]['nomeAplicativo'] ?></a>
+
+                if (in_array("Services", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/services/assistencia.php" class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/services/assistencia.php") {
+                            echo " active ";
+                        } ?>">
+                            Assistência</a>
                     </li>
                 <?php }
-                if (isset($aplicativos[3])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[3]['appLink'] ?>" class="nav-link nav-link-menu 
-                        <?php if ($url == URLROOT . "/paginas/") {echo " active ";} ?>">
-                        <?php echo $aplicativos[3]['nomeAplicativo'] ?></a>
+                if (in_array("Services", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/services/projetos.php" class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/services/projetos.php") {
+                            echo " active ";
+                        } ?>">
+                            Projetos</a>
                     </li>
                 <?php }
-                if (isset($aplicativos[4])) { ?>
-                    <li class="nav-item mr-4"><a href=" <?php echo $aplicativos[4]['appLink'] ?>" class="nav-link nav-link-menu 
-                        <?php if ($url == URLROOT . "/impostos/") {echo " active ";} ?>">
-                        <?php echo $aplicativos[4]['nomeAplicativo'] ?></a>
+                if (in_array("Notas", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/notas/ " class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/notas/") {
+                            echo " active ";
+                        } ?>">
+                            Notas</a>
+                    </li>
+                <?php }
+                if (in_array("Financeiro", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/financeiro/ " class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/financeiro/") {
+                            echo " active ";
+                        } ?>">
+                            Financeiro</a>
+                    </li>
+
+                <?php }
+
+                if (in_array("Cadastros", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/cadastros/" class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/cadastros/") {
+                            echo " active ";
+                        } ?>">
+                            Cadastros</a>
+                    </li>
+                <?php }
+                if (in_array("Paginas", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/paginas/" class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/paginas/") {
+                            echo " active ";
+                        } ?>">
+                            Paginas</a>
+                    </li>
+                <?php }
+                if (in_array("Impostos", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/impostos/ " class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/impostos/") {
+                            echo " active ";
+                        } ?>">
+                            Impostos</a>
+                    </li>
+
+                <?php } if ($_SESSION["idEmpresa"] == 1 && in_array("Sistema", $aplicativo)) { ?>
+                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/sistema/" class="nav-link nav-link-menu 
+                        <?php if ($url == URLROOT . "/sistema/") {
+                            echo " active ";
+                        } ?>">
+                            Sistema</a>
                     </li>
                 <?php }  ?>
+
 
             </ul>
 
@@ -73,13 +130,15 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
 
                 <!-- Email -->
                 <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="bi bi-envelope-exclamation-fill"></i>
 
                         <span class="badge badge-danger badge-counter"></span>
                     </a>
 
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="messagesDropdown">
                         <h6 class="dropdown-header">
                             Emails Recebidos
                         </h6>
@@ -92,14 +151,19 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <!-- <img class="img-profile rounded-circle" src="../imgs/undraw_profile.svg"> -->
                         <!--  <i class="bi bi-person-circle"></i>&#32; -->
-                        <span class="fs-1 text"><?php echo $logado ?></span>
+                        <span class="fs-1 text">
+                            <?php echo $logado ?>
+                        </span>
                     </a>
                     <!-- Dropdown - User Information -->
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/configuracao/usuarioPerfil_alterar.php?idUsuario=<?php echo $_SESSION['idUsuario'] ?>">
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a class="dropdown-item"
+                            href="<?php echo URLROOT ?>/sistema/configuracao/loginPerfil_alterar.php?idLogin=<?php echo $_SESSION['idLogin'] ?>">
                             <i class="bi bi-person-circle"></i>&#32;
                             Perfil
                         </a>
@@ -115,7 +179,7 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
             </ul>
 
         </div>
-    
+
 
     </nav>
 
@@ -136,7 +200,7 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
                 <div class="modal-body">Selecione "Logout" abaixo se você deseja encerrar sua sessão.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary logout" href="logout.php">Logout</a>
+                    <a class="btn btn-primary logout" href="<?php echo URLROOT ?>/sistema/logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -149,13 +213,13 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
         var tab;
         var tabContent;
 
-        window.onload = function() {
+        window.onload = function () {
             tabContent = document.getElementsByClassName('tabContent');
             tab = document.getElementsByClassName('tab');
             hideTabsContent(1);
         }
 
-        document.getElementById('tabs').onclick = function(event) {
+        document.getElementById('tabs').onclick = function (event) {
             var target = event.target;
             if (target.className == 'tab') {
                 for (var i = 0; i < tab.length; i++) {
@@ -186,10 +250,10 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
     </script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             // SELECT MENU
-            $("#novoMenu a").click(function() {
+            $("#novoMenu a").click(function () {
 
                 var value = $(this).text();
                 value = $(this).attr('id');
@@ -199,7 +263,7 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
                 $("#myIframe").attr('src', value);
             })
             // SELECT MENU
-            $("#novoMenu2 a").click(function() {
+            $("#novoMenu2 a").click(function () {
 
                 var value = $(this).text();
                 value = $(this).attr('src');
@@ -218,7 +282,7 @@ $aplicativos = buscaAplicativosMenu($_SESSION['idUsuario']);
             })
 
             // SELECT MENU
-            $("#menuCadastros a").click(function() {
+            $("#menuCadastros a").click(function () {
 
                 var value = $(this).text();
                 value = $(this).attr('id');

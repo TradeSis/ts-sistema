@@ -5,8 +5,10 @@
 // helio 31012023 - include database/api
 // helio 26012023 16:16
 //echo "sistema/conexao.php<hr>";
+if (session_status() === PHP_SESSION_NONE) {
+	session_start();
+}
 include_once __DIR__."/../config.php";
-
 
 include_once(ROOT.'/sistema/database/mysql.php');
 include_once(ROOT.'/sistema/database/api.php');
