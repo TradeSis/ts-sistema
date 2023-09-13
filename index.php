@@ -68,7 +68,7 @@ if ($nivelMenuLogin == null) {
                             href="?tab=aplicativo" role="tab">Aplicativos</a>
                     </li>
                 <?php }
-            <?php }  if ($nivelMenu==5) { ?>
+             if ($nivelMenu==5) { ?>
                 <li class="nav-item mr-1 ">
                     <a class="nav-link1 nav-link <?php if ($tab=="anexos") {echo " active ";} ?>" 
                         href="?tab=anexos" 

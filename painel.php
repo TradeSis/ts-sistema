@@ -56,22 +56,8 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                     </li>
                 <?php }
 
-                if (in_array("Services", $aplicativo)) { ?>
-                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/services/assistencia.php" class="nav-link nav-link-menu 
-                        <?php if ($url == URLROOT . "/services/assistencia.php") {
-                            echo " active ";
-                        } ?>">
-                            Assistência</a>
-                    </li>
-                <?php }
-                if (in_array("Services", $aplicativo)) { ?>
-                    <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/services/projetos.php" class="nav-link nav-link-menu 
-                        <?php if ($url == URLROOT . "/services/projetos.php") {
-                            echo " active ";
-                        } ?>">
-                            Projetos</a>
-                    </li>
-                <?php }
+                // retirado assistencia e Projetos como painel
+                
                 if (in_array("Notas", $aplicativo)) { ?>
                     <li class="nav-item mr-4"><a href="<?php echo URLROOT ?>/notas/ " class="nav-link nav-link-menu 
                         <?php if ($url == URLROOT . "/notas/") {
