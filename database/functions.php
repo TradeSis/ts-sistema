@@ -51,4 +51,20 @@ function defineConexaoApi () {
   
   }
 
+
+function defineConexaoProgress()
+{
+  
+  return        array(    "progresscfg" => PROGRESS_CFG, 
+                          "dlc"         => PROGRESS_DLC,
+                          "pf"          => PROGRESS_PF, 
+                          "tmp"         => PROGRESS_TMP,
+                          "propath"     => PROGRESS_PROPATH,
+                          "proginicial" => PROGRESS_PROGRINICIAL
+   );
+
+}
+
+
+
 ?>
