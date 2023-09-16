@@ -12,7 +12,7 @@
 }
 
 .Menu {
-    background-color: #12192C;
+    background-color: #13216A;
     color: #FFF;
     height: 50px;
 }
@@ -54,7 +54,7 @@
 }
 
 .menuLateral{
-    background-color: #12192C; 
+    background-color: #13216A; 
     width: var(--nav-width);
     height: 100%;
     position: fixed;
@@ -96,7 +96,7 @@
     font-size: 16px;
     font-weight: 300;
     padding-left: 60px;
-    background-color: #12192C;
+    background-color: #13216A;
 }
 
 .menuLateral ul ul{
@@ -209,7 +209,7 @@
 }
 
 .menusecundario{
-    background-color: #12192C; 
+    background-color: #13216A; 
     width: var(--nav-width);
     height: 100%;
     position: fixed;
