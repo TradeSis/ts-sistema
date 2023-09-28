@@ -32,15 +32,15 @@
     <div class="container-fluid ">
         <div class="row d-md-flex ">
 
-            <div class="p-0 col-md-2 col-lg-1" style="background-color: #13216A;">
+            <div class="p-0 col-md-1" style="background-color: #13216A;">
                 <!-- NAVBAR MOBILE -->
                 <nav class="navbar-dark d-md-none p-2">
                     <div class="container-fluid">
                     <div class="row d-flex flex">
-                        <div class="col-6 col-sm-6 ">
+                        <div class="col-6 col-md-6 ">
                             <a class="navbar-brand" href="#"><img src="../img/meucontrole.png" width="40%"></a>
                         </div>
-                        <div class="col-6 col-sm-6 text-end">
+                        <div class="col-6 col-md-6 text-end">
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -97,7 +97,7 @@
                 <!-- SIDERBAR DESKTOP -->
                 <div class="d-none d-md-block"> <!-- style="width: 200px;" -->
                     <a href="/" class="d-flex align-items-center pb-3 mb-3 mt-2">
-                        <img src="../img/meucontrole.png" width="100%">
+                        <img src="../img/meucontrole.png" width="100vw">
                     </a>
                     <ul class="ps-0" id="menu">
                         <li class="sidebar-item">
@@ -117,8 +117,8 @@
             <!-- fim SIDERBAR DESKTOP -->
 
             </div> <!-- col -->
-            <div class="col-md-10 col-lg-11" style="height: 100vh;">
-                <div class="row d-flex flex-row flex-sm-row-reverse">
+            <div class="col-md-11" style="height: 100vh;">
+                <div class="row d-flex flex-row flex-md-row-reverse">
                     <div class="col-md-2">
                         <div class="row">
                             <div class="col-12 bg-danger">
