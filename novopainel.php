@@ -59,19 +59,19 @@
                             <a class="nav-link active " aria-current="page" href="#" src="../services/novoindex.php"> Serviços</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="#"> Notas</a>
+                            <a class="nav-link" href="#" src="../notas/index.php" > Notas</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="#"> Financeiro</a>
+                            <a class="nav-link" href="#" src="../financeiro/index.php"> Financeiro</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="#"> Cadastros</a>
+                            <a class="nav-link" href="#" src="../cadastros/index.php"> Cadastros</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="#"> Paginas</a>
+                            <a class="nav-link" href="#" src="../paginas/index.php"> Paginas</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="#"> Sistema</a>
+                            <a class="nav-link" href="#" src="novoindex.php"> Sistema</a>
                         </li>
 
                     </ul>
@@ -84,19 +84,19 @@
                         <a class="nav-link active" aria-current="page" href="#" src="../services/novoindex.php"> Serviços</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="#"> Notas</a>
+                        <a class="nav-link" href="#" src="../notas/index.php"> Notas</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="#"> Financeiro</a>
+                        <a class="nav-link" href="#" src="../financeiro/index.php"> Financeiro</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="#"> Cadastros</a>
+                        <a class="nav-link" href="#" src="../cadastros/index.php" > Cadastros</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="#"> Paginas</a>
+                        <a class="nav-link" href="#" src="../paginas/index.php"> Paginas</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="#"> Sistema</a>
+                        <a class="nav-link" href="#" src="novoindex.php"> Sistema</a>
                     </li>
 
                 </ul>
@@ -109,10 +109,10 @@
             <a class="p-3" href="#"><img src="../img/meucontrole.png" width="120vh 120vw"></a>
             <div class="list-group mt-4" id="menu">
                 <a class="itemsiderbar   p-3" href="#" src="../services/novoindex.php">Serviços</a>
-                <a class="itemsiderbar   p-3" href="#" src="#!">Notas</a>
-                <a class="itemsiderbar   p-3" href="#" src="#">Financeiro</a>
-                <a class="itemsiderbar   p-3" href="#" src="#">Cadastros</a>
-                <a class="itemsiderbar   p-3" href="#" src="#">Paginas</a>
+                <a class="itemsiderbar   p-3" href="#" src="../notas/index.php" >Notas</a>
+                <a class="itemsiderbar   p-3" href="#" src="../financeiro/index.php" >Financeiro</a>
+                <a class="itemsiderbar   p-3" href="#" src="../cadastros/index.php">Cadastros</a>
+                <a class="itemsiderbar   p-3" href="#" src="../paginas/index.php" >Paginas</a>
                 <a class="itemsiderbar   p-3" href="#" src="novoindex.php">Sistema</a>
             </div>
         </div>
