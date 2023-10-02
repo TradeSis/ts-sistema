@@ -56,22 +56,22 @@
                 <div class="col-sm-12 d-none d-sm-block">
                     <ul class="col-sm-12 nav text-center" id="menu">
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link active " aria-current="page" href="#" src="configuracao/empresa.php"> Serviços2</a>
+                            <a class="nav-link active " aria-current="page" href="#" src="../services/novoindex.php"> Serviços</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="configuracao/login.php"> Notas</a>
+                            <a class="nav-link" href="#" src="#"> Notas</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="configuracao/aplicativo.php"> Financeiro</a>
+                            <a class="nav-link" href="#" src="#"> Financeiro</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="configuracao/anexos.php"> Cadastros</a>
+                            <a class="nav-link" href="#" src="#"> Cadastros</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="configuracao/anexos.php"> Paginas</a>
+                            <a class="nav-link" href="#" src="#"> Paginas</a>
                         </li>
                         <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="configuracao/anexos.php"> Sistema</a>
+                            <a class="nav-link" href="#" src="#"> Sistema</a>
                         </li>
 
                     </ul>
@@ -81,22 +81,22 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="nav mt-3 text-center" id="menu">
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link active" aria-current="page" href="#" src="configuracao/empresa.php"> Serviços1</a>
+                        <a class="nav-link active" aria-current="page" href="#" src="../services/novoindex.php"> Serviços</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="configuracao/login.php"> Notas</a>
+                        <a class="nav-link" href="#" src="#"> Notas</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="configuracao/aplicativo.php"> Financeiro</a>
+                        <a class="nav-link" href="#" src="#"> Financeiro</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="configuracao/anexos.php"> Cadastros</a>
+                        <a class="nav-link" href="#" src="#"> Cadastros</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="configuracao/anexos.php"> Paginas</a>
+                        <a class="nav-link" href="#" src="#"> Paginas</a>
                     </li>
                     <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="configuracao/anexos.php"> Sistema</a>
+                        <a class="nav-link" href="#" src="#"> Sistema</a>
                     </li>
 
                 </ul>
@@ -108,7 +108,7 @@
         <div class="sidebar pt-2 d-none d-md-block" style="background-color: #13216A;">
             <a class="p-3" href="#"><img src="../img/meucontrole.png" width="120vh 120vw"></a>
             <div class="list-group mt-4" id="menu">
-                <a class="itemsiderbar   p-3" href="#" src="../services/">Serviços</a>
+                <a class="itemsiderbar   p-3" href="#" src="../services/novoindex.php">Serviços</a>
                 <a class="itemsiderbar   p-3" href="#" src="#!">Notas</a>
                 <a class="itemsiderbar   p-3" href="#" src="#">Financeiro</a>
                 <a class="itemsiderbar   p-3" href="#" src="#">Cadastros</a>
