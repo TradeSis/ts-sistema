@@ -175,24 +175,28 @@ select::-ms-expand {
 }
 
 .nav-link.active {
-  border-bottom: 3px solid #2E59D9;
+  
   border-radius: 3px 3px 0 0;
   color: #1B4D60;
   background-color: transparent;
 }
 
 .nav-link1{
-  background-color: #567381;
-  color: #FFF;
+  background-color: #EEEEEE; /* tab desativada */
+  color: #000;
   border-radius: 3px 3px 0 0;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  color: #000!important;
 }
 
 .nav-link1 a{
-  color: #FFF;
+  color: #000;
 }
 
 a.nav-link.nav-link1:hover{
-  color: #FFF;
+  color: #000;
 }
 
 a.nav-link.nav-link1.active:hover{
@@ -200,12 +204,13 @@ a.nav-link.nav-link1.active:hover{
 }
 
 .nav-link1.active{
-  background-color: #EEEEEE;
+  background-color: transparent;
   border-radius: 3px 3px 0 0;
-  border-bottom: 3px solid #EEEEEE;
-  border-top: 1px solid #567381;
-  border-left: 1px solid #567381;
-  border-right: 1px solid #567381;
+  
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  color: #000;
 }
 
 

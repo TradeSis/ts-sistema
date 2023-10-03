@@ -1,24 +1,23 @@
-<!doctype html>
-<html lang="pt-BR">
+<?php
+$URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="icon" href="../img/meucontrole_icon.png" type="image/png">
-    <title>meucontrole.pro</title>
-</head>
+
+?>
+
+
+<?php include 'novohead.php' ?>
 
 
 <style>
-    .nav-item .nav-link {
+   /*  .nav-item .nav-link {
         font-weight: 600;
         color: #ffffff;
-    }
+    } */
 
     .sidebar {
         height: 100vh;
-        width: 150px;
+        width: 120px;
         background: #ccc;
         transition: all 0.5s ease-in-out;
     }
@@ -29,14 +28,21 @@
         text-decoration: none;
     }
 
+    .itemsiderbar.active {
+        background-color: #ffffff;
+        color: #13216A;
+        text-decoration: none;
+        font-weight: 900;
+    }
+
     .itemsiderbar:hover,
     .itemsiderbar:focus {
-        color: #ffffff;
-        /* background-color: #d2f4ea; */
-        border-bottom: 2px solid #d2f4ea;
+        color: #13216A;
+        background-color: #ffffff;
         font-weight: 900;
-        width: 100px;
+        text-decoration: none;
     }
+
 </style>
 
 <body>
@@ -45,110 +51,91 @@
 
             <div class="row d-flex flex">
                 <div class="col-3 col-sm-3 ">
-                    <a class="navbar-brand" href="#"><img src="../img/meucontrole.png" width="120vh 120vw"></a>
+                    <a class="navbar-brand" href="#"><img src="../img/meucontrole.png" width="100vh 100vw"></a>
                 </div>
-                <div class="col-9 col-sm-9 text-end d-sm-none">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <!-- MENU MOBILE FIXO -->
-                <div class="col-sm-12 d-none d-sm-block">
-                    <ul class="col-sm-12 nav text-center" id="menu">
-                        <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link active " aria-current="page" href="#" src="../services/novoindex.php"> Serviços</a>
-                        </li>
-                        <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="../notas/index.php" > Notas</a>
-                        </li>
-                        <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="../financeiro/index.php"> Financeiro</a>
-                        </li>
-                        <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="../cadastros/index.php"> Cadastros</a>
-                        </li>
-                        <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="../paginas/index.php"> Paginas</a>
-                        </li>
-                        <li class="nav-item mt-1 col-2 ">
-                            <a class="nav-link" href="#" src="novoindex.php"> Sistema</a>
-                        </li>
+                <!-- MENU MOBILE -->
+                <div class="col-2 col-sm-5 "></div>
+                <div class="col-6 col-sm-4 text-end ">
+             
 
-                    </ul>
+                    <select class="form-select mt-2" id="link" style="color:#FFF; background-color: #13216A;border:none; border-bottom:2px solid #fff">
+                     
+                        <option value="<?php echo URLROOT ?>/services/novoindex.php" <?php if ($url == URLROOT . "/services/novoindex.php") {
+                                            echo " selected ";
+                                        } ?>>Serviços</option>
+                        <option value="<?php echo URLROOT ?>/notas/" <?php if ($url == URLROOT . "/notas/") {
+                                            echo " selected ";
+                                        } ?>>Notas</option>
+                        <option value="<?php echo URLROOT ?>/financeiro/" <?php if ($url == URLROOT . "/financeiro/") {
+                                            echo " selected ";
+                                        } ?>>Financeiro</option>
+                        <option value="<?php echo URLROOT ?>/cadastros/" <?php if ($url == URLROOT . "/cadastros/") {
+                                            echo " selected ";
+                                        } ?>>Cadastros</option>
+                        <option value="<?php echo URLROOT ?>/paginas/" <?php if ($url == URLROOT . "/paginas/") {
+                                            echo " selected ";
+                                        } ?>>Paginas</option>
+                        <option value="<?php echo URLROOT ?>/sistema/novoindex.php" <?php if ($url == URLROOT . "/sistema/novoindex.php") {
+                                            echo " selected ";
+                                        } ?>>Sistema</option>
+                    </select>
                 </div>
             </div>
-            <!-- MENU MOBILE FIXO ATIVADO POR BOTÂO-->
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="nav mt-3 text-center" id="menu">
-                    <li class="nav-item col-sm-2">
-                        <a class="nav-link active" aria-current="page" href="#" src="../services/novoindex.php"> Serviços</a>
-                    </li>
-                    <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="../notas/index.php"> Notas</a>
-                    </li>
-                    <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="../financeiro/index.php"> Financeiro</a>
-                    </li>
-                    <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="../cadastros/index.php" > Cadastros</a>
-                    </li>
-                    <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="../paginas/index.php"> Paginas</a>
-                    </li>
-                    <li class="nav-item col-sm-2">
-                        <a class="nav-link" href="#" src="novoindex.php"> Sistema</a>
-                    </li>
 
-                </ul>
-            </div>
         </div>
     </nav>
 
-    <div class="d-flex" style="background-color: #EEEEEE;">
+    <div class="d-flex" > <!-- essa div não fecha porque, abaixo vai ser carregado o conteudo dos index -->
         <div class="sidebar pt-2 d-none d-md-block" style="background-color: #13216A;">
-            <a class="p-3" href="#"><img src="../img/meucontrole.png" width="120vh 120vw"></a>
+            <a href="#"><img src="../img/meucontrole.png" width="100vh 100vw"></a>
             <div class="list-group mt-4" id="menu">
-                <a class="itemsiderbar   p-3" href="#" src="../services/novoindex.php">Serviços</a>
-                <a class="itemsiderbar   p-3" href="#" src="../notas/index.php" >Notas</a>
-                <a class="itemsiderbar   p-3" href="#" src="../financeiro/index.php" >Financeiro</a>
-                <a class="itemsiderbar   p-3" href="#" src="../cadastros/index.php">Cadastros</a>
-                <a class="itemsiderbar   p-3" href="#" src="../paginas/index.php" >Paginas</a>
-                <a class="itemsiderbar   p-3" href="#" src="novoindex.php">Sistema</a>
+
+                <a class="itemsiderbar <?php if ($url == URLROOT . "/services/novoindex.php") {
+                                            echo " active ";
+                                        } ?> p-3" href="<?php echo URLROOT ?>/services/novoindex.php">Serviços</a>
+
+                <a class="itemsiderbar <?php if ($url == URLROOT . "/notas/") {
+                                            echo " active ";
+                                        } ?> p-3" href="<?php echo URLROOT ?>/notas/">Notas</a>
+
+                <a class="itemsiderbar <?php if ($url == URLROOT . "/financeiro/") {
+                                            echo " active ";
+                                        } ?> p-3" href="<?php echo URLROOT ?>/financeiro/">Financeiro</a>
+
+                <a class="itemsiderbar <?php if ($url == URLROOT . "/cadastros/") {
+                                            echo " active ";
+                                        } ?> p-3" href="<?php echo URLROOT ?>/cadastros/">Cadastros</a>
+
+                <a class="itemsiderbar <?php if ($url == URLROOT . "/paginas/") {
+                                            echo " active ";
+                                        } ?> p-3" href="<?php echo URLROOT ?>/paginas/">Paginas</a>
+
+                <a class="itemsiderbar <?php if ($url == URLROOT . "/sistema/novoindex.php") {
+                                            echo " active ";
+                                        } ?> p-3" href="<?php echo URLROOT ?>/sistema/novoindex.php">Sistema</a>
+
             </div>
         </div>
-        <div class="container-fluid p-0 m-0">
-            <div class="row p-0 m-0" style="width: 100%; height: 100vh;">
-                <iframe class="container-fluid" id="myIframe" src="iframe.php"></iframe>
-            </div>
-        </div>
 
-    </div>
+        <!--</div> CONTEUDO DOS INDEX -->
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <!-- JQUERY TEMPORARIO -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
 
-
-            // SELECT MENU
-            $("#menu a").click(function() {
-
-                var value = $(this).text();
-                value = $(this).attr('src');
-
-                //IFRAME TAG
-                if (value != '') {
-                    $("#myIframe").attr('src', value);
-                }
-
-            })
-
-
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+                $('#link').on('change', function() {
+                    var url = $(this).val();
+                    if (url) {
+                        window.open(url, '_self');
+                    }
+                    return false;
+                });
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 </body>
 
