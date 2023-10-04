@@ -75,7 +75,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
     </nav>
 
     <div class="d-flex" > <!-- essa div não fecha porque, abaixo vai ser carregado o conteudo dos index -->
-        <div class="sidebar pt-2 d-none d-md-block" style="background-color: #13216A;">
+        <div class="sidebar pt-2 d-none d-md-none d-lg-block" style="background-color: #13216A;">
             <a href="#"><img src="../img/meucontrole.png" width="100vh 100vw"></a>
             <div class="list-group mt-4" id="menu">
 
