@@ -10,10 +10,6 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 
 
 <style>
-   /*  .nav-item .nav-link {
-        font-weight: 600;
-        color: #ffffff;
-    } */
 
     .sidebar {
         height: 100vh;
@@ -46,18 +42,13 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 </style>
 
 <body>
+    <!-- MENU MOBILE -->
     <nav class="navbar-dark d-md-none p-2" style="background-color: #13216A;">
-        <div class="container-fluid">
-
             <div class="row d-flex flex">
-                <div class="col-3 col-sm-3 ">
+                <div class="col-6 col-sm-8 ">
                     <a class="navbar-brand" href="#"><img src="../img/meucontrole.png" width="100vh 100vw"></a>
                 </div>
-                <!-- MENU MOBILE -->
-                <div class="col-2 col-sm-5 "></div>
                 <div class="col-6 col-sm-4 text-end ">
-             
-
                     <select class="form-select mt-2" id="link" style="color:#FFF; background-color: #13216A;border:none; border-bottom:2px solid #fff">
                      
                         <option value="<?php echo URLROOT ?>/services/novoindex.php" <?php if ($url == URLROOT . "/services/novoindex.php") {
@@ -81,8 +72,6 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                     </select>
                 </div>
             </div>
-
-        </div>
     </nav>
 
     <div class="d-flex" > <!-- essa div não fecha porque, abaixo vai ser carregado o conteudo dos index -->
@@ -116,7 +105,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 
             </div>
         </div>
-
+       
         <!--</div> CONTEUDO DOS INDEX -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

@@ -1,6 +1,6 @@
 <?php
 include_once __DIR__ . "/../config.php";
-
+include_once "novohead.php";
 include_once "novopainel.php";
 include_once ROOT . "/sistema/database/loginAplicativo.php";
 $nivelMenuLogin = null;
@@ -23,35 +23,10 @@ $url = $_SERVER['QUERY_STRING'];
 ?>
 
 
-<div class="container-fluid" >
-    <div class="row">
-        <div class="col-6 col-md-8 ">
-        </div>
-        <div class="col-6 col-md-4" >
-            <h5 style="text-align:right">PERFIL</h5>
-        </div>
-    </div>
-                   
-    <select class="form-select d-md-none position-sticky" id="linksub" style="color:#000; width:200px;text-align:center; margin-left:auto;margin-right:auto;margin-top:-30px">         
-        <option value="<?php echo URLROOT ?>/sistema/novoindex.php?tab=empresa" 
-            <?php if ($url == "tab=empresa") {echo " selected ";} ?>
-        >Empresa</option>
+<div class="container-fluid">
 
-        <option value="<?php echo URLROOT ?>/sistema/novoindex.php?tab=login" 
-            <?php if ($url == "tab=login") {echo " selected ";} ?>
-        >Login</option>
-
-        <option value="<?php echo URLROOT ?>/sistema/novoindex.php?tab=aplicativo" 
-            <?php if ($url == "tab=aplicativo") {echo " selected ";} ?>
-        >Aplicativo</option>
-
-        <option value="<?php echo URLROOT ?>/sistema/novoindex.php?tab=anexos" 
-            <?php if ($url == "tab=anexos") {echo " selected ";} ?>
-        >Anexos</option>
-    </select>
-                    
-    <div class="row border-bottom d-none d-md-block fixed-top">
-        <div class="col-md-12 d-flex justify-content-center">
+    <div class="row ">
+        <div class="col-md-9 d-none d-md-none d-lg-block" style="background-color: #13216A;">
             <ul class="nav a" id="myTabs">
 
                 <?php
@@ -95,8 +70,44 @@ $url = $_SERVER['QUERY_STRING'];
 
             </ul>
         </div>
-    </div>
+        <!--Essa coluna só vai aparecer em dispositivo mobile-->
+        <div class="col-7 col-md-9 d-md-block d-lg-none" style="background-color: #13216A;">
+            <select class="form-select mt-2" id="linksub" style="color:#000; width:160px;text-align:center;">
+                <option value="<?php echo URLROOT ?>/sistema/novoindex.php?tab=empresa" <?php if ($url == "tab=empresa") {
+                                                                                            echo " selected ";
+                                                                                        } ?>>Empresa</option>
 
+                <option value="<?php echo URLROOT ?>/sistema/novoindex.php?tab=login" <?php if ($url == "tab=login") {
+                                                                                            echo " selected ";
+                                                                                        } ?>>Login</option>
+
+                <option value="<?php echo URLROOT ?>/sistema/novoindex.php?tab=aplicativo" <?php if ($url == "tab=aplicativo") {
+                                                                                                echo " selected ";
+                                                                                            } ?>>Aplicativo</option>
+
+                <option value="<?php echo URLROOT ?>/sistema/novoindex.php?tab=anexos" <?php if ($url == "tab=anexos") {
+                                                                                            echo " selected ";
+                                                                                        } ?>>Anexos</option>
+            </select>
+        </div>
+
+        <div class="col-5 col-md-3 " style="text-align:right;background-color: #13216A;">
+
+            <button class="btn text-white  position-relative dropdown-toggle mt-2 mr-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="bi bi-person-fill"></i>&#32;Lucas
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    99+
+                    <span class="visually-hidden">unread messages</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Mensagens</a>
+                <a class="dropdown-item" href="#">Perfil</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Logout</a>
+            </div>
+
+        </div>
+    </div>
 
     <?php
 
@@ -131,8 +142,6 @@ $url = $_SERVER['QUERY_STRING'];
     if ($src !== "") {
 
     ?>
-
-
         <div class="container-fluid p-0 m-0">
             <iframe class="row p-0 m-0" id="iFrameTab" style="width: 100%; height: 82vh; border:none" src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
         </div>

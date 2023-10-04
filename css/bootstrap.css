@@ -182,13 +182,12 @@ select::-ms-expand {
 }
 
 .nav-link1{
-  background-color: #EEEEEE; /* tab desativada */
-  color: #000;
+  background-color: transparent; /* tab desativada */
   border-radius: 3px 3px 0 0;
-  border-top: 1px solid #000;
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-  color: #000!important;
+  /* border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff; */
+  color: #fff!important;
 }
 
 .nav-link1 a{
@@ -204,13 +203,15 @@ a.nav-link.nav-link1.active:hover{
 }
 
 .nav-link1.active{
-  background-color: transparent;
+  background-color: #fff;
   border-radius: 3px 3px 0 0;
   
-  border-top: 1px solid #000;
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-  color: #000;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-bottom: 5px solid #fff;
+  font-weight: 400;
+  color: #13216A!important;
 }
 
 
