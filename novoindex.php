@@ -152,7 +152,7 @@ if ($nivelMenuLogin == null) {
             }
             if ($src !== "") { ?>
                 <div class="container-fluid p-0 m-0">
-                    <iframe class="row p-0 m-0" id="iFrameTab" style="width: 100%; height: 82vh; border:none" src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
+                    <iframe class="row p-0 m-0" style="width: 100%; height: 92vh; border:none" src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
                 </div>
             <?php } ?>
 
