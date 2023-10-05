@@ -18,11 +18,11 @@ $URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 ?>
 
-<link href="<?php echo URLROOT ?>/sistema/css/painel.css" rel="stylesheet" type="text/css">
+<!-- MENU PAINEL -->
 
-<div class="sidebar pt-2 d-none d-md-none d-lg-block" style="background-color: #13216A;">
-    <a href="#"><img src="../img/meucontrole.png" width="100vh 100vw"></a>
-    <div class="list-group mt-4" id="menu">
+    <div class="sidebar pt-2 d-none d-md-none d-lg-block" style="background-color: #13216A;">
+        <a href="#"><img src="../img/meucontrole.png" width="100vh 100vw"></a>
+        <div class="list-group mt-4" id="menu">
         <?php
         if (in_array("Services", $aplicativo)) { ?>
             <a class="itemsiderbar <?php if ($url == URLROOT . "/services/novoindex.php") {echo " active ";} ?> p-3" 
@@ -52,6 +52,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
             <a class="itemsiderbar <?php if ($url == URLROOT . "/sistema/novoindex.php") {echo " active ";} ?> p-3" 
             href="<?php echo URLROOT ?>/sistema/novoindex.php">Sistema</a>
         <?php }  ?>
+        </div>
     </div>
-</div>
+<!-- MENU PAINEL -->
 

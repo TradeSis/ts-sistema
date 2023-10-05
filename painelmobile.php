@@ -2,8 +2,9 @@
 <?php $URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 ?>
+
 <!-- MENU MOBILE -->
-<nav class="navbar-dark d-lg-none p-2" style="background-color: #13216A;">
+        <nav class="navbar-dark d-lg-none p-2" style="background-color: #13216A;">
             <div class="row d-flex flex">
                 <div class="col-6 col-sm-8 ">
                     <a class="navbar-brand" href="#"><img src="../img/meucontrole.png" width="100vh 100vw"></a>
@@ -33,6 +34,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                     </select>
                 </div>
             </div>
-    </nav>
+        </nav>
 
-    <script src="js/mobileSelectTabs.js"></script>
+        
+<!-- MENU MOBILE -->        
