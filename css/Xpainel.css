@@ -61,7 +61,7 @@
     /* display: inline-block; */
     background:#333;
     color:#fff;
-    background-color: #12192C;
+    background-color: #13216A;
     font-size: 17px;
     border-radius: 5px;
     padding: 8px 25px;
@@ -76,7 +76,7 @@
     transform: scale(1.03);
 }
 .Menu {
-    background-color: #12192C;
+    background-color: #13216A;
     color: #FFF;
     height: 50px;
 }

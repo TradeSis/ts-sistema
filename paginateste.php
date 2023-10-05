@@ -1,26 +1,3 @@
-<?php
-include_once __DIR__ . "/../config.php";
-
-
-include_once "painel.php";
-include_once ROOT . "/sistema/database/loginAplicativo.php";
-$nivelMenuLogin = null;
-
-if ($_SESSION["idEmpresa"] == 1) { // Proteção
-    $nivelMenuLogin = buscaLoginAplicativo($_SESSION['idLogin'], 'Sistema'); //Sistema
-}
-
-$configuracao = 1;
-$nivelMenu = 0;
-
-if ($nivelMenuLogin == null) {
-    return;
-} else {
-    $nivelMenu = $nivelMenuLogin['nivelMenu'];
-}
-
-
-?>
 
 
 <div class="container-fluid mt-1">
@@ -41,7 +18,7 @@ if ($nivelMenuLogin == null) {
                 ?>
 
 
-                <?php if ($nivelMenu == 5) {
+                <?php 
                     if ($tab == '') {
                         $tab = 'empresa';
                     } ?>
@@ -51,31 +28,31 @@ if ($nivelMenuLogin == null) {
                         } ?>" href="?tab=empresa"
                             role="tab">Empresa</a>
                     </li>
-                <?php }
-                if ($nivelMenu == 5) { ?>
+                
+               
                     <li class="nav-item mr-1 ">
                         <a class="nav-link1 nav-link <?php if ($tab == "login") {
                             echo " active ";
                         } ?>" href="?tab=login"
                             role="tab">Login</a>
                     </li>
-                <?php }
-                if ($nivelMenu == 5) { ?>
+               
+                
                     <li class="nav-item mr-1 ">
                         <a class="nav-link1 nav-link <?php if ($tab == "aplicativo") {
                             echo " active ";
                         } ?>"
                             href="?tab=aplicativo" role="tab">Aplicativos</a>
                     </li>
-                <?php }
-             if ($nivelMenu==5) { ?>
+                
+        
                 <li class="nav-item mr-1 ">
                     <a class="nav-link1 nav-link <?php if ($tab=="anexos") {echo " active ";} ?>" 
                         href="?tab=anexos" 
                         role="tab"                        
                         >Anexos</a>
                 </li>
-            <?php } ?>
+          
 
 
             </ul>
@@ -138,10 +115,12 @@ if ($src !== "") {
 
     <body>
 
-        <div class="diviFrame">
-            <iframe class="iFrame container-fluid " id="iFrameTab"
-                src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
-        </div>
+        
+        <div class="row" style="width: 100%; height: 90vh;">
+
+                    <iframe class="container-fluid" id="myIframe" src="../sistema/<?php echo $src ?>"></iframe>
+
+                </div>
         <?php
 }
 ?>

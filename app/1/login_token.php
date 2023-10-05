@@ -10,28 +10,28 @@ $google2fa = new \PragmaRX\Google2FA\Google2FA();
 
 
 //LOG
-$LOG_CAMINHO=defineCaminhoLog();
+$LOG_CAMINHO = defineCaminhoLog();
 if (isset($LOG_CAMINHO)) {
-    $LOG_NIVEL=defineNivelLog();
-    $identificacao=date("dmYHis")."-PID".getmypid()."-"."login_token";
-    if(isset($LOG_NIVEL)) {
-        if ($LOG_NIVEL>=1) {
-            $arquivo = fopen(defineCaminhoLog()."sistema_".date("dmY").".log","a");
+    $LOG_NIVEL = defineNivelLog();
+    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "login_token";
+    if (isset($LOG_NIVEL)) {
+        if ($LOG_NIVEL >= 1) {
+            $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
         }
     }
-    
+
 }
-if(isset($LOG_NIVEL)) {
-    if ($LOG_NIVEL==1) {
-        fwrite($arquivo,$identificacao."\n");
+if (isset($LOG_NIVEL)) {
+    if ($LOG_NIVEL == 1) {
+        fwrite($arquivo, $identificacao . "\n");
     }
-    if ($LOG_NIVEL>=2) {
-        fwrite($arquivo,$identificacao."-ENTRADA->".json_encode($jsonEntrada)."\n");
+    if ($LOG_NIVEL >= 2) {
+        fwrite($arquivo, $identificacao . "-ENTRADA->" . json_encode($jsonEntrada) . "\n");
     }
 }
 //LOG
 
-if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!isset($jsonEntrada["token"])||$jsonEntrada["loginNome"]==""||$jsonEntrada["nomeEmpresa"]==""||$jsonEntrada["token"]=="") {
+if (!isset($jsonEntrada["loginNome"]) || !isset($jsonEntrada["nomeEmpresa"]) || !isset($jsonEntrada["token"]) || $jsonEntrada["loginNome"] == "" || $jsonEntrada["nomeEmpresa"] == "" || $jsonEntrada["token"] == "") {
     $jsonSaida = array(
         "status" => 400,
         "retorno" => "Faltou dados de login"
@@ -49,10 +49,10 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
                 WHERE nomeEmpresa='$nomeEmpresa' AND (email = '$loginNome' OR loginNome = '$loginNome' OR cpfCnpj = '$loginNome')";
     //echo $sql;
 
-     //LOG
-     if(isset($LOG_NIVEL)) {
-        if ($LOG_NIVEL>=3) {
-            fwrite($arquivo,$identificacao."-SQL->".$sql."\n");
+    //LOG
+    if (isset($LOG_NIVEL)) {
+        if ($LOG_NIVEL >= 3) {
+            fwrite($arquivo, $identificacao . "-SQL->" . $sql . "\n");
         }
     }
     //LOG
@@ -74,7 +74,7 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
 
                 //Busca idCliente no banco da empresa
                 $conexao2 = conectaMysql($loginNomes["idEmpresa"]);
-                $sql2 = "SELECT usuario.idCliente FROM usuario where usuario.idLogin = " . $loginNomes["idLogin"];
+                $sql2 = "SELECT usuario.idCliente, usuario.idUsuario FROM usuario where usuario.idLogin = " . $loginNomes["idLogin"];
                 $buscar2 = mysqli_query($conexao2, $sql2);
                 $dadosUsuario = mysqli_fetch_assoc($buscar2);
 
@@ -84,6 +84,7 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
                     "nomeEmpresa" => $loginNomes["nomeEmpresa"],
                     "idEmpresa" => $loginNomes["idEmpresa"],
                     "idCliente" => $dadosUsuario["idCliente"],
+                    "idUsuario" => $dadosUsuario["idUsuario"],
                     "timeSessao" => $loginNomes["timeSessao"],
                     "statusLogin" => $loginNomes["statusLogin"],
                     "email" => $loginNomes["email"],
@@ -104,9 +105,9 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
 }
 
 //LOG
-if(isset($LOG_NIVEL)) {
-    if ($LOG_NIVEL>=2) {
-        fwrite($arquivo,$identificacao."-SAIDA->".json_encode($jsonSaida)."\n\n");
+if (isset($LOG_NIVEL)) {
+    if ($LOG_NIVEL >= 2) {
+        fwrite($arquivo, $identificacao . "-SAIDA->" . json_encode($jsonSaida) . "\n\n");
     }
 }
 //LOG
