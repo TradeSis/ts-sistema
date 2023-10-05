@@ -2,9 +2,14 @@ html{
   background-color: #fff;
 }
 
+*{
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px;
+}
+
 .diviFrame {
   padding-left: 0px;
-  background-color: #fff;
+/*  background-color: #fff;  - HELIO */
   overflow:hidden; 
   height: 80vh;
 }
@@ -88,10 +93,10 @@ html{
   }
   
   
-  .fonteCorpo{
-   font-family:  'Inter', sans-serif !important;
+  .fonteCorpo{ /* helio 051023 - retirei tudo */
+   /* font-family:  'Inter' !important;/
    /*font-weight:500; */
-   font-size: 13px;
+  /* font-size: 13px; */
    /* color:rgb(75, 75, 75); */
   
   }
@@ -133,7 +138,7 @@ html{
 
 
 .data{
-    margin-top: -2px;
+   /* margin-top: -2px; */
   }
   @media (max-width: 576px) {
     .form-group-select{
