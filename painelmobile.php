@@ -35,15 +35,4 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
             </div>
     </nav>
 
-<script>
-    //Pega o valor do select e passa para url(js puro)
-    var select = document.getElementById('tabaplicativosmobile')
-    select.addEventListener('change', function(){
-    //alert(select.value)
-    var url = select.value
-        if (url) {
-            window.open(url, '_self');
-            }
-        return false;
-    })
-</script>
+    <script src="js/mobileSelectTabs.js"></script>

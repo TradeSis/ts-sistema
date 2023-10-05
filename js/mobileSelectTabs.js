@@ -11,6 +11,18 @@ $(document).ready(function () {
     });
 });
 
+//SISTEMA painelmobile.php
+  //Pega o valor do select e passa para url(js puro)
+  var select = document.getElementById('tabaplicativosmobile')
+  select.addEventListener('change', function(){
+  //alert(select.value)
+  var url = select.value
+      if (url) {
+          window.open(url, '_self');
+          }
+      return false;
+  })
+  
 //SERVICES
 //Pega o valor do select e passa para url(jquery)
 $(document).ready(function () {
@@ -22,3 +34,4 @@ $(document).ready(function () {
         return false;
     });
 });
+
