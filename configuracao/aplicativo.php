@@ -25,7 +25,7 @@ $aplicativos = buscaAplicativos();
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row align-items-center"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3 text-start">
                 <!-- TITULO -->
                 <h2 class="tituloTabela">Aplicativos</h2>
             </div>
@@ -34,7 +34,7 @@ $aplicativos = buscaAplicativos();
                 <div class="input-group">
                     <input type="text" class="form-control" id="buscaDemanda" placeholder="Buscar por id ou titulo">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" id="buscar" type="button" style="margin-top:10px;">
+                        <button class="btn btn-primary" id="buscar" type="button">
                             <span style="font-size: 20px;font-family: 'Material Symbols Outlined'!important;"
                                 class="material-symbols-outlined">search</span>
                         </button>
@@ -42,7 +42,7 @@ $aplicativos = buscaAplicativos();
                 </div>
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="aplicativo_inserir.php" role="button" class="btn btn-success"><i
                         class="bi bi-plus-square"></i>&nbsp Novo</a>
             </div>
@@ -51,12 +51,11 @@ $aplicativos = buscaAplicativos();
         <div class="table mt-2" style="width: 100%; height: 76vh; overflow-y:scroll; overflow-x:auto;">
             <table class="table table-hover table-sm align-middle">
                 <thead class="cabecalhoTabela">
-                    <tr style="background-color:#13216A;position: sticky;top:0px;">
+                    <tr id="titulodetabelafixo">
                         <th>Aplicativo</th>
                         <th>Caminho</th>
                         <th>Imagem</th>
                         <th>Ações</th>
-
                     </tr>
                 </thead>
 

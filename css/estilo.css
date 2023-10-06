@@ -1,0 +1,20 @@
+
+
+
+
+
+
+
+
+/* ESTILOS DE TABELAS */
+
+#titulodetabelafixo{
+    background-color:#13216A;
+    color: #fff;
+    top:0px;
+    position: sticky;
+}
+  
+.cabecalhoTabela tr th{
+    font-weight: 500;
+  }

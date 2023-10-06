@@ -252,7 +252,8 @@ padding: 0.5em;
   color:#13216A;
 }
 
-.cabecalhoTabela{
+/* REMOVIDO  para estilo.css*/
+/* .cabecalhoTabela{
   background-color: #13216A; 
   color:#fff;
   font-weight: 300;
@@ -260,7 +261,7 @@ padding: 0.5em;
 
 .cabecalhoTabela tr th{
   font-weight: 500;
-}
+} */
 /*  */
 .formContainer{
   margin-top:10px;

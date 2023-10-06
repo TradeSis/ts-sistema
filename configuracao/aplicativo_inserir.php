@@ -66,8 +66,6 @@ include_once('../novohead.php');
         </form>
 
     </div>
-
-    </div>
    
     <!-- LOCAL PARA COLOCAR OS JS -->
 
