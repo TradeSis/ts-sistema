@@ -1,7 +1,7 @@
 
 <!-- PERFIL -->
 
-        <div class="col-5 col-md-3 col-lg-2" style="text-align:right;background-color: #13216A;">
+        <div class="col-5 col-md-3 col-lg-2 fundoAbas" style="text-align:right;">
             <button class="btn text-white  dropdown-toggle position-relative mt-2 mr-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-person-fill"></i>&#32;<?php echo $logado ?>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

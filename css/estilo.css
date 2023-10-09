@@ -1,20 +1,35 @@
+html {
+    background-color: #fff;
+}
 
+html,
+body {
+    height: 100vh !important;
+    margin: 0 !important;
+}
 
+* {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px;
+}
 
-
+/* FUNDO ABAS */
+.fundoAbas{
+    background-color: #13216A;
+}
 
 
 
 
 /* ESTILOS DE TABELAS */
 
-#titulodetabelafixo{
-    background-color:#13216A;
+#titulodetabelafixo {
+    background-color: #13216A;
     color: #fff;
-    top:0px;
+    top: 0px;
     position: sticky;
 }
-  
-.cabecalhoTabela tr th{
+
+.cabecalhoTabela tr th {
     font-weight: 500;
-  }
+}
