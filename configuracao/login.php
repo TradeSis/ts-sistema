@@ -47,7 +47,7 @@ $logins = buscaLogins();
             </div>
         </div>
 
-        <div class="table mt-2" style="width: 100%; height: 76vh; overflow-y:scroll; overflow-x:auto;">
+        <div class="table mt-2 divtabela">
             <table class="table table-hover table-sm align-middle">
                 <thead class="cabecalhoTabela">
                     <tr id="titulodetabelafixo">

@@ -109,7 +109,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
         </form>
         <button data-classe="classe1" id="btn1" class="btn btn-sm btn-danger mb-3">Alterar Senha</button>
 
-        <div class="table mt-2" style="width: 100%; height: 76vh; overflow-y:scroll; overflow-x:auto;">
+        <div class="table mt-2 divtabela">
             <table class="table table-hover table-sm align-middle">
                 <thead class="cabecalhoTabela">
                     <tr id="titulodetabelafixo">
