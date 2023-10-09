@@ -1,6 +1,6 @@
 <?php
 include_once __DIR__ . "/../config.php";
-include_once "novohead.php";
+include_once "header.php";
 include_once ROOT . "/sistema/database/loginAplicativo.php";
 $nivelMenuLogin = null;
 
@@ -105,7 +105,7 @@ if ($nivelMenuLogin == null) {
                     </select>
                 </div>
                 
-                <?php include 'novoperfil.php' ?>
+                <?php include_once  ROOT . "/sistema/novoperfil.php"; ?>
 
             </div><!--row-->
          

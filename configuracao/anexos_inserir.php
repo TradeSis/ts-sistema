@@ -1,6 +1,6 @@
 <?php
 // Lucas 06102023 padrao novo
-include_once('../novohead.php');
+include_once('../header.php');
 ?>
 <!doctype html>
 <html lang="pt-BR">

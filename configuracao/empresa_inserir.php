@@ -2,7 +2,7 @@
 // Lucas 06102023 padrao novo
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
-include_once('../novohead.php');
+include_once('../header.php');
 ?>
 <!doctype html>
 <html lang="pt-BR">

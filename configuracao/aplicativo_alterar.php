@@ -1,6 +1,6 @@
 <?php
 //Lucas 04042023 criado
-include_once('../novohead.php');
+include_once('../header.php');
 include_once('../database/aplicativo.php');
 $aplicativo = buscaAplicativos($_GET['idAplicativo']);
 //echo json_encode($aplicativo);

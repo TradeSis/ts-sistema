@@ -2,7 +2,7 @@
 // Lucas 06102023 padrao novo
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
-include_once(__DIR__ . '/../novohead.php');
+include_once(__DIR__ . '/../header.php');
 include_once(__DIR__ . '/../database/empresa.php');
 
 $empresas = buscaEmpresas();

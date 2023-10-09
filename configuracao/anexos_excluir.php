@@ -1,6 +1,6 @@
 <?php
 // Lucas 06102023 padrao novo
-include_once('../novohead.php');
+include_once('../header.php');
 include_once('../database/anexos.php');
 
 $anexo = buscaAnexos($_GET['idAnexo']);

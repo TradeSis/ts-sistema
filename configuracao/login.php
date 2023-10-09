@@ -3,7 +3,7 @@
 //Lucas 09032023 - adicionado um segundo parametro no buscaUsuario 
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
-include_once(__DIR__ . '/../novohead.php');
+include_once(__DIR__ . '/../header.php');
 include_once(__DIR__ . '/../database/login.php');
 include_once(__DIR__ . '/../database/empresa.php');
 $logins = buscaLogins();

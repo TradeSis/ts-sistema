@@ -23,7 +23,7 @@ $(document).ready(function () {
       return false;
   })
   
-//SERVICES
+//SERVICES subtabSistema
 //Pega o valor do select e passa para url(jquery)
 $(document).ready(function () {
     $('#subtabServices').on('change', function () {
@@ -35,3 +35,15 @@ $(document).ready(function () {
     });
 });
 
+//CADASTROS 
+//Pega o valor do select e passa para url(jquery)
+$(document).ready(function () {
+    $('#subtabCadastros').on('change', function () {
+        alert('oi')
+        var url = $(this).val();
+        if (url) {
+            window.open(url, '_self');
+        }
+        return false;
+    });
+});

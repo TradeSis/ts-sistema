@@ -1,5 +1,5 @@
 <?php 
-include_once 'novohead.php';
+include_once 'header.php';
 include_once ROOT . "/sistema/database/aplicativo.php";
 $aplicativos = buscaAplicativosMenu($_SESSION['idLogin']);
 

@@ -1,7 +1,7 @@
 <?php
 //Helio 05102023 padrao novo
 //Lucas 04042023 criado
-include_once(__DIR__ . '/../novohead.php');
+include_once(__DIR__ . '/../header.php');
 include_once(__DIR__ . '/../database/aplicativo.php');
 
 $aplicativos = buscaAplicativos();

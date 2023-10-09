@@ -2,7 +2,7 @@
 // Lucas 06102023 padrao novo
 //Lucas 04042023 criado
 
-include_once('../novohead.php');
+include_once('../header.php');
 include_once('../database/loginAplicativo.php');
 include_once('../database/login.php');
 include_once('../database/aplicativo.php');
