@@ -13,7 +13,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                 
                     <select class="form-select mt-2" id="tabaplicativosmobile" style="color:#FFF; background-color: #13216A;border:none; border-bottom:2px solid #fff">
                      
-                        <option value="<?php echo URLROOT ?>/services/novoindex.php" <?php if ($url == URLROOT . "/services/novoindex.php") {
+                        <option value="<?php echo URLROOT ?>/services/" <?php if ($url == URLROOT . "/services/") {
                                             echo " selected ";
                                         } ?>>Serviços</option>
                         <option value="<?php echo URLROOT ?>/notas/" <?php if ($url == URLROOT . "/notas/") {
@@ -28,7 +28,7 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                         <option value="<?php echo URLROOT ?>/paginas/" <?php if ($url == URLROOT . "/paginas/") {
                                             echo " selected ";
                                         } ?>>Paginas</option>
-                        <option value="<?php echo URLROOT ?>/sistema/novoindex.php" <?php if ($url == URLROOT . "/sistema/novoindex.php") {
+                        <option value="<?php echo URLROOT ?>/sistema/" <?php if ($url == URLROOT . "/sistema/") {
                                             echo " selected ";
                                         } ?>>Sistema</option>
                     </select>

@@ -39,7 +39,42 @@ $(document).ready(function () {
 //Pega o valor do select e passa para url(jquery)
 $(document).ready(function () {
     $('#subtabCadastros').on('change', function () {
-        alert('oi')
+        var url = $(this).val();
+        if (url) {
+            window.open(url, '_self');
+        }
+        return false;
+    });
+});
+
+//NOTAS 
+//Pega o valor do select e passa para url(jquery)
+$(document).ready(function () {
+    $('#subtabNotas').on('change', function () {
+        var url = $(this).val();
+        if (url) {
+            window.open(url, '_self');
+        }
+        return false;
+    });
+});
+
+//FINANCEIRO
+//Pega o valor do select e passa para url(jquery)
+$(document).ready(function () {
+    $('#subtabFinanceiro').on('change', function () {
+        var url = $(this).val();
+        if (url) {
+            window.open(url, '_self');
+        }
+        return false;
+    });
+});
+
+//PAGINAS 
+//Pega o valor do select e passa para url(jquery)
+$(document).ready(function () {
+    $('#subtabPaginas').on('change', function () {
         var url = $(this).val();
         if (url) {
             window.open(url, '_self');

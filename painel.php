@@ -25,8 +25,8 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
         <div class="list-group mt-4" id="menu">
         <?php
         if (in_array("Services", $aplicativo)) { ?>
-            <a class="itemsiderbar <?php if ($url == URLROOT . "/services/novoindex.php") {echo " active ";} ?> p-3" 
-            href="<?php echo URLROOT ?>/services/novoindex.php">Serviços</a>
+            <a class="itemsiderbar <?php if ($url == URLROOT . "/services/") {echo " active ";} ?> p-3" 
+            href="<?php echo URLROOT ?>/services/">Serviços</a>
         <?php }
         if (in_array("Notas", $aplicativo)) { ?>
             <a class="itemsiderbar <?php if ($url == URLROOT . "/notas/") {echo " active ";} ?> p-3" 
