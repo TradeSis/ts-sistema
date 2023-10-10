@@ -25,7 +25,7 @@ $anexo = buscaAnexos($_GET['idAnexo']);
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
                 <h2 class="tituloTabela">Excluir Empresa</h2>
             </div>
@@ -33,7 +33,7 @@ $anexo = buscaAnexos($_GET['idAnexo']);
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="/sistema/configuracao/anexos.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -44,12 +44,12 @@ $anexo = buscaAnexos($_GET['idAnexo']);
                 <label class='control-label' for='inputNormal'></label>
                 <div class="for-group">
                     <input type="text" class="form-control" name="nomeAnexo" value="<?php echo $anexo['nomeAnexo'] ?>">
-                    <input type="text" class="form-control" name="idAnexo" value="<?php echo $anexo['idAnexo'] ?>" style="display: none">
+                    <input type="hidden" class="form-control" name="idAnexo" value="<?php echo $anexo['idAnexo'] ?>">
                 </div>
 
             </div>
 
-            <div style="text-align:right; margin-top:20px">
+            <div class="text-end mt-4">
                 <button type="submit" id="botao" class="btn btn-sm btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>
             </div>
         </form>

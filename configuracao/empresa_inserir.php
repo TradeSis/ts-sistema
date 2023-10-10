@@ -24,7 +24,7 @@ include_once('../header.php');
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
                 <h2 class="tituloTabela">Inserir Empresa</h2>
             </div>
@@ -32,7 +32,7 @@ include_once('../header.php');
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="/sistema/configuracao/empresa.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -40,8 +40,8 @@ include_once('../header.php');
         <form action="../database/empresa.php?operacao=inserir" method="post">
             <div class="row">
                 <div class="col-md-10 form-group">
-                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome da Empresa</label>
                     <div class="for-group">
+                        <label class='control-label' for='inputNormal'>Nome da Empresa</label>
                         <input type="text" class="form-control" name="nomeEmpresa" autocomplete="off" required>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ include_once('../header.php');
                 </div>
             </div>
 
-            <div style="text-align:right; margin-top:20px">
+            <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
             </div>
         </form>

@@ -31,7 +31,7 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
                 <h2 class="tituloTabela">Alterar Usuario/Aplicativo</h2>
             </div>
@@ -39,7 +39,7 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -49,22 +49,22 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
+                        <label class='control-label' for='inputNormal'>Usuário</label>
                         <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
-                        <input type="text" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>" hidden>
+                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>">
                     </div>
                 </div>
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
+                        <label class='control-label' for='inputNormal'>Aplicativo</label>
                         <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>" readonly>
-                        <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>" hidden>
+                        <input type="hidden" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
                     </div>
                 </div>
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -15px;">Nivel</label>
-                        <select class="form-control" style="padding-right: 50px;" name="nivelMenu">
+                        <label class='control-label' for='inputNormal'>Nivel</label>
+                        <select class="form-control" name="nivelMenu">
                             <option <?php if ($usuarioaplicativo['nivelMenu'] == "1") {
                                         echo "selected";
                                     } ?> value="1">1</option>
@@ -85,7 +85,7 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
                 </div>
             </div>
 
-            <div style="text-align:right; margin-top: 30px">
+            <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>
             </div>
         </form>

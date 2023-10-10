@@ -30,7 +30,7 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
                 <h2 class="tituloTabela">Excluir Usuario/Aplicativo</h2>
             </div>
@@ -38,7 +38,7 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -47,21 +47,21 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Usuário</label>
+                        <label class='control-label' for='inputNormal'>Usuário</label>
                         <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
-                        <input type="text" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>" hidden>
+                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>">
                         </select>
                     </div>
                 </div>
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
+                        <label class='control-label' for='inputNormal'>Aplicativo</label>
                         <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>" readonly>
-                        <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>" hidden>
+                        <input type="hidden" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
                     </div>
                 </div>
             </div>
-            <div style="text-align:right; margin-top:30px">
+            <div class="text-end mt-4">
                 <button type="submit" id="botao" class="btn btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>
             </div>
 
