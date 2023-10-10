@@ -1,33 +1,56 @@
 <?php
+// Lucas 06102023 padrao novo
 //Lucas 09032023 - adicionado um segundo parametro no buscaUsuario 
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
-include_once(__DIR__ . '/../head.php');
+include_once(__DIR__ . '/../header.php');
 include_once(__DIR__ . '/../database/login.php');
 include_once(__DIR__ . '/../database/empresa.php');
 $logins = buscaLogins();
 ?>
+<!doctype html>
+<html lang="pt-BR">
 
-<body class="bg-transparent">
-    <div class="container" style="margin-bottom:30px">
+<head>
 
+    <?php include_once ROOT . "/vendor/head_css.php"; ?>
 
-        <div class="row mt-4">
-            <div class="col-sm-8">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <BR> <!-- MENSAGENS/ALERTAS -->
+        </div>
+        <div class="row">
+            <BR> <!-- BOTOES AUXILIARES -->
+        </div>
+        <div class="row align-items-center"> <!-- LINHA SUPERIOR A TABLE -->
+            <div class="col-3 text-start">
+                <!-- TITULO -->
                 <h2 class="tituloTabela">Login</h2>
             </div>
-
-            <div class="col-sm-4" style="text-align:right">
-                <a href="login_inserir.php" role="button" class="btn btn-success"><i class="bi bi-plus-square"></i>&nbsp
-                    Novo</a>
+            <div class="col-7">
+                <!-- FILTROS -->
+                <div class="input-group">
+                    <input type="text" class="form-control" id="buscaDemanda" placeholder="Buscar por id ou titulo">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" id="buscar" type="button">
+                            <span style="font-size: 20px;font-family: 'Material Symbols Outlined'!important;" class="material-symbols-outlined">search</span>
+                        </button>
+                    </span>
+                </div>
             </div>
 
+            <div class="col-2 text-end">
+                <a href="login_inserir.php" role="button" class="btn btn-success"><i class="bi bi-plus-square"></i>&nbsp Novo</a>
+            </div>
         </div>
 
-        <div class="card mt-2 text-center">
-            <table class="table">
+        <div class="table mt-2 divtabela">
+            <table class="table table-hover table-sm align-middle">
                 <thead class="cabecalhoTabela">
-                    <tr>
+                    <tr id="titulodetabelafixo">
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Empresa</th>
@@ -39,27 +62,31 @@ $logins = buscaLogins();
 
                 <?php
                 foreach ($logins as $login) {
-                    ?>
-                        <tr>
-                            <td><?php echo $login['loginNome'] ?></td>
-                            <td><?php echo $login['email'] ?></td>
-                            <td><?php echo $login['nomeEmpresa'] ?></td>
-                            <td><?php echo $login['cpfCnpj'] ?></td>
-                            <td><?php echo $login['pedeToken'] == 1 ? 'Sim' : 'Não'; ?></td>
-                            <td>
-                                    <a class=" btn btn-warning btn-sm"
-                                href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button"><i
-                                    class="bi bi-pencil-square"></i></a>
+                ?>
+                    <tr>
+                        <td><?php echo $login['loginNome'] ?></td>
+                        <td><?php echo $login['email'] ?></td>
+                        <td><?php echo $login['nomeEmpresa'] ?></td>
+                        <td><?php echo $login['cpfCnpj'] ?></td>
+                        <td><?php echo $login['pedeToken'] == 1 ? 'Sim' : 'Não'; ?></td>
+                        <td>
+                            <a class=" btn btn-warning btn-sm" href="login_alterar.php?idLogin=<?php echo $login['idLogin'] ?>" role="button"><i class="bi bi-pencil-square"></i></a>
 
-                                </td>
-                        </tr>
-                    <?php } ?>
+                        </td>
+                    </tr>
+                <?php } ?>
 
 
             </table>
         </div>
     </div>
-    </div>
+
+
+    <!-- LOCAL PARA COLOCAR OS JS -->
+
+    <?php include_once ROOT . "/vendor/footer_js.php"; ?>
+
+    <!-- LOCAL PARA COLOCAR OS JS -FIM -->
 
 </body>
 

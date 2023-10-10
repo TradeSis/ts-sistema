@@ -1,0 +1,19 @@
+
+<!-- PERFIL -->
+
+        <div class="col-5 col-md-3 col-lg-2 fundoAbas" style="text-align:right;">
+            <button class="btn text-white  dropdown-toggle position-relative mt-2 mr-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-fill"></i>&#32;<?php echo $logado ?>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        0+
+                    <span class="visually-hidden">unread messages</span>
+            </button>
+            <ul class="dropdown-menu" id="menu">
+                <a class="dropdown-item" href="#">Mensagens</a>
+                <a class="dropdown-item" href="#" src="<?php echo URLROOT ?>/sistema/configuracao/loginPerfil_alterar.php?idLogin=<?php echo $_SESSION['idLogin'] ?>">Perfil</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/logout.php">Logout</a>
+            </ul>
+        </div>
+
+<!-- PERFIL -->        
