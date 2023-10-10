@@ -1,0 +1,26 @@
+.sidebar {
+    height: 100vh;
+    width: 120px;
+    background: #ccc;
+    transition: all 0.5s ease-in-out;
+}
+.itemsiderbar {
+    background-color: #13216A;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.itemsiderbar.active {
+    background-color: #ffffff;
+    color: #13216A;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.itemsiderbar:hover,
+.itemsiderbar:focus {
+    color: #13216A;
+    background-color: #ffffff;
+    font-weight: 900;
+    text-decoration: none;
+}
