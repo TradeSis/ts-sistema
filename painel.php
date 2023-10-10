@@ -129,7 +129,8 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                             Emails Recebidos
                         </h6>
 
-                        <a class="dropdown-item text-center small text-gray-500" href="#">Ver todas as mensagens</a>
+                        <a class="dropdown-item text-center small text-gray-500" href="#" id="chatTodos">Ver todas as mensagens</a>
+                        <a class="dropdown-item text-center small text-gray-500" href="#" id="chatUnico">Chat Pessoal</a>
                     </div>
                 </li>
 
