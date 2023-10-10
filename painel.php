@@ -18,6 +18,7 @@ $URL_ATUAL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 ?>
 
+
 <!-- MENU PAINEL -->
 
     <div class="sidebar pt-2 d-none d-md-none d-lg-block" style="background-color: #13216A;">
