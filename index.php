@@ -91,16 +91,16 @@ if ($nivelMenuLogin == null) {
                     $getTab = '';
                 }?>
                     <select class="form-select mt-2" id="subtabSistema" style="color:#000; width:160px;text-align:center;">
-                        <option value="<?php echo URLROOT ?>/sistema/index.php?tab=empresa"
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=empresa"
                         <?php if ($getTab == "empresa") {echo " selected ";} ?>>Empresa</option>
 
-                        <option value="<?php echo URLROOT ?>/sistema/index.php?tab=login" 
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=login" 
                         <?php if ($getTab == "login") {echo " selected ";} ?>>Login</option>
 
-                        <option value="<?php echo URLROOT ?>/sistema/index.php?tab=aplicativo" 
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=aplicativo" 
                         <?php if ($getTab == "aplicativo") {echo " selected ";} ?>>Aplicativo</option>
 
-                        <option value="<?php echo URLROOT ?>/sistema/index.php?tab=anexos" 
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=anexos" 
                         <?php if ($getTab == "anexos") {echo " selected ";} ?>>Anexos</option>
                     </select>
                 </div>
