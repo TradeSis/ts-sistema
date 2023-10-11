@@ -63,3 +63,51 @@ body {
     overflow-y:scroll; 
     overflow-x:auto;
 }
+
+/* MENU FILTROS E DIV DA TEBALA QUE TERA O EFEITO DE MOVIMENTO*/
+.ts-menuFiltros{
+    background-color:#d3d3d3;
+    width: 170px;
+    position: fixed;
+    top: 120px;
+    left: -250px; /* menu desaparece */  
+    transition: left 1s;
+    transition: right 0.5s;
+    z-index: 2;
+    border-radius: 2%;
+  }
+
+  .ts-menuFiltros.mostra{
+    left: 0px; /* menu aparece */ 
+  }
+  
+  .ts-btnFiltros{ 
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    align-items: center;
+    color: rgb(2, 2, 2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 50px;
+  }
+  
+  .ts-btnFiltros span{
+    font-size: 25px;font-family: 
+    'Material Symbols Outlined'!important;
+  }
+  
+  .ts-btnFiltros:hover {
+    background-color: rgba(0, 0, 0, 0.103);
+  }
+  
+  .ts-tableFiltros {
+    padding-left: 0px;
+  }
+
+  .ts-tableFiltros.mostra {
+    padding-left: 163px;            
+}
+/*fim - MENU FILTROS*/

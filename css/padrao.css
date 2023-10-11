@@ -63,7 +63,7 @@ html{
     background-color: rgba(0, 0, 0, 0.103);;
   }
   
-  .btnFiltroOff{
+/*   .btnFiltroOff{
     margin-top: 8px;
   left: 5px;
   align-items: center;
@@ -72,13 +72,12 @@ html{
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  /* margin-right: 70px; */
-  width: 50px;
-  }
+  width: 200px;
+  } */
   
-  .btnFiltroOff:hover{
+ /*  .btnFiltroOff:hover{
   background-color: rgba(0, 0, 0, 0.103);
-  }
+  } */
   
   
   
@@ -87,10 +86,10 @@ html{
     /*left: var(--nav-left);*/
   }
   
-  .menuFiltros.esconde{
-    left: -250px; /* menu aparece */ 
-    /*left: var(--nav-left);*/
-  }
+  /*REMOVER____ menu aparece */
+ /*  .menuFiltros.esconde{
+    left: -250px;  
+  } */
   
   
   .fonteCorpo{ /* helio 051023 - retirei tudo */
