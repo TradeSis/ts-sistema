@@ -1,5 +1,11 @@
+:root{
+/*  Variaveis de cores personalizadas */
+ --color-bg-primary: #13216A;
+ --color-bg-secondary: #fff;
+}
+
 html {
-    background-color: #fff;
+    background-color: #fff; /*VERIFICAR*/
 }
 
 html,
@@ -13,28 +19,45 @@ body {
     font-size: 15px;
 }
 
-/* FUNDO ABAS */
-.fundoAbas{
-    background-color: #13216A;
+.ts-iframe{
+    width: 100%; 
+    height: 92vh; 
+    border:none;
 }
 
+/* FUNDO da barra superior onde fica os aplicativos */
+.ts-bgAplicativos{
+    background-color: var(--color-bg-primary);
+}
 
+/*SELECT  de aplicativos quando estiver em dispositivos tablet e mobile*/
+.ts-selectAplicativos{
+    color:#FFF; 
+    background-color: var(--color-bg-primary);
+    border:none; 
+    border-bottom:2px solid #fff
+}
 
+/*SELECT dos sub menus de aplicativos quando estiver em dispositivos tablet e mobile*/
+.ts-selectSubMenuAplicativos{
+    color:#000; 
+    width:160px;
+    text-align:center;
+}
 
 /* ESTILOS DE TABELAS */
-
-#titulodetabelafixo {
-    background-color: #13216A;
+.ts-headertabelafixo {
+    background-color: var(--color-bg-primary);
     color: #fff;
     top: 0px;
     position: sticky;
 }
 
-.cabecalhoTabela tr th {
+.ts-headertabelafixo tr th{
     font-weight: 500;
 }
 
-.divtabela{
+.ts-divTabela{
     width: 100%;
     height: 76vh; 
     overflow-y:scroll; 

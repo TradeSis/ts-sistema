@@ -254,7 +254,7 @@ padding: 0.5em;
 
 /* REMOVIDO  para estilo.css*/
  .cabecalhoTabela{
-  background-color: #13216A; 
+  background-color: red; /*MODIFICAR PARA COR #13216A*/ 
   color:#fff;
   font-weight: 300;
 }

@@ -109,10 +109,10 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
         </form>
         <button data-classe="classe1" id="btn1" class="btn btn-sm btn-danger mb-3">Alterar Senha</button>
 
-        <div class="table mt-2 divtabela">
+        <div class="table mt-2 ts-divTabela">
             <table class="table table-hover table-sm align-middle">
-                <thead class="cabecalhoTabela">
-                    <tr id="titulodetabelafixo">
+                <thead class="ts-headertabelafixo">
+                    <tr>
                         <th>Usuário</th>
                         <th>Aplicativo</th>
                         <th>Nível</th>
