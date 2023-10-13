@@ -46,6 +46,13 @@ body {
 }
 
 /* ESTILOS DE TABELAS */
+.ts-tituloPrincipal{
+  font-weight:600;
+  font-size: 20px;  
+  text-align: left;
+  color: var(--color-bg-primary);
+}
+
 .ts-headertabelafixo {
     background-color: var(--color-bg-primary);
     color: #fff;
@@ -57,11 +64,25 @@ body {
     font-weight: 500;
 }
 
-.ts-selectFiltrosHeaderTabela1Linha{
+.ts-headerTabelaLinhaCima{
+  background-color:var(--color-bg-primary)!important;
+  position: sticky;
+  top:0px;
+}
+.ts-headerTabelaLinhaBaixo{
+  background-color:var(--color-bg-primary)!important;
+  position: sticky;
+  top:34px;
+  margin-top: 0px;
+}
+
+.ts-selectFiltrosHeaderTabela{
   font-size: 14px;
-  color:#fff;
+  color:#fff!important;
   font-style:italic;
-  background-color:var(--color-bg-primary);
+  background-color:var(--color-bg-primary)!important;
+  margin-top: 0px;
+  text-align: center;
 }
 
 .ts-divTabela{
@@ -120,7 +141,6 @@ body {
 /*fim - MENU FILTROS*/
 
 /*TAB DE CONFIGURAÇÔES*/
-
 .ts-tabConfig{
   background-color: #567381!important;
   margin-bottom: 2px;
@@ -136,6 +156,12 @@ body {
   border: 1px solid #567381;
 }
 /*fim - TAB DE CONFIGURAÇÔES*/
+
+/* CARDS DE TOTAIS DOS PROGRAMAS */
+.ts-cardsTotais{
+  border-left:solid var(--color-bg-primary); 
+  height:65px;
+}
 
 /* CONTRATO STATUS */
 [class="Orçamento"] {
@@ -186,8 +212,3 @@ body {
 }
 /*fim-  CONTRATO STATUS */
 
-/* CARDS DE TOTAIS DOS PROGRAMAS */
-.ts-cardsTotais{
-  border-left:solid var(--color-bg-primary); 
-  height:65px;
-}

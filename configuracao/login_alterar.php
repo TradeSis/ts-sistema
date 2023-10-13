@@ -36,7 +36,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
             <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Alterar Usuário</h2>
+                <h2 class="ts-tituloPrincipal">Alterar Usuário</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->

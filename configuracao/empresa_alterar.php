@@ -28,7 +28,7 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
             <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Alterar Empresa</h2>
+                <h2 class="ts-tituloPrincipal">Alterar Empresa</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->

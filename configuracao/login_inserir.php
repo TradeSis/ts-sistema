@@ -28,7 +28,7 @@ $empresas = buscaEmpresas();
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
             <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Cadastrar Usuário</h2>
+                <h2 class="ts-tituloPrincipal">Cadastrar Usuário</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
