@@ -9,7 +9,8 @@
                     <span class="visually-hidden">unread messages</span>
             </button>
             <ul class="dropdown-menu" id="menu">
-                <a class="dropdown-item" href="#">Mensagens</a>
+                <a class="dropdown-item" href="#" id="chatTodos">Mensagens</a>
+                <a class="dropdown-item" href="#" id="chatUnico">Chat Pessoal</a>
                 <a class="dropdown-item" href="#" src="<?php echo URLROOT ?>/sistema/configuracao/loginPerfil_alterar.php?idLogin=<?php echo $_SESSION['idLogin'] ?>">Perfil</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/logout.php">Logout</a>
