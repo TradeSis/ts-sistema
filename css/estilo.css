@@ -2,6 +2,8 @@
 /*  Variaveis de cores personalizadas */
  --color-bg-primary: #13216A;
  --color-bg-secondary: #fff;
+ --color-letra-primary: #13216A;
+ --color-letra-secondary: #ffffff;
 }
 
 html {
@@ -25,6 +27,33 @@ body {
     border:none;
 }
 
+/* PAINEL */
+.sidebar {
+  height: 100vh;
+  width: 120px;
+}
+.itemsiderbar {
+  background-color: var(--color-bg-primary);;
+  color: var(--color-letra-secondary);
+  text-decoration: none;
+}
+
+.itemsiderbar.active {
+  background-color: var(--color-letra-secondary);
+  color: var(--color-letra-primary);
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.itemsiderbar:hover,
+.itemsiderbar:focus {
+  color: var(--color-letra-primary);;
+  background-color: var(--color-letra-secondary);
+  font-weight: 900;
+  text-decoration: none;
+}
+/* fim - PAINEL */
+
 /* FUNDO da barra superior onde fica os aplicativos */
 .ts-bgAplicativos{
     background-color: var(--color-bg-primary);
@@ -32,7 +61,7 @@ body {
 
 /*SELECT  de aplicativos quando estiver em dispositivos tablet e mobile*/
 .ts-selectAplicativos{
-    color:#FFF; 
+    color: var(--color-letra-secondary);; 
     background-color: var(--color-bg-primary);
     border:none; 
     border-bottom:2px solid #fff
@@ -50,12 +79,12 @@ body {
   font-weight:600;
   font-size: 20px;  
   text-align: left;
-  color: var(--color-bg-primary);
+  color: var(--color-letra-primary);
 }
 
 .ts-headertabelafixo {
     background-color: var(--color-bg-primary);
-    color: #fff;
+    color: var(--color-letra-secondary);;
     top: 0px;
     position: sticky;
 }
@@ -78,7 +107,7 @@ body {
 
 .ts-selectFiltrosHeaderTabela{
   font-size: 14px;
-  color:#fff!important;
+  color: var(--color-letra-secondary)!important;
   font-style:italic;
   background-color:var(--color-bg-primary)!important;
   margin-top: 0px;
@@ -168,7 +197,7 @@ body {
   margin-top: 5px;
   display: inline-block;
   background: #5271FE!important;
-  color: #fff;
+  color: var(--color-letra-secondary);
   width: 160px;
 }
 
@@ -176,14 +205,14 @@ body {
   margin-top: 5px;
   display: inline-block;
   background: #FE5469!important;
-  color: #fff;
+  color: var(--color-letra-secondary);
   width: 160px;
 }
 
 [class="Finalizado"] {
   display: inline-block;
   background: #C34A36!important;
-  color: #fff;
+  color: var(--color-letra-secondary);
   width: 160px;
 }
 
@@ -191,7 +220,7 @@ body {
   margin-top: 5px;
   display: inline-block;
   background: #69419D!important;
-  color: #fff;
+  color: var(--color-letra-secondary);
   width: 160px;
 }
 
@@ -199,7 +228,7 @@ body {
   margin-top: 5px;
   display: inline-block;
   background: #FEA051!important;
-  color: #fff;
+  color: var(--color-letra-secondary);
   width: 160px;
 }
 
@@ -207,8 +236,25 @@ body {
   margin-top: 5px;
   display: inline-block;
   background: #18B376!important;
-  color: #fff;
+  color: var(--color-letra-secondary);
   width: 160px;
 }
 /*fim-  CONTRATO STATUS */
 
+/*SOMBRA */
+.ts-shadow {
+  box-shadow: -2px 3px 10px 0px rgba(207, 169, 169, 0.75);
+  -webkit-box-shadow: -2px 3px 10px 0px rgba(207, 169, 169, 0.75);
+  -moz-box-shadow: -2px 3px 10px 0px rgba(207, 169, 169, 0.75);
+}
+/*fim-  SOMBRA */
+
+/* CAMPO SENHA PERFIL DE LOGIN */
+#ts-campoSenhaPerfil {
+  display: none;
+}
+  
+#ts-campoSenhaPerfil.mostra {
+  display: flex;
+}
+/* fim - CAMPO SENHA PERFIL DE LOGIN */

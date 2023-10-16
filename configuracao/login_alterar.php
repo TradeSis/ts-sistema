@@ -86,7 +86,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                 </div>
             </div>
 
-            <div class="row" id="conteudo">
+            <div class="row" id="ts-campoSenhaPerfil">
                 <div class="col-sm col-md-2 mt-2">
                     <div class="form-group">
                         <label class="labelForm">Nova Senha</label>
@@ -166,7 +166,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
 
 
         $('#btn1').click(function() {
-            $('#conteudo').toggleClass('mostra');
+            $('#ts-campoSenhaPerfil').toggleClass('mostra');
             $('#txtSenha').removeAttr('disabled');
         });
     </script>
