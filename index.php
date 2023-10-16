@@ -38,7 +38,7 @@ if ($nivelMenuLogin == null) {
         <div class="container-fluid">
 
             <div class="row ">
-                <div class="col-lg-10 d-none d-md-none d-lg-block pr-0 pl-0 fundoAbas">
+                <div class="col-lg-10 d-none d-md-none d-lg-block pr-0 pl-0 ts-bgAplicativos">
                     <ul class="nav a" id="myTabs">
 
                         <?php
@@ -53,28 +53,28 @@ if ($nivelMenuLogin == null) {
                                 $tab = 'empresa';
                             } ?>
                             <li class="nav-item mr-1 ">
-                                <a class="nav-link1 nav-link 
+                                <a class="nav-link 
                                 <?php if ($tab == "empresa") {echo " active ";} ?>" 
                                 href="?tab=empresa" role="tab">Empresa</a>
                             </li>
                         <?php }
                         if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
-                                <a class="nav-link1 nav-link 
+                                <a class="nav-link 
                                 <?php if ($tab == "login") {echo " active ";} ?>" 
                                 href="?tab=login" role="tab">Login</a>
                             </li>
                         <?php }
                         if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
-                                <a class="nav-link1 nav-link 
+                                <a class="nav-link 
                                 <?php if ($tab == "aplicativo") {echo " active ";} ?>" 
                                 href="?tab=aplicativo" role="tab">Aplicativos</a>
                             </li>
                         <?php }
                         if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
-                                <a class="nav-link1 nav-link 
+                                <a class="nav-link 
                                 <?php if ($tab == "anexos") {echo " active ";} ?>" 
                                 href="?tab=anexos" role="tab">Anexos</a>
                             </li>
@@ -83,14 +83,14 @@ if ($nivelMenuLogin == null) {
                     </ul>
                 </div>
                 <!--Essa coluna só vai aparecer em dispositivo mobile-->
-                <div class="col-7 col-md-9 d-md-block d-lg-none" style="background-color: #13216A;">
+                <div class="col-7 col-md-9 d-md-block d-lg-none ts-bgAplicativos">
                 <!--atraves do GET testa o valor para selecionar um option no select-->
                 <?php if(isset($_GET['tab'])){
                     $getTab = $_GET['tab'];
                 }else{
                     $getTab = '';
                 }?>
-                    <select class="form-select mt-2" id="subtabSistema" style="color:#000; width:160px;text-align:center;">
+                    <select class="form-select mt-2 ts-selectSubMenuAplicativos" id="subtabSistema">
                         <option value="<?php echo URLROOT ?>/sistema/?tab=empresa"
                         <?php if ($getTab == "empresa") {echo " selected ";} ?>>Empresa</option>
 
@@ -139,7 +139,7 @@ if ($nivelMenuLogin == null) {
             }
             if ($src !== "") { ?>
                 <div class="container-fluid p-0 m-0">
-                    <iframe class="row p-0 m-0" style="width: 100%; height: 92vh; border:none" src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
+                    <iframe class="row p-0 m-0 ts-iframe"  src="<?php echo URLROOT ?>/sistema/<?php echo $src ?>"></iframe>
                 </div>
             <?php } ?>
 

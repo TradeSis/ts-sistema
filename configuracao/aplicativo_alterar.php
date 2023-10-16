@@ -25,15 +25,15 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Alterar Aplicativo</h2>
+                <h2 class="ts-tituloPrincipal">Alterar Aplicativo</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="/sistema/configuracao/aplicativo.php" role="button" class="btn btn-primary"><i
                         class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
@@ -44,17 +44,17 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome do
+                        <label class='control-label' for='inputNormal'>Nome do
                             Aplicativo</label>
                         <input type="text" name="nomeAplicativo" class="form-control"
                             value="<?php echo $aplicativo['nomeAplicativo'] ?>">
-                        <input type="text" class="form-control" name="idAplicativo"
-                            value="<?php echo $aplicativo['idAplicativo'] ?> " style="display:none">
+                        <input type="hidden" class="form-control" name="idAplicativo"
+                            value="<?php echo $aplicativo['idAplicativo'] ?> ">
                     </div>
                 </div>
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Caminho</label>
+                        <label class='control-label' for='inputNormal'>Caminho</label>
                         <input type="text" name="appLink" class="form-control"
                             value="<?php echo $aplicativo['appLink'] ?>">
                     </div>
@@ -69,7 +69,7 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
             <input type="file" name="imgAplicativo" id="imgAplicativo"
                 value="<?php echo $aplicativo['imgAplicativo'] ?>">
 
-            <div style="text-align:right; margin-top:20px">
+            <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Alterar</button>
             </div>
         </form>

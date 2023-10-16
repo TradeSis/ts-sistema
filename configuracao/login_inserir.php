@@ -26,15 +26,15 @@ $empresas = buscaEmpresas();
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Cadastrar Usuário</h2>
+                <h2 class="ts-tituloPrincipal">Cadastrar Usuário</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="/sistema/configuracao/login.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -43,30 +43,30 @@ $empresas = buscaEmpresas();
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome do
+                        <label class='control-label' for='inputNormal'>Nome do
                             Usuário</label>
                         <input type="text" name="loginNome" class="form-control" required autocomplete="off">
                     </div>
                 </div>
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">E-mail</label>
+                        <label class='control-label' for='inputNormal'>E-mail</label>
                         <input type="email" name="email" class="form-control" autocomplete="off">
                     </div>
 
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm" style="margin-top: 10px">
+                <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Senha do
+                        <label class='control-label' for='inputNormal'>Senha do
                             Usuário</label>
                         <input id="txtSenha" type="password" name="password" class="form-control" required autocomplete="off">
                     </div>
                 </div>
-                <div class="col-sm" style="margin-top: 10px">
+                <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Repetir
+                        <label class='control-label' for='inputNormal'>Repetir
                             Senha</label>
                         <input type="password" name="senhausuario2" class="form-control" required autocomplete="off" oninput="validaSenha(this)">
                         <small>Precisa ser igual a senha digitada acima.</small>
@@ -76,23 +76,23 @@ $empresas = buscaEmpresas();
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Cpf/Cnpj</label>
+                        <label class='control-label' for='inputNormal'>Cpf/Cnpj</label>
                         <input type="text" name="cpfCnpj" class="form-control" autocomplete="off">
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    <div class="form-group-select">
+                <div class="col-12 col-sm-3 col-md-3">
+                    <div class="form-group-select" style="width: 150px;">
                         <label class="labelForm">Utiliza Token</label>
-                        <select class="select form-control" style="padding-right: 100px;" name="pedeToken">
+                        <select class="select form-control" name="pedeToken">
                             <option value="1">Sim</option>
                             <option value="0">Não</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div class="form-group-select">
+                <div class="col-12 col-sm-3 col-md-3">
+                    <div class="form-group-select" style="width: 150px;">
                         <label class="labelForm">Empresa</label>
-                        <select class="select form-control" style="padding-right: 100px;" name="idEmpresa" required>
+                        <select class="select form-control" name="idEmpresa" required>
                             <option value=""></option>
                             <?php
                             foreach ($empresas as $empresa) {
@@ -104,7 +104,7 @@ $empresas = buscaEmpresas();
                     </div>
                 </div>
             </div>
-            <div style="text-align:right; margin-top: 30px">
+            <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
             </div>
         </form>

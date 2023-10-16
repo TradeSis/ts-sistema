@@ -29,15 +29,15 @@ $aplicativos = buscaAplicativos();
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Inserir Usuario/Aplicativo</h2>
+                <h2 class="ts-tituloPrincipal">Inserir Usuario/Aplicativo</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -47,15 +47,15 @@ $aplicativos = buscaAplicativos();
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -22px;">Usuário</label>
+                        <label class='control-label' for='inputNormal'>Usuário</label>
                         <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
-                        <input type="text" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>" hidden>
+                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>">
                     </div>
                 </div>
                 <div class="col-sm mt-1">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Aplicativo</label>
-                        <select class="select form-control" style="padding-right: 50px;" name="idAplicativo">
+                        <label class='control-label' for='inputNormal'>Aplicativo</label>
+                        <select class="select form-control" name="idAplicativo">
                             <?php
                             foreach ($aplicativos as $aplicativo) {
                             ?>
@@ -66,8 +66,8 @@ $aplicativos = buscaAplicativos();
                 </div>
                 <div class="col-sm mt-1">
                     <div class="form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nivel</label>
-                        <select class="select form-control" style="padding-right: 50px;" name="nivelMenu">
+                        <label class='control-label' for='inputNormal'>Nivel</label>
+                        <select class="select form-control" name="nivelMenu">
                             <option value="1">Nível 1</option>
                             <option value="2">Nível 2</option>
                             <option value="3">Nível 3</option>
@@ -78,7 +78,7 @@ $aplicativos = buscaAplicativos();
                 </div>
             </div>
 
-            <div style="text-align:right; margin-top:20px">
+            <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
             </div>
         </form>
