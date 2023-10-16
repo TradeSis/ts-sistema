@@ -27,7 +27,7 @@ $aplicativos = buscaAplicativos();
         <div class="row align-items-center"> <!-- LINHA SUPERIOR A TABLE -->
             <div class="col-3 text-start">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Aplicativos</h2>
+                <h2 class="ts-tituloPrincipal">Aplicativos</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
@@ -48,10 +48,10 @@ $aplicativos = buscaAplicativos();
             </div>
         </div>
 
-        <div class="table mt-2 divtabela">
+        <div class="table mt-2 ts-divTabela">
             <table class="table table-hover table-sm align-middle">
-                <thead class="cabecalhoTabela">
-                    <tr id="titulodetabelafixo">
+                <thead class="ts-headertabelafixo">
+                    <tr>
                         <th>Aplicativo</th>
                         <th>Caminho</th>
                         <th>Imagem</th>

@@ -27,7 +27,7 @@ $empresas = buscaEmpresas();
         <div class="row align-items-center"> <!-- LINHA SUPERIOR A TABLE -->
             <div class="col-3 text-start">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Empresas</h2>
+                <h2 class="ts-tituloPrincipal">Empresas</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
@@ -47,10 +47,10 @@ $empresas = buscaEmpresas();
         </div>
 
 
-        <div class="table mt-2 divtabela">
+        <div class="table mt-2 ts-divTabela">
             <table class="table table-hover table-sm align-middle">
-                <thead class="cabecalhoTabela">
-                    <tr id="titulodetabelafixo">
+                <thead class="ts-headertabelafixo">
+                    <tr>
                         <th>Empresa</th>
                         <th>Tempo Sessão</th>
                         <th>Ação</th>

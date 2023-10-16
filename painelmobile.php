@@ -4,14 +4,14 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
 ?>
 
 <!-- MENU MOBILE -->
-        <nav class="navbar-dark d-lg-none p-2" style="background-color: #13216A;">
+        <nav class="navbar-dark d-lg-none p-2 ts-bgAplicativos">
             <div class="row d-flex flex">
                 <div class="col-6 col-sm-8 ">
                     <a class="navbar-brand" href="#"><img src="../img/meucontrole.png" width="100vh 100vw"></a>
                 </div>
                 <div class="col-6 col-sm-4 text-end ">
                 
-                    <select class="form-select mt-2" id="tabaplicativosmobile" style="color:#FFF; background-color: #13216A;border:none; border-bottom:2px solid #fff">
+                    <select class="form-select mt-2 ts-selectAplicativos" id="tabaplicativosmobile">
                      
                         <option value="<?php echo URLROOT ?>/services/" <?php if ($url == URLROOT . "/services/") {
                                             echo " selected ";

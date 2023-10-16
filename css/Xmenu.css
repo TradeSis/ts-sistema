@@ -272,8 +272,9 @@
     cursor: pointer;
 }
 
-.shadow {
+
+/* .shadow {
     box-shadow: -2px 3px 10px 0px rgba(207, 169, 169, 0.75);
     -webkit-box-shadow: -2px 3px 10px 0px rgba(207, 169, 169, 0.75);
     -moz-box-shadow: -2px 3px 10px 0px rgba(207, 169, 169, 0.75);
-}
+} */
