@@ -53,28 +53,28 @@ if ($nivelMenuLogin == null) {
                                 $tab = 'empresa';
                             } ?>
                             <li class="nav-item mr-1 ">
-                                <a class="nav-link1 nav-link 
+                                <a class="nav-link 
                                 <?php if ($tab == "empresa") {echo " active ";} ?>" 
                                 href="?tab=empresa" role="tab">Empresa</a>
                             </li>
                         <?php }
                         if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
-                                <a class="nav-link1 nav-link 
+                                <a class="nav-link 
                                 <?php if ($tab == "login") {echo " active ";} ?>" 
                                 href="?tab=login" role="tab">Login</a>
                             </li>
                         <?php }
                         if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
-                                <a class="nav-link1 nav-link 
+                                <a class="nav-link 
                                 <?php if ($tab == "aplicativo") {echo " active ";} ?>" 
                                 href="?tab=aplicativo" role="tab">Aplicativos</a>
                             </li>
                         <?php }
                         if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
-                                <a class="nav-link1 nav-link 
+                                <a class="nav-link 
                                 <?php if ($tab == "anexos") {echo " active ";} ?>" 
                                 href="?tab=anexos" role="tab">Anexos</a>
                             </li>

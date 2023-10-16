@@ -33,7 +33,7 @@ body {
   width: 120px;
 }
 .ts-itemsiderbar {
-  background-color: var(--color-bg-primary);;
+  background-color: var(--color-bg-primary);
   color: var(--color-letra-secondary);
   text-decoration: none;
 }
@@ -47,7 +47,7 @@ body {
 
 .ts-itemsiderbar:hover,
 .ts-itemsiderbar:focus {
-  color: var(--color-letra-primary);;
+  color: var(--color-letra-primary);
   background-color: var(--color-letra-secondary);
   font-weight: 900;
   text-decoration: none;
@@ -173,16 +173,17 @@ body {
 .ts-tabConfig{
   background-color: #567381!important;
   margin-bottom: 2px;
+  color: var(--color-letra-secondary);
 }
 .ts-tabConfig:hover{
-  color: #fff!important;
+  color: var(--color-letra-secondary);
 }
-.ts-tabConfig.active,
-.ts-tabConfig:active
+.ts-tabConfig.active
 {
   background-color: #FFF!important;
   color: #567381!important;
-  border: 1px solid #567381;
+  border: 2px solid #DFDFDF;
+  border-radius: 5px 5px 0px 0px;
 }
 /*fim - TAB DE CONFIGURAÇÔES*/
 

@@ -174,21 +174,37 @@ select::-ms-expand {
   font-family: 'Inter', sans-serif !important;
 }
 
-/*TAB SUBMENUS APLICATIVOS*/
-.nav-link{
+.nav-link.active {
+  
+  border-radius: 3px 3px 0 0;
+  color: #1B4D60;
+  background-color: transparent;
+}
+
+.nav-link1{
   background-color: transparent; /* tab desativada */
   border-radius: 3px 3px 0 0;
+  /* border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff; */
   color: #fff!important;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-a.nav-link{
-  padding-left: 6px;
-  padding-right: 6px;
+.nav-link1 a{
+  color: #000;
 }
 
-.nav-link.active{
+a.nav-link.nav-link1:hover{
+  color: #000;
+}
+
+a.nav-link.nav-link1.active:hover{
+  color: #567381;
+}
+
+.nav-link1.active{
   background-color: #fff;
   border-radius: 3px 3px 0 0;
   
@@ -201,7 +217,9 @@ a.nav-link{
   padding-left: 5px;
   padding-right: 5px;
 }
-.nav-link.active:any-link{
-  background-color: #ffffff!important;
+
+
+a.nav-link1.nav-link{
+  padding-left: 6px;
+  padding-right: 6px;
 }
-/*fim - TAB SUBMENUS APLICATIVOS*/
