@@ -31,15 +31,15 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Alterar Usuário</h2>
+                <h2 class="ts-tituloPrincipal">Alterar Usuário</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -50,9 +50,9 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
                     <div class="form-group">
                         <label class="labelForm">Nome</label>
                         <input type="text" class="form-control" name="loginNome" value="<?php echo $usuario['loginNome'] ?>">
-                        <input type="text" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>" style="display: none">
-                        <input type="text" class="form-control" name="pedeToken" value="<?php echo $usuario['pedeToken'] ?>" style="display: none">
-                        <input type="text" class="form-control" name="ultimaulr" value="<?php echo $_SESSION['ultimaulr'] ?>" style="display: none">
+                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>">
+                        <input type="hidden" class="form-control" name="pedeToken" value="<?php echo $usuario['pedeToken'] ?>">
+                        <input type="hidden" class="form-control" name="ultimaulr" value="<?php echo $_SESSION['ultimaulr'] ?>">
                     </div>
                 </div>
                 <div class="col-sm">
@@ -73,13 +73,13 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
 
             <div class="container" id="conteudo">
                 <div class="row">
-                    <div class="col-sm" style="margin-top: 10px">
+                    <div class="col-sm mt-2">
                         <div class="form-group">
                             <label class="labelForm">Nova Senha</label>
                             <input id="txtSenha" type="password" name="password" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
                         </div>
                     </div>
-                    <div class="col-sm" style="margin-top: 10px">
+                    <div class="col-sm mt-2">
                         <div class="form-group">
                             <label class="labelForm">Repetir Senha</label>
                             <input type="password" name="senhausuario2" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Repetir Senha" value="<?php echo $usuario['password'] ?>" required oninput="validaSenha(this)">
@@ -89,7 +89,7 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
                 </div>
             </div>
 
-            <div style="text-align:right">
+            <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>
             </div>
         </form>

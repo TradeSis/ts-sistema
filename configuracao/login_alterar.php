@@ -34,15 +34,15 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Alterar Usuário</h2>
+                <h2 class="ts-tituloPrincipal">Alterar Usuário</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="#" onclick="history.back()" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -54,7 +54,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                     <div class="form-group">
                         <label class="labelForm">Nome</label>
                         <input type="text" class="form-control" name="loginNome" value="<?php echo $usuario['loginNome'] ?>" readonly>
-                        <input type="text" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>" style="display: none">
+                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>">
                     </div>
                 </div>
                 <div class="col-sm">
@@ -86,14 +86,14 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                 </div>
             </div>
 
-            <div class="row" id="conteudo">
-                <div class="col-sm col-md-2" style="margin-top: 10px">
+            <div class="row" id="ts-campoSenhaPerfil">
+                <div class="col-sm col-md-2 mt-2">
                     <div class="form-group">
                         <label class="labelForm">Nova Senha</label>
                         <input id="txtSenha" type="password" name="password" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
                     </div>
                 </div>
-                <div class="col-sm col-md-2" style="margin-top: 10px">
+                <div class="col-sm col-md-2 mt-2">
                     <div class="form-group">
                         <label class="labelForm">Repetir Senha</label>
                         <input type="password" name="senhausuario2" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Repetir Senha" value="<?php echo $usuario['password'] ?>" required oninput="validaSenha(this)">
@@ -109,10 +109,10 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
         </form>
         <button data-classe="classe1" id="btn1" class="btn btn-sm btn-danger mb-3">Alterar Senha</button>
 
-        <div class="table mt-2 divtabela">
+        <div class="table mt-2 ts-divTabela">
             <table class="table table-hover table-sm align-middle">
-                <thead class="cabecalhoTabela">
-                    <tr id="titulodetabelafixo">
+                <thead class="ts-headertabelafixo">
+                    <tr>
                         <th>Usuário</th>
                         <th>Aplicativo</th>
                         <th>Nível</th>
@@ -144,7 +144,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                 } ?>
 
             </table>
-            <div class="py-3 px-3" style="text-align:right">
+            <div class="py-3 px-3 text-end">
                 <a href="loginAplicativo_inserir.php?idLogin=<?php echo $idLogin ?>" role="button" class="btn btn-success"><i class="bi bi-plus-square"></i>&nbsp
                     Novo</a>
             </div>
@@ -166,7 +166,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
 
 
         $('#btn1').click(function() {
-            $('#conteudo').toggleClass('mostra');
+            $('#ts-campoSenhaPerfil').toggleClass('mostra');
             $('#txtSenha').removeAttr('disabled');
         });
     </script>

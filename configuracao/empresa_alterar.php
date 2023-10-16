@@ -26,15 +26,15 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
         <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
-            <div class="col-3" style="text-align:left">
+            <div class="col-3">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Alterar Empresa</h2>
+                <h2 class="ts-tituloPrincipal">Alterar Empresa</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
             </div>
 
-            <div class="col-2" style="text-align: end;">
+            <div class="col-2 text-end">
                 <a href="/sistema/configuracao/empresa.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
@@ -45,18 +45,18 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
                     <label class='control-label' for='inputNormal'></label>
                     <div class="for-group">
                         <input type="text" class="form-control" name="nomeEmpresa" value="<?php echo $empresa['nomeEmpresa'] ?>">
-                        <input type="text" class="form-control" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>" style="display: none">
+                        <input type="hidden" class="form-control" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>">
                     </div>
                 </div>
                 <div class="col-md form-group">
-                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Tempo Sessão</label>
+                    <label class='control-label' for='inputNormal'>Tempo Sessão</label>
                     <div class="for-group">
                         <input type="number" min="1" value="<?php echo $empresa['timeSessao'] ?>" class="form-control" name="timeSessao" autocomplete="off" required>
                     </div>
                 </div>
             </div>
 
-            <div style="text-align:right; margin-top:20px">
+            <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>
             </div>
         </form>

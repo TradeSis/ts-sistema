@@ -27,7 +27,7 @@ $anexos = buscaAnexos();
         <div class="row align-items-center"> <!-- LINHA SUPERIOR A TABLE -->
             <div class="col-3 text-start">
                 <!-- TITULO -->
-                <h2 class="tituloTabela">Anexos</h2>
+                <h2 class="ts-tituloPrincipal">Anexos</h2>
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
@@ -46,10 +46,10 @@ $anexos = buscaAnexos();
             </div>
         </div>
 
-        <div class="table mt-2 divtabela">
+        <div class="table mt-2 ts-divTabela">
             <table class="table table-hover table-sm align-middle">
-                <thead class="cabecalhoTabela">
-                    <tr id="titulodetabelafixo">
+                <thead class="ts-headertabelafixo">
+                    <tr>
                         <th>Nome</th>
                         <th>Imagem gif</th>
                         <th>Imagem</th>
