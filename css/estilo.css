@@ -189,6 +189,17 @@ body {
 }
 /*fim - TAB DE CONFIGURAÇÔES*/
 
+/* TAB DE DENTRO DO MODAL */
+.ts-tabModal {
+  background-color: #567381!important;
+  color: #EEEEEE!important;
+}
+.ts-tabModal .active {
+  background-color: #EEEEEE!important;
+  color: #567381!important;
+}
+/* fim- TAB DE DENTRO DO MODAL */
+
 /* CARDS DE TOTAIS DOS PROGRAMAS */
 .ts-cardsTotais{
   border-left:solid var(--color-bg-primary); 
@@ -261,3 +272,4 @@ body {
   display: flex;
 }
 /* fim - CAMPO SENHA PERFIL DE LOGIN */
+
