@@ -75,6 +75,10 @@ body {
 }
 
 /* ESTILOS DE TABELAS */
+tbody tr td{ 
+  font-size: 14px;  /* fonte da tabela */
+}
+
 .ts-tituloPrincipal{
   font-weight:600;
   font-size: 20px;  
