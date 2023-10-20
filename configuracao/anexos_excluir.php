@@ -41,12 +41,9 @@ $anexo = buscaAnexos($_GET['idAnexo']);
         <form action="../database/anexos.php?operacao=excluir" method="post" enctype="multipart/form-data">
             <div class="col-md-12 form-group mb-4">
 
-                <label class='control-label' for='inputNormal'></label>
-                <div class="for-group">
-                    <input type="text" class="form-control" name="nomeAnexo" value="<?php echo $anexo['nomeAnexo'] ?>">
-                    <input type="hidden" class="form-control" name="idAnexo" value="<?php echo $anexo['idAnexo'] ?>">
-                </div>
-
+                <label class='form-label ts-label'></label>
+                    <input type="text" class="form-control ts-input" name="nomeAnexo" value="<?php echo $anexo['nomeAnexo'] ?>">
+                    <input type="hidden" class="form-control ts-input" name="idAnexo" value="<?php echo $anexo['idAnexo'] ?>">
             </div>
 
             <div class="text-end mt-4">

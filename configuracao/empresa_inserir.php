@@ -38,18 +38,14 @@ include_once('../header.php');
         </div>
 
         <form action="../database/empresa.php?operacao=inserir" method="post">
-            <div class="row">
-                <div class="col-md-10 form-group">
-                    <div class="for-group">
-                        <label class='control-label' for='inputNormal'>Nome da Empresa</label>
-                        <input type="text" class="form-control" name="nomeEmpresa" autocomplete="off" required>
-                    </div>
+            <div class="row mt-3">
+                <div class="col-md-10">
+                    <label class='form-label ts-label'>Nome da Empresa</label>
+                    <input type="text" class="form-control ts-input" name="nomeEmpresa" autocomplete="off" required>
                 </div>
-                <div class="col-md form-group">
-                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Tempo Sessão</label>
-                    <div class="for-group">
-                        <input type="number" min="1" placeholder="1" class="form-control" name="timeSessao" autocomplete="off" required>
-                    </div>
+                <div class="col-md">
+                    <label class='form-label ts-label'>Tempo Sessão</label>
+                    <input type="number" min="1" placeholder="1" class="form-control ts-input" name="timeSessao" autocomplete="off" required>
                 </div>
             </div>
 

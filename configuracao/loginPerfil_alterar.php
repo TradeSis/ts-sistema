@@ -45,46 +45,36 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
         </div>
 
         <form action="../database/login.php?operacao=loginalterar" method="post">
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class="labelForm">Nome</label>
-                        <input type="text" class="form-control" name="loginNome" value="<?php echo $usuario['loginNome'] ?>">
-                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>">
-                        <input type="hidden" class="form-control" name="pedeToken" value="<?php echo $usuario['pedeToken'] ?>">
-                        <input type="hidden" class="form-control" name="ultimaulr" value="<?php echo $_SESSION['ultimaulr'] ?>">
-                    </div>
+                        <label class="form-label ts-label">Nome</label>
+                        <input type="text" class="form-control ts-input" name="loginNome" value="<?php echo $usuario['loginNome'] ?>">
+                        <input type="hidden" class="form-control ts-input" name="idLogin" value="<?php echo $usuario['idLogin'] ?>">
+                        <input type="hidden" class="form-control ts-input" name="pedeToken" value="<?php echo $usuario['pedeToken'] ?>">
+                        <input type="hidden" class="form-control ts-input" name="ultimaulr" value="<?php echo $_SESSION['ultimaulr'] ?>">
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class="labelForm">E-mail</label>
-                        <input type="text" class="form-control" name="email" value="<?php echo $usuario['email'] ?>">
-                    </div>
+                        <label class="form-label ts-label">E-mail</label>
+                        <input type="text" class="form-control ts-input" name="email" value="<?php echo $usuario['email'] ?>">
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="labelForm">Cpf/Cnpj</label>
-                        <input type="text" class="form-control" name="cpfCnpj" value="<?php echo $usuario['cpfCnpj'] ?>">
-                    </div>
+                        <label class="form-label ts-label">Cpf/Cnpj</label>
+                        <input type="text" class="form-control ts-input" name="cpfCnpj" value="<?php echo $usuario['cpfCnpj'] ?>">
                 </div>
             </div>
 
             <div class="container" id="conteudo">
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-sm mt-2">
-                        <div class="form-group">
-                            <label class="labelForm">Nova Senha</label>
-                            <input id="txtSenha" type="password" name="password" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
-                        </div>
+                            <label class="form-label ts-label">Nova Senha</label>
+                            <input id="txtSenha" type="password" name="password" class="form-control ts-input" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
                     </div>
                     <div class="col-sm mt-2">
-                        <div class="form-group">
-                            <label class="labelForm">Repetir Senha</label>
-                            <input type="password" name="senhausuario2" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Repetir Senha" value="<?php echo $usuario['password'] ?>" required oninput="validaSenha(this)">
+                            <label class="form-label ts-label">Repetir Senha</label>
+                            <input type="password" name="senhausuario2" class="form-control ts-input" autocomplete="off" onfocus="this.value='';" placeholder="Repetir Senha" value="<?php echo $usuario['password'] ?>" required oninput="validaSenha(this)">
                             <small>Precisa ser igual a senha digitada.</small>
-                        </div>
                     </div>
                 </div>
             </div>

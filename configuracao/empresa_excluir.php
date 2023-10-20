@@ -41,14 +41,10 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
         </div>
 
         <form action="../database/empresa.php?operacao=excluir" method="post">
-            <div class="col-md-12 form-group mb-4">
-
-                <label class='control-label' for='inputNormal'></label>
-                <div class="for-group">
-                    <input type="text" class="form-control" name="nomeEmpresa" value="<?php echo $empresa['nomeEmpresa'] ?>">
-                    <input type="hidden" class="form-control" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>">
-                </div>
-
+            <div class="col-md-12">
+                <label class='form-label ts-label'></label>
+                <input type="text" class="form-control ts-input" name="nomeEmpresa" value="<?php echo $empresa['nomeEmpresa'] ?>">
+                <input type="hidden" class="form-control ts-input" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>">
             </div>
 
             <div class="text-end mt-4">

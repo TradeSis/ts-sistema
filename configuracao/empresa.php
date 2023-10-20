@@ -31,14 +31,6 @@ $empresas = buscaEmpresas();
             </div>
             <div class="col-7">
                 <!-- FILTROS -->
-                <div class="input-group">
-                    <input type="text" class="form-control" id="buscaDemanda" placeholder="Buscar por id ou titulo">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" id="buscar" type="button">
-                            <span style="font-size: 20px;font-family: 'Material Symbols Outlined'!important;" class="material-symbols-outlined">search</span>
-                        </button>
-                    </span>
-                </div>
             </div>
 
             <div class="col-2 text-end">
