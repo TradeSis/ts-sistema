@@ -46,42 +46,36 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
 
         <form action="../database/loginAplicativo.php?operacao=alterar" method="post" enctype="multipart/form-data">
 
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Usuário</label>
-                        <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
-                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>">
-                    </div>
+                    <label class='form-label ts-label'>Usuário</label>
+                    <input type="text" class="form-control ts-input" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
+                    <input type="hidden" class="form-control ts-input" name="idLogin" value="<?php echo $login['idLogin'] ?>">
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Aplicativo</label>
-                        <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>" readonly>
-                        <input type="hidden" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
-                    </div>
+                    <label class='form-label ts-label'>Aplicativo</label>
+                    <input type="text" class="form-control ts-input" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>" readonly>
+                    <input type="hidden" class="form-control ts-input" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Nivel</label>
-                        <select class="form-control" name="nivelMenu">
-                            <option <?php if ($usuarioaplicativo['nivelMenu'] == "1") {
-                                        echo "selected";
-                                    } ?> value="1">1</option>
-                            <option <?php if ($usuarioaplicativo['nivelMenu'] == "2") {
-                                        echo "selected";
-                                    } ?> value="2">2</option>
-                            <option <?php if ($usuarioaplicativo['nivelMenu'] == "3") {
-                                        echo "selected";
-                                    } ?> value="3">3</option>
-                            <option <?php if ($usuarioaplicativo['nivelMenu'] == "4") {
-                                        echo "selected";
-                                    } ?> value="4">4</option>
-                            <option <?php if ($usuarioaplicativo['nivelMenu'] == "5") {
-                                        echo "selected";
-                                    } ?> value="5">5</option>
-                        </select>
-                    </div>
+                    <label class='form-label ts-label'>Nivel</label>
+                    <select class="form-select ts-input" name="nivelMenu">
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "1") {
+                                    echo "selected";
+                                } ?> value="1">1</option>
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "2") {
+                                    echo "selected";
+                                } ?> value="2">2</option>
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "3") {
+                                    echo "selected";
+                                } ?> value="3">3</option>
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "4") {
+                                    echo "selected";
+                                } ?> value="4">4</option>
+                        <option <?php if ($usuarioaplicativo['nivelMenu'] == "5") {
+                                    echo "selected";
+                                } ?> value="5">5</option>
+                    </select>
                 </div>
             </div>
 

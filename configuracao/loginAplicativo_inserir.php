@@ -44,37 +44,31 @@ $aplicativos = buscaAplicativos();
 
         <form action="../database/loginAplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Usuário</label>
-                        <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
-                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>">
-                    </div>
+                    <label class='form-label ts-label'>Usuário</label>
+                    <input type="text" class="form-control ts-input" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
+                    <input type="hidden" class="form-control ts-input" name="idLogin" value="<?php echo $login['idLogin'] ?>">
                 </div>
                 <div class="col-sm mt-1">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Aplicativo</label>
-                        <select class="select form-control" name="idAplicativo">
-                            <?php
-                            foreach ($aplicativos as $aplicativo) {
-                            ?>
-                                <option value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
-                            <?php  } ?>
-                        </select>
-                    </div>
+                    <label class='form-label ts-label'>Aplicativo</label>
+                    <select class="form-select ts-input" name="idAplicativo">
+                        <?php
+                        foreach ($aplicativos as $aplicativo) {
+                        ?>
+                            <option value="<?php echo $aplicativo['idAplicativo'] ?>"><?php echo $aplicativo['nomeAplicativo']  ?></option>
+                        <?php  } ?>
+                    </select>
                 </div>
                 <div class="col-sm mt-1">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Nivel</label>
-                        <select class="select form-control" name="nivelMenu">
-                            <option value="1">Nível 1</option>
-                            <option value="2">Nível 2</option>
-                            <option value="3">Nível 3</option>
-                            <option value="4">Nível 4</option>
-                            <option value="5">Nível 5</option>
-                        </select>
-                    </div>
+                    <label class='form-label ts-label'>Nivel</label>
+                    <select class="form-select ts-input" name="nivelMenu">
+                        <option value="1">Nível 1</option>
+                        <option value="2">Nível 2</option>
+                        <option value="3">Nível 3</option>
+                        <option value="4">Nível 4</option>
+                        <option value="5">Nível 5</option>
+                    </select>
                 </div>
             </div>
 

@@ -49,61 +49,49 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
 
 
         <form action="../database/login.php?operacao=alterar" method="post">
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class="labelForm">Nome</label>
-                        <input type="text" class="form-control" name="loginNome" value="<?php echo $usuario['loginNome'] ?>" readonly>
-                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $usuario['idLogin'] ?>">
-                    </div>
+                    <label class="form-label ts-label">Nome</label>
+                    <input type="text" class="form-control ts-input" name="loginNome" value="<?php echo $usuario['loginNome'] ?>" readonly>
+                    <input type="hidden" class="form-control ts-input" name="idLogin" value="<?php echo $usuario['idLogin'] ?>">
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class="labelForm">E-mail</label>
-                        <input type="text" class="form-control" name="email" value="<?php echo $usuario['email'] ?>">
-                    </div>
+                    <label class="form-label ts-label">E-mail</label>
+                    <input type="text" class="form-control ts-input" name="email" value="<?php echo $usuario['email'] ?>">
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class="labelForm">Cpf/Cnpj</label>
-                        <input type="text" class="form-control" name="cpfCnpj" value="<?php echo $usuario['cpfCnpj'] ?>">
-                    </div>
+                    <label class="form-label ts-label">Cpf/Cnpj</label>
+                    <input type="text" class="form-control ts-input" name="cpfCnpj" value="<?php echo $usuario['cpfCnpj'] ?>">
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class="labelForm">Pede Token</label>
-                        <select class="form-control" name="pedeToken">
-                            <option <?php if ($usuario['pedeToken'] == "1") {
-                                        echo "selected";
-                                    } ?> value="1">Sim</option>
-                            <option <?php if ($usuario['pedeToken'] == "0") {
-                                        echo "selected";
-                                    } ?> value="0">Não</option>
-                        </select>
-                    </div>
+                    <label class="form-label ts-label">Pede Token</label>
+                    <select class="form-select ts-input" name="pedeToken">
+                        <option <?php if ($usuario['pedeToken'] == "1") {
+                                    echo "selected";
+                                } ?> value="1">Sim</option>
+                        <option <?php if ($usuario['pedeToken'] == "0") {
+                                    echo "selected";
+                                } ?> value="0">Não</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="row" id="ts-campoSenhaPerfil">
+            <div class="row mt-3" id="ts-campoSenhaPerfil">
                 <div class="col-sm col-md-2 mt-2">
-                    <div class="form-group">
-                        <label class="labelForm">Nova Senha</label>
-                        <input id="txtSenha" type="password" name="password" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
-                    </div>
+                    <label class="form-label ts-label">Nova Senha</label>
+                    <input id="txtSenha" type="password" name="password" class="form-control ts-input" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
                 </div>
                 <div class="col-sm col-md-2 mt-2">
-                    <div class="form-group">
-                        <label class="labelForm">Repetir Senha</label>
-                        <input type="password" name="senhausuario2" class="form-control" autocomplete="off" onfocus="this.value='';" placeholder="Repetir Senha" value="<?php echo $usuario['password'] ?>" required oninput="validaSenha(this)">
-                        <small>Precisa ser igual a senha digitada.</small>
-                    </div>
+                    <label class="form-label ts-label">Repetir Senha</label>
+                    <input type="password" name="senhausuario2" class="form-control ts-input" autocomplete="off" onfocus="this.value='';" placeholder="Repetir Senha" value="<?php echo $usuario['password'] ?>" required oninput="validaSenha(this)">
+                    <small>Precisa ser igual a senha digitada.</small>
                 </div>
             </div>
 
 
-            <div class="text-end">
+            <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>
             </div>
         </form>
@@ -172,7 +160,7 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
     </script>
 
     <!-- LOCAL PARA COLOCAR OS JS -FIM -->
-    
+
 </body>
 
 </html>

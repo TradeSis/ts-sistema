@@ -40,19 +40,15 @@ $empresa = buscaEmpresas($_GET['idEmpresa']);
         </div>
 
         <form action="../database/empresa.php?operacao=alterar" method="post">
-            <div class="row">
-                <div class="col-md-10 form-group mb-4">
-                    <label class='control-label' for='inputNormal'></label>
-                    <div class="for-group">
-                        <input type="text" class="form-control" name="nomeEmpresa" value="<?php echo $empresa['nomeEmpresa'] ?>">
-                        <input type="hidden" class="form-control" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>">
-                    </div>
+            <div class="row mt-3">
+                <div class="col-md-10">
+                    <label class='form-label ts-label'></label>
+                    <input type="text" class="form-control ts-input" name="nomeEmpresa" value="<?php echo $empresa['nomeEmpresa'] ?>">
+                    <input type="hidden" class="form-control ts-input" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>">
                 </div>
-                <div class="col-md form-group">
-                    <label class='control-label' for='inputNormal'>Tempo Sessão</label>
-                    <div class="for-group">
-                        <input type="number" min="1" value="<?php echo $empresa['timeSessao'] ?>" class="form-control" name="timeSessao" autocomplete="off" required>
-                    </div>
+                <div class="col-md">
+                    <label class='form-label ts-label'>Tempo Sessão</label>
+                    <input type="number" min="1" value="<?php echo $empresa['timeSessao'] ?>" class="form-control ts-input" name="timeSessao" autocomplete="off" required>
                 </div>
             </div>
 

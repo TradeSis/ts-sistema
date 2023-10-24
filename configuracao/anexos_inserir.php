@@ -36,17 +36,14 @@ include_once('../header.php');
         </div>
 
         <form action="../database/anexos.php?operacao=inserir" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-md-8 form-group">
-                    <label class='control-label' for='inputNormal'>Nome Anexo</label>
-                    <div class="for-group">
-                        <input type="text" class="form-control" name="nomeAnexo" autocomplete="off" required>
-                    </div>
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <label class='form-label ts-label'>Nome Anexo</label>
+                    <input type="text" class="form-control ts-input" name="nomeAnexo" autocomplete="off" required>
                 </div>
 
                 <div class="col-sm-4">
-
-                    <label class='control-label' for='inputNormal' style="margin-top: -50px;">Anexo</label>
+                    <label class='form-label ts-label'>Anexo</label>
                     <label class="picture" for="anexo" tabIndex="0">
                         <span class="picture__image"></span>
                     </label>

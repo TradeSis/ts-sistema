@@ -39,18 +39,15 @@ $anexo = buscaAnexos($_GET['idAnexo']);
         </div>
 
         <form action="../database/anexos.php?operacao=alterar" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-md-8 form-group mb-4">
-                    <label class='control-label' for='inputNormal'></label>
-                    <div class="for-group">
-                        <input type="text" class="form-control" name="nomeAnexo" value="<?php echo $anexo['nomeAnexo'] ?>">
-                        <input type="hidden" class="form-control" name="idAnexo" value="<?php echo $anexo['idAnexo'] ?>">
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <label class='form-label ts-label'></label>
+                        <input type="text" class="form-control ts-input" name="nomeAnexo" value="<?php echo $anexo['nomeAnexo'] ?>">
+                        <input type="hidden" class="form-control ts-input" name="idAnexo" value="<?php echo $anexo['idAnexo'] ?>">
                     </div>
-                </div>
 
                 <div class="col-sm-4">
-
-                    <label class='control-label' for='inputNormal' style="margin-top: -50px;">Anexo</label>
+                    <label class='form-label ts-label'>Anexo</label>
                     <label class="picture" for="anexo" tabIndex="0">
                         <img src="<?php echo $anexo["base64"] ?>" width="100%" height="100%" alt="">
                     </label>

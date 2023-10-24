@@ -40,68 +40,50 @@ $empresas = buscaEmpresas();
         </div>
 
         <form action="../database/login.php?operacao=inserir" method="post">
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Nome do
-                            Usuário</label>
-                        <input type="text" name="loginNome" class="form-control" required autocomplete="off">
-                    </div>
+                    <label class='form-label ts-label'>Nome do Usuário</label>
+                    <input type="text" name="loginNome" class="form-control ts-input" required autocomplete="off">
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>E-mail</label>
-                        <input type="email" name="email" class="form-control" autocomplete="off">
-                    </div>
-
+                    <label class='form-label ts-label'>E-mail</label>
+                    <input type="email" name="email" class="form-control ts-input" autocomplete="off">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Senha do
-                            Usuário</label>
-                        <input id="txtSenha" type="password" name="password" class="form-control" required autocomplete="off">
-                    </div>
+                    <label class='form-label ts-label'>Senha do Usuário</label>
+                    <input id="txtSenha" type="password" name="password" class="form-control ts-input" required autocomplete="off">
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Repetir
-                            Senha</label>
-                        <input type="password" name="senhausuario2" class="form-control" required autocomplete="off" oninput="validaSenha(this)">
-                        <small>Precisa ser igual a senha digitada acima.</small>
-                    </div>
+                    <label class='form-label ts-label'>Repetir Senha</label>
+                    <input type="password" name="senhausuario2" class="form-control ts-input" required autocomplete="off" oninput="validaSenha(this)">
+                    <small>Precisa ser igual a senha digitada acima.</small>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Cpf/Cnpj</label>
-                        <input type="text" name="cpfCnpj" class="form-control" autocomplete="off">
-                    </div>
+                    <label class='form-label ts-label'>Cpf/Cnpj</label>
+                    <input type="text" name="cpfCnpj" class="form-control ts-input" autocomplete="off">
                 </div>
                 <div class="col-12 col-sm-3 col-md-3">
-                    <div class="form-group-select" style="width: 150px;">
-                        <label class="labelForm">Utiliza Token</label>
-                        <select class="select form-control" name="pedeToken">
-                            <option value="1">Sim</option>
-                            <option value="0">Não</option>
-                        </select>
-                    </div>
+                    <label class="form-label ts-label">Utiliza Token</label>
+                    <select class="form-select ts-input" name="pedeToken">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
                 </div>
                 <div class="col-12 col-sm-3 col-md-3">
-                    <div class="form-group-select" style="width: 150px;">
-                        <label class="labelForm">Empresa</label>
-                        <select class="select form-control" name="idEmpresa" required>
-                            <option value=""></option>
-                            <?php
-                            foreach ($empresas as $empresa) {
-                                $idEmpresa = $empresa['nomeEmpresa'] === "TradeSis" ? "null" : $empresa['idEmpresa'];
-                            ?>
-                                <option value="<?php echo $idEmpresa ?>"><?php echo $empresa['nomeEmpresa'] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
+                    <label class="form-label ts-label">Empresa</label>
+                    <select class="form-select ts-input" name="idEmpresa" required>
+                        <option value=""></option>
+                        <?php
+                        foreach ($empresas as $empresa) {
+                            $idEmpresa = $empresa['nomeEmpresa'] === "TradeSis" ? "null" : $empresa['idEmpresa'];
+                        ?>
+                            <option value="<?php echo $idEmpresa ?>"><?php echo $empresa['nomeEmpresa'] ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
             </div>
             <div class="text-end mt-4">
