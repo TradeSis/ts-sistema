@@ -42,6 +42,12 @@ if (isset($jsonEntrada["idLogin"])) {
 $sql = $sql = "SELECT aplicativo.* FROM aplicativo";
   if (isset($jsonEntrada["idAplicativo"])) {
     $sql = $sql . " where aplicativo.idAplicativo = " . $jsonEntrada["idAplicativo"]; 
+  }else{ //Lucas 24102023 - adicionado filtro de busca aplicativo
+    $where = " where ";
+    if (isset($jsonEntrada["buscaaplicativo"])) {
+      $sql = $sql . $where . " aplicativo.nomeAplicativo like " . "'%" . $jsonEntrada["buscaaplicativo"] . "%'" ;
+      $where = " and ";
+    }
   }
 }
 //echo "-SQL->".json_encode($sql)."\n";

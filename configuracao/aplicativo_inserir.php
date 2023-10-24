@@ -38,22 +38,17 @@ include_once('../header.php');
 
         <form action="../database/aplicativo.php?operacao=inserir" method="post" enctype="multipart/form-data">
 
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Nome do
-                            Aplicativo</label>
-                        <input type="text" name="nomeAplicativo" class="form-control" required autocomplete="off">
-                    </div>
+                        <label class='form-label ts-label'>Nome do Aplicativo</label>
+                        <input type="text" name="nomeAplicativo" class="form-control ts-input" required autocomplete="off">
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Caminho</label>
-                        <input type="text" name="appLink" class="form-control" required autocomplete="off">
-                    </div>
+                        <label class='form-label ts-label'>Caminho</label>
+                        <input type="text" name="appLink" class="form-control ts-input" required autocomplete="off">
                 </div>
             </div>
-            <label class="labelForm mt-4">Imagem</label>
+            <label class="form-label ts-label mt-4">Imagem</label>
             <label class="picture ml-4" for="imgAplicativo" tabIndex="0">
                 <span class="picture__image"></span>
             </label>

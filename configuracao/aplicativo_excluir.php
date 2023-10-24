@@ -41,11 +41,9 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
         </div>
 
         <form action="../database/aplicativo.php?operacao=excluir" method="post">
-            <div class="form-group">
-                <label class='control-label' for='inputNormal'></label>
-                <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
-                <input type="hidden" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
-            </div>
+            <label class='form-label ts-label'></label>
+                <input type="text" class="form-control ts-input" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
+                <input type="hidden" class="form-control ts-input" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
             <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-danger"><i class="bi bi-sd-card-fill"></i>&#32;Excluir</button>
             </div>

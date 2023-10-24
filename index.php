@@ -72,6 +72,20 @@ if ($nivelMenuLogin == null) {
                                 href="?tab=aplicativo" role="tab">Aplicativos</a>
                             </li>
                         <?php }
+                         if ($nivelMenu == 5) { ?>
+                            <li class="nav-item mr-1 ">
+                                <a class="nav-link 
+                                <?php if ($tab == "aplicativo_padrao2") {echo " active ";} ?>" 
+                                href="?tab=aplicativo_padrao2" role="tab">aplicativo padrão2</a>
+                            </li>
+                        <?php }
+                         if ($nivelMenu == 5) { ?>
+                            <li class="nav-item mr-1 ">
+                                <a class="nav-link 
+                                <?php if ($tab == "aplicativo_padrao3") {echo " active ";} ?>" 
+                                href="?tab=aplicativo_padrao3" role="tab">aplicativo padrão3</a>
+                            </li>
+                        <?php }
                         if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
                                 <a class="nav-link 
@@ -129,6 +143,14 @@ if ($nivelMenuLogin == null) {
             if ($tab == "anexos") {
                 $src = "configuracao/anexos.php";
                 $title = "Sistema/Anexos";
+            }
+            if ($tab == "aplicativo_padrao2") {
+                $src = "configuracao/aplicativo_padrao2.php";
+                $title = "Sistema/Aplicativo_padrao2";
+            }
+            if ($tab == "aplicativo_padrao3") {
+                $src = "configuracao/aplicativo_padrao3.php";
+                $title = "Sistema/Aplicativo_padrao3";
             }
             if ($tab == "configuracao") {
                 $src = "configuracao/";
