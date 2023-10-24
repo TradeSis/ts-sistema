@@ -31,6 +31,9 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
                         <option value="<?php echo URLROOT ?>/sistema/" <?php if ($url == URLROOT . "/sistema/") {
                                             echo " selected ";
                                         } ?>>Sistema</option>
+                        <option value="<?php echo URLROOT ?>/impostos/" <?php if ($url == URLROOT . "/impostos/") {
+                                            echo " selected ";
+                                        } ?>>Impostos</option>
                     </select>
                 </div>
             </div>
