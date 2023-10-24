@@ -24,6 +24,7 @@ $aplicativos = buscaAplicativos();
         <div class="row">
             <BR> <!-- BOTOES AUXILIARES -->
         </div>
+        
         <div class="row align-items-center"> <!-- LINHA SUPERIOR A TABLE -->
             <div class="col-3 text-start">
                 <!-- TITULO -->
