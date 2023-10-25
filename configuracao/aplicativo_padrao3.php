@@ -37,14 +37,14 @@ $clientes = buscaClientes();
         </div>
         <div class="row d-flex align-items-center justify-content-center mt-1 pt-1 ">
             
-            <div class="col-4 col-lg-1 order-lg-1 bg-danger ">
+            <div class="col-4 col-lg-1 order-lg-1">
             
                 <button type="button" class="ts-btnFiltros btn btn-sm"><span class="material-symbols-outlined">
                         filter_alt
                     </span></button>
             </div>
 
-            <div class="col-8 col-lg-5 order-lg-2 bg-info">
+            <div class="col-8 col-lg-5 order-lg-2">
             
                 <h2 class="ts-tituloPrincipal">Aplicativo padrao 3</h2>
                 <span>Filtro Aplicado</span>
