@@ -29,37 +29,40 @@ $clientes = buscaClientes();
             </div>
         </nav>
 
-        <div class="row">
-            <!-- MENSAGENS/ALERTAS -->
+        <div class="row ">
+            <!-- <BR> MENSAGENS/ALERTAS -->
         </div>
-        <div class="row">
-            <!-- BOTOES AUXILIARES -->
+        <div class="row ">
+         <!--    <BR><BR><BR> BOTOES AUXILIARES -->
         </div>
-        <div class="row">
-            <div class="col-6 order-1 col-sm-6  col-md-6 order-md-1 col-lg-1 order-lg-1 mt-3">
+        <div class="row d-flex align-items-center justify-content-center mt-1 pt-1 ">
+            
+            <div class="col-4 col-lg-1 order-lg-1">
+            
                 <button type="button" class="ts-btnFiltros btn btn-sm"><span class="material-symbols-outlined">
                         filter_alt
                     </span></button>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-2 order-lg-2 mt-4">
+            <div class="col-8 col-lg-5 order-lg-2">
+            
                 <h2 class="ts-tituloPrincipal">Aplicativo padrao 3</h2>
+                <span>Filtro Aplicado</span>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-5 order-lg-3">
+            <div class="col-12 col-lg-6 order-lg-3">
+            
                 <div class="input-group">
-                    <input type="text" class="form-control ts-input mt-4" id="buscaaplicativo" placeholder="Buscar aplicativo">
+                    <input type="text" class="form-control ts-input" id="buscaaplicativo" placeholder="Buscar aplicativo">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary mt-4" id="buscar" type="button"><span style="font-size: 20px;font-family: 'Material Symbols Outlined'!important;" class="material-symbols-outlined">
+                        <button class="btn btn-primary ml-2" id="buscar" type="button"><span style="font-size: 20px;font-family: 'Material Symbols Outlined'!important;" class="material-symbols-outlined">
                                 search
                             </span></button>
                     </span>
+                    <button type="button" class="btn btn-success ml-4" data-bs-toggle="modal" data-bs-target="#inserirModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
                 </div>
             </div>
 
-            <div class="col-6 order-2 col-sm-6 col-md-6 order-md-2 col-lg-4 order-lg-4 mt-3 text-end" style=" margin-left:-30px ">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#inserirModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
-            </div>
         </div>
 
         <div class="table mt-2 ts-divTabela ts-tableFiltros text-center">
