@@ -86,7 +86,7 @@ tbody tr td {
 
 .ts-tituloPrincipal {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   text-align: left;
   color: var(--color-letra-primary);
 }
@@ -154,20 +154,20 @@ tbody tr td {
 }
 
 .ts-btnFiltros {
-  margin-top: 5px;
-  margin-bottom: 10px;
-  margin-left: 30px;
+ /* margin-top: 5px; */
+ /* margin-bottom: 10px; */
+ /*  margin-left: 30px; */
   align-items: center;
   color: rgb(2, 2, 2);
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  width: 50px;
+/*  width: 50px; */
 }
 
 .ts-btnFiltros span {
-  font-size: 25px;
+ /* font-size: 25px; */
   font-family:
     'Material Symbols Outlined' !important;
 }
