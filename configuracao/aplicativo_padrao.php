@@ -64,19 +64,12 @@ $clientes = buscaClientes();
             </div>
             <div class="col-12 col-lg-6 order-lg-4">
                 <div class="input-group">
-                    <input type="text" class="form-control ts-input" id="buscaaplicativo"
-                        placeholder="Buscar aplicativo">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary ml-2" id="buscar" type="button"><span
-                                style="font-size: 20px;font-family: 'Material Symbols Outlined'!important;"
-                                class="material-symbols-outlined">
-                                search
-                            </span></button>
-                    </span>
-                    <button type="button" class="btn btn-success ml-4" data-bs-toggle="modal"
-                        data-bs-target="#inserirModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
+                    <input type="text" class="form-control ts-input" id="buscaContrato" placeholder="Buscar por id ou titulo">
+                    <button class="btn btn-primary rounded" type="button" id="buscar"><i class="bi bi-search"></i></button>
+                    <button type="button" class="btn btn-success ml-4" data-bs-toggle="modal" data-bs-target="#inserirModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
                 </div>
             </div>
+
         </div>
 
         <div class="table mt-2 ts-divTabela ts-tableFiltros table-hover text-center">
@@ -93,8 +86,7 @@ $clientes = buscaClientes();
                         <th></th>
                         <th>
                             <form action="" method="post">
-                                <select class="form-select ts-input ts-selectFiltrosHeaderTabela" name="idCliente"
-                                    id="FiltroClientes">
+                                <select class="form-select ts-input ts-selectFiltrosHeaderTabela" name="idCliente" id="FiltroClientes">
                                     <option value="<?php echo null ?>">
                                         <?php echo "Selecione" ?>
                                     </option>
@@ -107,8 +99,7 @@ $clientes = buscaClientes();
                         <th></th>
                         <th>
                             <form action="" method="post">
-                                <select class="form-select ts-input ts-selectFiltrosHeaderTabela" name="idCliente"
-                                    id="FiltroClientes">
+                                <select class="form-select ts-input ts-selectFiltrosHeaderTabela" name="idCliente" id="FiltroClientes">
                                     <option value="<?php echo null ?>">
                                         <?php echo "Selecione" ?>
                                     </option>
@@ -130,8 +121,7 @@ $clientes = buscaClientes();
 
 
         <!--------- INSERIR --------->
-        <div class="modal fade bd-example-modal-lg" id="inserirModal" tabindex="-1" aria-labelledby="inserirModalLabel"
-            aria-hidden="true">
+        <div class="modal fade bd-example-modal-lg" id="inserirModal" tabindex="-1" aria-labelledby="inserirModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -143,8 +133,7 @@ $clientes = buscaClientes();
                             <div class="row mt-4">
                                 <div class="col-md-6">
                                     <label class='form-label ts-label'>Nome do Aplicativo</label>
-                                    <input type="text" class="form-control ts-input" name="nomeAplicativo"
-                                        autocomplete="off" required>
+                                    <input type="text" class="form-control ts-input" name="nomeAplicativo" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class='form-label ts-label'>Caminho</label>
@@ -172,8 +161,7 @@ $clientes = buscaClientes();
         </div>
 
         <!--------- ALTERAR --------->
-        <div class="modal fade bd-example-modal-lg" id="alterarmodal" tabindex="-1" aria-labelledby="alterarmodalLabel"
-            aria-hidden="true">
+        <div class="modal fade bd-example-modal-lg" id="alterarmodal" tabindex="-1" aria-labelledby="alterarmodalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -185,10 +173,8 @@ $clientes = buscaClientes();
                             <div class="row mt-4">
                                 <div class="col-md-6">
                                     <label class='form-label ts-label'>Nome do Aplicativo</label>
-                                    <input type="text" class="form-control ts-input" name="nomeAplicativo"
-                                        id="nomeAplicativo">
-                                    <input type="hidden" class="form-control ts-input" name="idAplicativo"
-                                        id="idAplicativo">
+                                    <input type="text" class="form-control ts-input" name="nomeAplicativo" id="nomeAplicativo">
+                                    <input type="hidden" class="form-control ts-input" name="idAplicativo" id="idAplicativo">
                                 </div>
                                 <div class="col-md-6">
                                     <label class='form-label ts-label'>Caminho</label>
@@ -238,13 +224,13 @@ $clientes = buscaClientes();
                 type: 'POST',
                 dataType: 'html',
                 url: '<?php echo URLROOT ?>/sistema/database/aplicativo.php?operacao=filtrar',
-                beforeSend: function () {
+                beforeSend: function() {
                     $("#dados").html("Carregando...");
                 },
                 data: {
                     buscaaplicativo: buscaaplicativo
                 },
-                success: function (msg) {
+                success: function(msg) {
                     //alert("segundo alert: " + msg);
                     var json = JSON.parse(msg);
 
@@ -267,17 +253,17 @@ $clientes = buscaClientes();
             });
         }
 
-        $("#buscar").click(function () {
+        $("#buscar").click(function() {
             buscar($("#buscaaplicativo").val());
         })
 
-        document.addEventListener("keypress", function (e) {
+        document.addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
                 buscar($("#buscaaplicativo").val());
             }
         });
 
-        $(document).on('click', 'button[data-bs-target="#alterarmodal"]', function () {
+        $(document).on('click', 'button[data-bs-target="#alterarmodal"]', function() {
             var idAplicativo = $(this).attr("data-idAplicativo");
             //alert(idAplicativo)
             $.ajax({
@@ -287,7 +273,7 @@ $clientes = buscaClientes();
                 data: {
                     idAplicativo: idAplicativo
                 },
-                success: function (data) {
+                success: function(data) {
                     $('#idAplicativo').val(data.idAplicativo);
                     $('#nomeAplicativo').val(data.nomeAplicativo);
                     $('#appLink').val(data.appLink);
@@ -299,8 +285,8 @@ $clientes = buscaClientes();
             });
         });
 
-        $(document).ready(function () {
-            $("#inserirFormAplicativo").submit(function (event) {
+        $(document).ready(function() {
+            $("#inserirFormAplicativo").submit(function(event) {
                 event.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
@@ -313,7 +299,7 @@ $clientes = buscaClientes();
                 });
             });
 
-            $("#alterarFormAplicativo").submit(function (event) {
+            $("#alterarFormAplicativo").submit(function(event) {
                 event.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
@@ -337,14 +323,14 @@ $clientes = buscaClientes();
         const pictureImageTxt = "Carregar imagem";
         pictureImage.innerHTML = pictureImageTxt;
 
-        inputFile.addEventListener("change", function (e) {
+        inputFile.addEventListener("change", function(e) {
             const inputTarget = e.target;
             const file = inputTarget.files[0];
 
             if (file) {
                 const reader = new FileReader();
 
-                reader.addEventListener("load", function (e) {
+                reader.addEventListener("load", function(e) {
                     const readerTarget = e.target;
 
                     const img = document.createElement("img");
