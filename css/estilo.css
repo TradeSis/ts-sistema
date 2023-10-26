@@ -133,7 +133,6 @@ body {
   background-color: #d3d3d3;
   width: 170px;
   position: fixed;
-  top: 150px;
   left: -250px;
   /* menu desaparece */
   transition: left 1s;
@@ -148,8 +147,8 @@ body {
 }
 
 .ts-btnFiltros {
- 
- /*  align-items: center;
+
+/*   align-items: center;
   color: rgb(2, 2, 2);
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
@@ -158,11 +157,6 @@ body {
 
 }
 
-.ts-btnFiltros span {
- /* font-size: 25px; */
-  font-family:
-    'Material Symbols Outlined' !important;
-}
 
 .ts-btnFiltros:hover {
   background-color: rgba(0, 0, 0, 0.103);
