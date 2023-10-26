@@ -75,15 +75,8 @@ if ($nivelMenuLogin == null) {
                          if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
                                 <a class="nav-link 
-                                <?php if ($tab == "aplicativo_padrao2") {echo " active ";} ?>" 
-                                href="?tab=aplicativo_padrao2" role="tab">aplicativo padrão2</a>
-                            </li>
-                        <?php }
-                         if ($nivelMenu == 5) { ?>
-                            <li class="nav-item mr-1 ">
-                                <a class="nav-link 
-                                <?php if ($tab == "aplicativo_padrao3") {echo " active ";} ?>" 
-                                href="?tab=aplicativo_padrao3" role="tab">aplicativo padrão3</a>
+                                <?php if ($tab == "aplicativo_padrao") {echo " active ";} ?>" 
+                                href="?tab=aplicativo_padrao" role="tab">Aplicativo padrão</a>
                             </li>
                         <?php }
                         if ($nivelMenu == 5) { ?>
@@ -144,13 +137,9 @@ if ($nivelMenuLogin == null) {
                 $src = "configuracao/anexos.php";
                 $title = "Sistema/Anexos";
             }
-            if ($tab == "aplicativo_padrao2") {
-                $src = "configuracao/aplicativo_padrao2.php";
-                $title = "Sistema/Aplicativo_padrao2";
-            }
-            if ($tab == "aplicativo_padrao3") {
-                $src = "configuracao/aplicativo_padrao3.php";
-                $title = "Sistema/Aplicativo_padrao3";
+            if ($tab == "aplicativo_padrao") {
+                $src = "configuracao/aplicativo_padrao.php";
+                $title = "Sistema/Aplicativo_padrao";
             }
             if ($tab == "configuracao") {
                 $src = "configuracao/";
