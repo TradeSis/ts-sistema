@@ -32,7 +32,7 @@ $clientes = buscaClientes();
         <div class="row ">
             <!-- <BR> MENSAGENS/ALERTAS -->
         </div>
-        <div class="row ">
+        <div class="row mt-3">
             <BR><BR><BR><!--  BOTOES AUXILIARES -->
         </div>
         <div class="row d-flex align-items-center justify-content-center mt-1 pt-1 ">
