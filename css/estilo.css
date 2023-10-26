@@ -274,50 +274,50 @@ body {
 
 /* CONTRATO STATUS */
 [class="Orçamento"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #5271FE !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="Faturamento"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #FE5469 !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="Finalizado"] {
-  display: inline-block;
+ /* display: inline-block; */
   background: #C34A36 !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px;*/
 }
 
 [class="Aprovação"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #69419D !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+  /* width: 160px;*/
 }
 
 [class="Desenvolvimento"] {
-  margin-top: 5px;
-  display: inline-block;
+/*  margin-top: 5px;
+  display: inline-block; */
   background: #FEA051 !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="Recebimento"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #18B376 !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px; */
 }
 /*fim-  CONTRATO STATUS */
 
