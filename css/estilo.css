@@ -78,12 +78,6 @@ body {
   text-align: center;
 }
 
-/* ESTILOS DE TABELAS */
-tbody tr td {
-  font-size: 14px;
-  /* fonte da tabela */
-}
-
 .ts-tituloPrincipal {
   font-weight: 600;
   font-size: 18px;
@@ -182,6 +176,10 @@ tbody tr td {
 
 .ts-tableFiltros.mostra {
   padding-left: 163px;
+}
+
+.fonteCorpo td {
+  font-size: 13px;
 }
 
 /*fim - MENU FILTROS*/
@@ -326,74 +324,74 @@ tbody tr td {
 /*  */
 /* STATUS DEMANDA */
 [class="1"] {
-  margin-top: 5px;
-  display: inline-block;
+  /*margin-top: 5px;
+  display: inline-block; */
   background: #5271FE !important;
   color: #fff;
-  width: 160px;
+  /*width: 160px; */
 }
 
 [class="9"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #FE5469 !important;
   color: #fff;
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="4"] {
-  display: inline-block;
+ /* display: inline-block; */
   background: #C34A36 !important;
   color: #fff;
-  width: 160px;
+ /* width: 100px; */
 }
 
 [class="3"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #69419D !important;
   color: #fff;
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="5"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #FEA051 !important;
   color: #fff;
-  width: 160px;
+  /*width: 160px; */
 }
 
 [class="6"] {
-  margin-top: 5px;
-  display: inline-block;
+  /*margin-top: 5px;
+  display: inline-block; */
   background: #18B376 !important;
   color: #fff;
-  width: 160px;
+/*  width: 160px; */
 }
 
 [class="7"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #00C2A8 !important;
-  width: 160px;
+ /* width: 160px; */
   color: #fff;
 }
 
 [class="8"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: blueviolet !important;
   color: #fff;
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="2"] {
-  margin-top: 5px;
-  display: inline-block;
+  /*margin-top: 5px;
+  display: inline-block; */
   background: #FFC107!important;
   color: #fff;
-  width: 160px;
+  /* width: 160px; */
 }
 /* fim - STATUS DEMANDA*/
 
