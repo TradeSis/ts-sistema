@@ -133,7 +133,7 @@ body {
   background-color: #d3d3d3;
   width: 170px;
   position: fixed;
-  top: 120px;
+  top: 135px;
   left: -250px;
   /* menu desaparece */
   transition: left 1s;
