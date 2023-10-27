@@ -78,12 +78,6 @@ body {
   text-align: center;
 }
 
-/* ESTILOS DE TABELAS */
-tbody tr td {
-  font-size: 14px;
-  /* fonte da tabela */
-}
-
 .ts-tituloPrincipal {
   font-weight: 600;
   font-size: 18px;
@@ -139,7 +133,6 @@ tbody tr td {
   background-color: #d3d3d3;
   width: 170px;
   position: fixed;
-  top: 120px;
   left: -250px;
   /* menu desaparece */
   transition: left 1s;
@@ -154,23 +147,16 @@ tbody tr td {
 }
 
 .ts-btnFiltros {
- /* margin-top: 5px; */
- /* margin-bottom: 10px; */
- /*  margin-left: 30px; */
-  align-items: center;
+
+/*   align-items: center;
   color: rgb(2, 2, 2);
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   cursor: pointer;
-  text-align: center;
-/*  width: 50px; */
+  text-align: center; */
+
 }
 
-.ts-btnFiltros span {
- /* font-size: 25px; */
-  font-family:
-    'Material Symbols Outlined' !important;
-}
 
 .ts-btnFiltros:hover {
   background-color: rgba(0, 0, 0, 0.103);
@@ -182,6 +168,10 @@ tbody tr td {
 
 .ts-tableFiltros.mostra {
   padding-left: 163px;
+}
+
+.fonteCorpo td {
+  font-size: 13px;
 }
 
 /*fim - MENU FILTROS*/
@@ -276,124 +266,124 @@ tbody tr td {
 
 /* CONTRATO STATUS */
 [class="Orçamento"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #5271FE !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="Faturamento"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #FE5469 !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="Finalizado"] {
-  display: inline-block;
+ /* display: inline-block; */
   background: #C34A36 !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px;*/
 }
 
 [class="Aprovação"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #69419D !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+  /* width: 160px;*/
 }
 
 [class="Desenvolvimento"] {
-  margin-top: 5px;
-  display: inline-block;
+/*  margin-top: 5px;
+  display: inline-block; */
   background: #FEA051 !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="Recebimento"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #18B376 !important;
   color: var(--color-letra-secondary);
-  width: 160px;
+ /* width: 160px; */
 }
 /*fim-  CONTRATO STATUS */
 
 /*  */
 /* STATUS DEMANDA */
 [class="1"] {
-  margin-top: 5px;
-  display: inline-block;
+  /*margin-top: 5px;
+  display: inline-block; */
   background: #5271FE !important;
   color: #fff;
-  width: 160px;
+  /*width: 160px; */
 }
 
 [class="9"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #FE5469 !important;
   color: #fff;
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="4"] {
-  display: inline-block;
+ /* display: inline-block; */
   background: #C34A36 !important;
   color: #fff;
-  width: 160px;
+ /* width: 100px; */
 }
 
 [class="3"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #69419D !important;
   color: #fff;
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="5"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #FEA051 !important;
   color: #fff;
-  width: 160px;
+  /*width: 160px; */
 }
 
 [class="6"] {
-  margin-top: 5px;
-  display: inline-block;
+  /*margin-top: 5px;
+  display: inline-block; */
   background: #18B376 !important;
   color: #fff;
-  width: 160px;
+/*  width: 160px; */
 }
 
 [class="7"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: #00C2A8 !important;
-  width: 160px;
+ /* width: 160px; */
   color: #fff;
 }
 
 [class="8"] {
-  margin-top: 5px;
-  display: inline-block;
+ /* margin-top: 5px;
+  display: inline-block; */
   background: blueviolet !important;
   color: #fff;
-  width: 160px;
+ /* width: 160px; */
 }
 
 [class="2"] {
-  margin-top: 5px;
-  display: inline-block;
+  /*margin-top: 5px;
+  display: inline-block; */
   background: #FFC107!important;
   color: #fff;
-  width: 160px;
+  /* width: 160px; */
 }
 /* fim - STATUS DEMANDA*/
 

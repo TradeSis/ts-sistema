@@ -17,8 +17,49 @@ $clientes = buscaClientes();
 
 <body>
     <div class="container-fluid">
+
+        <div class="row ">
+            <!-- <BR> MENSAGENS/ALERTAS -->
+        </div>
+        <div class="row">
+            <!--<BR><BR><BR>  BOTOES AUXILIARES -->
+        </div>
+        <div class="row d-flex align-items-center justify-content-center mt-1 pt-1 ">
+
+            <div class="col-2 col-lg-1 order-lg-1">
+                <button class="btn btn-outline-secondary ts-btnFiltros" type="button"><i class="bi bi-funnel"></i></button>
+            </div>
+
+            <div class="col-4 col-lg-3 order-lg-2">
+
+                <h2 class="ts-tituloPrincipal">Aplicativo padrão</h2>
+                <span>Filtro Aplicado</span>
+
+            </div>
+            <div class="col-6 col-lg-2 order-lg-3">
+                <form class="text-end" action="" method="post">
+                    <div class="input-group">
+                        <select class="form-select ts-input" name="exemplo">
+                            <option value="">exemplo1</option>
+                            <option value="">exemplo2</option>
+                            <option value="">exemplo3</option>
+                        </select>
+                        <button class="btn btn-warning" name="exemplo" type="submit">Botão</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-6 order-lg-4">
+                <div class="input-group">
+                    <input type="text" class="form-control ts-input" id="buscaContrato" placeholder="Buscar por id ou titulo">
+                    <button class="btn btn-primary rounded" type="button" id="buscar"><i class="bi bi-search"></i></button>
+                    <button type="button" class="btn btn-success ml-4" data-bs-toggle="modal" data-bs-target="#inserirModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
+                </div>
+            </div>
+
+        </div>
+
         <!-- MENUFILTROS -->
-        <nav class="ts-menuFiltros" style="margin-top: -40px;">
+        <div class="ts-menuFiltros mt-2">
             <label class="pl-2" for="">Filtrar por:</label>
             <div class="col-12">
                 <!-- FILTROS -->
@@ -27,50 +68,46 @@ $clientes = buscaClientes();
             <div class="col-sm text-end mt-2">
                 <a onClick="limpar()" role=" button" class="btn btn-sm bg-info text-white">Limpar</a>
             </div>
-        </nav>
-
-        <div class="row">
-        <!-- MENSAGENS/ALERTAS -->
-        </div>
-        <div class="row">
-        <!-- BOTOES AUXILIARES -->
-        </div>
-        <div class="row">
-            <div class="col-6 order-1 col-sm-6  col-md-6 order-md-1 col-lg-1 order-lg-1 mt-3">
-                <button type="button" class="ts-btnFiltros btn btn-sm"><span class="material-symbols-outlined">
-                        filter_alt
-                    </span></button>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-12 col-lg-2 order-lg-2 mt-4">
-                <h2 class="ts-tituloPrincipal">Aplicativo padrao 2</h2>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-12 col-lg-5 order-lg-3">
-                <div class="input-group">
-                    <input type="text" class="form-control ts-input mt-4" id="buscaaplicativo" placeholder="Buscar aplicativo">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary mt-4" id="buscar" type="button"><span style="font-size: 20px;font-family: 'Material Symbols Outlined'!important;" class="material-symbols-outlined">
-                                search
-                            </span></button>
-                    </span>
-                </div>
-            </div>
-
-            <div class="col-6 order-2 col-sm-6 col-md-6 order-md-2 col-lg-4 order-lg-4 mt-3 text-end" style=" margin-left:-30px ">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#inserirModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
-            </div>
         </div>
 
-        <div class="table mt-2 ts-divTabela ts-tableFiltros text-center">
-            <table class="table table-hover table-sm">
+        <div class="table mt-2 ts-divTabela ts-tableFiltros table-hover text-center">
+            <table class="table table-sm">
                 <thead class="ts-headertabelafixo">
-                    <tr>
+                    <tr class="ts-headerTabelaLinhaCima">
                         <th>ID</th>
                         <th>Aplicativo</th>
                         <th>Caminho</th>
                         <th>Imagem</th>
                         <th colspan="2">Ação</th>
+                    </tr>
+                    <tr class="ts-headerTabelaLinhaBaixo">
+                        <th></th>
+                        <th>
+                            <form action="" method="post">
+                                <select class="form-select ts-input ts-selectFiltrosHeaderTabela" name="idCliente" id="FiltroClientes">
+                                    <option value="<?php echo null ?>">
+                                        <?php echo "Selecione" ?>
+                                    </option>
+                                    <option value="">exemplo1</option>
+                                    <option value="">exemplo2</option>
+                                    <option value="">exemplo3</option>
+                                </select>
+                            </form>
+                        </th>
+                        <th></th>
+                        <th>
+                            <form action="" method="post">
+                                <select class="form-select ts-input ts-selectFiltrosHeaderTabela" name="idCliente" id="FiltroClientes">
+                                    <option value="<?php echo null ?>">
+                                        <?php echo "Selecione" ?>
+                                    </option>
+                                    <option value="">exemplo1</option>
+                                    <option value="">exemplo2</option>
+                                    <option value="">exemplo3</option>
+                                </select>
+                            </form>
+                        </th>
+                        <th colspan="2"></th>
                     </tr>
                 </thead>
 
@@ -131,7 +168,7 @@ $clientes = buscaClientes();
                     </div>
                     <div class="modal-body">
                         <form method="post" id="alterarFormAplicativo">
-                        <div class="row mt-4">
+                            <div class="row mt-4">
                                 <div class="col-md-6">
                                     <label class='form-label ts-label'>Nome do Aplicativo</label>
                                     <input type="text" class="form-control ts-input" name="nomeAplicativo" id="nomeAplicativo">
@@ -151,7 +188,7 @@ $clientes = buscaClientes();
 
                                 <input type="file" name="imgAplicativo" id="imgAplicativo">
                             </div>
-                           
+
                     </div>
                     <div class="modal-footer">
                         <div class="text-end mt-4">
@@ -239,7 +276,7 @@ $clientes = buscaClientes();
                     $('#nomeAplicativo').val(data.nomeAplicativo);
                     $('#appLink').val(data.appLink);
                     $('#pathImg').val(data.pathImg);
-                
+
                     /* alert(data) */
                     $('#alterarmodal').modal('show');
                 }
@@ -278,20 +315,20 @@ $clientes = buscaClientes();
             }
         });
 
-         //Carregar a imagem na tela
-         const inputFile = document.querySelector("#imgAplicativo");
+        //Carregar a imagem na tela
+        const inputFile = document.querySelector("#imgAplicativo");
         const pictureImage = document.querySelector(".picture__image");
         const pictureImageTxt = "Carregar imagem";
         pictureImage.innerHTML = pictureImageTxt;
 
-        inputFile.addEventListener("change", function (e) {
+        inputFile.addEventListener("change", function(e) {
             const inputTarget = e.target;
             const file = inputTarget.files[0];
 
             if (file) {
                 const reader = new FileReader();
 
-                reader.addEventListener("load", function (e) {
+                reader.addEventListener("load", function(e) {
                     const readerTarget = e.target;
 
                     const img = document.createElement("img");

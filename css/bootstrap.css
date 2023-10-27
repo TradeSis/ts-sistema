@@ -103,3 +103,16 @@ a.nav-link{
   background-color: #ffffff!important;
 }
 /*fim - TAB SUBMENUS APLICATIVOS*/
+
+.container-fluid {
+  padding-left: 8px;
+}
+
+/* ESTILOS DE TABELAS */
+.table-sm tr td {
+  padding: 2px;
+  vertical-align: middle;
+  border-top: 0px solid #dee2e6;
+}
+
+
