@@ -47,6 +47,22 @@
   border-color: #E02D1B;
 }
 
+.btn-info {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-info:hover {
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+.bg-info {
+  background-color: #17a2b8 !important;
+}
+
 /* INPUT E FORMULARIOS */
 
 .ts-label {

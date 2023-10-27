@@ -28,3 +28,15 @@
 #calendar .fc-toolbar h2 {
     font-size: 20px;
 }
+
+.fc-time{
+    color: #000000d0;
+}
+.fc-title{
+    color: #000000d0;
+}
+
+.fc-day-number{
+    color: #000;
+    text-decoration: none;
+}
