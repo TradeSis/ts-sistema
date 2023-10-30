@@ -52,17 +52,21 @@ $clientes = buscaClientes();
                 <div class="input-group">
                     <input type="text" class="form-control ts-input" id="buscaContrato" placeholder="Buscar por id ou titulo">
                     <button class="btn btn-primary rounded" type="button" id="buscar"><i class="bi bi-search"></i></button>
-                    <button type="button" class="btn btn-success ml-4" data-bs-toggle="modal" data-bs-target="#inserirModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
+                    <button type="button" class="ms-4 btn btn-success" data-bs-toggle="modal" data-bs-target="#inserirModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
                 </div>
             </div>
 
         </div>
 
         <!-- MENUFILTROS -->
-        <div class="ts-menuFiltros mt-2">
-            <label class="pl-2" for="">Filtrar por:</label>
+        <div class="ts-menuFiltros mt-2 px-3">
+            <label>Filtrar por:</label>
             <div class="col-12">
-                <!-- FILTROS -->
+                <select class="form-select" name="exemplo">
+                    <option value="">exemplo1</option>
+                    <option value="">exemplo2</option>
+                    <option value="">exemplo3</option>
+                </select>
             </div>
 
             <div class="col-sm text-end mt-2">
@@ -70,8 +74,8 @@ $clientes = buscaClientes();
             </div>
         </div>
 
-        <div class="table mt-2 ts-divTabela ts-tableFiltros table-hover text-center">
-            <table class="table table-sm">
+        <div class="table mt-2 ts-divTabela ts-tableFiltros text-center">
+            <table class="table table-sm table-hover">
                 <thead class="ts-headertabelafixo">
                     <tr class="ts-headerTabelaLinhaCima">
                         <th>ID</th>
