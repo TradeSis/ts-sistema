@@ -1,5 +1,7 @@
 <?php
 
+// helio 01/11/2023 - banco padrao, empresa null
+$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
@@ -22,11 +24,6 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-$idEmpresa = null;
-if (isset($jsonEntrada["idEmpresa"])) {
-    $idEmpresa = $jsonEntrada["idEmpresa"];
-}
-$conexao = conectaMysql();
 if (isset($jsonEntrada['loginNome'])) {
     $loginNome = $jsonEntrada['loginNome'];
     $idEmpresa = $jsonEntrada['idEmpresa'];

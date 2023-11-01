@@ -3,6 +3,8 @@
 //gabriel 220323 11:10 envio de idcliente
 //Lucas 08032023
 //echo "-ENTRADA->" . json_encode($jsonEntrada) . "\n";
+// helio 01/11/2023 - banco padrao, empresa null
+$conexao = conectaMysql(null);
 
 require_once '../vendor/autoload.php';
 
@@ -41,7 +43,7 @@ if (!isset($jsonEntrada["loginNome"]) || !isset($jsonEntrada["nomeEmpresa"]) || 
     $loginNome = $jsonEntrada["loginNome"];
     $token = $jsonEntrada["token"];
 
-    $conexao = conectaMysql();
+    
     $loginNomes = array();
 
     $sql = "SELECT login.*, empresa.nomeEmpresa, empresa.timeSessao FROM login
