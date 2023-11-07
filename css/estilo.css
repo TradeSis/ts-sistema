@@ -123,10 +123,18 @@ body {
 
 .ts-divTabela {
   width: 100%;
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+.ts-divTabela70 {
+  width: 100%;
   height: 70vh;
   overflow-y: scroll;
   overflow-x: auto;
 }
+
 
 /* MENU FILTROS E DIV DA TEBALA QUE TERA O EFEITO DE MOVIMENTO*/
 .ts-menuFiltros {
