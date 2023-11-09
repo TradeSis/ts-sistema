@@ -198,8 +198,12 @@ span.ts-horas {
   font-size: 13px;
   color:#000;
   text-decoration: none;
+  background-color: red;
 }
 
+.ts-cursor{
+  cursor: pointer;
+}
 /*fim - MENU FILTROS*/
 
 /*TAB DE CONFIGURAÇÔES*/
