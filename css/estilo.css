@@ -194,15 +194,14 @@ span.ts-horas {
 .fonteCorpo td {
   font-size: 13px;
 }
-.fonteCorpo td a{
-  font-size: 13px;
-  color:#000;
-  text-decoration: none;
-  background-color: red;
-}
 
 .ts-click{
   cursor: pointer;
+}
+
+.ts-btnAcoes{
+  font-size: 13px;
+  font-style:italic;
 }
 /*fim - MENU FILTROS*/
 
