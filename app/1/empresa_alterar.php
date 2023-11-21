@@ -29,7 +29,10 @@ if (isset($jsonEntrada['idEmpresa'])) {
     $idEmpresa = $jsonEntrada['idEmpresa'];
     $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
     $timeSessao = $jsonEntrada['timeSessao'];
-    $sql = "UPDATE empresa SET nomeEmpresa='$nomeEmpresa', timeSessao=$timeSessao WHERE idEmpresa = $idEmpresa";
+    $menu = isset($jsonEntrada['menu']) && $jsonEntrada['menu'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['menu']) . "'" : "NULL";
+    $idPessoa = isset($jsonEntrada['idPessoa']) && $jsonEntrada['idPessoa'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['idPessoa']) . "'" : "NULL";
+
+    $sql = "UPDATE empresa SET nomeEmpresa='$nomeEmpresa', timeSessao=$timeSessao, menu=$menu, idPessoa=$idPessoa WHERE idEmpresa = $idEmpresa";
 
     //LOG
     if (isset($LOG_NIVEL)) {
