@@ -135,6 +135,26 @@ body {
   overflow-x: auto;
 }
 
+/* Style para previsto, quando existe Real */  
+span.ts-previsto {
+  font-weight: lighter;
+}
+
+/* Style para as datas */
+span.ts-datas {
+    font-size:13px;
+    display:flex;
+    width:110px;
+    float:left;
+}
+
+/* Style para as horas */
+span.ts-horas {
+    font-size:13px; 
+    display:flex;
+    width:43px;
+    float:left;
+}
 
 /* MENU FILTROS E DIV DA TEBALA QUE TERA O EFEITO DE MOVIMENTO*/
 .ts-menuFiltros {
@@ -175,6 +195,14 @@ body {
   font-size: 13px;
 }
 
+.ts-click{
+  cursor: pointer;
+}
+
+.ts-btnAcoes{
+  font-size: 13px;
+  font-style:italic;
+}
 /*fim - MENU FILTROS*/
 
 /*TAB DE CONFIGURAÇÔES*/
@@ -513,3 +541,4 @@ body {
   padding: 0.5em;
   }
 /* fim - IMAGEM EM FORMATO DE PERFIL */
+
