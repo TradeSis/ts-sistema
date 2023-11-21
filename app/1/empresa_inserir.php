@@ -28,7 +28,9 @@ if (isset($LOG_NIVEL)) {
 if (isset($jsonEntrada['nomeEmpresa'])) {
     $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
     $timeSessao = $jsonEntrada['timeSessao'];
-    $sql = "INSERT INTO empresa (nomeEmpresa, timeSessao) values ('$nomeEmpresa', $timeSessao)";
+    $menu = isset($jsonEntrada['menu']) && $jsonEntrada['menu'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['menu']) . "'" : "NULL";
+    $idPessoa = isset($jsonEntrada['idPessoa']) && $jsonEntrada['idPessoa'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['idPessoa']) . "'" : "NULL";
+    $sql = "INSERT INTO empresa (nomeEmpresa, timeSessao, menu, idPessoa) values ('$nomeEmpresa', $timeSessao, $menu, $idPessoa)";
     //LOG
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 3) {
