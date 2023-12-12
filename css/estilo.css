@@ -466,8 +466,6 @@ span.ts-horas {
 /* EDITOR QUILL */
 .quill-textarea{
   background-color: #fff;
-  height:300px !important; 
-  width:100% !important;
 }
 
 .quill-comentario{
@@ -541,9 +539,104 @@ span.ts-horas {
   }
 /* fim - IMAGEM EM FORMATO DE PERFIL */
 
-/* usado no modalTarefas_alterar */
-.ts-selectDisable{
-  background: #eee; 
+
+/* MODAL DEMANDAS/VIZUALIZAR */
+.modal-fullscreen {
+  max-width: 75vw;
+  height: 98vh;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
+.ts-divLateralModalDemanda {
+  position: sticky;
+  display: flex;
+  height: 98vh;
+  background-color: #F1F2F4;
+}
+
+@media only screen and (max-width: 785px) {
+  .modal-fullscreen {
+      max-width: 100vw;
+      height: 98vh;
+  }
+
+  .ts-divLateralModalDemanda {
+      height: 650px;
+  }
+
+}
+
+.ts-inputSemBorda {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  margin-top: -5px;
+  background: #F1F2F4;
+}
+
+.ts-inputSemBorda:any-link {
+  margin-top: -5px;
+  background: #fff;
+}
+
+.ts-selectDemandaModalVisualizar {
+  border-radius: 3px;
+  border-bottom: 1px solid #C1C1C1;
+  background: #F1F2F4;
+  cursor: pointer;
+}
+
+.ts-tituloPrincipalModal {
+  font-size: 18px;
+  font-weight: 600;
+  color: #172B4D;
+  cursor: pointer;
+}
+/* usado também no modalTarefas_alterar */
+.ts-displayDisable {
+  background: #eee;
   pointer-events: none;
   touch-action: none;
+}
+
+.ts-sumir {
+  display: none;
+}
+
+.ts-containerDescricaoDemanda .ql-toolbar {
+  display: none;
+}
+
+.ts-btnDescricaoEditar {
+  color: #000000;
+  cursor: pointer;
+}
+
+
+/* STYLE SCROLL BAR */
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #C1C1C1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+.ts-subTitulo {
+  color: #172B4D;
 }
