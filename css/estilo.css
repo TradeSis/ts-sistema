@@ -463,11 +463,6 @@ span.ts-horas {
 
 /* fim - CAMPO SENHA PERFIL DE LOGIN */
 
-/* EDITOR QUILL */
-.quill-textarea{
-  background-color: #fff;
-}
-
 .quill-comentario{
   background-color: #fff;
   height:100px !important;  
