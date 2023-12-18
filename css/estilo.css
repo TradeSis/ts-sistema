@@ -28,6 +28,11 @@ body {
   border: none;
 }
 
+/* FUNDO VISUALIZAR */
+body.ts-fundoVisualizar{
+  background: #F1F2F4;
+}
+
 /* PAINEL */
 .ts-sidebar {
   height: 100vh;
@@ -462,11 +467,6 @@ span.ts-horas {
 }
 
 /* fim - CAMPO SENHA PERFIL DE LOGIN */
-
-/* EDITOR QUILL */
-.quill-textarea{
-  background-color: #fff;
-}
 
 .quill-comentario{
   background-color: #fff;
