@@ -17,9 +17,7 @@ function chamaAPI ($URL,$apiUrlParametros,$apiEntrada,$apiMethod, $apiHeaders = 
 	// retirado switch, que testava o primeiro parametro
     $apiUrl = $apiIP.$apiUrlParametros;  
 	
-	if(isset($apiHeaders)){
-		$apiHeaders = $apiHeaders;
-	}else{
+	if(!isset($apiHeaders)){
 		$apiHeaders = array(
 			"Content-Type: application/json"
 		);
@@ -39,6 +37,8 @@ function chamaAPI ($URL,$apiUrlParametros,$apiEntrada,$apiMethod, $apiHeaders = 
     /**/
 
 	if (isset($apiEntrada)) { 
+		/* echo json_encode($apiEntrada);
+		return; */
 		curl_setopt($apiCurl, CURLOPT_POSTFIELDS, $apiEntrada); 
 	}
 
