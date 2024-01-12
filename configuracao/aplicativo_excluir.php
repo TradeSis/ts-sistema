@@ -1,42 +1,62 @@
 <?php
 //Lucas 04042023 criado
 
-include_once('../head.php');
+include_once('../header.php');
 include_once('../database/aplicativo.php');
 
 $aplicativo = buscaAplicativos($_GET['idAplicativo']);
 
 //echo json_encode($aplicativo);
 ?>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    
+    <?php include_once ROOT. "/vendor/head_css.php";?>
 
-<body class="bg-transparent">
+</head>
 
-    <div class="container formContainer">
+<body>
 
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-8">
-                <h2 class="tituloTabela">Excluir Aplicativo</h2>
+            <BR> <!-- MENSAGENS/ALERTAS -->
+        </div>
+        <div class="row">
+            <BR> <!-- BOTOES AUXILIARES -->
+        </div>
+        <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
+            <div class="col-3">
+                <!-- TITULO -->
+                <h2 class="ts-tituloPrincipal">Excluir Aplicativo</h2>
             </div>
-            <div class="col-sm-4" style="text-align:right">
-                <a href="../configuracao/?tab=configuracao&stab=aplicativo" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            <div class="col-7">
+                <!-- FILTROS -->
+            </div>
+
+            <div class="col-2 text-end">
+                <a href="/sistema/configuracao/aplicativo.php" role="button" class="btn btn-primary"><i
+                        class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
             </div>
         </div>
 
         <form action="../database/aplicativo.php?operacao=excluir" method="post">
-            <div class="form-group" style="margin-top:10px">
-                <label class='control-label' for='inputNormal'></label>
-                <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
-                <input type="text" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>" style="display: none">
-            </div>
-            <div style="text-align:right; margin-top:30px">
-                <button type="submit" id="botao" class="btn btn-sm btn-danger"><i class="bi bi-x-octagon"></i>&#32;Excluir</button>
+            <label class='form-label ts-label'></label>
+                <input type="text" class="form-control ts-input" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>">
+                <input type="hidden" class="form-control ts-input" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
+            <div class="text-end mt-4">
+                <button type="submit" class="btn  btn-danger"><i class="bi bi-sd-card-fill"></i>&#32;Excluir</button>
             </div>
 
         </form>
 
 
     </div>
+   <!-- LOCAL PARA COLOCAR OS JS -->
 
+   <?php include_once ROOT. "/vendor/footer_js.php";?>
+
+     <!-- LOCAL PARA COLOCAR OS JS -FIM -->
 
 </body>
 

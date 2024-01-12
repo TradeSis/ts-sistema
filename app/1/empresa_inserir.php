@@ -1,6 +1,8 @@
 <?php
 // helio 31012023 criacao
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+// helio 01/11/2023 - banco padrao, empresa null
+$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
@@ -23,12 +25,12 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-$idEmpresa = null;
-$conexao = conectaMysql($idEmpresa);
 if (isset($jsonEntrada['nomeEmpresa'])) {
     $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
     $timeSessao = $jsonEntrada['timeSessao'];
-    $sql = "INSERT INTO empresa (nomeEmpresa, timeSessao) values ('$nomeEmpresa', $timeSessao)";
+    $menu = isset($jsonEntrada['menu']) && $jsonEntrada['menu'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['menu']) . "'" : "NULL";
+    $idPessoa = isset($jsonEntrada['idPessoa']) && $jsonEntrada['idPessoa'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['idPessoa']) . "'" : "NULL";
+    $sql = "INSERT INTO empresa (nomeEmpresa, timeSessao, menu, idPessoa) values ('$nomeEmpresa', $timeSessao, $menu, $idPessoa)";
     //LOG
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 3) {

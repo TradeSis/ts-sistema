@@ -26,7 +26,7 @@ if (isset($_POST['token'])) {
         setcookie('Empresa', $dados['nomeEmpresa'], strtotime("+1 year"), "/", "", false, true);
         setcookie('User', $dados['loginNome'], strtotime("+1 year"), "/", "", false, true);
 
-        header('Location: ' . URLROOT . '/services/');
+        header('Location: ' . URLROOT . '/' . APP_INICIAL);
     } else {
         $mensagem = $dados['retorno'];
         header('Location: ' . URLROOT . '/sistema/login.php?mensagem=' . $mensagem);

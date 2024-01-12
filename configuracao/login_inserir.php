@@ -1,107 +1,101 @@
 <?php
+// Lucas 06102023 padrao novo
 // helio 01022023 criado option null para empresa
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
-include_once('../head.php');
+include_once('../header.php');
 include_once '../database/empresa.php';
-
 $empresas = buscaEmpresas();
-
 ?>
+<!doctype html>
+<html lang="pt-BR">
 
-<body class="bg-transparent">
+<head>
 
-    <div class="container formContainer">
+    <?php include_once ROOT . "/vendor/head_css.php"; ?>
 
-        <div class="col-sm mt-4" style="text-align:right">
-            <a href="../configuracao/?tab=configuracao&stab=usuarios" role="button" class="btn btn-primary"><i
-                    class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <BR> <!-- MENSAGENS/ALERTAS -->
         </div>
-        <div class="col-sm">
-            <spam class="col titulo">Cadastrar Usuário</spam>
+        <div class="row">
+            <BR> <!-- BOTOES AUXILIARES -->
+        </div>
+        <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
+            <div class="col-3">
+                <!-- TITULO -->
+                <h2 class="ts-tituloPrincipal">Cadastrar Usuário</h2>
+            </div>
+            <div class="col-7">
+                <!-- FILTROS -->
+            </div>
+
+            <div class="col-2 text-end">
+                <a href="/sistema/configuracao/login.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            </div>
         </div>
 
-
-        <div class="container" style="margin-top: 10px">
-            <form action="../database/login.php?operacao=inserir" method="post">
-                <div class="row">
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome do
-                                Usuário</label>
-                            <input type="text" name="loginNome" class="form-control" required autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">E-mail</label>
-                            <input type="email" name="email" class="form-control" autocomplete="off">
-                        </div>
-
-                    </div>
+        <form action="../database/login.php?operacao=inserir" method="post">
+            <div class="row mt-3">
+                <div class="col-sm">
+                    <label class='form-label ts-label'>Nome do Usuário</label>
+                    <input type="text" name="loginNome" class="form-control ts-input" required autocomplete="off">
                 </div>
-                <div class="row">
-                    <div class="col-sm" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Senha do
-                                Usuário</label>
-                            <input id="txtSenha" type="password" name="password" class="form-control" required
-                                autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="col-sm" style="margin-top: 10px">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Repetir
-                                Senha</label>
-                            <input type="password" name="senhausuario2" class="form-control" required autocomplete="off"
-                                oninput="validaSenha(this)">
-                            <small>Precisa ser igual a senha digitada acima.</small>
-                        </div>
-                    </div>
+                <div class="col-sm">
+                    <label class='form-label ts-label'>E-mail</label>
+                    <input type="email" name="email" class="form-control ts-input" autocomplete="off">
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label class='control-label' for='inputNormal' style="margin-top: -20px;">Cpf/Cnpj</label>
-                            <input type="text" name="cpfCnpj" class="form-control" autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="form-group-select">
-                            <label class="labelForm">Utiliza Token</label>
-                            <select class="select form-control" style="padding-right: 100px;" name="pedeToken">
-                                <option value="1">Sim</option>
-                                <option value="0">Não</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group-select">
-                            <label class="labelForm">Empresa</label>
-                            <select class="select form-control" style="padding-right: 100px;" name="idEmpresa" required>
-                                <option value=""></option>
-                                <?php
-                                foreach ($empresas as $empresa) {
-                                    $idEmpresa = $empresa['nomeEmpresa'] === "TradeSis" ? "null" : $empresa['idEmpresa'];
-                                    ?>
-                                    <option value="<?php echo $idEmpresa ?>"><?php echo $empresa['nomeEmpresa'] ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <label class='form-label ts-label'>Senha do Usuário</label>
+                    <input id="txtSenha" type="password" name="password" class="form-control ts-input" required autocomplete="off">
                 </div>
-                <div style="text-align:right; margin-top: 30px">
-                    <button type="submit" class="btn  btn-success"><i
-                            class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
+                <div class="col-sm">
+                    <label class='form-label ts-label'>Repetir Senha</label>
+                    <input type="password" name="senhausuario2" class="form-control ts-input" required autocomplete="off" oninput="validaSenha(this)">
+                    <small>Precisa ser igual a senha digitada acima.</small>
                 </div>
-        </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-6">
+                    <label class='form-label ts-label'>Cpf/Cnpj</label>
+                    <input type="text" name="cpfCnpj" class="form-control ts-input" autocomplete="off">
+                </div>
+                <div class="col-12 col-sm-3 col-md-3">
+                    <label class="form-label ts-label">Utiliza Token</label>
+                    <select class="form-select ts-input" name="pedeToken">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
+                </div>
+                <div class="col-12 col-sm-3 col-md-3">
+                    <label class="form-label ts-label">Empresa</label>
+                    <select class="form-select ts-input" name="idEmpresa" required>
+                        <option value=""></option>
+                        <?php
+                        foreach ($empresas as $empresa) {
+                            $idEmpresa = $empresa['nomeEmpresa'] === "TradeSis" ? "null" : $empresa['idEmpresa'];
+                        ?>
+                            <option value="<?php echo $idEmpresa ?>"><?php echo $empresa['nomeEmpresa'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="text-end mt-4">
+                <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
+            </div>
         </form>
 
     </div>
 
-    </div>
+    <!-- LOCAL PARA COLOCAR OS JS -->
 
-
+    <?php include_once ROOT . "/vendor/footer_js.php"; ?>
 
     <script>
         function validaSenha(input) {
@@ -113,8 +107,8 @@ $empresas = buscaEmpresas();
         }
     </script>
     <script>
-        $(document).ready(function () {
-            $('input[name="loginNome"]').bind('input', function () {
+        $(document).ready(function() {
+            $('input[name="loginNome"]').bind('input', function() {
                 var c = this.selectionStart,
                     r = /[^a-z0-9 .]/gi,
                     v = $(this).val();
@@ -126,6 +120,7 @@ $empresas = buscaEmpresas();
             });
         });
     </script>
+    <!-- LOCAL PARA COLOCAR OS JS -FIM -->
 
 </body>
 

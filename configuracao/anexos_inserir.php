@@ -1,53 +1,68 @@
 <?php
-
-include_once('../head.php');
+// Lucas 06102023 padrao novo
+include_once('../header.php');
 ?>
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+
+    <?php include_once ROOT . "/vendor/head_css.php"; ?>
+
+</head>
 
 
-<body class="bg-transparent">
+<body>
 
-
-    <div class="container formContainer">
-
-
-        <div class="col-sm mt-4" style="text-align:right">
-            <a href="../configuracao/?tab=configuracao&stab=anexos" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+    <div class="container-fluid">
+        <div class="row">
+            <BR> <!-- MENSAGENS/ALERTAS -->
         </div>
-        <div class="col-sm">
-            <spam class="col titulo">Inserir Anexo</spam>
+        <div class="row">
+            <BR> <!-- BOTOES AUXILIARES -->
         </div>
-        
-        <div class="container" style="margin-top: 30px">
-            <form action="../database/anexos.php?operacao=inserir" method="post" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-md-8 form-group">
-                        <label class='control-label' for='inputNormal' style="margin-top: -20px;">Nome Anexo</label>
-                        <div class="for-group">
-                            <input type="text" class="form-control" name="nomeAnexo" autocomplete="off" required>
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-4">
-                        
-                            <label class='control-label' for='inputNormal' style="margin-top: -50px;">Anexo</label>
-                            <label class="picture" for="anexo" tabIndex="0">
-                                <span class="picture__image"></span>
-                            </label>
-                            <input type="file" name="base64" id="anexo" >
-                        
-                    </div>
-                </div>
-                 
-
-                <div style="text-align:right; margin-top:20px">
-                    <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
+        <div class="row"> <!-- LINHA SUPERIOR A TABLE -->
+            <div class="col-3">
+                <!-- TITULO -->
+                <h2 class="ts-tituloPrincipal">Inserir Anexo</h2>
             </div>
-            </form>
+            <div class="col-7">
+                <!-- FILTROS -->
+            </div>
+
+            <div class="col-2 text-end">
+                <a href="/sistema/configuracao/anexos.php" role="button" class="btn btn-primary"><i class="bi bi-arrow-left-square"></i></i>&#32;Voltar</a>
+            </div>
         </div>
+
+        <form action="../database/anexos.php?operacao=inserir" method="post" enctype="multipart/form-data">
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <label class='form-label ts-label'>Nome Anexo</label>
+                    <input type="text" class="form-control ts-input" name="nomeAnexo" autocomplete="off" required>
+                </div>
+
+                <div class="col-sm-4">
+                    <label class='form-label ts-label'>Anexo</label>
+                    <label class="picture" for="anexo" tabIndex="0">
+                        <span class="picture__image"></span>
+                    </label>
+                    <input type="file" name="base64" id="anexo">
+
+                </div>
+            </div>
+
+
+            <div class="text-end mt-4">
+                <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
+            </div>
+        </form>
 
     </div>
 
-    </body>
+    <!-- LOCAL PARA COLOCAR OS JS -->
+
+    <?php include_once ROOT . "/vendor/footer_js.php"; ?>
 
     <script>
         //Carregar a anexo na tela
@@ -80,4 +95,9 @@ include_once('../head.php');
             }
         });
     </script>
+
+    <!-- LOCAL PARA COLOCAR OS JS -FIM -->
+
+</body>
+
 </html>

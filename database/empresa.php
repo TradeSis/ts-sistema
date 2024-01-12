@@ -30,18 +30,24 @@ if (isset($_GET['operacao'])) {
 	$operacao = $_GET['operacao'];
 
 	if ($operacao=="inserir") {
+		$menu = strip_tags($_POST['menu']);
 		$apiEntrada = array(
 			'nomeEmpresa' => $_POST['nomeEmpresa'],
-			'timeSessao' => $_POST['timeSessao']
+			'timeSessao' => $_POST['timeSessao'],
+			'menu' => $menu,
+			'idPessoa' => $_POST['idPessoa']
 		);
 		$empresa = chamaAPI(null, '/sistema/empresa', json_encode($apiEntrada), 'PUT');
 	}
 
 	if ($operacao=="alterar") {
+		$menu = strip_tags($_POST['menu']);
 		$apiEntrada = array(
 			'idEmpresa' => $_POST['idEmpresa'],
 			'nomeEmpresa' => $_POST['nomeEmpresa'],
-			'timeSessao' => $_POST['timeSessao']
+			'timeSessao' => $_POST['timeSessao'],
+			'menu' => $menu,
+			'idPessoa' => $_POST['idPessoa']
 		);
 		$empresa = chamaAPI(null, '/sistema/empresa', json_encode($apiEntrada), 'POST');
 	}

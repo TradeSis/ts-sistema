@@ -1,6 +1,8 @@
 <?php
 //Lucas 05042023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+// helio 01/11/2023 - tabela aplicativo, banco padrao, empresa null
+$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
@@ -23,10 +25,6 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-$idEmpresa = null;
-if (isset($jsonEntrada["idEmpresa"])) {
-    $idEmpresa = $jsonEntrada["idEmpresa"];
-}
 $conexao = conectaMysql($idEmpresa);
 if (isset($jsonEntrada['nomeAplicativo'])) {
     $nomeAplicativo = $jsonEntrada['nomeAplicativo'];

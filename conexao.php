@@ -15,5 +15,6 @@ include_once(ROOT.'/sistema/database/api.php');
 // helio 26042023
 include_once(ROOT.'/sistema/database/functions.php');
 include_once(ROOT.'/sistema/database/email.php');
+include_once(ROOT.'/sistema/database/progress.php');
 
 ?>
