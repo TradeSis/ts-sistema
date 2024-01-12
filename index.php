@@ -72,6 +72,20 @@ if ($nivelMenuLogin == null) {
                                 href="?tab=aplicativo" role="tab">Aplicativos</a>
                             </li>
                         <?php }
+                        if ($nivelMenu == 5) { ?>
+                            <li class="nav-item mr-1 ">
+                                <a class="nav-link 
+                                <?php if ($tab == "estados") {echo " active ";} ?>" 
+                                href="?tab=estados" role="tab">Estados</a>
+                            </li>
+                        <?php }
+                        if ($nivelMenu == 5) { ?>
+                            <li class="nav-item mr-1 ">
+                                <a class="nav-link 
+                                <?php if ($tab == "cidades") {echo " active ";} ?>" 
+                                href="?tab=cidades" role="tab">Cidades</a>
+                            </li>
+                        <?php }
                          if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
                                 <a class="nav-link 
@@ -107,6 +121,12 @@ if ($nivelMenuLogin == null) {
                         <option value="<?php echo URLROOT ?>/sistema/?tab=aplicativo" 
                         <?php if ($getTab == "aplicativo") {echo " selected ";} ?>>Aplicativo</option>
 
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=estados" 
+                        <?php if ($getTab == "estados") {echo " selected ";} ?>>Estados</option>
+
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=cidades" 
+                        <?php if ($getTab == "cidades") {echo " selected ";} ?>>Cidades</option>
+
                         <option value="<?php echo URLROOT ?>/sistema/?tab=anexos" 
                         <?php if ($getTab == "anexos") {echo " selected ";} ?>>Anexos</option>
                     </select>
@@ -131,6 +151,14 @@ if ($nivelMenuLogin == null) {
             }
             if ($tab == "aplicativo") {
                 $src = "configuracao/aplicativo.php";
+                $title = "Sistema/Aplicativo";
+            }
+            if ($tab == "estados") {
+                $src = "configuracao/estados.php";
+                $title = "Sistema/Aplicativo";
+            }
+            if ($tab == "cidades") {
+                $src = "configuracao/cidades.php";
                 $title = "Sistema/Aplicativo";
             }
             if ($tab == "anexos") {
