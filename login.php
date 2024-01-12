@@ -55,7 +55,7 @@ include_once __DIR__ . "/../config.php";
 
                   <div class="input-group input-group-alternative">
                     <span class="input-group-text"></i><i class="bi bi-building-fill"></i></span>
-                    <input class="form-control" type="text" name="nomeEmpresa"
+                    <input class="form-control ts-input" type="text" name="nomeEmpresa"
                       value="<?php echo isset($_COOKIE['Empresa']) ? $_COOKIE['Empresa'] : '' ?>" placeholder="Empresa"
                       autocomplete="off" autofocus>
                   </div>
@@ -64,7 +64,7 @@ include_once __DIR__ . "/../config.php";
 
                   <div class="input-group input-group-alternative">
                     <span class="input-group-text"></i><i class="bi bi-person-fill"></i></span>
-                    <input class="form-control" type="text" name="loginNome"
+                    <input class="form-control ts-input" type="text" name="loginNome"
                       value="<?php echo isset($_COOKIE['User']) ? $_COOKIE['User'] : '' ?>" placeholder="Usuário"
                       autocomplete="off" autofocus>
                   </div>
@@ -72,7 +72,7 @@ include_once __DIR__ . "/../config.php";
                 <div class="form-group">
                   <div class="input-group input-group-alternative" id="show_hide_password">
                     <span class="input-group-text" style="width: 42px;"></i><i class="bi bi-lock-fill"></i></span>
-                    <input class="form-control" placeholder="Senha" type="password" id="pass" name="password">
+                    <input class="form-control ts-input" placeholder="Senha" type="password" id="pass" name="password">
                     <i class="bi bi-eye pt-3" aria-hidden="true"
                       style="width:30px; text-align: right;border-bottom:1px solid #40505B"></i>
                   </div>

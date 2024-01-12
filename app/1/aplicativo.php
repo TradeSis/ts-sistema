@@ -1,6 +1,8 @@
 <?php
 //Lucas 05042023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+// helio 01/11/2023 - tabela aplicativo, banco padrao, empresa null
+$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO=defineCaminhoLog();
@@ -24,12 +26,6 @@ if(isset($LOG_NIVEL)) {
 }
 //LOG
 
-$idEmpresa = null;
-	if (isset($jsonEntrada["idEmpresa"])) {
-    	$idEmpresa = $jsonEntrada["idEmpresa"];
-	}
-
-$conexao = conectaMysql($idEmpresa);
 $app = array();
 
 if (isset($jsonEntrada["idLogin"])) {
@@ -42,6 +38,12 @@ if (isset($jsonEntrada["idLogin"])) {
 $sql = $sql = "SELECT aplicativo.* FROM aplicativo";
   if (isset($jsonEntrada["idAplicativo"])) {
     $sql = $sql . " where aplicativo.idAplicativo = " . $jsonEntrada["idAplicativo"]; 
+  }else{ //Lucas 24102023 - adicionado filtro de busca aplicativo
+    $where = " where ";
+    if (isset($jsonEntrada["buscaaplicativo"])) {
+      $sql = $sql . $where . " aplicativo.nomeAplicativo like " . "'%" . $jsonEntrada["buscaaplicativo"] . "%'" ;
+      $where = " and ";
+    }
   }
 }
 //echo "-SQL->".json_encode($sql)."\n";

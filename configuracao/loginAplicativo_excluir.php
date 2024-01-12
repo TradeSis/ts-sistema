@@ -44,21 +44,17 @@ $usuarioaplicativo = buscaLoginAplicativo($_GET['idLogin'], $_GET['nomeAplicativ
         </div>
 
         <form action="../database/loginAplicativo.php?operacao=excluir" method="post">
-            <div class="row">
+            <div class="row t-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Usuário</label>
-                        <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
-                        <input type="hidden" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>">
-                        </select>
-                    </div>
+                    <label class='form-label ts-label'>Usuário</label>
+                    <input type="text" class="form-control ts-input" name="loginNome" value="<?php echo $login['loginNome'] ?>" readonly>
+                    <input type="hidden" class="form-control ts-input" name="idLogin" value="<?php echo $login['idLogin'] ?>">
+                    </select>
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Aplicativo</label>
-                        <input type="text" class="form-control" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>" readonly>
-                        <input type="hidden" class="form-control" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
-                    </div>
+                    <label class='form-label ts-label'>Aplicativo</label>
+                    <input type="text" class="form-control ts-input" name="nomeAplicativo" value="<?php echo $aplicativo['nomeAplicativo'] ?>" readonly>
+                    <input type="hidden" class="form-control ts-input" name="idAplicativo" value="<?php echo $aplicativo['idAplicativo'] ?>">
                 </div>
             </div>
             <div class="text-end mt-4">

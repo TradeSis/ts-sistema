@@ -1,10 +1,8 @@
 <?php
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-$idEmpresa = null;
-	if (isset($jsonEntrada["idEmpresa"])) {
-    	$idEmpresa = $jsonEntrada["idEmpresa"];
-	}
-$conexao = conectaMysql($idEmpresa);
+// helio 01/11/2023 - banco *_site, empresa 0
+$conexao = conectaMysql(0);
+
 if (isset($jsonEntrada['tituloSecao'])) {
 
 	$tituloSecao = $jsonEntrada['tituloSecao'];

@@ -3,6 +3,8 @@
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
 include_once('../header.php');
+include_once(ROOT . '/cadastros/database/pessoas.php');
+$pessoas = buscarPessoa();
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -10,6 +12,7 @@ include_once('../header.php');
 <head>
 
     <?php include_once ROOT . "/vendor/head_css.php"; ?>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 </head>
 
@@ -38,20 +41,40 @@ include_once('../header.php');
         </div>
 
         <form action="../database/empresa.php?operacao=inserir" method="post">
-            <div class="row">
-                <div class="col-md-10 form-group">
-                    <div class="for-group">
-                        <label class='control-label' for='inputNormal'>Nome da Empresa</label>
-                        <input type="text" class="form-control" name="nomeEmpresa" autocomplete="off" required>
-                    </div>
+            <div class="row mt-3">
+                <div class="col-md-10">
+                    <label class='form-label ts-label'>Nome da Empresa</label>
+                    <input type="text" class="form-control ts-input" name="nomeEmpresa" autocomplete="off" required>
                 </div>
-                <div class="col-md form-group">
-                    <label class='control-label' for='inputNormal' style="margin-top: -20px;">Tempo Sessão</label>
-                    <div class="for-group">
-                        <input type="number" min="1" placeholder="1" class="form-control" name="timeSessao" autocomplete="off" required>
-                    </div>
+                <div class="col-md">
+                    <label class='form-label ts-label'>Tempo Sessão</label>
+                    <input type="number" min="1" placeholder="1" class="form-control ts-input" name="timeSessao" autocomplete="off" required>
                 </div>
             </div>
+            <div class="row mt-3">
+                <div class="col-md-3">
+                    <label class="form-label ts-label">Pessoa</label>
+                    <select class="form-select ts-input" name="idPessoa">
+                        <option value="<?php echo null ?>"></option>
+                        <?php
+                        foreach ($pessoas as $pessoa) {
+                            ?>
+                            <option value="<?php echo $pessoa['idPessoa'] ?>">
+                                <?php echo $pessoa['nomePessoa'] ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="col-md-9">
+                    <div class="container-fluid p-0">
+                        <div class="col">
+                            <span class="tituloEditor">Menu</span>
+                        </div>
+                        <div class="quill-menu" style="height:20vh !important"></div>
+                        <textarea style="display: none" id="quill-menu" name="menu"></textarea>
+                    </div>
+                </div>
+            </div>   
 
             <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Cadastrar</button>
@@ -63,7 +86,9 @@ include_once('../header.php');
     <!-- LOCAL PARA COLOCAR OS JS -->
 
     <?php include_once ROOT . "/vendor/footer_js.php"; ?>
-
+    <!-- QUILL editor -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    
     <script>
         $('input').bind('input', function() {
             var c = this.selectionStart,
@@ -74,6 +99,14 @@ include_once('../header.php');
                 c--;
             }
             this.setSelectionRange(c, c);
+        });
+
+        var menu = new Quill('.quill-menu', {
+        theme: 'snow'
+        });
+
+        menu.on('text-change', function(delta, oldDelta, source) {
+        $('#quill-menu').val(menu.container.firstChild.innerHTML);
         });
     </script>
 

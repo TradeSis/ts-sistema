@@ -43,10 +43,10 @@ $login = buscaLogins($idLogin);
 
         <form action="../database/login.php?operacao=excluir" method="post">
 
-            <div class="col-md-12 form-group">
-                <label class='control-label' for='inputNormal'></label>
-                <input type="text" class="form-control" name="loginNome" value="<?php echo $login['loginNome'] ?>">
-                <input type="text" class="form-control" name="idLogin" value="<?php echo $login['idLogin'] ?>" style="display: none">
+            <div class="col-md-12">
+                <label class='control-label'></label>
+                <input type="text" class="form-control ts-input" name="loginNome" value="<?php echo $login['loginNome'] ?>">
+                <input type="text" class="form-control ts-input" name="idLogin" value="<?php echo $login['idLogin'] ?>" style="display: none">
             </div>
 
             <div class="text-end">

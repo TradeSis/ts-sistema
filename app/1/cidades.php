@@ -1,15 +1,13 @@
 <?php
-// helio 31012023 - ajustado a api para receber o jsonEntrada, e pegar parametro od idCliente
-// helio 26012023 18:10 - Criacao primeira api - falta parametros para where
+// lucas 26122023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-// helio 01/11/2023 - banco padrao, empresa null
 $conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO=defineCaminhoLog();
 if (isset($LOG_CAMINHO)) {
     $LOG_NIVEL=defineNivelLog();
-    $identificacao=date("dmYHis")."-PID".getmypid()."-"."empresa";
+    $identificacao=date("dmYHis")."-PID".getmypid()."-"."cidades";
     if(isset($LOG_NIVEL)) {
         if ($LOG_NIVEL>=1) {
             $arquivo = fopen(defineCaminhoLog()."sistema_".date("dmY").".log","a");
@@ -27,11 +25,18 @@ if(isset($LOG_NIVEL)) {
 }
 //LOG
 
-$empresa = array();
+$cidades = array();
 
-$sql = "SELECT * FROM empresa ";
-if (isset($jsonEntrada["idEmpresa"])) {
-  $sql = $sql . " where empresa.idEmpresa = " . $jsonEntrada["idEmpresa"];
+$sql = "SELECT * FROM cidades ";
+if (isset($jsonEntrada["codigoCidade"])) {
+  $sql = $sql . " where cidades.codigoCidade = " . $jsonEntrada["codigoCidade"];
+}
+$where = " where ";
+if (isset($jsonEntrada["buscaCidade"])) {
+  $sql = $sql . $where . " cidades.codigoCidade like " . "'%" . $jsonEntrada["buscaCidade"] . "%'
+    OR cidades.nomeCidade like " . "'%" . $jsonEntrada["buscaCidade"] . "%'
+    OR cidades.	codigoEstado like " . "'%" . $jsonEntrada["buscaCidade"] . "%'" ;
+  $where = " and ";
 }
 
 //echo $sql;
@@ -47,14 +52,14 @@ if(isset($LOG_NIVEL)) {
 $rows = 0;
 $buscar = mysqli_query($conexao, $sql);
 while ($row = mysqli_fetch_array($buscar, MYSQLI_ASSOC)) {
-  array_push($empresa, $row);
+  array_push($cidades, $row);
   $rows = $rows + 1;
 }
 
-if (isset($jsonEntrada["idEmpresa"]) && $rows==1) {
-  $empresa = $empresa[0];
+if (isset($jsonEntrada["codigoCidade"]) && $rows==1) {
+  $cidades = $cidades[0];
 }
-$jsonSaida = $empresa;
+$jsonSaida = $cidades;
 
 
 //LOG

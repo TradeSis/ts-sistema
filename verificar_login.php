@@ -52,7 +52,7 @@ if (!$user == "") {
                 setcookie('Empresa', $nomeEmpresa, strtotime("+1 year"), "/", "", false, true );
                 setcookie('User', $user, strtotime("+1 year"), "/", "", false, true );
 
-                header('Location: ' . URLROOT . '/services/');
+                header('Location: ' . URLROOT . '/' . APP_INICIAL);
         }
 } else {
         $mensagem = $dados['retorno'];

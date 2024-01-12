@@ -49,6 +49,14 @@ if ($metodo == "GET") {
       include 'anexos.php';
       break;
 
+    case "estados":
+      include 'estados.php';
+      break;
+
+    case "cidades":
+      include 'cidades.php';
+      break;
+
 
     default:
       $jsonSaida = json_decode(
@@ -87,9 +95,18 @@ if ($metodo == "PUT") {
       include 'login_inserir.php';
       break;
       
-      case "anexos":
-        include 'anexos_inserir.php';
-        break;
+    case "anexos":
+      include 'anexos_inserir.php';
+      break;
+
+    case "estados":
+      include 'estados_inserir.php';
+      break;
+
+    case "cidades":
+      include 'cidades_inserir.php';
+      break;
+      
     default:
       $jsonSaida = json_decode(
         json_encode(

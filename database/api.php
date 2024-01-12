@@ -4,7 +4,7 @@
 // helio 01022023 usando padrao defineConexaoApi
 // helio 31012023 16:16 -  criado
 
-function chamaAPI ($URL,$apiUrlParametros,$apiEntrada,$apiMethod) {
+function chamaAPI ($URL,$apiUrlParametros,$apiEntrada,$apiMethod, $apiHeaders = null) {
 
 	if ($URL) {
 		$apiIP=$URL;
@@ -15,11 +15,14 @@ function chamaAPI ($URL,$apiUrlParametros,$apiEntrada,$apiMethod) {
 	$apiRetorno = array();
     
 	// retirado switch, que testava o primeiro parametro
-    $apiUrl = $apiIP.$apiUrlParametros;   
+    $apiUrl = $apiIP.$apiUrlParametros;  
 	
-	$apiHeaders = array(
-		"Content-Type: application/json"
-	);
+	if(!isset($apiHeaders)){
+		$apiHeaders = array(
+			"Content-Type: application/json"
+		);
+	}
+	
 	
  	$apiCurl = curl_init($apiUrl);
 	curl_setopt($apiCurl, CURLOPT_RETURNTRANSFER, true);
@@ -34,6 +37,8 @@ function chamaAPI ($URL,$apiUrlParametros,$apiEntrada,$apiMethod) {
     /**/
 
 	if (isset($apiEntrada)) { 
+		/* echo json_encode($apiEntrada);
+		return; */
 		curl_setopt($apiCurl, CURLOPT_POSTFIELDS, $apiEntrada); 
 	}
 

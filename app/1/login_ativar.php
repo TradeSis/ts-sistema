@@ -1,6 +1,8 @@
 <?php
 // gabriel 150523 - criação 
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+// helio 01/11/2023 - banco padrao, empresa null
+$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
@@ -23,7 +25,7 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-$conexao = conectaMysql();
+
 if (isset($jsonEntrada['idLogin'])) {
     $idLogin = $jsonEntrada['idLogin'];
     $secret = $jsonEntrada['secret_key']; /* Guarda secret */

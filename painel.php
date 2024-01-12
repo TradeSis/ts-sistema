@@ -41,10 +41,12 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
             <a class="ts-itemsiderbar <?php if ($url == URLROOT . "/cadastros/") {echo " active ";} ?> p-3" 
             href="<?php echo URLROOT ?>/cadastros/">Cadastros</a>
         <?php }
+        /** DESATIVADO EM 15/12/2023
         if (in_array("Paginas", $aplicativo)) { ?>
             <a class="ts-itemsiderbar <?php if ($url == URLROOT . "/paginas/") {echo " active ";} ?> p-3" 
             href="<?php echo URLROOT ?>/paginas/">Paginas</a>
         <?php }
+        **/
         if (in_array("Impostos", $aplicativo)) { ?>
             <a class="ts-itemsiderbar <?php if ($url == URLROOT . "/impostos/") {echo " active ";} ?> p-3" 
             href="<?php echo URLROOT ?>/impostos/">Impostos</a>

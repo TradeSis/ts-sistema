@@ -41,27 +41,23 @@ $aplicativo = buscaAplicativos($_GET['idAplicativo']);
 
         <form action="../database/aplicativo.php?operacao=alterar" method="post" enctype="multipart/form-data">
 
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Nome do
+                    <label class='form-label ts-label'>Nome do
                             Aplicativo</label>
-                        <input type="text" name="nomeAplicativo" class="form-control"
+                        <input type="text" name="nomeAplicativo" class="form-control ts-input"
                             value="<?php echo $aplicativo['nomeAplicativo'] ?>">
-                        <input type="hidden" class="form-control" name="idAplicativo"
+                        <input type="hidden" class="form-control ts-input" name="idAplicativo"
                             value="<?php echo $aplicativo['idAplicativo'] ?> ">
-                    </div>
                 </div>
                 <div class="col-sm">
-                    <div class="form-group">
-                        <label class='control-label' for='inputNormal'>Caminho</label>
-                        <input type="text" name="appLink" class="form-control"
-                            value="<?php echo $aplicativo['appLink'] ?>">
-                    </div>
+                    <label class='form-label ts-label'>Caminho</label>
+                    <input type="text" name="appLink" class="form-control ts-input"
+                        value="<?php echo $aplicativo['appLink'] ?>">
                 </div>
             </div>
 
-            <label class="labelForm mt-4">Imagem</label>
+            <label class="form-label ts-label mt-4">Imagem</label>
             <label class="picture" for="imgAplicativo" tabIndex="0">
                 <span class="picture__image"></span>
             </label>

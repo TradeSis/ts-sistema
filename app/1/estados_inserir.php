@@ -1,14 +1,13 @@
 <?php
-//Lucas 05042023 criado
+// lucas 26122023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-// helio 01/11/2023 - tabela aplicativo, banco padrao, empresa null
 $conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
 if (isset($LOG_CAMINHO)) {
     $LOG_NIVEL = defineNivelLog();
-    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "aplicativo_inserir";
+    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "estados_inserir";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
             $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
@@ -25,15 +24,13 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-$conexao = conectaMysql($idEmpresa);
-if (isset($jsonEntrada['nomeAplicativo'])) {
-    $nomeAplicativo = $jsonEntrada['nomeAplicativo'];
-    $appLink = $jsonEntrada['appLink'];
-    $imgAplicativo = $jsonEntrada['imgAplicativo'];
-    $pathImg = $jsonEntrada['pathImg'];
-
-    $sql = "INSERT INTO aplicativo(nomeAplicativo, appLink, imgAplicativo, pathImg) VALUES ('$nomeAplicativo', '$appLink', '$imgAplicativo', '$pathImg')";
-
+if (isset($jsonEntrada['codigoEstado'])) {
+    $codigoEstado = $jsonEntrada['codigoEstado'];
+    $codigoEstado = "'" . $codigoEstado . "'";
+    $nomeEstado = $jsonEntrada['nomeEstado'];
+    $nomeEstado = "'" . $nomeEstado . "'";
+    
+    $sql = "INSERT INTO estados (codigoEstado, nomeEstado) values ($codigoEstado, $nomeEstado)";
     //LOG
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 3) {
