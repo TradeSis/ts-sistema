@@ -1,4 +1,5 @@
 <?php
+//Lucas 29022024 - id862 Empresa Administradora
 // helio 21032023 - compatibilidade chamada chamaApi
 // helio 01022023 alterado para include_once
 // helio 31012023 - eliminado funcao buscaCliente, ficou apenas buscaClientes,
@@ -35,7 +36,9 @@ if (isset($_GET['operacao'])) {
 			'nomeEmpresa' => $_POST['nomeEmpresa'],
 			'timeSessao' => $_POST['timeSessao'],
 			'menu' => $menu,
-			'idPessoa' => $_POST['idPessoa']
+			'idPessoa' => $_POST['idPessoa'],
+			//Lucas 29022024 - id862 adiconado campo administradora
+			'administradora' => $_POST['administradora']
 		);
 		$empresa = chamaAPI(null, '/sistema/empresa', json_encode($apiEntrada), 'PUT');
 	}
@@ -47,7 +50,9 @@ if (isset($_GET['operacao'])) {
 			'nomeEmpresa' => $_POST['nomeEmpresa'],
 			'timeSessao' => $_POST['timeSessao'],
 			'menu' => $menu,
-			'idPessoa' => $_POST['idPessoa']
+			'idPessoa' => $_POST['idPessoa'],
+			//Lucas 29022024 - id862 adiconado campo administradora
+			'administradora' => $_POST['administradora']
 		);
 		$empresa = chamaAPI(null, '/sistema/empresa', json_encode($apiEntrada), 'POST');
 	}

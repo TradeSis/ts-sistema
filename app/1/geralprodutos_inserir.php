@@ -1,15 +1,11 @@
 <?php
-//Lucas 29022024 - id862 Empresa Administradora
-// helio 31012023 criacao
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-// helio 01/11/2023 - banco padrao, empresa null
-$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
 if (isset($LOG_CAMINHO)) {
     $LOG_NIVEL = defineNivelLog();
-    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "empresa_alterar";
+    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "geralprodutos_inserir";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
             $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
@@ -26,16 +22,20 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-if (isset($jsonEntrada['idEmpresa'])) {
-    $idEmpresa = $jsonEntrada['idEmpresa'];
-    $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
-    $timeSessao = $jsonEntrada['timeSessao'];
-    $menu = isset($jsonEntrada['menu']) && $jsonEntrada['menu'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['menu']) . "'" : "NULL";
-    $idPessoa = isset($jsonEntrada['idPessoa']) && $jsonEntrada['idPessoa'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['idPessoa']) . "'" : "NULL";
-    //Lucas 29022024 - id862 adiconado campo administradora
-    $administradora = $jsonEntrada['administradora'];
+$conexao = conectaMysql(null);
+if (isset($jsonEntrada['nomeProduto'])) {
 
-    $sql = "UPDATE empresa SET nomeEmpresa='$nomeEmpresa', timeSessao=$timeSessao, menu=$menu, idPessoa=$idPessoa, administradora=$administradora WHERE idEmpresa = $idEmpresa";
+    $eanProduto = isset($jsonEntrada['eanProduto']) && $jsonEntrada['eanProduto'] !== "" && $jsonEntrada['eanProduto'] !== "NULL" ? "'" . $jsonEntrada['eanProduto'] . "'" : "NULL";
+    $nomeProduto = isset($jsonEntrada['nomeProduto']) && $jsonEntrada['nomeProduto'] !== "" ? "'" . $jsonEntrada['nomeProduto'] . "'" : "NULL";
+    $idMarca = isset($jsonEntrada['idMarca']) && $jsonEntrada['idMarca'] !== "" ? "'" . $jsonEntrada['idMarca'] . "'" : "NULL";
+    $dataAtualizacaoTributaria = isset($jsonEntrada['dataAtualizacaoTributaria']) && $jsonEntrada['dataAtualizacaoTributaria'] !== "" ? "'" . $jsonEntrada['dataAtualizacaoTributaria'] . "'" : "NULL";
+    $codImendes = isset($jsonEntrada['codImendes']) && $jsonEntrada['codImendes'] !== "" ? "'" . $jsonEntrada['codImendes'] . "'" : "NULL";
+    $idGrupo = isset($jsonEntrada['idGrupo']) && $jsonEntrada['idGrupo'] !== "" ? "'" . $jsonEntrada['idGrupo'] . "'" : "NULL";
+    $prodZFM = isset($jsonEntrada['prodZFM']) && $jsonEntrada['prodZFM'] !== "" ? "'" . $jsonEntrada['prodZFM'] . "'" : "'N'";
+   
+    $sql = "INSERT INTO geralprodutos (eanProduto, nomeProduto, idMarca, dataAtualizacaoTributaria, codImendes, idGrupo, prodZFM)
+    VALUES ($eanProduto, $nomeProduto, $idMarca, $dataAtualizacaoTributaria, $codImendes, $idGrupo, $prodZFM)";
+
 
     //LOG
     if (isset($LOG_NIVEL)) {
@@ -52,9 +52,11 @@ if (isset($jsonEntrada['idEmpresa'])) {
         if (!$atualizar)
             throw new Exception(mysqli_error($conexao));
 
+        $idGeralProdutoInserido = mysqli_insert_id($conexao);
         $jsonSaida = array(
             "status" => 200,
-            "retorno" => "ok"
+            "retorno" => "ok",
+            "idGeralProduto" => $idGeralProdutoInserido
         );
     } catch (Exception $e) {
         $jsonSaida = array(
@@ -68,6 +70,8 @@ if (isset($jsonEntrada['idEmpresa'])) {
         // ACAO EM CASO DE ERRO (CATCH), que mesmo assim precise
     }
     //TRY-CATCH
+
+
 } else {
     $jsonSaida = array(
         "status" => 400,

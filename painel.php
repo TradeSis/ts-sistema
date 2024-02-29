@@ -1,4 +1,5 @@
 <?php 
+//Lucas 29022024 - id862 Empresa Administradora
 include_once 'header.php';
 include_once ROOT . "/sistema/database/aplicativo.php";
 $aplicativos = buscaAplicativosMenu($_SESSION['idLogin']);
@@ -51,10 +52,12 @@ $url = (parse_url($URL_ATUAL, PHP_URL_PATH));
             <a class="ts-itemsiderbar <?php if ($url == URLROOT . "/impostos/") {echo " active ";} ?> p-3" 
             href="<?php echo URLROOT ?>/impostos/">Impostos</a>
         <?php }
-        if ($_SESSION["idEmpresa"] == 1 && in_array("Sistema", $aplicativo)) { ?>
+        //Lucas 29022024 - id862 alterado campo idEmpresa para administradora
+        if ($_SESSION['administradora'] == 1 && in_array("Sistema", $aplicativo)) { ?>
             <a class="ts-itemsiderbar <?php if ($url == URLROOT . "/sistema/") {echo " active ";} ?> p-3" 
             href="<?php echo URLROOT ?>/sistema/">Sistema</a>
         <?php }  ?>
+        
         </div>
     </div>
 <!-- MENU PAINEL -->
