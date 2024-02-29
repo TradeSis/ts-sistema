@@ -89,6 +89,27 @@ if ($nivelMenuLogin == null) {
                          if ($nivelMenu == 5) { ?>
                             <li class="nav-item mr-1 ">
                                 <a class="nav-link 
+                                <?php if ($tab == "geralpessoas") {echo " active ";} ?>" 
+                                href="?tab=geralpessoas" role="tab">Pessoas</a>
+                            </li>
+                        <?php }
+                         if ($nivelMenu == 5) { ?>
+                            <li class="nav-item mr-1 ">
+                                <a class="nav-link 
+                                <?php if ($tab == "geralprodutos") {echo " active ";} ?>" 
+                                href="?tab=geralprodutos" role="tab">Produtos</a>
+                            </li>
+                        <?php }
+                         if ($nivelMenu == 5) { ?>
+                            <li class="nav-item mr-1 ">
+                                <a class="nav-link 
+                                <?php if ($tab == "geralfornecimento") {echo " active ";} ?>" 
+                                href="?tab=geralfornecimento" role="tab">Fornecimento</a>
+                            </li>
+                        <?php }
+                         if ($nivelMenu == 5) { ?>
+                            <li class="nav-item mr-1 ">
+                                <a class="nav-link 
                                 <?php if ($tab == "aplicativo_padrao") {echo " active ";} ?>" 
                                 href="?tab=aplicativo_padrao" role="tab">Aplicativo padrão</a>
                             </li>
@@ -117,15 +138,24 @@ if ($nivelMenuLogin == null) {
 
                         <option value="<?php echo URLROOT ?>/sistema/?tab=login" 
                         <?php if ($getTab == "login") {echo " selected ";} ?>>Login</option>
+                        
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=estados" 
+                        <?php if ($getTab == "estados") {echo " selected ";} ?>>Estados</option>
+                        
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=cidades" 
+                        <?php if ($getTab == "cidades") {echo " selected ";} ?>>Cidades</option>
+
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=geralpessoas" 
+                        <?php if ($getTab == "geralpessoas") {echo " selected ";} ?>>Pessoas</option>
+
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=geralprodutos" 
+                        <?php if ($getTab == "geralprodutos") {echo " selected ";} ?>>Produtos</option>
+
+                        <option value="<?php echo URLROOT ?>/sistema/?tab=geralfornecimento" 
+                        <?php if ($getTab == "geralfornecimento") {echo " selected ";} ?>>Fornecimento</option>
 
                         <option value="<?php echo URLROOT ?>/sistema/?tab=aplicativo" 
                         <?php if ($getTab == "aplicativo") {echo " selected ";} ?>>Aplicativo</option>
-
-                        <option value="<?php echo URLROOT ?>/sistema/?tab=estados" 
-                        <?php if ($getTab == "estados") {echo " selected ";} ?>>Estados</option>
-
-                        <option value="<?php echo URLROOT ?>/sistema/?tab=cidades" 
-                        <?php if ($getTab == "cidades") {echo " selected ";} ?>>Cidades</option>
 
                         <option value="<?php echo URLROOT ?>/sistema/?tab=anexos" 
                         <?php if ($getTab == "anexos") {echo " selected ";} ?>>Anexos</option>
@@ -155,11 +185,23 @@ if ($nivelMenuLogin == null) {
             }
             if ($tab == "estados") {
                 $src = "configuracao/estados.php";
-                $title = "Sistema/Aplicativo";
+                $title = "Sistema/Estados";
             }
             if ($tab == "cidades") {
                 $src = "configuracao/cidades.php";
-                $title = "Sistema/Aplicativo";
+                $title = "Sistema/Cidades";
+            }
+            if ($tab == "geralpessoas") {
+                $src = "configuracao/geralpessoas.php";
+                $title = "Sistema/Pessoas";
+            }
+            if ($tab == "geralprodutos") {
+                $src = "configuracao/geralprodutos.php";
+                $title = "Sistema/Produtos";
+            }
+            if ($tab == "geralfornecimento") {
+                $src = "configuracao/geralfornecimento.php";
+                $title = "Sistema/Fornecedores";
             }
             if ($tab == "anexos") {
                 $src = "configuracao/anexos.php";
