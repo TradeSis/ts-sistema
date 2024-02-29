@@ -1,4 +1,5 @@
 <?php
+//Lucas 29022024 - id862 Empresa Administradora
 // Lucas 06102023 padrao novo
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
@@ -42,13 +43,21 @@ $pessoas = buscarPessoa();
 
         <form action="../database/empresa.php?operacao=inserir" method="post">
             <div class="row mt-3">
-                <div class="col-md-10">
+                <div class="col-md-8">
                     <label class='form-label ts-label'>Nome da Empresa</label>
                     <input type="text" class="form-control ts-input" name="nomeEmpresa" autocomplete="off" required>
                 </div>
-                <div class="col-md">
+                <div class="col-md-2">
                     <label class='form-label ts-label'>Tempo Sess√£o</label>
                     <input type="number" min="1" placeholder="1" class="form-control ts-input" name="timeSessao" autocomplete="off" required>
+                </div>
+                <!-- Lucas 29022024 - id862 adicionado Select para administradora -->
+                <div class="col-md-2">
+                    <label class="form-label ts-label">Administradora</label>
+                    <select class="form-select ts-input" name="administradora">
+                        <option value="1">Sim</option>
+                        <option value="0">N„o</option>
+                    </select>
                 </div>
             </div>
             <div class="row mt-3">
