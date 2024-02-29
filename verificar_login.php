@@ -1,4 +1,5 @@
 <?php
+//Lucas 29022024 - id862 Empresa Administradora
 //Lucas 10/04/2023 modificado a header para ser redirecionado para painel.php
 //gabriel 220323 11:19 adicionado idcliente
 // helio 26012023 16:16
@@ -27,6 +28,9 @@ $nomeEmpresa = $dados['nomeEmpresa'];
 $email = $dados['email'];
 $pedeToken = $dados['pedeToken'];
 $timeSessao = $dados['timeSessao'];
+//Lucas 29022024 - id862 adicionado campo administradora
+$administradora = $dados['administradora'];
+
 
 if (!$user == "") {
 
@@ -48,6 +52,8 @@ if (!$user == "") {
                 $_SESSION['idUsuario'] = $idUsuario;
                 $_SESSION['email'] = $email;
                 $_SESSION['timeSessao'] = $timeSessao;
+                //Lucas 29022024 - id862 adicionado campo administradora
+                $_SESSION['administradora'] = $administradora;
 
                 setcookie('Empresa', $nomeEmpresa, strtotime("+1 year"), "/", "", false, true );
                 setcookie('User', $user, strtotime("+1 year"), "/", "", false, true );

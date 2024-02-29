@@ -1,4 +1,5 @@
 <?php
+//Lucas 29022024 - id862 Empresa Administradora
 // helio 31012023 criacao
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
 // helio 01/11/2023 - banco padrao, empresa null
@@ -31,8 +32,10 @@ if (isset($jsonEntrada['idEmpresa'])) {
     $timeSessao = $jsonEntrada['timeSessao'];
     $menu = isset($jsonEntrada['menu']) && $jsonEntrada['menu'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['menu']) . "'" : "NULL";
     $idPessoa = isset($jsonEntrada['idPessoa']) && $jsonEntrada['idPessoa'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['idPessoa']) . "'" : "NULL";
+    //Lucas 29022024 - id862 adiconado campo administradora
+    $administradora = $jsonEntrada['administradora'];
 
-    $sql = "UPDATE empresa SET nomeEmpresa='$nomeEmpresa', timeSessao=$timeSessao, menu=$menu, idPessoa=$idPessoa WHERE idEmpresa = $idEmpresa";
+    $sql = "UPDATE empresa SET nomeEmpresa='$nomeEmpresa', timeSessao=$timeSessao, menu=$menu, idPessoa=$idPessoa, administradora=$administradora WHERE idEmpresa = $idEmpresa";
 
     //LOG
     if (isset($LOG_NIVEL)) {

@@ -1,4 +1,5 @@
 <?php
+//Lucas 29022024 - id862 Empresa Administradora
 // Lucas 06102023 padrao novo
 // helio 01022023 altereado para include_once
 // helio 26012023 16:16
@@ -44,14 +45,27 @@ $pessoas = buscarPessoa();
 
         <form action="../database/empresa.php?operacao=alterar" method="post">
             <div class="row mt-3">
-                <div class="col-md-10">
+                <div class="col-md-8">
                     <label class='form-label ts-label'></label>
                     <input type="text" class="form-control ts-input" name="nomeEmpresa" value="<?php echo $empresa['nomeEmpresa'] ?>">
                     <input type="hidden" class="form-control ts-input" name="idEmpresa" value="<?php echo $empresa['idEmpresa'] ?>">
                 </div>
-                <div class="col-md">
+                <div class="col-md-2">
                     <label class='form-label ts-label'>Tempo Sessão</label>
                     <input type="number" min="1" value="<?php echo $empresa['timeSessao'] ?>" class="form-control ts-input" name="timeSessao" autocomplete="off" required>
+                </div>
+
+                <!-- Lucas 29022024 - id862 adicionado Select para administradora -->
+                <div class="col-md-2">
+                    <label class="form-label ts-label">Administradora</label>
+                    <select class="form-select ts-input" name="administradora">
+                        <option <?php if ($empresa['administradora'] == "1") {
+                                    echo "selected";
+                                } ?> value="1">Sim</option>
+                        <option <?php if ($empresa['administradora'] == "0") {
+                                    echo "selected";
+                                } ?> value="0">Não</option>
+                    </select>
                 </div>
             </div>
             <div class="row mt-3">
@@ -79,7 +93,7 @@ $pessoas = buscarPessoa();
                         <textarea style="display: none" id="quill-menu" name="menu"><?php echo $empresa['menu']; ?></textarea>
                     </div>
                 </div>
-            </div>     
+            </div>    
 
             <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>
