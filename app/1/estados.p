@@ -22,13 +22,14 @@ def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CA
 def VAR vcodigoEstado like ttentrada.codigoEstado.
 
 hEntrada = temp-table ttentrada:HANDLE.
-lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY").
+lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
 find first ttentrada no-error.
 
 vcodigoEstado = ?.
 if avail ttentrada
 then do:
     vcodigoEstado = ttentrada.codigoEstado.
+    if vcodigoEstado = "" then vcodigoEstado = ?.
 end.
 
 for each estados where
