@@ -105,12 +105,12 @@ class progress {
         function executa ($executa) {
         
             $this->ambiente();
-            $proexe = "$this->dlc/bin/_progres";
+            $proexe = $this->dlc."bin/_progres";
             
             // 09082022 helio $command = $proexe . " " . "  -T " . $this->tmp . " -pf " . $this->pf . " -b -p " . $executa ;
             // 09082022 helio -  para colocar como -param 
             $command = $proexe . " " . "  -T " . $this->tmp . " -pf " . $this->pf . " -param \"" . $this->acao . "\"" . " -b -p " . $executa ;
-          //  echo "\nPROGRESS commando=".$command."\n";
+           //echo "\nPROGRESS commando=".$command."\n";
             $CMD="$command";
 
             // Executa Progress...
@@ -126,6 +126,8 @@ class progress {
                  
                     $this->progress .= $data;
             } while(true);
+            
+
             fclose ($handle);
            
          
