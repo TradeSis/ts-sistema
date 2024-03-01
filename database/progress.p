@@ -14,7 +14,9 @@ vpropath    = os-getenv("PROPATH"). /* HELIO 27/02/2024 - para versão windows */
 vtmp    = os-getenv("tmp").
 if vtmp = ? then vtmp = "./".
 
-propath = vpropath. /* HELIO 27/02/2024 - para versão windows */
+if vpropath <> ?
+then propath = vpropath. /* HELIO 27/02/2024 - para versão windows */
+
 
 if vacao <> ?
 then do:
