@@ -1,9 +1,7 @@
 <?php
-//Lucas 04032024 - criacao
+// PROGRESS
+// ALTERAR E INSERIR
 
-//echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-
-$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
@@ -12,7 +10,7 @@ if (isset($LOG_CAMINHO)) {
     $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "cidades_alterar";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
-            $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
+            $arquivo = fopen(defineCaminhoLog() . "sistema_alterar" . date("dmY") . ".log", "a");
         }
     }
 }
@@ -27,32 +25,18 @@ if (isset($LOG_NIVEL)) {
 //LOG
 
 if (isset($jsonEntrada['codigoCidade'])) {
-    $codigoCidade = isset($jsonEntrada['codigoCidade'])  && $jsonEntrada['codigoCidade'] !== "" && $jsonEntrada['codigoCidade'] !== "null" ? "'". $jsonEntrada['codigoCidade']."'"  : "null";
-    $codigoEstado = isset($jsonEntrada['codigoEstado'])  && $jsonEntrada['codigoEstado'] !== "" && $jsonEntrada['codigoEstado'] !== "null" ? "'". $jsonEntrada['codigoEstado']."'"  : "null";
-    $nomeCidade = isset($jsonEntrada['nomeCidade'])  && $jsonEntrada['nomeCidade'] !== "" && $jsonEntrada['nomeCidade'] !== "null" ? "'". $jsonEntrada['nomeCidade']."'"  : "null";
 
-    $sql = "UPDATE cidades SET codigoEstado = $codigoEstado, nomeCidade = $nomeCidade WHERE codigoCidade = $codigoCidade ";
-
-    //LOG
-    if (isset($LOG_NIVEL)) {
-        if ($LOG_NIVEL >= 3) {
-            fwrite($arquivo, $identificacao . "-SQL->" . $sql . "\n");
-        }
-    }
-    //LOG
-
-    //TRY-CATCH
     try {
 
-        $atualizar = mysqli_query($conexao, $sql);
-        if (!$atualizar)
-            throw new Exception(mysqli_error($conexao));
-
-        $jsonSaida = array(
-            "status" => 200,
-            "retorno" => "ok"
-        );
-    } catch (Exception $e) {
+        $progr = new chamaprogress();
+        $retorno = $progr->executarprogress("sistema/app/1/cidades_alterar",json_encode($jsonEntrada));
+        fwrite($arquivo,$identificacao."-RETORNO->".$retorno."\n");
+        $conteudoSaida = json_decode($retorno,true);
+        if (isset($conteudoSaida["conteudoSaida"][0])) { // Conteudo Saida - Caso de erro
+            $jsonSaida = $conteudoSaida["conteudoSaida"][0];
+        } 
+    } 
+    catch (Exception $e) {
         $jsonSaida = array(
             "status" => 500,
             "retorno" => $e->getMessage()
@@ -64,12 +48,15 @@ if (isset($jsonEntrada['codigoCidade'])) {
         // ACAO EM CASO DE ERRO (CATCH), que mesmo assim precise
     }
     //TRY-CATCH
+
+
 } else {
     $jsonSaida = array(
         "status" => 400,
         "retorno" => "Faltaram parametros"
     );
 }
+
 
 //LOG
 if (isset($LOG_NIVEL)) {
@@ -78,3 +65,9 @@ if (isset($LOG_NIVEL)) {
     }
 }
 //LOG
+
+
+
+fclose($arquivo);
+
+?>

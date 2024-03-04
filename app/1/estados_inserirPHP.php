@@ -1,7 +1,7 @@
 <?php
-// PROGRESS
-// ALTERAR E INSERIR
-
+// lucas 26122023 criado
+//echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
@@ -10,7 +10,7 @@ if (isset($LOG_CAMINHO)) {
     $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "estados_inserir";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
-            $arquivo = fopen(defineCaminhoLog() . "sistema_inserir" . date("dmY") . ".log", "a");
+            $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
         }
     }
 }
@@ -25,18 +25,32 @@ if (isset($LOG_NIVEL)) {
 //LOG
 
 if (isset($jsonEntrada['codigoEstado'])) {
+    $codigoEstado = $jsonEntrada['codigoEstado'];
+    $codigoEstado = "'" . $codigoEstado . "'";
+    $nomeEstado = $jsonEntrada['nomeEstado'];
+    $nomeEstado = "'" . $nomeEstado . "'";
+    
+    $sql = "INSERT INTO estados (codigoEstado, nomeEstado) values ($codigoEstado, $nomeEstado)";
+    //LOG
+    if (isset($LOG_NIVEL)) {
+        if ($LOG_NIVEL >= 3) {
+            fwrite($arquivo, $identificacao . "-SQL->" . $sql . "\n");
+        }
+    }
+    //LOG
 
+    //TRY-CATCH
     try {
 
-        $progr = new chamaprogress();
-        $retorno = $progr->executarprogress("sistema/app/1/estados_inserir",json_encode($jsonEntrada));
-        fwrite($arquivo,$identificacao."-RETORNO->".$retorno."\n");
-        $conteudoSaida = json_decode($retorno,true);
-        if (isset($conteudoSaida["conteudoSaida"][0])) { // Conteudo Saida - Caso de erro
-            $jsonSaida = $conteudoSaida["conteudoSaida"][0];
-        } 
-    } 
-    catch (Exception $e) {
+        $atualizar = mysqli_query($conexao, $sql);
+        if (!$atualizar)
+            throw new Exception(mysqli_error($conexao));
+
+        $jsonSaida = array(
+            "status" => 200,
+            "retorno" => "ok"
+        );
+    } catch (Exception $e) {
         $jsonSaida = array(
             "status" => 500,
             "retorno" => $e->getMessage()
@@ -48,15 +62,12 @@ if (isset($jsonEntrada['codigoEstado'])) {
         // ACAO EM CASO DE ERRO (CATCH), que mesmo assim precise
     }
     //TRY-CATCH
-
-
 } else {
     $jsonSaida = array(
         "status" => 400,
         "retorno" => "Faltaram parametros"
     );
 }
-
 
 //LOG
 if (isset($LOG_NIVEL)) {
@@ -65,9 +76,3 @@ if (isset($LOG_NIVEL)) {
     }
 }
 //LOG
-
-
-
-fclose($arquivo);
-
-?>

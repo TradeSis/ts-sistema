@@ -1,7 +1,7 @@
 <?php
 // lucas 26122023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-$BANCO = "MYSQL";
+$BANCO = "PROGRESS";
 
 if ($BANCO == "MYSQL") $conexao = conectaMysql(null);
 

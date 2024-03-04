@@ -1,5 +1,5 @@
 <?php
-$BANCO = "MYSQL";
+$BANCO = "PROGRESS";
 
 if ($BANCO == "MYSQL") $conexao = conectaMysql(null);
 
