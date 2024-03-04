@@ -31,18 +31,56 @@ if (isset($_GET['operacao'])) {
 		$app = chamaAPI(null, '/sistema/cidades', json_encode($apiEntrada), 'PUT');
 	}
 
-	if ($operacao == "filtrar") {
+	if ($operacao == "alterar") {
 
-		$buscaCidade = $_POST["buscaCidade"];
+		$apiEntrada = array(
+			'codigoCidade' => $_POST['codigoCidade'],
+			'nomeCidade' => $_POST['nomeCidade'],
+			'codigoEstado' => $_POST['codigoEstado']
 
-		if ($buscaCidade == "") {
-			$buscaCidade = null;
+		);
+
+		$app = chamaAPI(null, '/sistema/cidades', json_encode($apiEntrada), 'POST');
+	}
+
+	if ($operacao == "buscar") {
+
+		$codigoCidade = $_POST["codigoCidade"];
+
+		if ($codigoCidade == "") {
+			$codigoCidade = null;
 		}
 
 
 		$apiEntrada = array(
 			'idAplicativo' => null,
-			'buscaCidade' => $buscaCidade
+			'codigoCidade' => $codigoCidade
+		);
+
+		$cidades = chamaAPI(null, '/sistema/cidades', json_encode($apiEntrada), 'GET');
+
+		echo json_encode($cidades);
+		return $cidades;
+	}
+
+	if ($operacao == "filtrar") {
+
+		$buscaCidade = $_POST["buscaCidade"];
+		$codigoEstado = $_POST["codigoEstado"];
+
+		if ($buscaCidade == "") {
+			$buscaCidade = null;
+		}
+
+		if ($codigoEstado  == "") {
+			$codigoEstado  = null;
+		}
+
+
+		$apiEntrada = array(
+			'idAplicativo' => null,
+			'buscaCidade' => $buscaCidade,
+			'codigoEstado' => $codigoEstado
 		);
 
 		$cidades = chamaAPI(null, '/sistema/cidades', json_encode($apiEntrada), 'GET');

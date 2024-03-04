@@ -1,5 +1,5 @@
 <?php
-$BANCO = "PROGRESS";
+$BANCO = "MYSQL";
 
 if ($BANCO == "MYSQL") $conexao = conectaMysql(null);
 
@@ -35,7 +35,7 @@ if ($BANCO == "MYSQL") {
     }
     $where = " where ";
     if (isset($jsonEntrada["buscaEstado"])) {
-      $sql = $sql . $where . " estados.codigoEstado like " . "'%" . $jsonEntrada["buscaEstado"] . "%'
+      $sql = $sql . $where . " estados.codigoEstado = " . "'" . $jsonEntrada["buscaEstado"] . "'
         OR estados.nomeEstado like " . "'%" . $jsonEntrada["buscaEstado"] . "%'" ;
       $where = " and ";
     }
