@@ -46,6 +46,7 @@ if (!$user == "") {
                 $_SESSION['usuario'] = $user;
                 $_SESSION['idLogin'] = $idLogin;
                 $_SESSION['idEmpresa'] = $idEmpresa;
+                $_SESSION['nomeEmpresa'] = $nomeEmpresa;
                 $_SESSION['email'] = $email;
                 $_SESSION['timeSessao'] = $timeSessao;
                 //Lucas 29022024 - id862 adicionado campo administradora

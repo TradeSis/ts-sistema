@@ -18,6 +18,7 @@ if (isset($_POST['token'])) {
         $_SESSION['usuario'] = $dados['loginNome'];
         $_SESSION['idLogin'] = $dados['idLogin'];
         $_SESSION['idEmpresa'] = $dados['idEmpresa'];
+        $_SESSION['nomeEmpresa'] = $dados['nomeEmpresa'];
         $_SESSION['email'] = $dados['email'];
         $_SESSION['timeSessao'] = $dados['timeSessao'];
 
