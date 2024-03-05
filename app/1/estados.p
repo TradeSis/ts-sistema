@@ -1,4 +1,3 @@
-
 def input param vlcentrada as longchar. /* JSON ENTRADA */
 def input param vtmp       as char.     /* CAMINHO PROGRESS_TMP */
 
@@ -9,7 +8,8 @@ def var hentrada as handle.             /* HANDLE ENTRADA */
 def var hsaida   as handle.             /* HANDLE SAIDA */
 
 def temp-table ttentrada no-undo serialize-name "estados"   /* JSON ENTRADA */
-    field codigoEstado  like estados.codigoEstado.
+    field codigoEstado  like estados.codigoEstado
+    field buscaEstado  AS CHAR.
 
 def temp-table ttestados  no-undo serialize-name "estados"  /* JSON SAIDA */
     field codigoEstado   like estados.codigoEstado
@@ -20,6 +20,7 @@ def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CA
     field descricaoStatus      as char.
 
 def VAR vcodigoEstado like ttentrada.codigoEstado.
+
 
 hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
@@ -32,17 +33,35 @@ then do:
     if vcodigoEstado = "" then vcodigoEstado = ?.
 end.
 
-for each estados where
-    (if vcodigoEstado = ?
-     then true /* TODOS */
-     else estados.codigoEstado = vcodigoEstado)
-     no-lock.
+IF ttentrada.buscaEstado = ? 
+THEN DO:
+    for each estados where
+        (if vcodigoEstado = ?
+        then true /* TODOS */
+        ELSE estados.codigoEstado = vcodigoEstado)
+        no-lock.
 
-    create ttestados.
-    ttestados.codigoEstado = estados.codigoEstado.
-    ttestados.nomeEstado   = estados.nomeEstado.
+        create ttestados.
+        ttestados.codigoEstado = estados.codigoEstado.
+        ttestados.nomeEstado   = estados.nomeEstado.
 
-end.    
+    end.
+    
+END.
+ELSE DO:
+    for each estados where
+         estados.codigoEstado = ttentrada.buscaEstado OR
+         estados.nomeEstado MATCHES "*" + ttentrada.buscaEstado + "*"
+         no-lock.
+         
+         create ttestados.
+         ttestados.codigoEstado = estados.codigoEstado.
+         ttestados.nomeEstado   = estados.nomeEstado.
+
+    end.
+END.
+
+  
 
 find first ttestados no-error.
 

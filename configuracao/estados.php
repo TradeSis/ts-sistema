@@ -1,5 +1,7 @@
 <?php
 // lucas 2612023 criado
+// lucas 04032024 - adicionado modal de alterar
+
 include_once(__DIR__ . '/../header.php');
 ?>
 <!doctype html>
@@ -42,6 +44,7 @@ include_once(__DIR__ . '/../header.php');
                     <tr>
                         <th>codigoEstado</th>
                         <th>nomeEstado</th>
+                        <th></th>
                     </tr>
                 </thead>
 
@@ -82,6 +85,38 @@ include_once(__DIR__ . '/../header.php');
             </div>
         </div>
 
+        <!-- lucas 04032024 - adicionado modal de alterar -->
+        <!--------- ALTERAR --------->
+        <div class="modal fade bd-example-modal-lg" id="alterarEstados" tabindex="-1" aria-labelledby="alterarEstadosLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Alterar Estado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" id="form-alterarEstados">
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <label class='form-label ts-label'>codigoEstado</label>
+                                    <input type="text" class="form-control ts-input" name="codigoEstado" id="codigoEstado" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class='form-label ts-label'>nomeEstado</label>
+                                    <input type="text" class="form-control ts-input" name="nomeEstado" id="nomeEstado">
+                                </div>
+
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div><!--container-fluid-->
 
     <!-- LOCAL PARA COLOCAR OS JS -->
@@ -101,7 +136,7 @@ include_once(__DIR__ . '/../header.php');
             $.ajax({
                 type: 'POST',
                 dataType: 'html',
-                url: '<?php echo URLROOT ?>/sistema/database/estados.php?operacao=filtrar',
+                url: '<?php echo URLROOT ?>/sistema/database/estados.php?operacao=buscar',
                 beforeSend: function() {
                     $("#dados").html("Carregando...");
                 },
@@ -120,6 +155,7 @@ include_once(__DIR__ . '/../header.php');
                         linha = linha + "<tr>";
                         linha = linha + "<td>" + object.codigoEstado + "</td>";
                         linha = linha + "<td>" + object.nomeEstado + "</td>";
+                        linha = linha + "<td>" + "<button type='button' class='btn btn-warning btn-sm' data-bs-toggle='modal' data-bs-target='#alterarEstados' data-codigoEstado='" + object.codigoEstado + "'><i class='bi bi-pencil-square'></i></button>"
 
                         linha = linha + "</tr>";
                     }
@@ -152,9 +188,42 @@ include_once(__DIR__ . '/../header.php');
                 });
             });
 
+            $("#form-alterarEstados").submit(function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: "../database/estados.php?operacao=alterar",
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: refreshPage,
+                });
+            });
+
             function refreshPage() {
                 window.location.reload();
             }
+        });
+
+
+        $(document).on('click', 'button[data-bs-target="#alterarEstados"]', function() {
+            var codigoEstado = $(this).attr("data-codigoEstado");
+            //alert(codigoEstado)
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '<?php echo URLROOT ?>/sistema/database/estados.php?operacao=buscar',
+                data: {
+                    codigoEstado: codigoEstado
+                },
+                success: function(data) {
+                    $('#codigoEstado').val(data.codigoEstado);
+                    $('#nomeEstado').val(data.nomeEstado);
+                   
+                    $('#alterarEstados').modal('show');
+                }
+            });
         });
 
     </script>

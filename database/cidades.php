@@ -31,18 +31,29 @@ if (isset($_GET['operacao'])) {
 		$app = chamaAPI(null, '/sistema/cidades', json_encode($apiEntrada), 'PUT');
 	}
 
-	if ($operacao == "filtrar") {
-
-		$buscaCidade = $_POST["buscaCidade"];
-
-		if ($buscaCidade == "") {
-			$buscaCidade = null;
-		}
-
+	if ($operacao == "alterar") {
 
 		$apiEntrada = array(
-			'idAplicativo' => null,
-			'buscaCidade' => $buscaCidade
+			'codigoCidade' => $_POST['codigoCidade'],
+			'nomeCidade' => $_POST['nomeCidade'],
+			'codigoEstado' => $_POST['codigoEstado']
+
+		);
+
+		$app = chamaAPI(null, '/sistema/cidades', json_encode($apiEntrada), 'POST');
+	}
+
+	// Lucas 05032024 - alterado operação buscar para enviar apenas um apiEntrada, usada para filtrar e trazer dados para alteração
+	if ($operacao == "buscar") {
+
+		$codigoCidade = isset($_POST["codigoCidade"])  && $_POST["codigoCidade"] !== "" && $_POST["codigoCidade"] !== "null" ? $_POST["codigoCidade"]  : null;
+		$buscaCidade = isset($_POST["buscaCidade"])  && $_POST["buscaCidade"] !== "" && $_POST["buscaCidade"] !== "null" ? $_POST["buscaCidade"]  : null;
+		$codigoEstado =  isset($_POST["codigoEstado"])  && $_POST["codigoEstado"] !== "" && $_POST["codigoEstado"] !== "null" ? $_POST["codigoEstado"]  : null;
+
+		$apiEntrada = array(
+			'codigoCidade' => $codigoCidade,
+			'buscaCidade' => $buscaCidade,
+			'codigoEstado' => $codigoEstado
 		);
 
 		$cidades = chamaAPI(null, '/sistema/cidades', json_encode($apiEntrada), 'GET');
