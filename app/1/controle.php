@@ -184,17 +184,25 @@ if ($metodo == "POST") {
       include 'anexos_alterar.php';
       break;
 
-      case "geralpessoas":
-        include 'geralpessoas_alterar.php';
-        break;
+    case "geralpessoas":
+      include 'geralpessoas_alterar.php';
+      break;
   
-      case "geralprodutos":
-        include 'geralprodutos_alterar.php';
-        break;
+    case "geralprodutos":
+      include 'geralprodutos_alterar.php';
+      break;
   
-      case "geralfornecimento":
-        include 'geralfornecimento_alterar.php';
-        break;
+    case "geralfornecimento":
+      include 'geralfornecimento_alterar.php';
+      break;
+
+    case "estados":
+      include 'estados_alterar.php';
+      break;
+
+    case "cidades":
+      include 'cidades_alterar.php';
+      break;
 
     default:
       $jsonSaida = json_decode(

@@ -1,4 +1,5 @@
 <?php
+//$BANCO = "MYSQL";
 $BANCO = "PROGRESS";
 
 if ($BANCO == "MYSQL") $conexao = conectaMysql(null);
@@ -35,7 +36,7 @@ if ($BANCO == "MYSQL") {
     }
     $where = " where ";
     if (isset($jsonEntrada["buscaEstado"])) {
-      $sql = $sql . $where . " estados.codigoEstado like " . "'%" . $jsonEntrada["buscaEstado"] . "%'
+      $sql = $sql . $where . " estados.codigoEstado = " . "'" . $jsonEntrada["buscaEstado"] . "'
         OR estados.nomeEstado like " . "'%" . $jsonEntrada["buscaEstado"] . "%'" ;
       $where = " and ";
     }
@@ -72,7 +73,7 @@ if ($BANCO == "PROGRESS") {
       $estados = $estados["conteudoSaida"][0];
   } else {
     
-    if (isset($estados["estados"][1])) {  // Verifica se tem mais de 1 registro
+    if (isset($estados["estados"][1]) || ($jsonEntrada['buscaEstado'] != null)) {  // Verifica se tem mais de 1 registro
       $estados = $estados["estados"];
     } else {
       $estados = $estados["estados"][0];  // Retorno sem array
