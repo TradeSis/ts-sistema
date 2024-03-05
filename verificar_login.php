@@ -22,8 +22,6 @@ $statusLogin = $dados['statusLogin'];
 $user = $dados['loginNome'];
 $idLogin = $dados['idLogin'];
 $idEmpresa = $dados['idEmpresa'];
-$idCliente = $dados['idCliente'];
-$idUsuario = $dados['idUsuario'];
 $nomeEmpresa = $dados['nomeEmpresa'];
 $email = $dados['email'];
 $pedeToken = $dados['pedeToken'];
@@ -48,8 +46,7 @@ if (!$user == "") {
                 $_SESSION['usuario'] = $user;
                 $_SESSION['idLogin'] = $idLogin;
                 $_SESSION['idEmpresa'] = $idEmpresa;
-                $_SESSION['idCliente'] = $idCliente;
-                $_SESSION['idUsuario'] = $idUsuario;
+                $_SESSION['nomeEmpresa'] = $nomeEmpresa;
                 $_SESSION['email'] = $email;
                 $_SESSION['timeSessao'] = $timeSessao;
                 //Lucas 29022024 - id862 adicionado campo administradora
