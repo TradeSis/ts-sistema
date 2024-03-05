@@ -11,7 +11,7 @@
             <ul class="dropdown-menu" id="menu">
                     <?php
                 if ($_SESSION['administradora'] == 1) { ?>
-                <li style="text-align: center;">Database: <?php echo $_SESSION['nomeEmpresa'] ?></li>
+                <li style="text-align: center;">Empresa: <?php echo $_SESSION['nomeEmpresa'] ?></li>
                 <hr>
                 <?php }  ?>
                 <a class="dropdown-item" href="#" id="chatTodos">Mensagens</a>
