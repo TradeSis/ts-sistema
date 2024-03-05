@@ -70,19 +70,11 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
         if ($loginNomes["loginNome"] == $loginNome || $loginNomes["email"] == $loginNome || $loginNomes["cpfCnpj"] == $loginNome) {
             if ($loginNomes["password"] == $password) {
 
-                //Busca idCliente no banco da empresa
-                $conexao2 = conectaMysql($loginNomes["idEmpresa"]);
-                $sql2 = "SELECT usuario.idCliente, usuario.idUsuario FROM usuario where usuario.idLogin = " . $loginNomes["idLogin"];
-                $buscar2 = mysqli_query($conexao2, $sql2);
-                $dadosUsuario = mysqli_fetch_assoc($buscar2);
-
                 $jsonSaida = array(
                     "idLogin" => $loginNomes["idLogin"],
                     "loginNome" => $loginNomes["loginNome"],
                     "nomeEmpresa" => $loginNomes["nomeEmpresa"],
                     "idEmpresa" => $loginNomes["idEmpresa"],
-                    "idCliente" => $dadosUsuario["idCliente"],
-                    "idUsuario" => $dadosUsuario["idUsuario"],
                     "timeSessao" => $loginNomes["timeSessao"],
                     "statusLogin" => $loginNomes["statusLogin"],
                     "email" => $loginNomes["email"],
