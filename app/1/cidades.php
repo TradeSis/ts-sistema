@@ -84,10 +84,10 @@ if ($BANCO == "PROGRESS") {
       $cidades = $cidades["conteudoSaida"][0];
   } else {
     
-    if (isset($cidades["cidades"][1]) || ($jsonEntrada['buscaCidade'] != null) || ($jsonEntrada['codigoEstado'] != null)) {  // Verifica se tem mais de 1 registro
-      $cidades = $cidades["cidades"];
+    if (!isset($cidades["cidades"][1]) && ($jsonEntrada['codigoCidade'] != null)) {  // Verifica se tem mais de 1 registro
+      $cidades = $cidades["cidades"][0]; // Retorno sem array
     } else {
-      $cidades = $cidades["cidades"][0];  // Retorno sem array
+      $cidades = $cidades["cidades"];  
     }
 
   }

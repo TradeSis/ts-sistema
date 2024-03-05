@@ -73,10 +73,10 @@ if ($BANCO == "PROGRESS") {
       $estados = $estados["conteudoSaida"][0];
   } else {
     
-    if (isset($estados["estados"][1]) || ($jsonEntrada['buscaEstado'] != null)) {  // Verifica se tem mais de 1 registro
-      $estados = $estados["estados"];
+     if (!isset($estados["estados"][1]) && ($jsonEntrada['codigoEstado'] != null)) {  // Verifica se tem mais de 1 registro
+      $estados = $estados["estados"][0]; // Retorno sem array
     } else {
-      $estados = $estados["estados"][0];  // Retorno sem array
+      $estados = $estados["estados"];  
     }
 
   }
