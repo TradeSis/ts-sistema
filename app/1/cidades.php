@@ -1,6 +1,7 @@
 <?php
 // lucas 26122023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+//$BANCO = "MYSQL";
 $BANCO = "PROGRESS";
 
 if ($BANCO == "MYSQL") $conexao = conectaMysql(null);
@@ -83,7 +84,7 @@ if ($BANCO == "PROGRESS") {
       $cidades = $cidades["conteudoSaida"][0];
   } else {
     
-    if (isset($cidades["cidades"][1])) {  // Verifica se tem mais de 1 registro
+    if (isset($cidades["cidades"][1]) || ($jsonEntrada['buscaCidade'] != null) || ($jsonEntrada['codigoEstado'] != null)) {  // Verifica se tem mais de 1 registro
       $cidades = $cidades["cidades"];
     } else {
       $cidades = $cidades["cidades"][0];  // Retorno sem array

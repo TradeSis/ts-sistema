@@ -62,9 +62,10 @@ then do:
     return.
 end.
 
-
-find estado where estado.codigoEstado = ttentrada.codigoEstado exclusive no-error.
-estado.nomeEstado = ttentrada.nomeEstado.
+do on error undo:   
+    find estado where estado.codigoEstado = ttentrada.codigoEstado exclusive no-error.
+    estado.nomeEstado = ttentrada.nomeEstado.
+end.
 
 create ttsaida.
 ttsaida.tstatus = 200.

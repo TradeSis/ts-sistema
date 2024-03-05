@@ -136,7 +136,7 @@ include_once(__DIR__ . '/../header.php');
             $.ajax({
                 type: 'POST',
                 dataType: 'html',
-                url: '<?php echo URLROOT ?>/sistema/database/estados.php?operacao=filtrar',
+                url: '<?php echo URLROOT ?>/sistema/database/estados.php?operacao=buscar',
                 beforeSend: function() {
                     $("#dados").html("Carregando...");
                 },

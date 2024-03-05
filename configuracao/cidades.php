@@ -25,7 +25,7 @@ $estados = buscaEstados();
         <div class="row">
             <BR><!-- BOTOES AUXILIARES -->
         </div>
-  
+
 
         <div class="row d-flex align-items-center justify-content-center mt-1 pt-1 ">
 
@@ -42,7 +42,7 @@ $estados = buscaEstados();
             </div>
 
             <div class="col-12 col-lg-6 order-lg-4">
-            <div class="input-group">
+                <div class="input-group">
                     <input type="text" class="form-control ts-input" id="buscaCidade" placeholder="Buscar por código, nome ou estado">
                     <button class="btn btn-primary rounded" type="button" id="buscar"><i class="bi bi-search"></i></button>
                     <button type="button" class="ms-4 btn btn-success" data-bs-toggle="modal" data-bs-target="#inserirCidades"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
@@ -53,22 +53,22 @@ $estados = buscaEstados();
 
         <!-- MENUFILTROS -->
         <div class="ts-menuFiltros mt-2 px-3">
-        <label>Filtrar estados:</label>
+            <label>Filtrar estados:</label>
 
-        <div class="ls-label col-sm-12">
-            <select class="form-control" name="codigoEstado " id="FiltroEstado">
-                <option value="<?php echo null ?>"><?php echo "Todos"  ?></option>
+            <div class="ls-label col-sm-12">
+                <select class="form-control" name="codigoEstado " id="FiltroEstado">
+                    <option value="<?php echo null ?>"><?php echo "Todos"  ?></option>
                     <?php
                     foreach ($estados as $estado) {
                     ?>
-                    <option value="<?php echo $estado['codigoEstado'] ?>"><?php echo $estado['codigoEstado']  ?></option>
+                        <option value="<?php echo $estado['codigoEstado'] ?>"><?php echo $estado['nomeEstado']  ?></option>
                     <?php  } ?>
-            </select>
-        </div>
+                </select>
+            </div>
 
-        <div class="col-sm text-end mt-2">
-            <a onClick="limpar()" role=" button" class="btn btn-sm bg-info text-white">Limpar</a>
-        </div>
+            <div class="col-sm text-end mt-2">
+                <a onClick="limpar()" role=" button" class="btn btn-sm bg-info text-white">Limpar</a>
+            </div>
         </div>
 
         <div class="table mt-2 ts-divTabela ts-tableFiltros">
@@ -108,15 +108,23 @@ $estados = buscaEstados();
                                     <label class='form-label ts-label'>nomeCidade</label>
                                     <input type="text" class="form-control ts-input" name="nomeCidade" autocomplete="off" required>
                                 </div>
+
                                 <div class="col-md-3">
                                     <label class='form-label ts-label'>codigoEstado</label>
-                                    <input type="text" class="form-control ts-input" name="codigoEstado" autocomplete="off" required>
+                                    <select class="form-select ts-input" name="codigoEstado">
+                                        <option value="<?php echo null ?>"><?php echo "Todos"  ?></option>
+                                        <?php
+                                        foreach ($estados as $estado) {
+                                        ?>
+                                            <option value="<?php echo $estado['codigoEstado'] ?>"><?php echo $estado['nomeEstado']  ?></option>
+                                        <?php  } ?>
+                                    </select>
                                 </div>
 
                             </div>
                     </div>
                     <div class="modal-footer">
-                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
                     </div>
                     </form>
                 </div>
@@ -139,20 +147,31 @@ $estados = buscaEstados();
                                     <label class='form-label ts-label'>codigoCidade</label>
                                     <input type="text" class="form-control ts-input" name="codigoCidade" id="codigoCidade" readonly>
                                 </div>
-                                <div class="col-md-2">
-                                    <label class='form-label ts-label'>codigoEstado</label>
-                                    <input type="text" class="form-control ts-input" name="codigoEstado" id="codigoEstado">
-                                </div>
-                                <div class="col-md-5">
+
+                                <div class="col-md-6">
                                     <label class='form-label ts-label'>nomeCidade</label>
                                     <input type="text" class="form-control ts-input" name="nomeCidade" id="nomeCidade">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label class='form-label ts-label'>codigoEstado</label>
+                                    <select class="form-select ts-input" name="codigoEstado" id="codigoEstado">
+                                        <option value="null"></option>
+                                        <?php
+                                        foreach ($estados as $estado) {
+                                        ?>
+                                            <option value="<?php echo $estado['codigoEstado'] ?>">
+                                                <?php echo $estado['nomeEstado'] ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
 
                             </div>
 
                     </div>
                     <div class="modal-footer">
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
                     </div>
                     </form>
                 </div>
@@ -180,7 +199,7 @@ $estados = buscaEstados();
             $.ajax({
                 type: 'POST',
                 dataType: 'html',
-                url: '<?php echo URLROOT ?>/sistema/database/cidades.php?operacao=filtrar',
+                url: '<?php echo URLROOT ?>/sistema/database/cidades.php?operacao=buscar',
                 beforeSend: function() {
                     $("#dados").html("Carregando...");
                 },
@@ -270,12 +289,11 @@ $estados = buscaEstados();
                     $('#codigoCidade').val(data.codigoCidade);
                     $('#codigoEstado').val(data.codigoEstado);
                     $('#nomeCidade').val(data.nomeCidade);
-                   
+
                     $('#alterarCidade').modal('show');
                 }
             });
         });
-
     </script>
 
     <!-- LOCAL PARA COLOCAR OS JS -FIM -->

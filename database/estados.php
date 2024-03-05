@@ -38,37 +38,14 @@ if (isset($_GET['operacao'])) {
 		$estados = chamaAPI(null, '/sistema/estados', json_encode($apiEntrada), 'POST');
 	}
 
+	// Lucas 05032024 - alterado operação buscar para enviar apenas um apiEntrada, usada para filtrar e trazer dados para alteração
 	if ($operacao == "buscar") {
 
-		$codigoEstado = $_POST["codigoEstado"];
-
-		if ($codigoEstado == "") {
-			$codigoEstado = null;
-		}
-
+		$codigoEstado = isset($_POST["codigoEstado"])  && $_POST["codigoEstado"] !== "" && $_POST["codigoEstado"] !== "null" ? $_POST["codigoEstado"]  : null;
+		$buscaEstado = isset($_POST["buscaEstado"])  && $_POST["buscaEstado"] !== "" && $_POST["buscaEstado"] !== "null" ?  $_POST["buscaEstado"]  : null;
 
 		$apiEntrada = array(
-			'idAplicativo' => null,
-			'codigoEstado' => $codigoEstado
-		);
-
-		$estados = chamaAPI(null, '/sistema/estados', json_encode($apiEntrada), 'GET');
-
-		echo json_encode($estados);
-		return $estados;
-	}
-
-	if ($operacao == "filtrar") {
-
-		$buscaEstado = $_POST["buscaEstado"];
-
-		if ($buscaEstado == "") {
-			$buscaEstado = null;
-		}
-
-
-		$apiEntrada = array(
-			'idAplicativo' => null,
+			'codigoEstado' => $codigoEstado,
 			'buscaEstado' => $buscaEstado
 		);
 

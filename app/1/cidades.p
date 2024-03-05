@@ -8,7 +8,9 @@ def var hentrada as handle.             /* HANDLE ENTRADA */
 def var hsaida   as handle.             /* HANDLE SAIDA */
 
 def temp-table ttentrada no-undo serialize-name "cidades"   /* JSON ENTRADA */
-    field codigoCidade  like cidades.codigoCidade.
+    field codigoCidade like cidades.codigoCidade
+    field buscaCidade  AS CHAR
+    field codigoEstado like cidades.codigoEstado.
 
 def temp-table ttcidades  no-undo serialize-name "cidades"  /* JSON SAIDA */
     field codigoCidade   like cidades.codigoCidade
@@ -25,25 +27,51 @@ hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
 find first ttentrada no-error.
 
-vcodigoCidade = ?.
+vcodigoCidade = 0.
 if avail ttentrada
 then do:
     vcodigoCidade = ttentrada.codigoCidade.
-    if vcodigoCidade = 0 then vcodigoCidade = ?.
+    if vcodigoCidade = ? then vcodigoCidade = 0.
 end.
 
-for each cidades where
-    (if vcodigoCidade = ?
-     then true /* TODOS */
-     else cidades.codigoCidade = vcodigoCidade)
-     no-lock.
+IF ttentrada.codigoCidade <> ? OR (ttentrada.codigoCidade = ? AND ttentrada.buscaCidade = ? AND ttentrada.codigoEstado = ?)
+THEN DO:
+    for each cidades where
+        (if vcodigoCidade = 0
+         then true /* TODOS */
+         else cidades.codigoCidade = vcodigoCidade)
+         no-lock.
 
-    create ttcidades.
-    ttcidades.codigoCidade = cidades.codigoCidade.
-    ttcidades.codigoEstado   = cidades.codigoEstado.
-    ttcidades.nomeCidade   = cidades.nomeCidade.
+        RUN criaCidades.
 
-end.
+    end.
+END.
+
+IF ttentrada.buscaCidade <> ?
+THEN DO:
+      vcodigoCidade = INT(ttentrada.buscaCidade) no-error.  
+      for each cidades WHERE 
+        cidades.codigoCidade = vcodigoCidade OR 
+        cidades.nomeCidade MATCHES "*" + ttentrada.buscaCidade + "*" OR 
+        cidades.codigoEstado = ttentrada.buscaCidade
+        no-lock.
+        
+        RUN criaCidades.
+
+    end.
+END.
+
+IF ttentrada.codigoEstado <> ?
+THEN DO:
+      for each cidades WHERE 
+        cidades.codigoEstado = ttentrada.codigoEstado
+        no-lock.
+        
+        RUN criaCidades.
+
+    end. 
+END.
+
 
 find first ttcidades no-error.
 
@@ -65,3 +93,12 @@ hsaida  = TEMP-TABLE ttcidades:handle.
 
 lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
 put unformatted string(vlcSaida).
+
+PROCEDURE criaCidades.
+
+    create ttcidades.
+    ttcidades.codigoCidade = cidades.codigoCidade.
+    ttcidades.codigoEstado = cidades.codigoEstado.
+    ttcidades.nomeCidade   = cidades.nomeCidade.
+
+END.

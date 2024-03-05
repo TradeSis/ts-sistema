@@ -63,9 +63,25 @@ then do:
     return.
 end.
 
+find cidade where cidade.codigoEstado = ttentrada.codigoEstado no-lock no-error.
+if not avail cidade
+then do:
+    create ttsaida.
+    ttsaida.tstatus = 400.
+    ttsaida.descricaoStatus = "Estado nao cadastrado".
 
-find cidade where cidade.codigoCidade = ttentrada.codigoCidade exclusive no-error.
-cidade.nomeCidade = ttentrada.nomeCidade. cidade.codigoEstado = ttentrada.codigoEstado.
+    hsaida  = temp-table ttsaida:handle.
+
+    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
+    message string(vlcSaida).
+    return.
+end.
+
+do on error undo:
+    find cidade where cidade.codigoCidade = ttentrada.codigoCidade exclusive no-error.
+    cidade.nomeCidade = ttentrada.nomeCidade. 
+    cidade.codigoEstado = ttentrada.codigoEstado.
+end.
 
 create ttsaida.
 ttsaida.tstatus = 200.
