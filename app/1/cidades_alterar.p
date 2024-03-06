@@ -63,8 +63,8 @@ then do:
     return.
 end.
 
-find cidade where cidade.codigoEstado = ttentrada.codigoEstado no-lock no-error.
-if not avail cidade
+find estado where estado.codigoEstado = ttentrada.codigoEstado no-lock no-error.
+if not avail estado
 then do:
     create ttsaida.
     ttsaida.tstatus = 400.
