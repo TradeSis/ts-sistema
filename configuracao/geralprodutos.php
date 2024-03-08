@@ -99,15 +99,15 @@ $marcas = buscaMarcas();
                             <div class="row mt-2">
                                 <div class="col-md">
                                     <label class="form-label ts-label">dataAtualizacaoTributaria</label>
-                                    <input type="datetime-local" class="form-control ts-input" name="dataAtualizacaoTributaria">
+                                    <input type="datetime-local" class="form-control ts-input" name="dataAtualizacaoTributaria" disabled>
                                 </div>
                                 <div class="col-md">
                                     <label class="form-label ts-label">codImendes</label>
-                                    <input type="text" class="form-control ts-input" name="codImendes">
+                                    <input type="text" class="form-control ts-input" name="codImendes" disabled>
                                 </div>
                                 <div class="col-md">
                                     <label class="form-label ts-label">idGrupo</label>
-                                    <input type="text" class="form-control ts-input" name="idGrupo">
+                                    <input type="text" class="form-control ts-input" name="idGrupo" disabled>
                                 </div>
                                 <div class="col-md">
                                     <label class="form-label ts-label">prodZFM</label>
@@ -203,7 +203,7 @@ $marcas = buscaMarcas();
                     $("#dados").html("Carregando...");
                 },
                 data: {
-                    eanProduto: buscaProduto
+                    buscaProduto: buscaProduto
                 },
                 success: function(msg) {
                     //alert("segundo alert: " + msg);

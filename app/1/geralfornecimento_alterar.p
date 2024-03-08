@@ -1,0 +1,83 @@
+def input param vlcentrada as longchar. /* JSON ENTRADA */
+def input param vtmp       as char.     /* CAMINHO PROGRESS_TMP */
+
+def var vlcsaida   as longchar.         /* JSON SAIDA */
+
+def var lokjson as log.                 /* LOGICAL DE APOIO */
+def var hentrada as handle.             /* HANDLE ENTRADA */
+def var hsaida   as handle.             /* HANDLE SAIDA */
+
+def temp-table ttentrada no-undo serialize-name "geralfornecimento"   /* JSON ENTRADA */
+    field idFornecimento        like geralfornecimento.idFornecimento
+    field Cnpj                  like geralfornecimento.Cnpj
+    field refProduto            like geralfornecimento.refProduto
+    field idGeralProduto        like geralfornecimento.idGeralProduto
+    field valorCompra           like geralfornecimento.valorCompra.
+
+def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CASO ERRO */
+    field tstatus        as int serialize-name "status"
+    field descricaoStatus      as char.
+
+
+
+hEntrada = temp-table ttentrada:HANDLE.
+lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
+find first ttentrada no-error.
+
+
+if not avail ttentrada
+then do:
+    create ttsaida.
+    ttsaida.tstatus = 400.
+    ttsaida.descricaoStatus = "Dados de Entrada nao encontrados".
+
+    hsaida  = temp-table ttsaida:handle.
+
+    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
+    message string(vlcSaida).
+    return.
+end.
+
+if ttentrada.idFornecimento = ?
+then do:
+    create ttsaida.
+    ttsaida.tstatus = 400.
+    ttsaida.descricaoStatus = "Dados de Entrada Invalidos".
+
+    hsaida  = temp-table ttsaida:handle.
+
+    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
+    message string(vlcSaida).
+    return.
+end.
+
+find geralfornecimento where geralfornecimento.idFornecimento = ttentrada.idFornecimento no-lock no-error.
+if not avail geralfornecimento
+then do:
+    create ttsaida.
+    ttsaida.tstatus = 400.
+    ttsaida.descricaoStatus = "Fornecimento nao cadastrado".
+
+    hsaida  = temp-table ttsaida:handle.
+
+    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
+    message string(vlcSaida).
+    return.
+end.
+
+do on error undo:   
+    find geralfornecimento where geralfornecimento.idFornecimento = ttentrada.idFornecimento exclusive no-error.
+    geralfornecimento.Cnpj   = ttentrada.Cnpj.
+    geralfornecimento.refProduto   = ttentrada.refProduto.
+    geralfornecimento.idGeralProduto   = ttentrada.idGeralProduto.
+    geralfornecimento.valorCompra   = ttentrada.valorCompra.
+end.
+
+create ttsaida.
+ttsaida.tstatus = 200.
+ttsaida.descricaoStatus = "Fornecimento alterado com sucesso".
+
+hsaida  = temp-table ttsaida:handle.
+
+lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
+put unformatted string(vlcSaida).

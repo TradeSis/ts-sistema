@@ -1,5 +1,7 @@
 <?php
-//echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+// PROGRESS
+// ALTERAR E INSERIR
+
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
@@ -8,7 +10,7 @@ if (isset($LOG_CAMINHO)) {
     $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "geralprodutos_alterar";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
-            $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
+            $arquivo = fopen(defineCaminhoLog() . "sistema_alterar" . date("dmY") . ".log", "a");
         }
     }
 }
@@ -22,48 +24,19 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-
-$conexao = conectaMysql(null);
-
 if (isset($jsonEntrada['idGeralProduto'])) {
 
-    $idGeralProduto = isset($jsonEntrada['idGeralProduto']) && $jsonEntrada['idGeralProduto'] !== "" ? "'" . $jsonEntrada['idGeralProduto'] . "'" : "NULL";
-    $eanProduto = isset($jsonEntrada['eanProduto']) && $jsonEntrada['eanProduto'] !== "" && $jsonEntrada['eanProduto'] !== "NULL" ? "'" . $jsonEntrada['eanProduto'] . "'" : "NULL";
-    $nomeProduto = isset($jsonEntrada['nomeProduto']) && $jsonEntrada['nomeProduto'] !== "" ? "'" . $jsonEntrada['nomeProduto'] . "'" : "NULL";
-    $idMarca = isset($jsonEntrada['idMarca']) && $jsonEntrada['idMarca'] !== "" ? "'" . $jsonEntrada['idMarca'] . "'" : "NULL";
-    $dataAtualizacaoTributaria = isset($jsonEntrada['dataAtualizacaoTributaria']) && $jsonEntrada['dataAtualizacaoTributaria'] !== "" ? "'" . $jsonEntrada['dataAtualizacaoTributaria'] . "'" : "NULL";
-    $codImendes = isset($jsonEntrada['codImendes']) && $jsonEntrada['codImendes'] !== "" ? "'" . $jsonEntrada['codImendes'] . "'" : "NULL";
-    $idGrupo = isset($jsonEntrada['idGrupo']) && $jsonEntrada['idGrupo'] !== "" ? "'" . $jsonEntrada['idGrupo'] . "'" : "NULL";
-    $prodZFM = isset($jsonEntrada['prodZFM']) && $jsonEntrada['prodZFM'] !== "" ? "'" . $jsonEntrada['prodZFM'] . "'" : "'N'";
-   
-
-    $sql = "UPDATE geralprodutos SET eanProduto = $eanProduto, nomeProduto = $nomeProduto, dataAtualizacaoTributaria = $dataAtualizacaoTributaria,
-                   idMarca = $idMarca, codImendes = $codImendes, idGrupo = $idGrupo, prodZFM = $prodZFM WHERE idGeralProduto = $idGeralProduto";
-
-   
-    //echo $sql;
-
-    //LOG
-    if (isset($LOG_NIVEL)) {
-        if ($LOG_NIVEL >= 3) {
-            fwrite($arquivo, $identificacao . "-imgProduto->" . $imgProduto . "\n");
-            fwrite($arquivo, $identificacao . "-SQL->" . $sql . "\n");
-        }
-    }
-    //LOG
-
-    //TRY-CATCH
     try {
 
-        $atualizar = mysqli_query($conexao, $sql);
-        if (!$atualizar)
-            throw new Exception(mysqli_error($conexao));
-
-        $jsonSaida = array(
-            "status" => 200,
-            "retorno" => "ok"
-        );
-    } catch (Exception $e) {
+        $progr = new chamaprogress();
+        $retorno = $progr->executarprogress("sistema/app/1/geralprodutos_alterar",json_encode($jsonEntrada));
+        fwrite($arquivo,$identificacao."-RETORNO->".$retorno."\n");
+        $conteudoSaida = json_decode($retorno,true);
+        if (isset($conteudoSaida["conteudoSaida"][0])) { // Conteudo Saida - Caso de erro
+            $jsonSaida = $conteudoSaida["conteudoSaida"][0];
+        } 
+    } 
+    catch (Exception $e) {
         $jsonSaida = array(
             "status" => 500,
             "retorno" => $e->getMessage()
@@ -84,6 +57,7 @@ if (isset($jsonEntrada['idGeralProduto'])) {
     );
 }
 
+
 //LOG
 if (isset($LOG_NIVEL)) {
     if ($LOG_NIVEL >= 2) {
@@ -91,3 +65,9 @@ if (isset($LOG_NIVEL)) {
     }
 }
 //LOG
+
+
+
+fclose($arquivo);
+
+?>

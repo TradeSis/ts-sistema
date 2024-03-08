@@ -1,5 +1,7 @@
 <?php
-//echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
+// PROGRESS
+// ALTERAR E INSERIR
+
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
@@ -8,7 +10,7 @@ if (isset($LOG_CAMINHO)) {
     $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "geralfornecimento_inserir";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
-            $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
+            $arquivo = fopen(defineCaminhoLog() . "sistema_inserir" . date("dmY") . ".log", "a");
         }
     }
 }
@@ -22,40 +24,19 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-$conexao = conectaMysql(null);
 if (isset($jsonEntrada['Cnpj'])) {
 
-    $Cnpj = isset($jsonEntrada['Cnpj']) && $jsonEntrada['Cnpj'] !== "" && $jsonEntrada['Cnpj'] !== "NULL" ? "'" . $jsonEntrada['Cnpj'] . "'" : "NULL";
-    $refProduto = isset($jsonEntrada['refProduto']) && $jsonEntrada['refProduto'] !== "" ? "'" . $jsonEntrada['refProduto'] . "'" : "NULL";
-    $idGeralProduto = isset($jsonEntrada['idGeralProduto']) && $jsonEntrada['idGeralProduto'] !== "" ? "'" . $jsonEntrada['idGeralProduto'] . "'" : "NULL";
-    $valorCompra = isset($jsonEntrada['valorCompra']) && $jsonEntrada['valorCompra'] !== "" ? "'" . $jsonEntrada['valorCompra'] . "'" : "NULL";
-   
-    $sql = "INSERT INTO geralfornecimento (Cnpj, refProduto, idGeralProduto, valorCompra)
-    VALUES ($Cnpj, $refProduto, $idGeralProduto, $valorCompra)";
-
-
-    //LOG
-    if (isset($LOG_NIVEL)) {
-        if ($LOG_NIVEL >= 3) {
-            fwrite($arquivo, $identificacao . "-SQL->" . $sql . "\n");
-        }
-    }
-    //LOG
-
-    //TRY-CATCH
     try {
 
-        $atualizar = mysqli_query($conexao, $sql);
-        if (!$atualizar)
-            throw new Exception(mysqli_error($conexao));
-
-        $idGeralProdutoInserido = mysqli_insert_id($conexao);
-        $jsonSaida = array(
-            "status" => 200,
-            "retorno" => "ok",
-            "idGeralProduto" => $idGeralProdutoInserido
-        );
-    } catch (Exception $e) {
+        $progr = new chamaprogress();
+        $retorno = $progr->executarprogress("sistema/app/1/geralfornecimento_inserir",json_encode($jsonEntrada));
+        fwrite($arquivo,$identificacao."-RETORNO->".$retorno."\n");
+        $conteudoSaida = json_decode($retorno,true);
+        if (isset($conteudoSaida["conteudoSaida"][0])) { // Conteudo Saida - Caso de erro
+            $jsonSaida = $conteudoSaida["conteudoSaida"][0];
+        } 
+    } 
+    catch (Exception $e) {
         $jsonSaida = array(
             "status" => 500,
             "retorno" => $e->getMessage()
@@ -76,6 +57,7 @@ if (isset($jsonEntrada['Cnpj'])) {
     );
 }
 
+
 //LOG
 if (isset($LOG_NIVEL)) {
     if ($LOG_NIVEL >= 2) {
@@ -83,3 +65,9 @@ if (isset($LOG_NIVEL)) {
     }
 }
 //LOG
+
+
+
+fclose($arquivo);
+
+?>

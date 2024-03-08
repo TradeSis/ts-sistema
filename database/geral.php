@@ -29,7 +29,7 @@ function buscarGeralFornecimento($eanProduto = null, $cpfCnpj = null)
 
 	$apiEntrada = array(
 		'eanProduto' => $eanProduto,
-		'cpfCnpj' => $cpfCnpj
+		'Cnpj' => $cpfCnpj
 	);
 
 	$fornecedor = chamaAPI(null, '/sistema/geralfornecimento', json_encode($apiEntrada), 'GET');
@@ -123,18 +123,18 @@ if (isset($_GET['operacao'])) {
 
 	if ($operacao == "buscarGeralProduto") {
 
-		$eanProduto = isset($_POST["eanProduto"]) ? $_POST["eanProduto"] : null;
+		$buscaProduto = isset($_POST["buscaProduto"]) ? $_POST["buscaProduto"] : null;
     	$idGeralProduto = isset($_POST["idGeralProduto"]) ? $_POST["idGeralProduto"] : null;
 
-		if ($eanProduto == "") {
-			$eanProduto = null;
+		if ($buscaProduto == "") {
+			$buscaProduto = null;
 		}
 		if ($idGeralProduto == "") {
 			$idGeralProduto = null;
 		}
 
 		$apiEntrada = array(
-			'eanProduto' => $eanProduto,
+			'buscaProduto' => $buscaProduto,
 			'idGeralProduto' => $idGeralProduto
 		);
 
@@ -150,8 +150,6 @@ if (isset($_GET['operacao'])) {
 			'eanProduto' => $_POST['eanProduto'],
 			'nomeProduto' => $_POST['nomeProduto'],
 			'idMarca' => $_POST['idMarca'],
-			'dataAtualizacaoTributaria' => $_POST['dataAtualizacaoTributaria'],
-			'codImendes' => $_POST['codImendes'],
 			'prodZFM' => $_POST['prodZFM']
 		);
 		$produtos = chamaAPI(null, '/sistema/geralprodutos', json_encode($apiEntrada), 'PUT');
@@ -166,8 +164,6 @@ if (isset($_GET['operacao'])) {
 			'eanProduto' => $_POST['eanProduto'],
 			'nomeProduto' => $_POST['nomeProduto'],
 			'idMarca' => $_POST['idMarca'],
-			'dataAtualizacaoTributaria' => $_POST['dataAtualizacaoTributaria'],
-			'codImendes' => $_POST['codImendes'],
 			'prodZFM' => $_POST['prodZFM']
 		);
 		$produtos = chamaAPI(null, '/sistema/geralprodutos', json_encode($apiEntrada), 'POST');
@@ -194,7 +190,7 @@ if (isset($_GET['operacao'])) {
 		$apiEntrada = array(
 			'idFornecimento' => $idFornecimento,
 			'eanProduto' => $eanProduto,
-			'cpfCnpj' => $cpfCnpj
+			'Cnpj' => $cpfCnpj
 		);
 
 		$fornecedor = chamaAPI(null, '/sistema/geralfornecimento', json_encode($apiEntrada), 'GET');
