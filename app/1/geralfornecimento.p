@@ -9,15 +9,10 @@ def var hsaida   as handle.             /* HANDLE SAIDA */
 
 def temp-table ttentrada no-undo serialize-name "dadosEntrada"   /* JSON ENTRADA */
     field idFornecimento  like geralfornecimento.idFornecimento
-    field eanProduto  like geralprodutos.eanProduto
-    field Cnpj  like geralfornecimento.Cnpj.
+    field buscaFornecimento  AS CHAR.
 
 def temp-table ttgeralfornecimento  no-undo serialize-name "geralfornecimento"  /* JSON SAIDA */
-    field idFornecimento        like geralfornecimento.idFornecimento
-    field Cnpj                  like geralfornecimento.Cnpj
-    field refProduto            like geralfornecimento.refProduto
-    field idGeralProduto        like geralfornecimento.idGeralProduto
-    field valorCompra           like geralfornecimento.valorCompra.
+    like geralfornecimento.
 
 def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CASO ERRO */
     field tstatus        as int serialize-name "status"
@@ -37,7 +32,8 @@ then do:
     if vidFornecimento = ? then vidFornecimento = 0.
 end.
 
-IF ttentrada.idFornecimento <> ? OR (ttentrada.idFornecimento = ? AND ttentrada.eanProduto = ? AND ttentrada.Cnpj = ?)
+
+IF ttentrada.buscaFornecimento = ?
 THEN DO:
     for each geralfornecimento where
         (if vidFornecimento = 0
@@ -49,28 +45,22 @@ THEN DO:
 
     end.
 END.
-
-IF ttentrada.Cnpj <> ?
-THEN DO:
-      for each geralfornecimento WHERE 
-        geralfornecimento.Cnpj = ttentrada.Cnpj
-        no-lock.
+ELSE DO:
+    FIND geralprodutos WHERE geralprodutos.eanProduto = ttentrada.buscaFornecimento NO-LOCK NO-ERROR.
         
-        RUN criaFornecimento.
-
-    end. 
-END.
-
-IF ttentrada.eanProduto <> ?
-THEN DO:
-        for each geralfornecimento, each geralprodutos
-        WHERE geralprodutos.idGeralProduto = geralfornecimento.idGeralProduto and
-        geralprodutos.eanProduto = ttentrada.eanProduto
-        no-lock.
-        
-        RUN criaFornecimento.
-
-    end.
+    IF AVAILABLE geralprodutos THEN DO:
+        FOR EACH geralfornecimento WHERE
+        geralfornecimento.idGeralProduto = geralprodutos.idGeralProduto OR
+        geralfornecimento.Cnpj MATCHES "*" + ttentrada.buscaFornecimento + "*" NO-LOCK.
+            RUN criaFornecimento.
+        END.
+    END.
+    ELSE DO:
+        FOR EACH geralfornecimento WHERE
+        geralfornecimento.Cnpj MATCHES "*" + ttentrada.buscaFornecimento + "*" NO-LOCK.
+            RUN criaFornecimento.
+        END.
+    END.
 END.
 
   
@@ -100,10 +90,6 @@ put unformatted string(vlcSaida).
 PROCEDURE criaFornecimento.
 
     create ttgeralfornecimento.
-    ttgeralfornecimento.idFornecimento = geralfornecimento.idFornecimento.
-    ttgeralfornecimento.Cnpj   = geralfornecimento.Cnpj.
-    ttgeralfornecimento.refProduto   = geralfornecimento.refProduto.
-    ttgeralfornecimento.idGeralProduto   = geralfornecimento.idGeralProduto.
-    ttgeralfornecimento.valorCompra   = geralfornecimento.valorCompra.
+    BUFFER-COPY geralfornecimento TO ttgeralfornecimento.
 
 END.

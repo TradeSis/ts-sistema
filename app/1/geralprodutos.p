@@ -12,14 +12,7 @@ def temp-table ttentrada no-undo serialize-name "dadosEntrada"   /* JSON ENTRADA
     field buscaProduto  AS CHAR.
 
 def temp-table ttgeralprodutos  no-undo serialize-name "geralprodutos"  /* JSON SAIDA */
-    field idGeralProduto                like geralprodutos.idGeralProduto
-    field eanProduto                    like geralprodutos.eanProduto
-    field nomeProduto                   like geralprodutos.nomeProduto
-    field idMarca                       like geralprodutos.idMarca
-    field dataAtualizacaoTributaria     like geralprodutos.dataAtualizacaoTributaria
-    field codImendes                    like geralprodutos.codImendes 
-    field idGrupo                       like geralprodutos.idGrupo
-    field prodZFM                       like geralprodutos.prodZFM.
+    like geralprodutos.
 
 def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CASO ERRO */
     field tstatus        as int serialize-name "status"
@@ -90,13 +83,6 @@ put unformatted string(vlcSaida).
 PROCEDURE criaProdutos.
 
     create ttgeralprodutos.
-    ttgeralprodutos.idGeralProduto = geralprodutos.idGeralProduto.
-    ttgeralprodutos.eanProduto   = geralprodutos.eanProduto.
-    ttgeralprodutos.nomeProduto   = geralprodutos.nomeProduto.
-    ttgeralprodutos.idMarca   = geralprodutos.idMarca.
-    ttgeralprodutos.dataAtualizacaoTributaria   = geralprodutos.dataAtualizacaoTributaria.
-    ttgeralprodutos.codImendes   = geralprodutos.codImendes.
-    ttgeralprodutos.idGrupo   = geralprodutos.idGrupo.
-    ttgeralprodutos.prodZFM   = geralprodutos.prodZFM.
+    BUFFER-COPY geralprodutos TO ttgeralprodutos.
 
 END.

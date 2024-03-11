@@ -99,15 +99,15 @@ $marcas = buscaMarcas();
                             <div class="row mt-2">
                                 <div class="col-md">
                                     <label class="form-label ts-label">dataAtualizacaoTributaria</label>
-                                    <input type="datetime-local" class="form-control ts-input" name="dataAtualizacaoTributaria" disabled>
+                                    <input type="datetime-local" class="form-control ts-input" name="dataAtualizacaoTributaria">
                                 </div>
                                 <div class="col-md">
                                     <label class="form-label ts-label">codImendes</label>
-                                    <input type="text" class="form-control ts-input" name="codImendes" disabled>
+                                    <input type="text" class="form-control ts-input" name="codImendes">
                                 </div>
                                 <div class="col-md">
                                     <label class="form-label ts-label">idGrupo</label>
-                                    <input type="text" class="form-control ts-input" name="idGrupo" disabled>
+                                    <input type="text" class="form-control ts-input" name="idGrupo">
                                 </div>
                                 <div class="col-md">
                                     <label class="form-label ts-label">prodZFM</label>

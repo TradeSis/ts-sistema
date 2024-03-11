@@ -11,6 +11,9 @@ def temp-table ttentrada no-undo serialize-name "geralprodutos"   /* JSON ENTRAD
     field nomeProduto                   like geralprodutos.nomeProduto
     field eanProduto                    like geralprodutos.eanProduto
     field idMarca                       like geralprodutos.idMarca
+    field dataAtualizacaoTributaria     like geralprodutos.dataAtualizacaoTributaria
+    field codImendes                    like geralprodutos.codImendes
+    field idGrupo                       like geralprodutos.idGrupo
     field prodZFM                       like geralprodutos.prodZFM.
 
 def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CASO ERRO */
@@ -22,6 +25,8 @@ def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CA
 hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
 find first ttentrada no-error.
+ /* GABRIEL - erro ao buscar ttentrada, lokJSON erro:
+ Incompatible data types in expression or assignment. (223)*/
 
 
 if not avail ttentrada
@@ -58,6 +63,18 @@ if ttentrada.idMarca = 0
 then do:
     ttentrada.idMarca = ?.
 end.
+if ttentrada.dataAtualizacaoTributaria = ?
+then do:
+    ttentrada.dataAtualizacaoTributaria = ?.
+end.
+if ttentrada.codImendes = ""
+then do:
+    ttentrada.codImendes = ?.
+end.
+if ttentrada.idGrupo = 0
+then do:
+    ttentrada.idGrupo = ?.
+end.
 if ttentrada.prodZFM = ""
 then do:
     ttentrada.prodZFM = "N".
@@ -84,6 +101,9 @@ do on error undo:
     geralprodutos.eanProduto   = ttentrada.eanProduto.
     geralprodutos.nomeProduto   = ttentrada.nomeProduto.
     geralprodutos.idMarca   = ttentrada.idMarca.
+    geralprodutos.dataAtualizacaoTributaria   = ttentrada.dataAtualizacaoTributaria.
+    geralprodutos.codImendes   = ttentrada.codImendes.
+    geralprodutos.idGrupo   = ttentrada.idGrupo.
     geralprodutos.prodZFM   = ttentrada.prodZFM.
 end.
 

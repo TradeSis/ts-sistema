@@ -23,13 +23,12 @@ function buscarGeralPessoas($cpfCnpj = null)
 	$pessoas = chamaAPI(null, '/sistema/geralpessoas', json_encode($apiEntrada), 'GET');
 	return $pessoas;
 }
-function buscarGeralFornecimento($eanProduto = null, $cpfCnpj = null)
+function buscarGeralFornecimento($buscaFornecimento = null)
 {
 	$fornecedor = array();
 
 	$apiEntrada = array(
-		'eanProduto' => $eanProduto,
-		'Cnpj' => $cpfCnpj
+		'buscaFornecimento' => $buscaFornecimento
 	);
 
 	$fornecedor = chamaAPI(null, '/sistema/geralfornecimento', json_encode($apiEntrada), 'GET');
@@ -150,6 +149,9 @@ if (isset($_GET['operacao'])) {
 			'eanProduto' => $_POST['eanProduto'],
 			'nomeProduto' => $_POST['nomeProduto'],
 			'idMarca' => $_POST['idMarca'],
+			'dataAtualizacaoTributaria' => $_POST['dataAtualizacaoTributaria'],
+			'codImendes' => $_POST['codImendes'],
+			'idGrupo' => $_POST['idGrupo'],
 			'prodZFM' => $_POST['prodZFM']
 		);
 		$produtos = chamaAPI(null, '/sistema/geralprodutos', json_encode($apiEntrada), 'PUT');
@@ -161,9 +163,10 @@ if (isset($_GET['operacao'])) {
 
 		$apiEntrada = array(
 			'idGeralProduto' => $_POST['idGeralProduto'],
-			'eanProduto' => $_POST['eanProduto'],
 			'nomeProduto' => $_POST['nomeProduto'],
 			'idMarca' => $_POST['idMarca'],
+			'dataAtualizacaoTributaria' => $_POST['dataAtualizacaoTributaria'],
+			'idGrupo' => $_POST['idGrupo'],
 			'prodZFM' => $_POST['prodZFM']
 		);
 		$produtos = chamaAPI(null, '/sistema/geralprodutos', json_encode($apiEntrada), 'POST');
@@ -174,14 +177,10 @@ if (isset($_GET['operacao'])) {
 	if ($operacao == "buscarGeralFornecimento") {
 
 		$idFornecimento = isset($_POST["idFornecimento"]) ? $_POST["idFornecimento"] : null;
-		$eanProduto = isset($_POST["eanProduto"]) ? $_POST["eanProduto"] : null;
-    	$cpfCnpj = isset($_POST["cpfCnpj"]) ? $_POST["cpfCnpj"] : null;
+    	$buscaFornecimento = isset($_POST["buscaFornecimento"]) ? $_POST["buscaFornecimento"] : null;
 
-		if ($cpfCnpj == "") {
-			$cpfCnpj = null;
-		}
-		if ($eanProduto == "") {
-			$eanProduto = null;
+		if ($buscaFornecimento == "") {
+			$buscaFornecimento = null;
 		}
 		if ($idFornecimento == "") {
 			$idFornecimento = null;
@@ -189,8 +188,7 @@ if (isset($_GET['operacao'])) {
 
 		$apiEntrada = array(
 			'idFornecimento' => $idFornecimento,
-			'eanProduto' => $eanProduto,
-			'Cnpj' => $cpfCnpj
+			'buscaFornecimento' => $buscaFornecimento
 		);
 
 		$fornecedor = chamaAPI(null, '/sistema/geralfornecimento', json_encode($apiEntrada), 'GET');

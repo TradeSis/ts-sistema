@@ -9,8 +9,6 @@ def var hsaida   as handle.             /* HANDLE SAIDA */
 
 def temp-table ttentrada no-undo serialize-name "geralfornecimento"   /* JSON ENTRADA */
     field idFornecimento        like geralfornecimento.idFornecimento
-    field Cnpj                  like geralfornecimento.Cnpj
-    field refProduto            like geralfornecimento.refProduto
     field idGeralProduto        like geralfornecimento.idGeralProduto
     field valorCompra           like geralfornecimento.valorCompra.
 
@@ -67,8 +65,6 @@ end.
 
 do on error undo:   
     find geralfornecimento where geralfornecimento.idFornecimento = ttentrada.idFornecimento exclusive no-error.
-    geralfornecimento.Cnpj   = ttentrada.Cnpj.
-    geralfornecimento.refProduto   = ttentrada.refProduto.
     geralfornecimento.idGeralProduto   = ttentrada.idGeralProduto.
     geralfornecimento.valorCompra   = ttentrada.valorCompra.
 end.

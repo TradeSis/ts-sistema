@@ -9,9 +9,10 @@ def var hsaida   as handle.             /* HANDLE SAIDA */
 
 def temp-table ttentrada no-undo serialize-name "geralprodutos"   /* JSON ENTRADA */
     field idGeralProduto                like geralprodutos.idGeralProduto
-    field eanProduto                    like geralprodutos.eanProduto
     field nomeProduto                   like geralprodutos.nomeProduto
     field idMarca                       like geralprodutos.idMarca
+    field dataAtualizacaoTributaria     like geralprodutos.dataAtualizacaoTributaria
+    field idGrupo                       like geralprodutos.idGrupo
     field prodZFM                       like geralprodutos.prodZFM.
 
 def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CASO ERRO */
@@ -23,7 +24,6 @@ def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CA
 hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
 find first ttentrada no-error.
-find geralprodutos where geralprodutos.idGeralProduto = ttentrada.idGeralProduto no-lock no-error.
 
 
 if not avail ttentrada
@@ -52,17 +52,21 @@ then do:
     return.
 end.
 
-if ttentrada.eanProduto = ""
-then do:
-    ttentrada.eanProduto = geralprodutos.eanProduto.
-end.
 if ttentrada.idMarca = 0
 then do:
-    ttentrada.idMarca = geralprodutos.idMarca.
+    ttentrada.idMarca = ?.
+end.
+if ttentrada.dataAtualizacaoTributaria = ""
+then do:
+    ttentrada.dataAtualizacaoTributaria = ?.
+end.
+if ttentrada.idGrupo = ""
+then do:
+    ttentrada.idGrupo = ?.
 end.
 if ttentrada.prodZFM = ""
 then do:
-    ttentrada.prodZFM = geralprodutos.prodZFM.
+    ttentrada.prodZFM = ?.
 end.
 
 find geralprodutos where geralprodutos.idGeralProduto = ttentrada.idGeralProduto no-lock no-error.
@@ -81,10 +85,23 @@ end.
 
 do on error undo:   
     find geralprodutos where geralprodutos.idGeralProduto = ttentrada.idGeralProduto exclusive no-error.
-    geralprodutos.eanProduto   = ttentrada.eanProduto.
-    geralprodutos.nomeProduto   = ttentrada.nomeProduto.
-    geralprodutos.idMarca   = ttentrada.idMarca.
-    geralprodutos.prodZFM   = ttentrada.prodZFM.
+    geralprodutos.nomeProduto = ttentrada.nomeProduto.
+    if ttentrada.idMarca <> ?
+    then do:
+        geralprodutos.idMarca = ttentrada.idMarca.
+    end.
+    if ttentrada.dataAtualizacaoTributaria <> ?
+    then do:
+        geralprodutos.dataAtualizacaoTributaria = ttentrada.dataAtualizacaoTributaria.
+    end.
+    if ttentrada.idGrupo <> ?
+    then do:
+        geralprodutos.idGrupo = ttentrada.idGrupo.
+    end.
+    if ttentrada.prodZFM <> ?
+    then do:
+        geralprodutos.prodZFM = ttentrada.prodZFM.
+    end.
 end.
 
 create ttsaida.

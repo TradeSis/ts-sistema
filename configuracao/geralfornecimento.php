@@ -31,7 +31,7 @@ include_once(__DIR__ . '/../header.php');
      
             <div class="col-6 col-lg-6">
                 <div class="input-group">
-                    <input type="text" class="form-control ts-input" id="buscaFornecedor" placeholder="Buscar por cpf/cnpj ou nome">
+                    <input type="text" class="form-control ts-input" id="buscaFornecimento" placeholder="Buscar por cpf/cnpj ou nome">
                     <button class="btn btn-primary rounded" type="button" id="buscar"><i class="bi bi-search"></i></button>
                     <button type="button" class="ms-4 btn btn-success" data-bs-toggle="modal" data-bs-target="#inserirFornecedorModal"><i class="bi bi-plus-square"></i>&nbsp Novo</button>
                 </div>
@@ -152,15 +152,15 @@ include_once(__DIR__ . '/../header.php');
     <?php include_once ROOT . "/vendor/footer_js.php"; ?>
 
     <script>
-        buscar($("#buscaFornecedor").val());
+        buscar($("#buscaFornecimento").val());
 
         function limpar() {
             buscar(null, null, null, null);
             window.location.reload();
         }
 
-        function buscar(buscaFornecedor) {
-            //alert (buscaFornecedor);
+        function buscar(buscaFornecimento) {
+            //alert (buscaFornecimento);
             $.ajax({
                 type: 'POST',
                 dataType: 'html',
@@ -169,7 +169,7 @@ include_once(__DIR__ . '/../header.php');
                     $("#dados").html("Carregando...");
                 },
                 data: {
-                    cpfCnpj: buscaFornecedor
+                    buscaFornecimento: buscaFornecimento
                 },
                 success: function(msg) {
                     //alert("segundo alert: " + msg);
@@ -195,12 +195,12 @@ include_once(__DIR__ . '/../header.php');
         }
 
         $("#buscar").click(function() {
-            buscar($("#buscaFornecedor").val());
+            buscar($("#buscaFornecimento").val());
         })
 
         document.addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
-                buscar($("#buscaFornecedor").val());
+                buscar($("#buscaFornecimento").val());
             }
         });
 
