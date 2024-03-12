@@ -25,7 +25,7 @@ $logado = $_SESSION['usuario'];
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <head>
     <title>Sistema</title>
@@ -35,10 +35,10 @@ $logado = $_SESSION['usuario'];
 <body>
 
 <?php
-        include_once ROOT. "/vendor/vendor.php";
+       // include_once ROOT. "/vendor/vendor.php";
 ?>
 
 
 </body>
 
-</html>
+</html> -->
