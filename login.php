@@ -1,16 +1,18 @@
 <?php
+// lucas 120320204 id884 bootstrap local - alterado head
 // Lucas 08032023 - modificado o action do form para chamar api, linha 67
 // helio 26012023 16:16
 
 include_once __DIR__ . "/../config.php";
 
 ?>
-<!DOCTYPE html>
-<html lang="en" class="bg-white">
+<!doctype html>
+<html lang="pt-BR">
+<head>
 
-<?php
-        include_once ROOT. "/vendor/vendor.php";
-?>
+    <?php include_once ROOT . "/vendor/head_css.php"; ?>
+
+</head>
 
 <body class="bg-default mt-5">
   <div>
@@ -76,11 +78,7 @@ include_once __DIR__ . "/../config.php";
                     <i class="bi bi-eye pt-3" aria-hidden="true"
                       style="width:30px; text-align: right;border-bottom:1px solid #40505B"></i>
                   </div>
-
-                  <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-
-                  </div>
+                  
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary my-4">Entrar</button>
                   </div>
@@ -101,6 +99,10 @@ include_once __DIR__ . "/../config.php";
     </footer>
   </div>
 
+<!-- LOCAL PARA COLOCAR OS JS -->
+
+<?php include_once ROOT . "/vendor/footer_js.php"; ?>
+
   <script>
     $(document).ready(function () {
       $("#show_hide_password i").on('click', function (event) {
@@ -117,6 +119,9 @@ include_once __DIR__ . "/../config.php";
       });
     });
   </script>
+
+<!-- LOCAL PARA COLOCAR OS JS -FIM -->
+
 </body>
 
 </html>
