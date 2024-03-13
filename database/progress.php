@@ -7,19 +7,21 @@
 
             var $ws = "chamaprogress"; // Letra Minuscula por causa do progress
          
-            function executarprogress($acao,$novaentrada)
+            function executarprogress($acao,$novaentrada,$pf=null,$propath=null)
             {
                   
                     $dadosConexao = defineConexaoProgress();
                     $progresscfg    = $dadosConexao['progresscfg'];
                     $dlc            = $dadosConexao['dlc'];
-                    $pf             = $dadosConexao['pf'];
                     $tmp            = $dadosConexao['tmp'];
-                    $propath        = $dadosConexao['propath'];
                     $proginicial    = $dadosConexao['proginicial'];
-
-                 
-                                        
+                    if ($pf == null ) {
+                        $pf             = $dadosConexao['pf'];
+                    } 
+                    if ($propath == null) {
+                        $propath        = $dadosConexao['propath'];
+                    }
+                    
                     $this->progress($dlc,$pf,$propath,$progresscfg,$tmp);
 
                     $this->parametro = "TERM!ws!acao!entrada!tmp!";

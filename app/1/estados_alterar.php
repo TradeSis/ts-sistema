@@ -7,10 +7,10 @@
 $LOG_CAMINHO = defineCaminhoLog();
 if (isset($LOG_CAMINHO)) {
     $LOG_NIVEL = defineNivelLog();
-    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "estados_inserir";
+    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "estados_alterar";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
-            $arquivo = fopen(defineCaminhoLog() . "sistema_inserir" . date("dmY") . ".log", "a");
+            $arquivo = fopen(defineCaminhoLog() . "sistema_alterar" . date("dmY") . ".log", "a");
         }
     }
 }
@@ -29,7 +29,7 @@ if (isset($jsonEntrada['codigoEstado'])) {
     try {
 
         $progr = new chamaprogress();
-        $retorno = $progr->executarprogress("sistema/app/1/estados_inserir",json_encode($jsonEntrada));
+        $retorno = $progr->executarprogress("sistema/app/1/estados_alterar",json_encode($jsonEntrada));
         fwrite($arquivo,$identificacao."-RETORNO->".$retorno."\n");
         $conteudoSaida = json_decode($retorno,true);
         if (isset($conteudoSaida["conteudoSaida"][0])) { // Conteudo Saida - Caso de erro

@@ -131,4 +131,13 @@ a.nav-link{
   border-top: 0px solid #dee2e6;
 }
 
-
+.ts-tablecenter th {
+  text-align: center;
+  border-right: 1px solid #ccc;
+}
+.ts-tablecenter td {
+  border-right: 1px solid #ccc;
+}
+.ts-value {
+  text-align: right;
+}

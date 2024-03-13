@@ -1,15 +1,15 @@
 <?php
-//Lucas 29022024 - id862 Empresa Administradora
-// helio 31012023 criacao
+//Lucas 04032024 - criacao
+
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-// helio 01/11/2023 - banco padrao, empresa null
+
 $conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
 if (isset($LOG_CAMINHO)) {
     $LOG_NIVEL = defineNivelLog();
-    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "empresa_inserir";
+    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "estados_alterar";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
             $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
@@ -26,14 +26,12 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-if (isset($jsonEntrada['nomeEmpresa'])) {
-    $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
-    $timeSessao = $jsonEntrada['timeSessao'];
-    $menu = isset($jsonEntrada['menu']) && $jsonEntrada['menu'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['menu']) . "'" : "NULL";
-    $idPessoa = isset($jsonEntrada['idPessoa']) && $jsonEntrada['idPessoa'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['idPessoa']) . "'" : "NULL";
-    //Lucas 29022024 - id862 adiconado campo administradora
-    $administradora = $jsonEntrada['administradora'];
-    $sql = "INSERT INTO empresa (nomeEmpresa, timeSessao, menu, idPessoa, administradora) values ('$nomeEmpresa', $timeSessao, $menu, $idPessoa, $administradora)";
+if (isset($jsonEntrada['codigoEstado'])) {
+    $codigoEstado = isset($jsonEntrada['codigoEstado'])  && $jsonEntrada['codigoEstado'] !== "" && $jsonEntrada['codigoEstado'] !== "null" ? "'". $jsonEntrada['codigoEstado']."'"  : "null";
+    $nomeEstado = isset($jsonEntrada['nomeEstado'])  && $jsonEntrada['nomeEstado'] !== "" && $jsonEntrada['nomeEstado'] !== "null" ? "'". $jsonEntrada['nomeEstado']."'"  : "null";
+
+    $sql = "UPDATE estados SET nomeEstado = $nomeEstado WHERE codigoEstado = $codigoEstado ";
+
     //LOG
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 3) {

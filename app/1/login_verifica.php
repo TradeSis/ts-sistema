@@ -1,4 +1,5 @@
 <?php
+//Lucas 29022024 - id862 Empresa Administradora
 // Lucas 20042023 adicionado no if "email"
 //gabriel 220323 11:10 envio de idcliente
 //Lucas 08032023
@@ -41,7 +42,8 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
 
     $loginNomes = array();
 
-    $sql = "SELECT login.*, empresa.nomeEmpresa, empresa.timeSessao FROM login
+    //Lucas 29022024 - adicionado campo administradora
+    $sql = "SELECT login.*, empresa.nomeEmpresa, empresa.timeSessao, empresa.administradora FROM login
                 LEFT JOIN empresa on empresa.idEmpresa = login.idEmpresa 
                 WHERE nomeEmpresa='$nomeEmpresa' AND (email = '$loginNome' OR loginNome = '$loginNome' OR cpfCnpj = '$loginNome')";
     //echo $sql;
@@ -68,24 +70,18 @@ if (!isset($jsonEntrada["loginNome"])||!isset($jsonEntrada["nomeEmpresa"])||!iss
         if ($loginNomes["loginNome"] == $loginNome || $loginNomes["email"] == $loginNome || $loginNomes["cpfCnpj"] == $loginNome) {
             if ($loginNomes["password"] == $password) {
 
-                //Busca idCliente no banco da empresa
-                $conexao2 = conectaMysql($loginNomes["idEmpresa"]);
-                $sql2 = "SELECT usuario.idCliente, usuario.idUsuario FROM usuario where usuario.idLogin = " . $loginNomes["idLogin"];
-                $buscar2 = mysqli_query($conexao2, $sql2);
-                $dadosUsuario = mysqli_fetch_assoc($buscar2);
-
                 $jsonSaida = array(
                     "idLogin" => $loginNomes["idLogin"],
                     "loginNome" => $loginNomes["loginNome"],
                     "nomeEmpresa" => $loginNomes["nomeEmpresa"],
                     "idEmpresa" => $loginNomes["idEmpresa"],
-                    "idCliente" => $dadosUsuario["idCliente"],
-                    "idUsuario" => $dadosUsuario["idUsuario"],
                     "timeSessao" => $loginNomes["timeSessao"],
                     "statusLogin" => $loginNomes["statusLogin"],
                     "email" => $loginNomes["email"],
                     "cpfCnpj" => $loginNomes["cpfCnpj"],
                     "pedeToken" => $loginNomes["pedeToken"],
+                    //Lucas 29022024 - adicionado campo administradora
+                    "administradora" => $loginNomes["administradora"],
                     "status" => 200,
                     "retorno" => ""
                 );

@@ -57,6 +57,18 @@ if ($metodo == "GET") {
       include 'cidades.php';
       break;
 
+      case "geralprodutos":
+        include 'geralprodutos.php';
+        break;
+  
+      case "geralpessoas":
+        include 'geralpessoas.php';
+        break;
+  
+      case "geralfornecimento":
+        include 'geralfornecimento.php';
+        break;    
+
 
     default:
       $jsonSaida = json_decode(
@@ -106,6 +118,19 @@ if ($metodo == "PUT") {
     case "cidades":
       include 'cidades_inserir.php';
       break;
+
+      case "geralpessoas":
+        include 'geralpessoas_inserir.php';
+        break;
+
+        case "geralprodutos":
+          include 'geralprodutos_inserir.php';
+          break;
+    
+        case "geralfornecimento":
+          include 'geralfornecimento_inserir.php';
+          break;
+          
       
     default:
       $jsonSaida = json_decode(
@@ -158,6 +183,27 @@ if ($metodo == "POST") {
     case "anexos":
       include 'anexos_alterar.php';
       break;
+
+    case "geralpessoas":
+      include 'geralpessoas_alterar.php';
+      break;
+  
+    case "geralprodutos":
+      include 'geralprodutos_alterar.php';
+      break;
+  
+    case "geralfornecimento":
+      include 'geralfornecimento_alterar.php';
+      break;
+
+    case "estados":
+      include 'estados_alterar.php';
+      break;
+
+    case "cidades":
+      include 'cidades_alterar.php';
+      break;
+
     default:
       $jsonSaida = json_decode(
         json_encode(

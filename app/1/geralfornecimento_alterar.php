@@ -1,15 +1,11 @@
 <?php
-//Lucas 29022024 - id862 Empresa Administradora
-// helio 31012023 criacao
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-// helio 01/11/2023 - banco padrao, empresa null
-$conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
 if (isset($LOG_CAMINHO)) {
     $LOG_NIVEL = defineNivelLog();
-    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "empresa_inserir";
+    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "geralfornecimento_alterar";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
             $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
@@ -26,17 +22,27 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-if (isset($jsonEntrada['nomeEmpresa'])) {
-    $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
-    $timeSessao = $jsonEntrada['timeSessao'];
-    $menu = isset($jsonEntrada['menu']) && $jsonEntrada['menu'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['menu']) . "'" : "NULL";
-    $idPessoa = isset($jsonEntrada['idPessoa']) && $jsonEntrada['idPessoa'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['idPessoa']) . "'" : "NULL";
-    //Lucas 29022024 - id862 adiconado campo administradora
-    $administradora = $jsonEntrada['administradora'];
-    $sql = "INSERT INTO empresa (nomeEmpresa, timeSessao, menu, idPessoa, administradora) values ('$nomeEmpresa', $timeSessao, $menu, $idPessoa, $administradora)";
+
+$conexao = conectaMysql(null);
+
+if (isset($jsonEntrada['idFornecimento'])) {
+
+    $idFornecimento = isset($jsonEntrada['idFornecimento']) && $jsonEntrada['idFornecimento'] !== "" ? "'" . $jsonEntrada['idFornecimento'] . "'" : "NULL";
+    $Cnpj = isset($jsonEntrada['Cnpj']) && $jsonEntrada['Cnpj'] !== "" && $jsonEntrada['Cnpj'] !== "NULL" ? "'" . $jsonEntrada['Cnpj'] . "'" : "NULL";
+    $refProduto = isset($jsonEntrada['refProduto']) && $jsonEntrada['refProduto'] !== "" ? "'" . $jsonEntrada['refProduto'] . "'" : "NULL";
+    $idGeralProduto = isset($jsonEntrada['idGeralProduto']) && $jsonEntrada['idGeralProduto'] !== "" ? "'" . $jsonEntrada['idGeralProduto'] . "'" : "NULL";
+    $valorCompra = isset($jsonEntrada['valorCompra']) && $jsonEntrada['valorCompra'] !== "" ? "'" . $jsonEntrada['valorCompra'] . "'" : "NULL";
+   
+
+    $sql = "UPDATE geralfornecimento SET Cnpj = $Cnpj, refProduto = $refProduto, idGeralProduto = $idGeralProduto, valorCompra = $valorCompra WHERE idFornecimento = $idFornecimento";
+
+   
+    //echo $sql;
+
     //LOG
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 3) {
+            fwrite($arquivo, $identificacao . "-imgProduto->" . $imgProduto . "\n");
             fwrite($arquivo, $identificacao . "-SQL->" . $sql . "\n");
         }
     }
@@ -65,6 +71,8 @@ if (isset($jsonEntrada['nomeEmpresa'])) {
         // ACAO EM CASO DE ERRO (CATCH), que mesmo assim precise
     }
     //TRY-CATCH
+
+
 } else {
     $jsonSaida = array(
         "status" => 400,

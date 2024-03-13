@@ -1,15 +1,13 @@
 <?php
-//Lucas 29022024 - id862 Empresa Administradora
-// helio 31012023 criacao
+// lucas 26122023 criado
 //echo "-ENTRADA->".json_encode($jsonEntrada)."\n";
-// helio 01/11/2023 - banco padrao, empresa null
 $conexao = conectaMysql(null);
 
 //LOG
 $LOG_CAMINHO = defineCaminhoLog();
 if (isset($LOG_CAMINHO)) {
     $LOG_NIVEL = defineNivelLog();
-    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "empresa_inserir";
+    $identificacao = date("dmYHis") . "-PID" . getmypid() . "-" . "cidades_inserir";
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 1) {
             $arquivo = fopen(defineCaminhoLog() . "sistema_" . date("dmY") . ".log", "a");
@@ -26,14 +24,17 @@ if (isset($LOG_NIVEL)) {
 }
 //LOG
 
-if (isset($jsonEntrada['nomeEmpresa'])) {
-    $nomeEmpresa = $jsonEntrada['nomeEmpresa'];
-    $timeSessao = $jsonEntrada['timeSessao'];
-    $menu = isset($jsonEntrada['menu']) && $jsonEntrada['menu'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['menu']) . "'" : "NULL";
-    $idPessoa = isset($jsonEntrada['idPessoa']) && $jsonEntrada['idPessoa'] !== "" ? "'" . mysqli_real_escape_string($conexao, $jsonEntrada['idPessoa']) . "'" : "NULL";
-    //Lucas 29022024 - id862 adiconado campo administradora
-    $administradora = $jsonEntrada['administradora'];
-    $sql = "INSERT INTO empresa (nomeEmpresa, timeSessao, menu, idPessoa, administradora) values ('$nomeEmpresa', $timeSessao, $menu, $idPessoa, $administradora)";
+if (isset($jsonEntrada['codigoCidade'])) {
+    $codigoCidade = $jsonEntrada['codigoCidade'];
+    $codigoCidade = "'" . $codigoCidade . "'";
+
+    $nomeCidade = $jsonEntrada['nomeCidade'];
+    $nomeCidade = "'" . $nomeCidade . "'";
+
+    $codigoEstado = $jsonEntrada['codigoEstado'];
+    $codigoEstado = "'" . $codigoEstado . "'";
+    
+    $sql = "INSERT INTO cidades (codigoCidade, nomeCidade, codigoEstado) values ($codigoCidade, $nomeCidade, $codigoEstado)";
     //LOG
     if (isset($LOG_NIVEL)) {
         if ($LOG_NIVEL >= 3) {

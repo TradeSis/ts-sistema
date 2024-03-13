@@ -1,4 +1,5 @@
 <?php
+// lucas 120320204 id884 bootstrap local - alterado head
 include_once __DIR__ . "/../config.php";
 include_once 'conexao.php';
 
@@ -18,8 +19,7 @@ if (isset($_POST['token'])) {
         $_SESSION['usuario'] = $dados['loginNome'];
         $_SESSION['idLogin'] = $dados['idLogin'];
         $_SESSION['idEmpresa'] = $dados['idEmpresa'];
-        $_SESSION['idCliente'] = $dados['idCliente'];
-        $_SESSION['idUsuario'] = $dados['idUsuario'];
+        $_SESSION['nomeEmpresa'] = $dados['nomeEmpresa'];
         $_SESSION['email'] = $dados['email'];
         $_SESSION['timeSessao'] = $dados['timeSessao'];
 
@@ -37,13 +37,13 @@ if (isset($_POST['token'])) {
 
 
 
-<!DOCTYPE html>
-<html lang="en" class="bg-white">
+<!doctype html>
+<html lang="pt-BR">
+<head>
 
+    <?php include_once ROOT . "/vendor/head_css.php"; ?>
 
-<?php
-        include_once ROOT. "/vendor/vendor.php";
-?>
+</head>
 
 <body class="bg-default mt-5">
     <div>
@@ -86,6 +86,11 @@ if (isset($_POST['token'])) {
         </div>
     </div>
 
+<!-- LOCAL PARA COLOCAR OS JS -->
+
+<?php include_once ROOT . "/vendor/footer_js.php"; ?>
+
+<!-- LOCAL PARA COLOCAR OS JS -FIM -->
 
 </body>
 
