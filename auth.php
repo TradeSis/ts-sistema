@@ -1,4 +1,5 @@
 <?php
+// lucas 120320204 id884 bootstrap local - alterado head
 include_once __DIR__ . "/../config.php";
 include_once 'conexao.php';
 require_once '../vendor/autoload.php';
@@ -23,12 +24,13 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=' . $tex
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en" class="bg-white">
+<!doctype html>
+<html lang="pt-BR">
+<head>
 
-<?php
-        include_once ROOT. "/vendor/vendor.php";
-?>
+    <?php include_once ROOT . "/vendor/head_css.php"; ?>
+
+</head>
 
 
 <body class="bg-default mt-5">
@@ -78,6 +80,11 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=' . $tex
         </div>
     </div>
 
+<!-- LOCAL PARA COLOCAR OS JS -->
+
+<?php include_once ROOT . "/vendor/footer_js.php"; ?>
+
+<!-- LOCAL PARA COLOCAR OS JS -FIM -->
 
 </body>
 

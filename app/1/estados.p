@@ -26,37 +26,34 @@ hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
 find first ttentrada no-error.
 
-vcodigoEstado = ?.
+vcodigoEstado = "".
 if avail ttentrada
 then do:
     vcodigoEstado = ttentrada.codigoEstado.
-    if vcodigoEstado = "" then vcodigoEstado = ?.
+    if vcodigoEstado = ? then vcodigoEstado = "".
 end.
 
-IF ttentrada.buscaEstado = ? 
+IF ttentrada.codigoEstado <> ? OR (ttentrada.codigoEstado = ? AND ttentrada.buscaEstado = ?)
 THEN DO:
     for each estados where
-        (if vcodigoEstado = ?
-        then true /* TODOS */
-        ELSE estados.codigoEstado = vcodigoEstado)
-        no-lock.
+        (if vcodigoEstado = ""
+         then true /* TODOS */
+         else estados.codigoEstado = vcodigoEstado)
+         no-lock.
 
-        create ttestados.
-        ttestados.codigoEstado = estados.codigoEstado.
-        ttestados.nomeEstado   = estados.nomeEstado.
+        RUN criaEstados.
 
     end.
-    
 END.
-ELSE DO:
-    for each estados where
-         estados.codigoEstado = ttentrada.buscaEstado OR
-         estados.nomeEstado MATCHES "*" + ttentrada.buscaEstado + "*"
-         no-lock.
-         
-         create ttestados.
-         ttestados.codigoEstado = estados.codigoEstado.
-         ttestados.nomeEstado   = estados.nomeEstado.
+
+IF ttentrada.buscaEstado <> ?
+THEN DO:  
+        for each estados WHERE 
+        estados.codigoEstado = ttentrada.buscaEstado OR
+        estados.nomeEstado MATCHES "*" + ttentrada.buscaEstado + "*"
+        no-lock.
+        
+        RUN criaEstados.
 
     end.
 END.
@@ -83,3 +80,11 @@ hsaida  = TEMP-TABLE ttestados:handle.
 
 lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
 put unformatted string(vlcSaida).
+
+PROCEDURE criaEstados.
+
+    create ttestados.
+    ttestados.codigoEstado = estados.codigoEstado.
+    ttestados.nomeEstado   = estados.nomeEstado.
+
+END.
