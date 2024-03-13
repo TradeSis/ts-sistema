@@ -50,6 +50,34 @@ then do:
     return.
 end.
 
+find geralpessoas where geralpessoas.cpfCnpj = ttentrada.Cnpj no-lock no-error.
+if not avail geralpessoas
+then do:
+    create ttsaida.
+    ttsaida.tstatus = 400.
+    ttsaida.descricaoStatus = "Pessoa não existente".
+
+    hsaida  = temp-table ttsaida:handle.
+
+    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
+    message string(vlcSaida).
+    return.
+end.
+
+find geralprodutos where geralprodutos.idGeralProduto = ttentrada.idGeralProduto no-lock no-error.
+if not avail geralprodutos
+then do:
+    create ttsaida.
+    ttsaida.tstatus = 400.
+    ttsaida.descricaoStatus = "Produto não existente".
+
+    hsaida  = temp-table ttsaida:handle.
+
+    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
+    message string(vlcSaida).
+    return.
+end.
+
 find geralfornecimento where geralfornecimento.Cnpj = ttentrada.Cnpj AND 
      geralfornecimento.refProduto = ttentrada.refProduto no-lock no-error.
 if avail geralfornecimento

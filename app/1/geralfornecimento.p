@@ -33,7 +33,7 @@ then do:
 end.
 
 
-IF ttentrada.buscaFornecimento = ?
+IF ttentrada.idFornecimento <> ? OR (ttentrada.idFornecimento = ? AND ttentrada.buscaFornecimento = ?)
 THEN DO:
     for each geralfornecimento where
         (if vidFornecimento = 0
@@ -45,19 +45,29 @@ THEN DO:
 
     end.
 END.
-ELSE DO:
+
+IF ttentrada.buscaFornecimento <> ?
+THEN DO:
     FIND geralprodutos WHERE geralprodutos.eanProduto = ttentrada.buscaFornecimento NO-LOCK NO-ERROR.
-        
-    IF AVAILABLE geralprodutos THEN DO:
+    
+    IF AVAILABLE geralprodutos 
+    THEN DO:
         FOR EACH geralfornecimento WHERE
-        geralfornecimento.idGeralProduto = geralprodutos.idGeralProduto OR
-        geralfornecimento.Cnpj MATCHES "*" + ttentrada.buscaFornecimento + "*" NO-LOCK.
+            geralfornecimento.idGeralProduto = geralprodutos.idGeralProduto
+            NO-LOCK.
+
             RUN criaFornecimento.
         END.
     END.
-    ELSE DO:
+
+    FIND geralpessoas WHERE geralpessoas.cpfCnpj = ttentrada.buscaFornecimento NO-LOCK NO-ERROR.
+
+    IF AVAILABLE geralpessoas 
+    THEN DO:
         FOR EACH geralfornecimento WHERE
-        geralfornecimento.Cnpj MATCHES "*" + ttentrada.buscaFornecimento + "*" NO-LOCK.
+            geralfornecimento.Cnpj = ttentrada.buscaFornecimento 
+            NO-LOCK.
+
             RUN criaFornecimento.
         END.
     END.

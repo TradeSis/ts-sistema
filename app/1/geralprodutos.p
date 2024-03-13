@@ -32,7 +32,7 @@ then do:
     if vidGeralProduto = ? then vidGeralProduto = 0.
 end.
 
-IF ttentrada.buscaProduto = ?
+IF ttentrada.idGeralProduto <> ? OR (ttentrada.idGeralProduto = ? AND ttentrada.buscaProduto = ?)
 THEN DO:
     for each geralprodutos where
     (if vidGeralProduto = 0
@@ -44,10 +44,11 @@ THEN DO:
     
     end.
 END.
-ELSE DO:
-    vidGeralProduto = INT(ttentrada.buscaProduto) no-error.  
+
+IF ttentrada.buscaProduto <> ?
+THEN DO:
      for each geralprodutos where
-        geralprodutos.eanProduto MATCHES "*" + ttentrada.buscaProduto + "*" OR
+        geralprodutos.eanProduto = ttentrada.buscaProduto OR
         geralprodutos.nomeProduto MATCHES "*" + ttentrada.buscaProduto + "*"
         no-lock.
        

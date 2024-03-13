@@ -64,7 +64,7 @@ if ($BANCO == "PROGRESS") {
       $pessoas = $pessoas["conteudoSaida"][0];
   } else {
     
-     if (!isset($pessoas["geralpessoas"][1]) && ($jsonEntrada['cpfCnpj'] != null)) {  // Verifica se tem mais de 1 registro
+     if (!isset($pessoas["geralpessoas"][1]) && ($jsonEntrada['cpfCnpj'] != null && $jsonEntrada["acao"] !== "filtrar")) {  // Verifica se tem mais de 1 registro
       $pessoas = $pessoas["geralpessoas"][0]; // Retorno sem array
     } else {
       $pessoas = $pessoas["geralpessoas"];  

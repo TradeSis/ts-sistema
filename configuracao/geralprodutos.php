@@ -214,14 +214,14 @@ $marcas = buscaMarcas();
                         var object = json[$i];
 
                         linha = linha + "<tr>";
-                        linha = linha + "<td>" + object.idGeralProduto + "</td>";
-                        linha = linha + "<td>" + object.eanProduto + "</td>";
-                        linha = linha + "<td>" + object.nomeProduto + "</td>";
-                        linha = linha + "<td>" + object.idMarca + "</td>";
-                        linha = linha + "<td>" + object.dataAtualizacaoTributaria + "</td>";
-                        linha = linha + "<td>" + object.codImendes + "</td>";
-                        linha = linha + "<td>" + object.idGrupo + "</td>";
-                        linha = linha + "<td>" + object.prodZFM + "</td>";
+                        linha = linha + "<td>" + (object.idGeralProduto ? object.idGeralProduto : "--") + "</td>";
+                        linha = linha + "<td>" + (object.eanProduto ? object.eanProduto : "--") + "</td>";
+                        linha = linha + "<td>" + (object.nomeProduto ? object.nomeProduto : "--") + "</td>";
+                        linha = linha + "<td>" + (object.idMarca ? object.idMarca : "--") + "</td>";
+                        linha = linha + "<td>" + (object.dataAtualizacaoTributaria ? formatarData(object.dataAtualizacaoTributaria) : "--") + "</td>";
+                        linha = linha + "<td>" + (object.codImendes ? object.codImendes : "--") + "</td>";
+                        linha = linha + "<td>" + (object.idGrupo ? object.idGrupo : "--") + "</td>";
+                        linha = linha + "<td>" + (object.prodZFM ? object.prodZFM : "--") + "</td>";
 
                         linha = linha + "<td>" + "<button type='button' class='btn btn-warning btn-sm' data-bs-toggle='modal' data-bs-target='#alterarProdutoModal' data-idGeralProduto='" + object.idGeralProduto + "'><i class='bi bi-pencil-square'></i></button> " 
                         linha = linha + "</tr>";
@@ -229,6 +229,15 @@ $marcas = buscaMarcas();
                     $("#dados").html(linha);
                 }
             });
+        }
+        function formatarData(data) {
+            var d = new Date(data);
+            var dia = d.getDate().toString().padStart(2, '0');
+            var mes = (d.getMonth() + 1).toString().padStart(2, '0');
+            var ano = d.getFullYear();
+            var hora = d.getHours().toString().padStart(2, '0');
+            var minutos = d.getMinutes().toString().padStart(2, '0');
+            return dia + '/' + mes + '/' + ano + ' ' + hora + ':' + minutos;
         }
 
         $("#buscar").click(function() {
