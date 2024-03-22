@@ -223,5 +223,16 @@ if (isset($_GET['operacao'])) {
 		return $fornecedor;
 
 	}
+
+	if ($operacao=="atualizar") {
+
+		$apiEntrada = array(
+			'idEmpresa' => $_SESSION['idEmpresa'],
+			'idGeralProduto' => $_POST['idGeralProduto']
+		);
+		$fornecedor = chamaAPI(null, '/impostos/imendes/saneamento', json_encode($apiEntrada), 'POST');
+		return $fornecedor;
+
+	}
 	
 }

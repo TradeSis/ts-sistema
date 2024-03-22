@@ -21,11 +21,10 @@ $marcas = buscaMarcas();
     <div class="container-fluid">
 
         <div class="row ">
-            <BR>
-            <!-- MENSAGENS/ALERTAS -->
+            <!--<BR> MENSAGENS/ALERTAS -->
         </div>
         <div class="row">
-            <BR> <!-- BOTOES AUXILIARES -->
+            <!--<BR> BOTOES AUXILIARES -->
         </div>
         <div class="row d-flex align-items-center justify-content-center mt-1 pt-1 ">
 
