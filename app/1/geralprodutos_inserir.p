@@ -60,10 +60,6 @@ then do:
     return.
 end.
 
-if ttentrada.eanProduto = ""
-then do:
-    ttentrada.eanProduto = ?.
-end.
 if ttentrada.idMarca = 0
 then do:
     ttentrada.idMarca = ?.

@@ -19,7 +19,7 @@ def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CA
     field descricaoStatus      as char.
 
 def VAR vidFornecimento like ttentrada.idFornecimento.
-
+def VAR veanProduto AS INT.
 
 hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
@@ -48,7 +48,8 @@ END.
 
 IF ttentrada.buscaFornecimento <> ?
 THEN DO:
-    FIND geralprodutos WHERE geralprodutos.eanProduto = ttentrada.buscaFornecimento NO-LOCK NO-ERROR.
+    veanProduto = INT(ttentrada.buscaFornecimento) no-error.
+    FIND geralprodutos WHERE geralprodutos.eanProduto = veanProduto NO-LOCK NO-ERROR.
     
     IF AVAILABLE geralprodutos 
     THEN DO:

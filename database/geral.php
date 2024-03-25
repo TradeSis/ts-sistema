@@ -122,19 +122,14 @@ if (isset($_GET['operacao'])) {
 
 	if ($operacao == "buscarGeralProduto") {
 
-		$buscaProduto = isset($_POST["buscaProduto"]) ? $_POST["buscaProduto"] : null;
-    	$idGeralProduto = isset($_POST["idGeralProduto"]) ? $_POST["idGeralProduto"] : null;
-
-		if ($buscaProduto == "") {
-			$buscaProduto = null;
-		}
-		if ($idGeralProduto == "") {
-			$idGeralProduto = null;
-		}
+		$buscaProduto = isset($_POST["buscaProduto"]) && $_POST["buscaProduto"] !== "" ? $_POST["buscaProduto"] : null;
+    	$idGeralProduto = isset($_POST["idGeralProduto"]) && $_POST["idGeralProduto"] !== "" ? $_POST["idGeralProduto"] : null;
+		$filtroDataAtualizacao = isset($_POST["filtroDataAtualizacao"]) && $_POST["filtroDataAtualizacao"] !== ""  ? $_POST["filtroDataAtualizacao"]  : null;
 
 		$apiEntrada = array(
 			'buscaProduto' => $buscaProduto,
-			'idGeralProduto' => $idGeralProduto
+			'idGeralProduto' => $idGeralProduto,
+			'filtroDataAtualizacao' => $filtroDataAtualizacao
 		);
 
 		$produto = chamaAPI(null, '/sistema/geralprodutos', json_encode($apiEntrada), 'GET');
@@ -225,10 +220,11 @@ if (isset($_GET['operacao'])) {
 	}
 
 	if ($operacao=="atualizar") {
+		$idGeralProduto = isset($_POST["idGeralProduto"]) && $_POST["idGeralProduto"] !== "null"  ? $_POST["idGeralProduto"]  : null;
 
 		$apiEntrada = array(
 			'idEmpresa' => $_SESSION['idEmpresa'],
-			'idGeralProduto' => $_POST['idGeralProduto']
+			'idGeralProduto' => $idGeralProduto
 		);
 		$fornecedor = chamaAPI(null, '/impostos/imendes/saneamento', json_encode($apiEntrada), 'POST');
 		return $fornecedor;

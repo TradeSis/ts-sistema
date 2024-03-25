@@ -82,9 +82,11 @@ if ($BANCO == "PROGRESS") {
       $produtos = $produtos["conteudoSaida"][0];
   } else {
     
-     if (!isset($produtos["geralprodutos"][1]) && ($jsonEntrada['idGeralProduto'] != null)) {  // Verifica se tem mais de 1 registro
+     if (!isset($produtos["geralprodutos"][1]) && ($jsonEntrada['idGeralProduto'] != null) ) {  // Verifica se tem mais de 1 registro
       $produtos = $produtos["geralprodutos"][0]; // Retorno sem array
-    } else {
+    } else if($jsonEntrada['filtroDataAtualizacao'] != null){
+        $produtos = $produtos["geralprodutos"];
+    }else {
       $produtos = $produtos["geralprodutos"];  
     }
 

@@ -9,7 +9,8 @@ def var hsaida   as handle.             /* HANDLE SAIDA */
 
 def temp-table ttentrada no-undo serialize-name "dadosEntrada"   /* JSON ENTRADA */
     field idGeralProduto  like geralprodutos.idGeralProduto
-    field buscaProduto  AS CHAR.
+    field buscaProduto  AS CHAR
+    field filtroDataAtualizacao  AS CHAR.
 
 def temp-table ttgeralprodutos  no-undo serialize-name "geralprodutos"  /* JSON SAIDA */
     like geralprodutos.
@@ -19,7 +20,7 @@ def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CA
     field descricaoStatus      as char.
 
 def VAR vidGeralProduto like ttentrada.idGeralProduto.
-
+def VAR veanProduto AS INT64.
 
 hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
@@ -32,7 +33,7 @@ then do:
     if vidGeralProduto = ? then vidGeralProduto = 0.
 end.
 
-IF ttentrada.idGeralProduto <> ? OR (ttentrada.idGeralProduto = ? AND ttentrada.buscaProduto = ?)
+IF ttentrada.idGeralProduto <> ? OR (ttentrada.idGeralProduto = ? AND ttentrada.buscaProduto = ? AND ttentrada.filtroDataAtualizacao = ?)
 THEN DO:
     for each geralprodutos where
     (if vidGeralProduto = 0
@@ -45,10 +46,11 @@ THEN DO:
     end.
 END.
 
-IF ttentrada.buscaProduto <> ?
+IF ttentrada.buscaProduto <> ? AND ttentrada.filtroDataAtualizacao = ?
 THEN DO:
+     veanProduto = INT64(ttentrada.buscaProduto).
      for each geralprodutos where
-        geralprodutos.eanProduto = ttentrada.buscaProduto OR
+        geralprodutos.eanProduto = veanProduto OR
         geralprodutos.nomeProduto MATCHES "*" + ttentrada.buscaProduto + "*"
         no-lock.
        
@@ -57,7 +59,28 @@ THEN DO:
     end.
 END.
 
-  
+IF ttentrada.filtroDataAtualizacao = "dataAtualizada"
+THEN DO:
+     for each geralprodutos where
+        geralprodutos.dataAtualizacaoTributaria <> ?
+        no-lock.
+       
+       RUN criaProdutos.
+    
+    end.
+END. 
+
+IF ttentrada.filtroDataAtualizacao = "dataNaoAtualizada"
+THEN DO:
+     for each geralprodutos where
+        geralprodutos.dataAtualizacaoTributaria = ?
+        no-lock.
+       
+       RUN criaProdutos.
+    
+    end.
+END.
+
 
 find first ttgeralprodutos no-error.
 

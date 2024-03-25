@@ -28,8 +28,30 @@ $marcas = buscaMarcas();
         </div>
         <div class="row d-flex align-items-center justify-content-center mt-1 pt-1 ">
 
-            <div class="col-6 col-lg-6">
+            <div class="col-3 col-lg-3">
                 <h2 class="ts-tituloPrincipal">Produtos</h2>
+            </div>
+
+            <div class="col-2 pt-2">
+                <!-- FILTROS -->
+                <form method="post">
+                    <select class="form-select ts-input" name="filtroDataAtualizacao" id="filtroDataAtualizacao">
+                        <option value="">Todos</option>
+                        <option value="dataAtualizada">Atualizados</option>
+                        <option value="dataNaoAtualizada">Nao Atualizados</option>
+                    </select>
+                </form>
+            </div>
+
+            <div class="col-1">
+                <form id="form-atualizarProdutos" method="post">
+                    <div class="col-md-3">
+                        <input type="hidden" class="form-control ts-input" name="idGeralProduto" id="idGeralProduto" value="null">
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-sm btn-warning">Atualizar</button>
+                    </div>
+                </form>
             </div>
 
             <div class="col-6 col-lg-6">
@@ -129,7 +151,7 @@ $marcas = buscaMarcas();
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Alterar Produto</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                
+
                     </div>
                     <div class="modal-body">
                         <form method="post" id="form-alterarProdutos">
@@ -191,9 +213,10 @@ $marcas = buscaMarcas();
     <?php include_once ROOT . "/vendor/footer_js.php"; ?>
 
     <script>
-        buscar($("#buscaProduto").val());
+        buscar($("#buscaProduto").val(), $("#filtroDataAtualizacao").val());
 
-        function buscar(buscaProduto) {
+        function buscar(buscaProduto, filtroDataAtualizacao) {
+            //alert(filtroDataAtualizacao)
             $.ajax({
                 type: 'POST',
                 dataType: 'html',
@@ -202,6 +225,7 @@ $marcas = buscaMarcas();
                     $("#dados").html("Carregando...");
                 },
                 data: {
+                    filtroDataAtualizacao: filtroDataAtualizacao,
                     buscaProduto: buscaProduto
                 },
                 success: function(msg) {
@@ -222,13 +246,14 @@ $marcas = buscaMarcas();
                         linha = linha + "<td>" + (object.idGrupo ? object.idGrupo : "--") + "</td>";
                         linha = linha + "<td>" + (object.prodZFM ? object.prodZFM : "--") + "</td>";
 
-                        linha = linha + "<td>" + "<button type='button' class='btn btn-warning btn-sm' data-bs-toggle='modal' data-bs-target='#alterarProdutoModal' data-idGeralProduto='" + object.idGeralProduto + "'><i class='bi bi-pencil-square'></i></button> " 
+                        linha = linha + "<td>" + "<button type='button' class='btn btn-warning btn-sm' data-bs-toggle='modal' data-bs-target='#alterarProdutoModal' data-idGeralProduto='" + object.idGeralProduto + "'><i class='bi bi-pencil-square'></i></button> "
                         linha = linha + "</tr>";
                     }
                     $("#dados").html(linha);
                 }
             });
         }
+
         function formatarData(data) {
             var d = new Date(data);
             var dia = d.getDate().toString().padStart(2, '0');
@@ -240,28 +265,33 @@ $marcas = buscaMarcas();
         }
 
         $("#buscar").click(function() {
-            buscar($("#buscaProduto").val());
+            buscar($("#buscaProduto").val(), $("#filtroDataAtualizacao").val());
+        })
+
+        $("#filtroDataAtualizacao").change(function() {
+            buscar($("#buscaProduto").val(), $("#filtroDataAtualizacao").val());
         })
 
         document.addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
-                buscar($("#buscaProduto").val());
+                buscar($("#buscaProduto").val(), $("#filtroDataAtualizacao").val());
             }
         });
 
         $(document).on('click', 'button[data-bs-target="#atualizaProdutoModal"]', function() {
-            
+
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 url: '../database/geral.php?operacao=atualizar',
                 data: {
-                    idGeralProduto: idProdutoAtualiza  
+                    idGeralProduto: idProdutoAtualiza
                 }
             });
             window.location.reload();
 
         });
+
 
         $(document).on('click', 'button[data-bs-target="#alterarProdutoModal"]', function() {
             var idGeralProduto = $(this).attr("data-idGeralProduto");
@@ -283,10 +313,10 @@ $marcas = buscaMarcas();
                     $('#codImendes').val(data.codImendes);
                     $('#codigoGrupo').val(data.codigoGrupo);
                     $('#prodZFM').val(data.prodZFM);
-                    
+
                     $('#alterarProdutoModal').modal('show');
                 }
-               
+
             });
         });
 
@@ -317,12 +347,24 @@ $marcas = buscaMarcas();
                 });
             });
 
+            $("#form-atualizarProdutos").submit(function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: "../database/geral.php?operacao=atualizar",
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: refreshPage,
+                });
+            });
+
         });
 
         function refreshPage() {
             window.location.reload();
         }
-
     </script>
 
     <!-- LOCAL PARA COLOCAR OS JS -FIM -->
