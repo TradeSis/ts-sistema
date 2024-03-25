@@ -13,7 +13,7 @@
                 <hr>
                 <a class="dropdown-item" href="#" id="chatTodos">Mensagens</a>
                 <a class="dropdown-item" href="#" id="chatUnico">Chat Pessoal</a>
-                <a class="dropdown-item" href="#" src="<?php echo URLROOT ?>/sistema/configuracao/loginPerfil_alterar.php?idLogin=<?php echo $_SESSION['idLogin'] ?>">Perfil</a>
+                <a class="dropdown-item perfil-link" href="#" data-src="<?php echo URLROOT ?>/sistema/configuracao/loginPerfil_alterar.php?idLogin=<?php echo $_SESSION['idLogin'] ?>">Perfil</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?php echo URLROOT ?>/sistema/logout.php">Logout</a>
             </ul>
