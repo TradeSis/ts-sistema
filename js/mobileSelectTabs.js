@@ -82,16 +82,3 @@ $(document).ready(function () {
         return false;
     });
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-    var iframe = document.querySelector(".ts-iframe");
-    var perfilLinks = document.querySelectorAll(".perfil-link");
-    
-    perfilLinks.forEach(function(link) {
-        link.addEventListener("click", function(event) {
-            event.preventDefault(); 
-            var src = this.getAttribute("data-src"); 
-            iframe.src = src; 
-        });
-    });
-});

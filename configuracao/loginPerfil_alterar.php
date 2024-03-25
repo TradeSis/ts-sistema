@@ -23,7 +23,7 @@ $_SESSION['ultimaulr'] = $_SERVER['HTTP_REFERER'];
 
 <body>
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <BR> <!-- MENSAGENS/ALERTAS -->
         </div>
