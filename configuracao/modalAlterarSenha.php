@@ -44,6 +44,8 @@
 
 
 <script>
+    var senhaCorreta = false;
+
     function validaSenha(input) {
         var senha1 = $("input[name='password']").val();
         var senha2 = input.value;
@@ -53,6 +55,7 @@
         } else {
             $("#repeteMsg").hide();
         }
+        salvarbtn();
     }
     $("input[name='senhaatual']").on("input", function () {
         var senhaAtual = $(this).val();
@@ -69,14 +72,28 @@
                     $("input[name='password']").removeAttr('disabled');
                     $("input[name='senhausuario2']").removeAttr('disabled');
                     $("#senhaAtualMsg").hide();
+                    senhaCorreta = true;
                 } else {
                     $("input[name='password']").attr('disabled', 'disabled');
                     $("input[name='senhausuario2']").attr('disabled', 'disabled');
                     $("#senhaAtualMsg").show();
+                    senhaCorreta = false; 
                 }
+                salvarbtn();
             }
         });
     });
+
+    function salvarbtn() {
+        var senhaNova = $("input[name='password']").val();
+        var senhaRepetida = $("input[name='senhausuario2']").val();
+        
+        if (senhaCorreta  && senhaNova !== "" && senhaRepetida !== "") {
+            $("button[type='submit']").removeAttr('disabled');
+        } else {
+            $("button[type='submit']").attr('disabled', 'disabled');
+        }
+    }
 
     $(document).ready(function () {
         $("#senhaForm").submit(function (event) {
@@ -87,7 +104,7 @@
                 dataType: 'json',
                 url: "<?php echo URLROOT ?>/sistema/database/login.php?operacao=senha",
                 data: formData,
-                processData: false,  
+                processData: false,
                 contentType: false,
                 success: function (msg) {
                     window.location.reload();
@@ -96,5 +113,7 @@
         });
     });
 
+
+    salvarbtn();
 
 </script>
