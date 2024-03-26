@@ -88,8 +88,7 @@ if (isset($_GET['operacao'])) {
 		);
 		
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'POST');
-		echo json_encode($login);
-		return $login;
+		header('Location:' . $_POST['ultimaulr']);
 	}
 
 

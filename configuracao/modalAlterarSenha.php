@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" id="senhaForm">
+                <form action="../database/login.php?operacao=senha" method="post">
                     <div class="row mt-3">
                         <div class="col-sm-6">
                             <label class="form-label ts-label">Senha Atual</label>
@@ -22,8 +22,8 @@
                             <label class="form-label ts-label">Nova Senha</label>
                             <input type="password" name="password" class="form-control ts-input" autocomplete="off"
                                 onfocus="this.value='';" placeholder="Senha" required disabled>
-                            <input type="hidden" class="form-control ts-input" name="idLogin"
-                                value="<?php echo $usuario['idLogin'] ?>">
+                            <input type="hidden" class="form-control ts-input" name="idLogin" value="<?php echo $usuario['idLogin'] ?>">
+                            <input type="hidden" class="form-control ts-input" name="ultimaulr" value="<?php echo $_SESSION['ultimaulr'] ?>">
                         </div>
                         <div class="col-sm">
                             <label class="form-label ts-label">Repetir Senha</label>
@@ -35,7 +35,7 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-warning" id="salvarSenha">Salvar</button>
+                <button type="submit" class="btn btn-warning">Salvar</button>
             </div>
             </form>
         </div>
@@ -94,25 +94,6 @@
             $("#salvarSenha").attr('disabled', 'disabled');
         }
     }
-
-    $(document).ready(function () {
-        $("#senhaForm").submit(function (event) {
-            var formData = new FormData(this);
-
-            $.ajax({
-                method: "POST",
-                dataType: 'json',
-                url: "<?php echo URLROOT ?>/sistema/database/login.php?operacao=senha",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (msg) {
-                    window.location.reload();
-                }
-            });
-        });
-    });
-
 
     salvarbtn();
 
