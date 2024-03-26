@@ -27,22 +27,25 @@ if (isset($LOG_NIVEL)) {
 
 if (isset($jsonEntrada['idLogin'])) {
     $idLogin = $jsonEntrada['idLogin'];
-    $loginNome = $jsonEntrada['loginNome'];
-    $email = $jsonEntrada['email'];
-    $cpfCnpj = $jsonEntrada['cpfCnpj'];
-    $pedeToken = $jsonEntrada['pedeToken'];
 
-    if($cpfCnpj == ''){
-        $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `pedeToken`=$pedeToken WHERE idLogin = $idLogin";
-    }else{
-        $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `cpfCnpj`='$cpfCnpj', `pedeToken`=$pedeToken WHERE idLogin = $idLogin";
-    }
+    if ($jsonEntrada['acao'] == "login") {
+        $loginNome = $jsonEntrada['loginNome'];
+        $email = $jsonEntrada['email'];
+        $cpfCnpj = $jsonEntrada['cpfCnpj'];
+        $pedeToken = $jsonEntrada['pedeToken'];
     
-
-    if (isset($jsonEntrada['password'])) {
+        if($cpfCnpj == ''){
+            $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `pedeToken`=$pedeToken WHERE idLogin = $idLogin";
+        }else{
+            $sql = "UPDATE `login` SET `loginNome`='$loginNome', `email`='$email', `cpfCnpj`='$cpfCnpj', `pedeToken`=$pedeToken WHERE idLogin = $idLogin";
+        }
+    }
+    if ($jsonEntrada['acao'] == "senha") {
         $password = md5($jsonEntrada['password']);
         $sql = "UPDATE `login` SET `password` = '$password' WHERE idLogin = $idLogin";
     }
+    
+
     //echo "-ENTRADA->".$sql."\n"; 
 
     //LOG

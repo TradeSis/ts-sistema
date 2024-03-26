@@ -52,12 +52,12 @@ if (isset($_GET['operacao'])) {
 	if ($operacao == "alterar") {
 	
 		$apiEntrada = array(
+			'acao' => "login",
 			'idLogin' => $_POST['idLogin'],
 			'loginNome' => $_POST['loginNome'],
 			'email' => $_POST['email'],
 			'cpfCnpj' => $_POST['cpfCnpj'],
-			'pedeToken' => $_POST['pedeToken'],
-			'password' => $_POST['password']
+			'pedeToken' => $_POST['pedeToken']
 		);
 		
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'POST');
@@ -67,16 +67,29 @@ if (isset($_GET['operacao'])) {
 	if ($operacao == "loginalterar") {
 		
 		$apiEntrada = array(
+			'acao' => "login",
 			'idLogin' => $_POST['idLogin'],
 			'loginNome' => $_POST['loginNome'],
 			'email' => $_POST['email'],
 			'cpfCnpj' => $_POST['cpfCnpj'],
-			'pedeToken' => $_POST['pedeToken'],
-			'password' => $_POST['password']
+			'pedeToken' => $_POST['pedeToken']
 		);
 		
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'POST');
 		header('Location:' . $_POST['ultimaulr']);
+	}
+
+	if ($operacao == "senha") {
+		
+		$apiEntrada = array(
+			'acao' => "senha",
+			'idLogin' => $_POST['idLogin'],
+			'password' => $_POST['password']
+		);
+		
+		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'POST');
+		echo json_encode($login);
+		return $login;
 	}
 
 
@@ -87,6 +100,12 @@ if (isset($_GET['operacao'])) {
 		$login = chamaAPI(null, '/sistema/login', json_encode($apiEntrada), 'DELETE');
 
 		header('Location: ../configuracao/login.php');
+	}
+	
+	if ($operacao == "verificaSenha") {
+		$senhaAtual = $_POST['senhaAtual'];
+		$senhaAtualMD5 = md5($senhaAtual);
+		echo $senhaAtualMD5;
 	}
 	
 	if ($operacao == "ativar") {
