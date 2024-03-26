@@ -35,7 +35,7 @@
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-warning">Salvar</button>
+                <button type="submit" class="btn btn-warning" id="salvarSenha">Salvar</button>
             </div>
             </form>
         </div>
@@ -88,10 +88,10 @@
         var senhaNova = $("input[name='password']").val();
         var senhaRepetida = $("input[name='senhausuario2']").val();
         
-        if (senhaCorreta  && senhaNova !== "" && senhaRepetida !== "") {
-            $("button[type='submit']").removeAttr('disabled');
+        if (senhaCorreta  && senhaNova == senhaRepetida) {
+            $("#salvarSenha").removeAttr('disabled');
         } else {
-            $("button[type='submit']").attr('disabled', 'disabled');
+            $("#salvarSenha").attr('disabled', 'disabled');
         }
     }
 
