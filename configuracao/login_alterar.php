@@ -78,24 +78,11 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
                 </div>
             </div>
 
-            <div class="row mt-3" id="ts-campoSenhaPerfil">
-                <div class="col-sm col-md-2 mt-2">
-                    <label class="form-label ts-label">Nova Senha</label>
-                    <input id="txtSenha" type="password" name="password" class="form-control ts-input" autocomplete="off" onfocus="this.value='';" placeholder="Senha" required value="<?php echo $usuario['password'] ?>" disabled>
-                </div>
-                <div class="col-sm col-md-2 mt-2">
-                    <label class="form-label ts-label">Repetir Senha</label>
-                    <input type="password" name="senhausuario2" class="form-control ts-input" autocomplete="off" onfocus="this.value='';" placeholder="Repetir Senha" value="<?php echo $usuario['password'] ?>" required oninput="validaSenha(this)">
-                    <small>Precisa ser igual a senha digitada.</small>
-                </div>
-            </div>
-
-
             <div class="text-end mt-4">
                 <button type="submit" class="btn  btn-success"><i class="bi bi-sd-card-fill"></i>&#32;Salvar</button>
             </div>
         </form>
-        <button data-classe="classe1" id="btn1" class="btn btn-sm btn-danger mb-3">Alterar Senha</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#alterarSenhaModal" class="btn btn-sm btn-danger mb-3">Alterar Senha</button>
 
         <div class="table mt-2 ts-divTabela">
             <table class="table table-hover table-sm align-middle">
@@ -139,24 +126,12 @@ $loginAplicativos = buscaLoginAplicativo($idLogin);
         </div>
 
     </div>
-
+    
+    
     <!-- LOCAL PARA COLOCAR OS JS -->
-
+    
     <?php include_once ROOT . "/vendor/footer_js.php"; ?>
-    <script>
-        function validaSenha(input) {
-            if (input.value != document.getElementById('txtSenha').value) {
-                input.setCustomValidity('Repita a senha corretamente');
-            } else {
-                input.setCustomValidity('');
-            }
-        }
-
-
-        $('#btn1').click(function() {
-            $('#ts-campoSenhaPerfil').toggleClass('mostra');
-            $('#txtSenha').removeAttr('disabled');
-        });
+    <?php include 'modalAlterarSenha.php'; ?>
     </script>
 
     <!-- LOCAL PARA COLOCAR OS JS -FIM -->

@@ -10,21 +10,32 @@ if (isset($_POST['token'])) {
     $apiEntrada['token'] = $_POST['token'];
     $dados = chamaAPI(null, '/sistema/login/token', json_encode($apiEntrada), 'GET');
 
+    $statusLogin = $dados['statusLogin'];
+    $user = $dados['loginNome'];
+    $idLogin = $dados['idLogin'];
+    $idEmpresa = $dados['idEmpresa'];
     $nomeEmpresa = $dados['nomeEmpresa'];
+    $email = $dados['email'];
+    $pedeToken = $dados['pedeToken'];
+    $timeSessao = $dados['timeSessao'];
+    //Lucas 29022024 - id862 adicionado campo administradora
+    $administradora = $dados['administradora'];
     if ($dados['token'] == true) {
         session_start();
 
         $_SESSION['START'] = time();
-        $_SESSION['LAST_ACTIVITY'] = time();
-        $_SESSION['usuario'] = $dados['loginNome'];
-        $_SESSION['idLogin'] = $dados['idLogin'];
-        $_SESSION['idEmpresa'] = $dados['idEmpresa'];
-        $_SESSION['nomeEmpresa'] = $dados['nomeEmpresa'];
-        $_SESSION['email'] = $dados['email'];
-        $_SESSION['timeSessao'] = $dados['timeSessao'];
+        $_SESSION['LAST_ACTIVITY'] = time(); 
+        $_SESSION['usuario'] = $user;
+        $_SESSION['idLogin'] = $idLogin;
+        $_SESSION['idEmpresa'] = $idEmpresa;
+        $_SESSION['nomeEmpresa'] = $nomeEmpresa;
+        $_SESSION['email'] = $email;
+        $_SESSION['timeSessao'] = $timeSessao;
+        //Lucas 29022024 - id862 adicionado campo administradora
+        $_SESSION['administradora'] = $administradora;
 
-        setcookie('Empresa', $dados['nomeEmpresa'], strtotime("+1 year"), "/", "", false, true);
-        setcookie('User', $dados['loginNome'], strtotime("+1 year"), "/", "", false, true);
+        setcookie('Empresa', $nomeEmpresa, strtotime("+1 year"), "/", "", false, true );
+        setcookie('User', $user, strtotime("+1 year"), "/", "", false, true );
 
         header('Location: ' . URLROOT . '/' . APP_INICIAL);
     } else {

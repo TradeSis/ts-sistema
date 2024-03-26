@@ -46,7 +46,7 @@ if (!isset($jsonEntrada["loginNome"]) || !isset($jsonEntrada["nomeEmpresa"]) || 
     
     $loginNomes = array();
 
-    $sql = "SELECT login.*, empresa.nomeEmpresa, empresa.timeSessao FROM login
+    $sql = "SELECT login.*, empresa.nomeEmpresa, empresa.timeSessao, empresa.administradora FROM login
                 LEFT JOIN empresa on empresa.idEmpresa = login.idEmpresa 
                 WHERE nomeEmpresa='$nomeEmpresa' AND (email = '$loginNome' OR loginNome = '$loginNome' OR cpfCnpj = '$loginNome')";
     //echo $sql;
@@ -74,25 +74,19 @@ if (!isset($jsonEntrada["loginNome"]) || !isset($jsonEntrada["nomeEmpresa"]) || 
         if ($loginNomes["loginNome"] == $loginNome || $loginNomes["email"] == $loginNome || $loginNomes["cpfCnpj"] == $loginNome) {
             if ($google2fa->verifyKey($loginNomes["secret"], $jsonEntrada['token'])) {
 
-                //Busca idCliente no banco da empresa
-                $conexao2 = conectaMysql($loginNomes["idEmpresa"]);
-                $sql2 = "SELECT usuario.idCliente, usuario.idUsuario FROM usuario where usuario.idLogin = " . $loginNomes["idLogin"];
-                $buscar2 = mysqli_query($conexao2, $sql2);
-                $dadosUsuario = mysqli_fetch_assoc($buscar2);
-
                 $jsonSaida = array(
                     "idLogin" => $loginNomes["idLogin"],
                     "loginNome" => $loginNomes["loginNome"],
                     "nomeEmpresa" => $loginNomes["nomeEmpresa"],
                     "idEmpresa" => $loginNomes["idEmpresa"],
-                    "idCliente" => $dadosUsuario["idCliente"],
-                    "idUsuario" => $dadosUsuario["idUsuario"],
                     "timeSessao" => $loginNomes["timeSessao"],
                     "statusLogin" => $loginNomes["statusLogin"],
                     "email" => $loginNomes["email"],
                     "cpfCnpj" => $loginNomes["cpfCnpj"],
                     "pedeToken" => $loginNomes["pedeToken"],
                     "token" => "true",
+                    //Lucas 29022024 - adicionado campo administradora
+                    "administradora" => $loginNomes["administradora"],
                     "status" => 200,
                     "retorno" => ""
                 );
