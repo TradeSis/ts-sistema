@@ -16,58 +16,28 @@ def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CA
     field tstatus        as int serialize-name "status"
     field descricaoStatus      as char.
 
-
+def var vmensagem as char.
 
 hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
 find first ttentrada no-error.
 
+RUN sistema/database/geralfornecimento.p (INPUT "POST", 
+                                           input table ttentrada, 
+                                           output vmensagem).
 
-if not avail ttentrada
-then do:
+IF vmensagem <> ? 
+THEN DO:
     create ttsaida.
     ttsaida.tstatus = 400.
-    ttsaida.descricaoStatus = "Dados de Entrada nao encontrados".
-
+    ttsaida.descricaoStatus = vmensagem.
+                                          
     hsaida  = temp-table ttsaida:handle.
-
+                                          
     lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
     message string(vlcSaida).
     return.
-end.
-
-if ttentrada.idFornecimento = ?
-then do:
-    create ttsaida.
-    ttsaida.tstatus = 400.
-    ttsaida.descricaoStatus = "Dados de Entrada Invalidos".
-
-    hsaida  = temp-table ttsaida:handle.
-
-    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
-    message string(vlcSaida).
-    return.
-end.
-
-find geralfornecimento where geralfornecimento.idFornecimento = ttentrada.idFornecimento no-lock no-error.
-if not avail geralfornecimento
-then do:
-    create ttsaida.
-    ttsaida.tstatus = 400.
-    ttsaida.descricaoStatus = "Fornecimento nao cadastrado".
-
-    hsaida  = temp-table ttsaida:handle.
-
-    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
-    message string(vlcSaida).
-    return.
-end.
-
-do on error undo:   
-    find geralfornecimento where geralfornecimento.idFornecimento = ttentrada.idFornecimento exclusive no-error.
-    geralfornecimento.idGeralProduto   = ttentrada.idGeralProduto.
-    geralfornecimento.valorCompra   = ttentrada.valorCompra.
-end.
+END.
 
 create ttsaida.
 ttsaida.tstatus = 200.

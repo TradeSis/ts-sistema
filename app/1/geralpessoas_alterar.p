@@ -14,57 +14,28 @@ def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CA
     field tstatus        as int serialize-name "status"
     field descricaoStatus      as char.
 
-
+def var vmensagem as char.
 
 hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
 find first ttentrada no-error.
 
+RUN sistema/database/geralpessoas.p (INPUT "POST", 
+                                           input table ttentrada, 
+                                           output vmensagem).
 
-if not avail ttentrada
-then do:
+IF vmensagem <> ? 
+THEN DO:
     create ttsaida.
     ttsaida.tstatus = 400.
-    ttsaida.descricaoStatus = "Dados de Entrada nao encontrados".
-
+    ttsaida.descricaoStatus = vmensagem.
+                                          
     hsaida  = temp-table ttsaida:handle.
-
+                                          
     lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
     message string(vlcSaida).
     return.
-end.
-
-if ttentrada.cpfCnpj = ?
-then do:
-    create ttsaida.
-    ttsaida.tstatus = 400.
-    ttsaida.descricaoStatus = "Dados de Entrada Invalidos".
-
-    hsaida  = temp-table ttsaida:handle.
-
-    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
-    message string(vlcSaida).
-    return.
-end.
-
-find geralpessoas where geralpessoas.cpfCnpj = ttentrada.cpfCnpj no-lock no-error.
-if not avail geralpessoas
-then do:
-    create ttsaida.
-    ttsaida.tstatus = 400.
-    ttsaida.descricaoStatus = "Pessoa nao cadastrada".
-
-    hsaida  = temp-table ttsaida:handle.
-
-    lokJson = hsaida:WRITE-JSON("LONGCHAR", vlcSaida, TRUE).
-    message string(vlcSaida).
-    return.
-end.
-
-do on error undo:   
-    find geralpessoas where geralpessoas.cpfCnpj = ttentrada.cpfCnpj exclusive no-error.
-    BUFFER-COPY ttentrada EXCEPT ttentrada.cpfCnpj TO geralpessoas .
-end.
+END.
 
 create ttsaida.
 ttsaida.tstatus = 200.
