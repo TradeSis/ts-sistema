@@ -6,16 +6,8 @@ def temp-table ttentrada no-undo serialize-name "geralprodutos"   /* JSON ENTRAD
   
 def input param vAcao as char.
 DEF INPUT PARAM TABLE FOR ttentrada.
+def output param vidGeralProduto as int.
 def output param vmensagem as char.
-
-def var var_datetime as datetime no-undo.
-def var var_date as char no-undo.
-def var var_time as char no-undo.
-def var var_year as int no-undo.
-def var var_month as int no-undo.
-def var var_day as int no-undo.
-def var var_hour as int no-undo.
-def var var_minute as int no-undo.
 
 vmensagem = ?.
 
@@ -25,6 +17,23 @@ if not avail ttentrada then do:
     return.    
 end.
 
+
+if ttentrada.idMarca = 0
+then do:
+    ttentrada.idMarca = ?.
+end.
+if ttentrada.idGrupo = 0
+then do:
+    ttentrada.idGrupo = ?.
+end.
+if ttentrada.prodZFM = "" or ttentrada.prodZFM = ?
+then do:
+    ttentrada.prodZFM = "N".
+end.
+if ttentrada.dataAtualizacaoTributaria <> ? 
+then do:
+    ttentrada.dataAtualizacaoTributaria = DATETIME(ttentrada.dataAtualizacaoTributaria).  
+END.
 
 
 if vAcao = "PUT"
@@ -36,44 +45,13 @@ THEN DO:
         return.
     end.
 
-    if ttentrada.eanProduto = ""
+    if ttentrada.eanProduto = 0
     then do:
         ttentrada.eanProduto = ?.
     end.
-    if ttentrada.idMarca = 0
-    then do:
-        ttentrada.idMarca = ?.
-    end.
-
-    if ttentrada.dataAtualizacaoTributaria = "" 
-    then do:
-        var_datetime = ?.  
-    END.
-    else do:
-        var_date = ENTRY(1, ttentrada.dataAtualizacaoTributaria, "T").
-        var_time = ENTRY(2, ttentrada.dataAtualizacaoTributaria, "T").
-
-        var_year = INTEGER(ENTRY(1, var_date, "-")).
-        var_month = INTEGER(ENTRY(2, var_date, "-")).
-        var_day = INTEGER(ENTRY(3, var_date, "-")).
-
-        var_hour = INTEGER(ENTRY(1, var_time, ":")).
-        var_minute = INTEGER(ENTRY(2, var_time, ":")).
-
-        var_datetime = DATETIME(var_month, var_day, var_year, var_hour, var_minute, 0).
-    end.
-
     if ttentrada.codImendes = ""
     then do:
         ttentrada.codImendes = ?.
-    end.
-    if ttentrada.idGrupo = 0
-    then do:
-        ttentrada.idGrupo = ?.
-    end.
-    if ttentrada.prodZFM = ""
-    then do:
-        ttentrada.prodZFM = "N".
     end.
 
     find geralprodutos where geralprodutos.eanProduto = ttentrada.eanProduto no-lock no-error.
@@ -86,10 +64,11 @@ THEN DO:
 
     do on error undo:
         create geralprodutos.
+        vidGeralProduto = geralprodutos.idGeralProduto.
         geralprodutos.eanProduto   = ttentrada.eanProduto.
         geralprodutos.nomeProduto   = ttentrada.nomeProduto.
         geralprodutos.idMarca   = ttentrada.idMarca.
-        geralprodutos.dataAtualizacaoTributaria   = var_datetime.
+        geralprodutos.dataAtualizacaoTributaria   = ttentrada.dataAtualizacaoTributaria.
         geralprodutos.codImendes   = ttentrada.codImendes.
         geralprodutos.idGrupo   = ttentrada.idGrupo.
         geralprodutos.prodZFM   = ttentrada.prodZFM.
@@ -103,37 +82,6 @@ THEN DO:
         vmensagem = "Dados de Entrada Invalidos".
         return.
     end.
-
-    if ttentrada.idMarca = 0
-    then do:
-        ttentrada.idMarca = ?.
-    end.
-    if ttentrada.idGrupo = 0
-    then do:
-        ttentrada.idGrupo = ?.
-    end.
-    if ttentrada.prodZFM = ""
-    then do:
-        ttentrada.prodZFM = ?.
-    end.
-    if ttentrada.dataAtualizacaoTributaria = "" 
-    then do:
-        var_datetime = ?.  
-    END.
-    else do:
-        var_date = ENTRY(1, ttentrada.dataAtualizacaoTributaria, "T").
-        var_time = ENTRY(2, ttentrada.dataAtualizacaoTributaria, "T").
-
-        var_year = INTEGER(ENTRY(1, var_date, "-")).
-        var_month = INTEGER(ENTRY(2, var_date, "-")).
-        var_day = INTEGER(ENTRY(3, var_date, "-")).
-
-        var_hour = INTEGER(ENTRY(1, var_time, ":")).
-        var_minute = INTEGER(ENTRY(2, var_time, ":")).
-
-        var_datetime = DATETIME(var_month, var_day, var_year, var_hour, var_minute, 0).
-    end.
-
 
     find geralprodutos where geralprodutos.idGeralProduto = ttentrada.idGeralProduto no-lock no-error.
     if not avail geralprodutos
@@ -151,7 +99,7 @@ THEN DO:
         end.
         if ttentrada.dataAtualizacaoTributaria <> ?
         then do:
-            geralprodutos.dataAtualizacaoTributaria = var_datetime.
+            geralprodutos.dataAtualizacaoTributaria = ttentrada.dataAtualizacaoTributaria.
         end.
         if ttentrada.idGrupo <> ?
         then do:

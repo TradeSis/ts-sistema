@@ -8,19 +8,14 @@ def var hentrada as handle.             /* HANDLE ENTRADA */
 def var hsaida   as handle.             /* HANDLE SAIDA */
 
 def temp-table ttentrada no-undo serialize-name "geralprodutos"   /* JSON ENTRADA */
-    field nomeProduto                   like geralprodutos.nomeProduto
-    field eanProduto                    like geralprodutos.eanProduto 
-    field idMarca                       like geralprodutos.idMarca
-    field dataAtualizacaoTributaria     AS CHAR
-    field codImendes                    like geralprodutos.codImendes
-    field idGrupo                       like geralprodutos.idGrupo
-    field prodZFM                       like geralprodutos.prodZFM.
+    like geralprodutos.
 
-    def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CASO ERRO */
+def temp-table ttsaida  no-undo serialize-name "conteudoSaida"  /* JSON SAIDA CASO ERRO */
     field tstatus        as int serialize-name "status"
     field descricaoStatus      as char.
 
 def var vmensagem as char.
+def var vidGeralProduto as int.
 
 hEntrada = temp-table ttentrada:HANDLE.
 lokJSON = hentrada:READ-JSON("longchar",vlcentrada, "EMPTY") no-error.
@@ -28,6 +23,7 @@ find first ttentrada no-error.
 
 RUN sistema/database/geralprodutos.p (INPUT "PUT", 
                                        input table ttentrada, 
+                                       output vidGeralProduto,
                                        output vmensagem).
 
 IF vmensagem <> ? 
