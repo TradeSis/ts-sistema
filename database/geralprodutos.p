@@ -54,11 +54,14 @@ THEN DO:
         ttentrada.codImendes = ?.
     end.
 
-    find geralprodutos where geralprodutos.eanProduto = ttentrada.eanProduto no-lock no-error.
-    if avail geralprodutos
+    if ttentrada.eanProduto <> ? 
     then do:
-        vmensagem = "Produto ja cadastrado".
-        return.
+        find geralprodutos where geralprodutos.eanProduto = ttentrada.eanProduto no-lock no-error.
+        if avail geralprodutos
+        then do:
+            vmensagem = "Produto ja cadastrado".
+            return.
+        end.
     end.
 
 
