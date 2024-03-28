@@ -640,3 +640,42 @@ span.ts-horas {
 .ts-subTitulo {
   color: #172B4D;
 }
+
+.ts-kanbanFundo {
+  background: #f1f1f1;
+}
+
+/* QUADRO VISAOCLI/KANBAN */
+.ts-kanbanQuadro {
+  min-height: 30px;
+  padding: 10px;
+  background: white;
+  display: inline-block;
+  border-radius: 3px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+}
+
+.ts-kanban {
+  width: 100%;
+  height: 90vh;
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+.ts-kanbanTitulo {
+  position: sticky;
+  top: -8px;
+  background-color: #fff;
+  padding: 3px;
+  z-index: 2;
+}
+
+.ts-cardAtrasado {
+  background-color: rgba(234, 64, 36, 0.7);
+}
+
+.ts-cardDataPrevisao {
+  font-size: 12px;
+  float: right;
+}
